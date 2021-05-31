@@ -1,0 +1,36 @@
+.header {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+}
+.header:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  //filter: blur(2px);
+  //background-size: cover;
+  width: 100%;
+  height: 200px;
+  background: url('../../assets/header.jpg');
+  //-webkit-filter: blur(3px);
+  filter: blur(5px);
+  content: ''; /*-1 可以当背景*/
+}
+.logo {
+  //height: 20%;
+  //border: 1px solid #f4f9f9;
+  display: flex;
+  width: 200px;
+  //justify-content: center;
+  //align-items: center;
+  //margin: 10px auto;
+  margin-left: 30px;
+}
+.text {
+  position: relative;
+  margin-top: 20px;
+  color: #001529;
+  font-size: 40px;
+  font-family: 'Arial Black';
+}
