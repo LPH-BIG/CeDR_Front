@@ -7,26 +7,45 @@ export default [
       {
         path: '/',
         component: '@/pages/index',
+        breadcrumbName: 'Home',
       },
       {
         path: '/home',
         component: '@/pages/index',
+        breadcrumbName: 'Home',
       },
       {
         path: '/browse',
         component: '@/pages/Browse',
+        breadcrumbName: 'Browse',
+        // exact: true,
+        routes:[
+          // {
+          //   path: '/browse/users',
+          //   component: '@/pages/users',
+          //   breadcrumbName: 'Browse/Users',
+          // },
+        ]
+      },
+      {
+        path: '/users',
+        component: '@/pages/users',
+        // breadcrumbName: 'Browse/Users',
       },
       {
         path: '/search',
         component: '@/pages/Search',
+        breadcrumbName: 'Search',
       },
       {
         path: '/downloads',
         component: '@/pages/Downloads',
+        breadcrumbName: 'Downloads',
       },
       {
         path: '/documentation',
         component: '@/pages/Documentation',
+        breadcrumbName: 'Documentation',
       },
 
       {
@@ -37,10 +56,7 @@ export default [
         path: '/test',
         component: '@/pages/Test',
       },
-      {
-        path: '/users',
-        component: '@/pages/users',
-      },
+
       {
         path: '/network/:chart',
         component: '@/pages/Network/[index]',
@@ -54,10 +70,7 @@ export default [
         path: '/listbasiclist',
         component: './ListBasicList',
       },
-      {
-        path: '/users',
-        component: '@/pages/users',
-      },
+
       {
         path: '/high/:chart',
         component: '@/pages/Highcharts/[index]',
