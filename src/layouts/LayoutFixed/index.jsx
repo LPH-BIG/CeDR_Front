@@ -73,7 +73,7 @@ export default function (props) {
             className="site-layout"
             style={{ padding: '0 50px', marginTop: 20 }}
           >
-            <Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />
+            {/*<Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />*/}
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 380 }}
