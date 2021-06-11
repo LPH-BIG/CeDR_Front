@@ -1,12 +1,12 @@
 import styles from './index.less';
-import { Col, Input, Row,Breadcrumb } from 'antd';
+import { Col, Input, Row, Breadcrumb } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import  Pie  from './Pie';
+import Pie from './Pie';
+import Tsne from './Tsne';
 import Network from '../components/Network';
 const { Search } = Input;
 export default function IndexPage() {
-
-  const onSearch = (value:any) => console.log(value);
+  const onSearch = (value: any) => console.log(value);
 
   const suffix = (
     <SearchOutlined
@@ -29,13 +29,18 @@ export default function IndexPage() {
           />
         </Col>
       </Row>
-      <br/>
+      <br />
       <Row>
         <Col xs={2} sm={4} md={6} lg={8} xl={10}>
-          <Pie/>
+          <Pie />
         </Col>
         <Col xs={4} sm={6} md={8} lg={10} xl={12} push={1}>
-          <Network/>
+          <Network />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={4} sm={6} md={10} lg={10} xl={12} push={1}>
+          <Tsne />
         </Col>
       </Row>
     </div>

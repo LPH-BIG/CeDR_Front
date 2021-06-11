@@ -5,7 +5,13 @@ const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
 import HeaderLab from '../HeaderLab';
 import { history } from 'umi';
-import { CellIcon,DrugIcon,TissueIcon } from '../Icons/index'
+import {
+  CellIcon,
+  DrugIcon,
+  TissueIcon,
+  ContactIcon,
+  StatusIcon,
+} from '../../components/Icons/index';
 import {
   EyeOutlined,
   HomeOutlined,
@@ -27,7 +33,8 @@ export default function (props) {
   };
   // console.log(history.location);
   console.log(props);
-  return (<div className={styles.container}>
+  return (
+    <div className={styles.container}>
       <HeaderLab />
       <div id="components-layout-demo-fixed">
         <Layout>
@@ -44,28 +51,43 @@ export default function (props) {
                 <HomeOutlined />
                 Home
               </Menu.Item>
-              <SubMenu key="2" icon={<EyeOutlined />} title={<><span>Browse </span><DownOutlined /></>}>
-                <Menu.Item key="sub1" icon={<TissueIcon />}
-                           onClick={() => props.history.push('/users')}>Tissue</Menu.Item>
-                <Menu.Item key="sub2" icon={<CellIcon />} onClick={() => props.history.push('/high/2')}>Cell
-                  Type</Menu.Item>
-                <Menu.Item key="sub3" icon={<DrugIcon />}
-                           onClick={() => props.history.push('/network/3')}>Drug</Menu.Item>
-              </SubMenu>
-              <Menu.Item
-                key="3"
-                onClick={() => props.history.push('/search')}
-              >
+
+              <Menu.Item key="2" onClick={() => props.history.push('/browse')}>
+                <EyeOutlined />
+                Browse
+              </Menu.Item>
+              {/*<SubMenu key="2" icon={<EyeOutlined />} title={<><span>Browse </span><DownOutlined /></>}>*/}
+
+              {/*  <Menu.Item key="sub1" icon={<TissueIcon />}*/}
+              {/*             onClick={() => props.history.push('/users')}>Tissue</Menu.Item>*/}
+              {/*  <Menu.Item key="sub2" icon={<CellIcon />} onClick={() => props.history.push('/high/2')}>Cell*/}
+              {/*    Type</Menu.Item>*/}
+              {/*  <Menu.Item key="sub3" icon={<DrugIcon />}*/}
+              {/*             onClick={() => props.history.push('/network/3')}>Drug</Menu.Item>*/}
+              {/*  <Menu.Item key="sub4" icon={<StatusIcon />}*/}
+              {/*             onClick={() => props.history.push('/diseases')}>Diseases</Menu.Item>*/}
+              {/*</SubMenu>*/}
+              <Menu.Item key="3" onClick={() => props.history.push('/search')}>
                 <SearchOutlined />
                 Search
               </Menu.Item>
-              <Menu.Item key="4" onClick={() => props.history.push('/downloads')}>
+              <Menu.Item
+                key="4"
+                onClick={() => props.history.push('/downloads')}
+              >
                 <DownloadOutlined />
                 Downloads
               </Menu.Item>
-              <Menu.Item key="5" onClick={() => props.history.push('/documentation')}>
+              <Menu.Item
+                key="5"
+                onClick={() => props.history.push('/documentation')}
+              >
                 <FileTextOutlined />
                 Documentation
+              </Menu.Item>
+              <Menu.Item key="6" onClick={() => props.history.push('/contact')}>
+                <ContactIcon />
+                Contact
               </Menu.Item>
             </Menu>
           </Header>
@@ -99,4 +121,4 @@ export default function (props) {
       </div>
     </div>
   );
-};
+}

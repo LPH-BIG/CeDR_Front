@@ -19,13 +19,13 @@ export default [
         component: '@/pages/Browse',
         breadcrumbName: 'Browse',
         // exact: true,
-        routes:[
+        routes: [
           // {
           //   path: '/browse/users',
           //   component: '@/pages/users',
           //   breadcrumbName: 'Browse/Users',
           // },
-        ]
+        ],
       },
       {
         path: '/users',
@@ -47,7 +47,11 @@ export default [
         component: '@/pages/Documentation',
         breadcrumbName: 'Documentation',
       },
-
+      {
+        path: '/contact',
+        component: '@/pages/Contact',
+        breadcrumbName: 'Contact',
+      },
       {
         path: '/high/:chart',
         component: '@/pages/Highcharts/[index]',
@@ -82,6 +86,18 @@ export default [
       {
         path: '/pie',
         component: '@/pages/Pie',
+      },
+      {
+        path: '/scatter',
+        component: '@/pages/Tsne',
+      },
+      {
+        path: '/general',
+        component: '@/pages/General',
+      },
+      {
+        path: '/browse',
+        component: '@/pages/Browse',
       },
     ],
   },

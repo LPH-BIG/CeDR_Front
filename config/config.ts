@@ -3,7 +3,7 @@ import routes from './routes';
 
 export default defineConfig({
   routes: routes,
-  title:"cell drug",
+  title: 'CeDR Atlas',
   dva: {
     immer: true,
     hmr: false,
