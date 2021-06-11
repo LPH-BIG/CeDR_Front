@@ -1,7 +1,9 @@
 import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
 
-import { getRemoteList } from '@/pages/General/service';
+import { getRemoteKeywords, getRemoteList } from '@/pages/General/service';
 import { GeneralItem } from '@/pages/General/data';
+import { addRecord } from '@/pages/users/service';
+import { message } from 'antd';
 
 export interface GeneralState {
   data: GeneralItem[];
@@ -22,7 +24,7 @@ interface GeneralModelType {
   };
   effects: {
     getRemote: Effect;
-    // edit: Effect;
+    getKeywords: Effect;
     // delete: Effect;
     // add: Effect;
   };
@@ -49,8 +51,29 @@ const GeneralModel: GeneralModelType = {
     },
   },
   effects: {
-    *getRemote({ payload: { pageIndex, pageSize } }, { put, call }) {
-      const data = yield call(getRemoteList, { pageIndex, pageSize });
+    *getRemote(
+      {
+        payload: {
+          pageIndex,
+          pageSize,
+          source,
+          tissue,
+          phenotype,
+          celltype,
+          inst,
+        },
+      },
+      { put, call },
+    ) {
+      const data = yield call(getRemoteList, {
+        pageIndex,
+        pageSize,
+        source,
+        tissue,
+        phenotype,
+        celltype,
+        inst,
+      });
       if (data) {
         yield put({
           type: 'getList',
@@ -58,6 +81,23 @@ const GeneralModel: GeneralModelType = {
         });
       }
       // console.log(data);
+    },
+    *getKeywords({ payload: { keywords } }, { put, call }) {
+      const data = yield call(getRemoteKeywords, {
+        source,
+        tissue,
+        phenotype,
+        celltype,
+        inst,
+      });
+      if (data) {
+        yield put({
+          type: 'getList',
+          payload: data,
+        });
+      } else {
+        message.success('getKeywords falied');
+      }
     },
   },
   subscriptions: {
@@ -69,6 +109,7 @@ const GeneralModel: GeneralModelType = {
         ) {
           dispatch({
             type: 'getRemote',
+            //payload一般用于传输参数，即type指定函数的参数
             payload: {
               pageIndex: 1,
               pageSize: 10,

@@ -22,12 +22,51 @@ const errorHandler = function (error: any) {
 };
 const extendRequest = extend({ errorHandler });
 
-export const getRemoteList = async ({ pageIndex, pageSize }) => {
+export const getRemoteList = async ({
+  pageIndex,
+  pageSize,
+  source,
+  tissue,
+  phenotype,
+  celltype,
+  inst,
+}) => {
   return extendRequest(`http://127.0.0.1:8887/api/search`, {
     method: 'get',
     params: {
       pageIndex: pageIndex,
       pageSize: pageSize,
+      source: source,
+      tissue: tissue,
+      cellType: celltype,
+      drug: inst,
+      phenotype: phenotype,
+    },
+  })
+    .then(function (response) {
+      // console.log(response);
+      return response;
+    })
+    .catch(function (error) {
+      return false;
+    });
+};
+
+export const getRemoteKeywords = async ({
+  source,
+  tissue,
+  phenotype,
+  celltype,
+  inst,
+}) => {
+  return extendRequest(`http://127.0.0.1:8887/api/searchLike`, {
+    method: 'get',
+    params: {
+      source: source,
+      tissue: tissue,
+      cellType: celltype,
+      drug: inst,
+      phenotype: phenotype,
     },
   })
     .then(function (response) {
