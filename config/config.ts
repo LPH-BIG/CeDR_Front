@@ -10,7 +10,7 @@ export default defineConfig({
   },
   locale: {
     default: 'en-US',
-    antd: true,
+    antd: false,
     title: false,
     baseNavigator: true,
     baseSeparator: '-',

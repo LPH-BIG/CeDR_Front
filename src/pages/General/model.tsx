@@ -83,6 +83,12 @@ const GeneralModel: GeneralModelType = {
       // console.log(data);
     },
     *getKeywords({ payload: { keywords } }, { put, call }) {
+      console.log(keywords);
+      const source = keywords.source;
+      const tissue = keywords.tissue;
+      const celltype = keywords.celltype;
+      const phenotype = keywords.phenotype;
+      const inst = keywords.inst;
       const data = yield call(getRemoteKeywords, {
         source,
         tissue,

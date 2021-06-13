@@ -32,7 +32,7 @@ export default function (props) {
     );
   };
   // console.log(history.location);
-  console.log(props);
+  // console.log(props);
   return (
     <div className={styles.container}>
       <HeaderLab />

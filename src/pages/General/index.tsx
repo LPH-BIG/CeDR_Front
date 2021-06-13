@@ -17,7 +17,7 @@ export interface SearchKeywords {
   tissue: string | undefined;
   phenotype: string | undefined;
   celltype: string | undefined;
-  inst: string | undefined;
+  drug: string | undefined;
 }
 const GeneralListPage: FC<GeneralPageProps> = ({
   general,
@@ -31,10 +31,25 @@ const GeneralListPage: FC<GeneralPageProps> = ({
     // setOptions(options);
     // console.log(value);
     console.log(options);
+    const source = options.source;
+    const tissue = options.tissue;
+    const celltype = options.celltype;
+    const phenotype = options.phenotype;
+    const inst = options.inst;
+    dispatch({
+      type: 'general/getRemote',
+      payload: {
+        source,
+        tissue,
+        celltype,
+        phenotype,
+        inst,
+      },
+    });
   };
   const sourceHandler = (value: string) => {
     setKeywords({ ...keywords, source: value });
-    console.log(keywords);
+    // console.log(keywords);
     dispatch({
       type: 'general/getKeywords',
       payload: {
@@ -44,7 +59,37 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   };
   const tissueHandler = (value: string) => {
     setKeywords({ ...keywords, tissue: value });
-    console.log(keywords);
+    // console.log(keywords);
+    dispatch({
+      type: 'general/getKeywords',
+      payload: {
+        keywords: keywords,
+      },
+    });
+  };
+  const phenotypeHandler = (value: string) => {
+    setKeywords({ ...keywords, phenotype: value });
+    // console.log(keywords);
+    dispatch({
+      type: 'general/getKeywords',
+      payload: {
+        keywords: keywords,
+      },
+    });
+  };
+  const celltypeHandler = (value: string) => {
+    setKeywords({ ...keywords, celltype: value });
+    // console.log(keywords);
+    dispatch({
+      type: 'general/getKeywords',
+      payload: {
+        keywords: keywords,
+      },
+    });
+  };
+  const instHandler = (value: string) => {
+    setKeywords({ ...keywords, inst: value });
+    // console.log(keywords);
     dispatch({
       type: 'general/getKeywords',
       payload: {
@@ -117,7 +162,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
             key={'tissueSelect'}
             showSearch={true}
             allowClear={true}
-            placeholder={'input and select a source'}
+            placeholder={'input and select a tissue'}
             filterOption={false}
             onSearch={tissueHandler}
             onChange={(value, option) => {
@@ -132,18 +177,69 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'phenotype',
       key: 'phenotype',
       valueType: 'text',
+      hideInForm: true,
+      renderFormItem: () => {
+        // const options = all
+        return (
+          <Select
+            key={'phenotypeSelect'}
+            showSearch={true}
+            allowClear={true}
+            placeholder={'input and select a phenotype'}
+            filterOption={false}
+            onSearch={phenotypeHandler}
+            onChange={(value, option) => {
+              changeHandler(value, option);
+            }}
+          ></Select>
+        );
+      },
     },
     {
       title: 'Cell Type',
       dataIndex: 'celltype',
       key: 'celltype',
       valueType: 'text',
+      hideInForm: true,
+      renderFormItem: () => {
+        // const options = all
+        return (
+          <Select
+            key={'celltypeSelect'}
+            showSearch={true}
+            allowClear={true}
+            placeholder={'input and select a cell type'}
+            filterOption={false}
+            onSearch={celltypeHandler}
+            onChange={(value, option) => {
+              changeHandler(value, option);
+            }}
+          ></Select>
+        );
+      },
     },
     {
       title: 'Drug',
       dataIndex: 'inst',
       key: 'inst',
       valueType: 'text',
+      hideInForm: true,
+      renderFormItem: () => {
+        // const options = all
+        return (
+          <Select
+            key={'instSelect'}
+            showSearch={true}
+            allowClear={true}
+            placeholder={'input and select a drug'}
+            filterOption={false}
+            onSearch={instHandler}
+            onChange={(value, option) => {
+              changeHandler(value, option);
+            }}
+          ></Select>
+        );
+      },
     },
   ];
 
@@ -174,6 +270,27 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         loading={generalListLoading}
         pagination={false}
         key={'general'}
+        onSubmit={(params) => {
+          console.log('submit');
+          // console.log(params)
+        }}
+        search={{
+          defaultCollapsed: false,
+          labelWidth: 'auto',
+          searchText: 'Search',
+          resetText: 'Reset',
+        }}
+        onRow={(record) => {
+          return {
+            onClick: (event) => {
+              console.log('click event');
+            }, // 点击行
+            onDoubleClick: (event) => {},
+            onContextMenu: (event) => {},
+            onMouseEnter: (event) => {}, // 鼠标移入行
+            onMouseLeave: (event) => {},
+          };
+        }}
       />
       <Pagination
         key={'generalPagination'}
