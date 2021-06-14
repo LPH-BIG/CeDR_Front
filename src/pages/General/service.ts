@@ -77,3 +77,20 @@ export const getRemoteKeywords = async ({
       return false;
     });
 };
+
+export const getSelect = async ({ type, name }) => {
+  return extendRequest(`http://127.0.0.1:8887/api/select`, {
+    method: 'get',
+    params: {
+      type: type,
+      name: name,
+    },
+  })
+    .then(function (response) {
+      // console.log(response);
+      return response;
+    })
+    .catch(function (error) {
+      return false;
+    });
+};

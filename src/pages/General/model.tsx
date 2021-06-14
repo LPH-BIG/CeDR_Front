@@ -1,12 +1,13 @@
 import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
 
 import { getRemoteKeywords, getRemoteList } from '@/pages/General/service';
-import { GeneralItem } from '@/pages/General/data';
+import { GeneralItem, keywordsItem } from '@/pages/General/data';
 import { addRecord } from '@/pages/users/service';
 import { message } from 'antd';
 
 export interface GeneralState {
   data: GeneralItem[];
+  // remoteKeywords:keywordsItem;
   meta: {
     total: number;
     pageSize: number;
@@ -21,10 +22,11 @@ interface GeneralModelType {
   state: GeneralState;
   reducers: {
     getList: Reducer<GeneralState>;
+    // getListKeywords:Reducer<GeneralState>
   };
   effects: {
     getRemote: Effect;
-    getKeywords: Effect;
+    // getKeywords: Effect;
     // delete: Effect;
     // add: Effect;
   };
@@ -37,6 +39,7 @@ const GeneralModel: GeneralModelType = {
   namespace: 'general',
   state: {
     data: [],
+    // remoteKeywords: {},
     meta: {
       total: 10,
       pageSize: 10,
@@ -48,7 +51,13 @@ const GeneralModel: GeneralModelType = {
   reducers: {
     getList(state, { payload }) {
       return payload;
+      console.log(payload);
     },
+    // getListKeywords(state, { payload }) {
+    //   console.log("getListKeywords");
+    //   console.log(payload);
+    //   return payload;
+    // },
   },
   effects: {
     *getRemote(
@@ -82,29 +91,33 @@ const GeneralModel: GeneralModelType = {
       }
       // console.log(data);
     },
-    *getKeywords({ payload: { keywords } }, { put, call }) {
-      console.log(keywords);
-      const source = keywords.source;
-      const tissue = keywords.tissue;
-      const celltype = keywords.celltype;
-      const phenotype = keywords.phenotype;
-      const inst = keywords.inst;
-      const data = yield call(getRemoteKeywords, {
-        source,
-        tissue,
-        phenotype,
-        celltype,
-        inst,
-      });
-      if (data) {
-        yield put({
-          type: 'getList',
-          payload: data,
-        });
-      } else {
-        message.success('getKeywords falied');
-      }
-    },
+    // *getKeywords({ payload: { keywords } }, { put, call }) {
+    //   // console.log(keywords);
+    //   console.log(Object.keys(keywords).length);
+    //   if (Object.keys(keywords).length!=0){
+    //     const source = keywords.source;
+    //     const tissue = keywords.tissue;
+    //     const celltype = keywords.celltype;
+    //     const phenotype = keywords.phenotype;
+    //     const inst = keywords.inst;
+    //     const remoteKeywords = yield call(getRemoteKeywords, {
+    //       source,
+    //       tissue,
+    //       phenotype,
+    //       celltype,
+    //       inst,
+    //     });
+    //     if (remoteKeywords) {
+    //       yield put({
+    //         type: 'getListKeywords',
+    //         payload: remoteKeywords,
+    //       });
+    //     } else {
+    //       message.success('getKeywords falied');
+    //     }
+    //   }
+    //
+    // },
   },
   subscriptions: {
     setup({ dispatch, history }) {

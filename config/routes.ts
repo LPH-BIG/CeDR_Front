@@ -15,22 +15,8 @@ export default [
         breadcrumbName: 'Home',
       },
       {
-        path: '/browse',
-        component: '@/pages/Browse',
-        breadcrumbName: 'Browse',
-        // exact: true,
-        routes: [
-          // {
-          //   path: '/browse/users',
-          //   component: '@/pages/users',
-          //   breadcrumbName: 'Browse/Users',
-          // },
-        ],
-      },
-      {
-        path: '/users',
-        component: '@/pages/users',
-        // breadcrumbName: 'Browse/Users',
+        path: '/users/:id',
+        component: '@/pages/users/[index]',
       },
       {
         path: '/search',
@@ -60,7 +46,6 @@ export default [
         path: '/test',
         component: '@/pages/Test',
       },
-
       {
         path: '/network/:chart',
         component: '@/pages/Network/[index]',
@@ -98,6 +83,11 @@ export default [
       {
         path: '/browse',
         component: '@/pages/Browse',
+      },
+      {
+        // exact: true,
+        path: '/subproject/:subproject',
+        component: '@/pages/Subproject/[index]',
       },
     ],
   },

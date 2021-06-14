@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
-import General from '@/pages/General';
-import { Tabs } from 'antd';
+import React, { useEffect, useState } from 'react';
+import styles from './index.less';
+import { message, Tabs } from 'antd';
+import { history } from '@@/core/history';
 import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
-import Subproject from '@/pages/Subproject/[index]';
-import { history } from 'umi';
+import General from '@/pages/General';
+import Subproject from './components/subproject';
+
 const { TabPane } = Tabs;
-const Index = () => {
-  const [activeKey, setActivekey] = useState('1');
-  const changeActive = (active: string) => {
-    setActivekey(active);
-  };
+const Index = ({
+  match: {
+    params: { subproject },
+  },
+}) => {
+  console.log(subproject);
+  if (subproject == 'undefined') {
+    message.error('please select a subproject!');
+    history.push('/browse');
+  }
+  // useEffect(()=>{
+  //   console.log(subproject);
+  // },[subproject])
+
+  const [activeKey, setActivekey] = useState('2');
   return (
     <div>
       <Tabs
@@ -20,7 +32,7 @@ const Index = () => {
             history.push('/browse');
           }
           if (activeKey == '2') {
-            history.push('/subproject/undefined');
+            history.push('/subproject/' + subproject);
           }
           if (activeKey == '3') {
             history.push('/association');
@@ -36,7 +48,7 @@ const Index = () => {
           }
           key="1"
         >
-          <General />
+          {/*<General />*/}
         </TabPane>
         <TabPane
           tab={
@@ -46,9 +58,8 @@ const Index = () => {
             </span>
           }
           key="2"
-          // disabled
         >
-          {/*<Subproject />*/}
+          <Subproject />
         </TabPane>
         <TabPane
           tab={

@@ -2,6 +2,7 @@ import { Reducer, Effect, Subscription } from 'umi';
 import { getRemoteList, editRecord, deleteRecord, addRecord } from './service';
 import { message } from 'antd';
 import { SingleUserType } from '@/pages/users/data';
+import { pathToRegexp } from 'path-to-regexp';
 
 export interface UserState {
   data: SingleUserType[];
@@ -98,8 +99,11 @@ const UserModel: UserModelType = {
   },
   subscriptions: {
     setup({ dispatch, history }) {
-      return history.listen((location) => {
-        if (location.pathname === '/users') {
+      history.listen((location) => {
+        const match = pathToRegexp('/users/:id').exec(location.pathname);
+        if (match) {
+          const id = match[1];
+          console.log(id);
           dispatch({
             type: 'getRemote',
             payload: {
@@ -109,6 +113,17 @@ const UserModel: UserModelType = {
           });
         }
       });
+      /*history.listen((location) => {
+        if (location.pathname === '/users') {
+          dispatch({
+            type: 'getRemote',
+            payload: {
+              page: 1,
+              per_page: 5,
+            },
+          });
+        }
+      });*/
     },
   },
 };

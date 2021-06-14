@@ -17,3 +17,11 @@ export interface GeneralItem {
   overlapgenenum: number;
   overlapgene: string;
 }
+
+export interface keywordsItem {
+  source: string[];
+  tissue: string[];
+  phenotype: string[];
+  celltype: string[];
+  inst: string[];
+}
