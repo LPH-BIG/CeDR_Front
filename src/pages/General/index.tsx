@@ -7,8 +7,6 @@ import { connect, Dispatch, Loading, history } from 'umi';
 import { GeneralItem } from '@/pages/General/data';
 import { DotChartOutlined } from '@ant-design/icons';
 import { getRemoteKeywords, getSelect } from './service';
-import sortBy from '@antv/data-set/lib/util/simple-sort-by';
-import { routerRedux } from 'dva/router';
 interface GeneralPageProps {
   general: GeneralState;
   dispatch: Dispatch;
@@ -321,6 +319,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   };
 
   // console.log(props.activeKey);
+  //{/*不加rowkey会报warning:Each child in a list should have a unique "key" prop.*/}
   return (
     <div>
       <ProTable<GeneralItem>
@@ -328,7 +327,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         dataSource={general.data}
         loading={generalListLoading}
         pagination={false}
-        key={'general'}
+        rowKey="id"
         onSubmit={(params) => {
           const source = keywords.source;
           const tissue = keywords.tissue;

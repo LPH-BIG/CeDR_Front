@@ -46,7 +46,7 @@ const Index = () => {
             </span>
           }
           key="2"
-          // disabled
+          disabled
         >
           {/*<Subproject />*/}
         </TabPane>
@@ -58,6 +58,7 @@ const Index = () => {
             </span>
           }
           key="3"
+          disabled
         >
           Cell Drug Association
         </TabPane>

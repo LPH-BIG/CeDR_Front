@@ -47,14 +47,6 @@ export default [
         component: '@/pages/Test',
       },
       {
-        path: '/network/:chart',
-        component: '@/pages/Network/[index]',
-      },
-      {
-        path: '/pie',
-        component: '@/pages/Pie',
-      },
-      {
         name: '标准列表',
         path: '/listbasiclist',
         component: './ListBasicList',
@@ -68,14 +60,6 @@ export default [
       //   path: '/network/',
       //   component: '@/components/Network',
       // },
-      {
-        path: '/pie',
-        component: '@/pages/Pie',
-      },
-      {
-        path: '/scatter',
-        component: '@/pages/Tsne',
-      },
       {
         path: '/general',
         component: '@/pages/General',

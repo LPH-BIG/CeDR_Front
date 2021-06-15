@@ -1,8 +1,8 @@
 import styles from './index.less';
 import { Col, Input, Row, Breadcrumb } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import Pie from './Pie';
-import Tsne from './Tsne';
+import Pie from '../components/Pie';
+import Tsne from '../components/Tsne';
 import Network from '../components/Network';
 const { Search } = Input;
 export default function IndexPage() {
@@ -40,7 +40,7 @@ export default function IndexPage() {
       </Row>
       <Row>
         <Col xs={4} sm={6} md={10} lg={10} xl={12} push={1}>
-          <Tsne />
+          {/*<Tsne />*/}
         </Col>
       </Row>
     </div>

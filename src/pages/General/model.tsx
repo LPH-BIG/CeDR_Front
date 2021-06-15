@@ -2,7 +2,6 @@ import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
 
 import { getRemoteKeywords, getRemoteList } from '@/pages/General/service';
 import { GeneralItem, keywordsItem } from '@/pages/General/data';
-import { addRecord } from '@/pages/users/service';
 import { message } from 'antd';
 
 export interface GeneralState {

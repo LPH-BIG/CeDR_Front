@@ -6,7 +6,7 @@ import Highcharts, { addEvent } from 'highcharts';
 import HighchartNetworkgraph from 'highcharts/modules/networkgraph';
 HighchartNetworkgraph(Highcharts);
 
-export default function Page() {
+export default function Page(props: any) {
   const [state, setState] = useState({
     chartOptions: {
       credits: {
@@ -24,7 +24,7 @@ export default function Page() {
       },
       plotOptions: {
         networkgraph: {
-          keys: ['from', 'to'],
+          // keys: ['from', 'to'],
           layoutAlgorithm: {
             enableSimulation: true,
           },
@@ -86,31 +86,31 @@ export default function Page() {
               to: 'Piza',
             },
           ],
-          nodes: [
-            {
-              id: 'Krakow',
-              color: 'black',
-              marker: {
-                lineColor: 'red',
-                radius: 15,
-                lineWidth: 3,
-              },
-              color: 'grey',
-            },
-            {
-              id: 'Italy',
-              color: 'black',
-              mass: 10,
-            },
-            {
-              id: 'Poland',
-              color: 'black',
-            },
-            {
-              id: 'Europe',
-              color: 'black',
-            },
-          ],
+          // nodes: [
+          //   {
+          //     id: 'Krakow',
+          //     color: 'black',
+          //     marker: {
+          //       lineColor: 'red',
+          //       radius: 15,
+          //       lineWidth: 3,
+          //     },
+          //     color: 'grey',
+          //   },
+          //   {
+          //     id: 'Italy',
+          //     color: 'black',
+          //     mass: 10,
+          //   },
+          //   {
+          //     id: 'Poland',
+          //     color: 'black',
+          //   },
+          //   {
+          //     id: 'Europe',
+          //     color: 'black',
+          //   },
+          // ],
         },
       ],
     },
@@ -118,29 +118,25 @@ export default function Page() {
 
   useEffect(() => {
     // console.log(typeof Highcharts.seriesType('networkgraph'))
-    Highcharts.addEvent(
-      // Highcharts.seriesType('networkgraph'),
-      Highcharts.Series,
-      'afterSetOptions',
-      handleAfterSetOptions,
-    );
-  }, [state]);
-  const handleAfterSetOptions = (e) => {
-    console.log('kkk');
-    // setState({chartOptions:{plotOptions:}})
-  };
+    // Highcharts.addEvent(
+    //   // Highcharts.seriesType('networkgraph'),
+    //   Highcharts.Series,
+    //   'afterSetOptions',
+    //   ()=>{console.log('addEvent')},
+    // );
+    const series = [
+      {
+        dataLabels: {
+          enabled: true,
+        },
+        allowPointSelect: true,
+        data: props.network,
+      },
+    ];
+    console.log(props.network);
+    setState({ chartOptions: { series: series } });
+  }, [props]);
 
-  // useEffect(async () => {
-  //   console.log(chart);
-  //   //  请求数据
-  //   const data = await request('/api/charts');
-  //   // console.log(data.result);
-  //   setState({
-  //     chartOptions: {
-  //       series: [{ data: data.result }],
-  //     },
-  //   });
-  // }, [chart]);
   return (
     <div>
       <HighchartsReact highcharts={Highcharts} options={state.chartOptions} />

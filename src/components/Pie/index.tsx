@@ -7,6 +7,9 @@ HighchartsPie(Highcharts);
 export default function Page() {
   const [state, setState] = useState({
     chartOptions: {
+      credits: {
+        enabled: false,
+      },
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
