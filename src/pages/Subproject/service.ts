@@ -84,3 +84,18 @@ export const getRemoteNetwork = async ({
       return false;
     });
 };
+export const getRemotePie = async ({ name }: { name: string }) => {
+  return extendRequest(`http://127.0.0.1:8887/api/pie`, {
+    method: 'get',
+    params: {
+      name: name,
+    },
+  })
+    .then(function (response) {
+      // console.log(response);
+      return response;
+    })
+    .catch(function (error) {
+      return false;
+    });
+};

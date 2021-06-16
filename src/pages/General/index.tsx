@@ -113,6 +113,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       title: 'Order',
       dataIndex: 'index',
       valueType: 'index',
+      key: 'index',
       width: 58,
     },
     {
@@ -121,6 +122,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       key: 'source',
       // valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       renderFormItem: () => {
         const options = source.map((item) => (
           <Option key={item.id} value={item.name} type={item.type}>
@@ -148,16 +150,19 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       key: 'project',
       valueType: 'text',
       search: false,
+      ellipsis: true,
     },
     {
       title: 'Subproject',
       dataIndex: 'subproject',
       key: 'subproject',
-      // valueType: 'text',
+      // valueType: 'link',
       search: false,
+      ellipsis: true,
       render: (text: string, record: GeneralItem) => (
         <span>
           <a
+            className={styles.link}
             onClick={() => {
               // console.log(record);
               // console.log(history.location.pathname);
@@ -185,6 +190,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       key: 'tissue',
       // valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       renderFormItem: () => {
         const options = tissue.map((item) => (
           <Option key={item.id} value={item.name} type={item.type}>
@@ -214,6 +220,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       key: 'phenotype',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       renderFormItem: () => {
         const options = phenotype.map((item) => (
           <Option key={item.id} value={item.name} type={item.type}>
@@ -243,6 +250,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       key: 'celltype',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       renderFormItem: () => {
         const options = celltype.map((item) => (
           <Option key={item.id} value={item.name} type={item.type}>
@@ -273,11 +281,12 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       key: 'inst',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       renderFormItem: () => {
         const options = inst.map((item) => (
-          <Option key={item.id} value={item.name} type={item.type}>
+          <Select.Option key={item.id} value={item.name} type={item.type}>
             {item.name}
-          </Option>
+          </Select.Option>
         ));
 
         return (
@@ -327,7 +336,9 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         dataSource={general.data}
         loading={generalListLoading}
         pagination={false}
-        rowKey="id"
+        rowKey={(record: GeneralItem) => {
+          return record.id.toString();
+        }}
         onSubmit={(params) => {
           const source = keywords.source;
           const tissue = keywords.tissue;

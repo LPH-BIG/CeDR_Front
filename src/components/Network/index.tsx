@@ -17,10 +17,10 @@ export default function Page(props: any) {
         height: '100%',
       },
       title: {
-        text: 'The Indo-European Laungauge Tree',
+        text: '',
       },
       subtitle: {
-        text: 'A Force-Directed Network Graph in Highcharts',
+        text: '',
       },
       plotOptions: {
         networkgraph: {
@@ -133,7 +133,7 @@ export default function Page(props: any) {
         data: props.network,
       },
     ];
-    console.log(props.network);
+    // console.log(props.network);
     setState({ chartOptions: { series: series } });
   }, [props]);
 

@@ -16,13 +16,13 @@ const Index = () => {
         defaultActiveKey={activeKey}
         onChange={(activeKey) => {
           // console.log(activeKey)
-          if (activeKey == '1') {
+          if (activeKey == 'tab1') {
             history.push('/browse');
           }
-          if (activeKey == '2') {
+          if (activeKey == 'tab2') {
             history.push('/subproject/undefined');
           }
-          if (activeKey == '3') {
+          if (activeKey == 'tab3') {
             history.push('/association');
           }
         }}
@@ -34,7 +34,7 @@ const Index = () => {
               General Tables
             </span>
           }
-          key="1"
+          key="tab1"
         >
           <General />
         </TabPane>
@@ -45,7 +45,7 @@ const Index = () => {
               Subproject
             </span>
           }
-          key="2"
+          key="tab2"
           disabled
         >
           {/*<Subproject />*/}
@@ -57,7 +57,7 @@ const Index = () => {
               Cell Drug Association
             </span>
           }
-          key="3"
+          key="tab3"
           disabled
         >
           Cell Drug Association

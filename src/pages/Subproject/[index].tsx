@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './index.less';
-import { Col, message, Pagination, Row, Select, Tabs } from 'antd';
+import { Col, Divider, message, Pagination, Row, Select, Tabs } from 'antd';
 import { history } from '@@/core/history';
 import {
   AndroidOutlined,
@@ -8,15 +8,16 @@ import {
   DotChartOutlined,
 } from '@ant-design/icons';
 import { GeneralState } from '@/pages/General/model';
-import { Dispatch, Loading } from '@@/plugin-dva/connect';
+import { Dispatch, Loading, SubprojectState } from '@@/plugin-dva/connect';
 import { connect } from 'umi';
-import { GeneralItem } from '@/pages/General/data';
 import ProTable from '@ant-design/pro-table';
 import Tsne from '@/components/Tsne';
-import { getRemoteTsne, getRemoteNetwork } from './service';
+import Pie from '@/components/Pie';
+import { getRemoteTsne, getRemoteNetwork, getRemotePie } from './service';
 import Network from '@/components/Network';
+import { SubprojectItem } from '@/pages/Subproject/data';
 interface SubprojectPageProps {
-  subproject: GeneralState;
+  subproject: SubprojectState;
   dispatch: Dispatch;
   subprojectListLoading: boolean;
 }
@@ -26,13 +27,16 @@ const Index: FC<SubprojectPageProps> = ({
   dispatch,
   subprojectListLoading,
 }) => {
-  const [activeKey, setActivekey] = useState('2');
-  const [record, setRecord] = useState<GeneralItem | undefined>(undefined);
+  const [activeKey, setActivekey] = useState('tab2');
+  const [record, setRecord] = useState<SubprojectItem | undefined>(undefined);
   const [tsne, setTsne] = useState({});
   const [tsnetitle, setTsnetitle] = useState(' ');
 
   const [network, setNetwork] = useState([]);
+  const [pie, setPie] = useState([]);
 
+  const [project, setProject] = useState('');
+  // const [subproject,setSubproject] = useState("");
   useEffect(() => {
     const dataset = subproject.data[0];
     if (dataset) {
@@ -50,6 +54,9 @@ const Index: FC<SubprojectPageProps> = ({
           setNetwork(res.data);
         },
       );
+      getRemotePie({ name: name }).then((res) => {
+        setPie(res.data);
+      });
     }
   }, [subproject.data]);
 
@@ -66,6 +73,7 @@ const Index: FC<SubprojectPageProps> = ({
       key: 'celltype',
       valueType: 'text',
       hideInForm: true,
+      width: 200,
       // search: false,
     },
     {
@@ -90,6 +98,7 @@ const Index: FC<SubprojectPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'p-value 2',
@@ -130,6 +139,7 @@ const Index: FC<SubprojectPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      width: 100,
     },
     {
       title: 'Overlap Gene',
@@ -137,6 +147,7 @@ const Index: FC<SubprojectPageProps> = ({
       key: 'overlapgene',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       // search: false,
     },
   ];
@@ -147,6 +158,8 @@ const Index: FC<SubprojectPageProps> = ({
       payload: {
         pageIndex: page,
         pageSize: pageSize ? pageSize : subproject.meta.pageSize,
+        project: subproject.data[0].project,
+        subproject: subproject.data[0].subproject,
       },
     });
   };
@@ -156,6 +169,8 @@ const Index: FC<SubprojectPageProps> = ({
       payload: {
         pageIndex: current,
         pageSize: size,
+        project: subproject.data[0].project,
+        subproject: subproject.data[0].subproject,
       },
     });
   };
@@ -166,13 +181,13 @@ const Index: FC<SubprojectPageProps> = ({
         defaultActiveKey={activeKey}
         onChange={(activeKey) => {
           // console.log(activeKey)
-          if (activeKey == '1') {
+          if (activeKey == 'tab1') {
             history.push('/browse');
           }
-          if (activeKey == '2') {
+          if (activeKey == 'tab2') {
             history.push('/subproject/');
           }
-          if (activeKey == '3') {
+          if (activeKey == 'tab3') {
             history.push('/association');
           }
         }}
@@ -184,7 +199,7 @@ const Index: FC<SubprojectPageProps> = ({
               General Tables
             </span>
           }
-          key="1"
+          key="tab1"
         ></TabPane>
         <TabPane
           tab={
@@ -193,23 +208,36 @@ const Index: FC<SubprojectPageProps> = ({
               Subproject
             </span>
           }
-          key="2"
+          key="tab2"
         >
           <div>
             <Row>
               <Col xs={4} sm={6} md={8} lg={10} xl={12}>
                 <Tsne data={tsne} title={tsnetitle} />
               </Col>
+              <Col xs={4} sm={6} md={8} lg={10} xl={12}>
+                <Pie data={pie} />
+              </Col>
             </Row>
-            <br />
+            <Divider />
             <Row>
               <Col>
-                <ProTable<GeneralItem>
+                <ProTable<SubprojectItem>
                   columns={columns}
                   dataSource={subproject.data}
                   loading={subprojectListLoading}
                   pagination={false}
-                  rowKey="id"
+                  expandable={{
+                    expandIconColumnIndex: 11,
+                    expandedRowRender: (record, index, indent, expanded) => {
+                      return (
+                        <p style={{ textAlign: 'right' }}>
+                          overlap genes: {record.overlapgene}
+                        </p>
+                      );
+                    },
+                  }}
+                  rowKey={(record) => record.id}
                   // onSubmit={(params) => {
                   //   const source = keywords.source;
                   //   const tissue = keywords.tissue;
@@ -269,7 +297,7 @@ const Index: FC<SubprojectPageProps> = ({
               Cell Drug Association
             </span>
           }
-          key="3"
+          key="tab3"
           disabled
         >
           Cell Drug Association

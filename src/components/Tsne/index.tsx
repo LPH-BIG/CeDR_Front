@@ -50,7 +50,7 @@ export default function Page(props: any) {
       plotOptions: {
         scatter: {
           marker: {
-            radius: 6,
+            radius: 3,
             states: {
               hover: {
                 enabled: true,

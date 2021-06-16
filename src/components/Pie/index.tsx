@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.less';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import HighchartsPie from 'highcharts/modules/variable-pie';
 HighchartsPie(Highcharts);
-export default function Page() {
+export default function Page(props: any) {
   const [state, setState] = useState({
     chartOptions: {
       credits: {
@@ -17,10 +17,10 @@ export default function Page() {
         type: 'pie',
       },
       title: {
-        text: '2018年1月浏览器市场份额',
+        text: 'summary',
       },
       tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+        pointFormat: '{series.name}: <b>{point.y}</b>',
       },
       plotOptions: {
         pie: {
@@ -39,21 +39,21 @@ export default function Page() {
       },
       series: [
         {
-          name: 'Brands',
+          name: 'Cell Number',
           colorByPoint: true,
           data: [
             {
-              name: 'Chrome',
+              name: 'Cell Line',
               y: 61.41,
-              sliced: true,
-              selected: true,
+              // sliced: true,
+              // selected: true,
             },
             {
-              name: 'Internet Explorer',
+              name: 'Development',
               y: 11.84,
             },
             {
-              name: 'Firefox',
+              name: 'Immu',
               y: 10.85,
             },
             {
@@ -86,6 +86,10 @@ export default function Page() {
     },
     hoverData: null,
   });
+
+  useEffect(() => {
+    setState({ chartOptions: { series: { data: props.data } } });
+  }, [props]);
   return (
     <HighchartsReact highcharts={Highcharts} options={state.chartOptions} />
   );
