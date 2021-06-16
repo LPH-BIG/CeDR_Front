@@ -14,10 +14,13 @@ interface GeneralPageProps {
 }
 export interface SearchKeywords {
   source: string | undefined;
+  project: string | undefined;
+  subproject: string | undefined;
   tissue: string | undefined;
   phenotype: string | undefined;
   celltype: string | undefined;
-  inst: string | undefined;
+  drug: string | undefined;
+  overlapgene: string | undefined;
 }
 const GeneralListPage: FC<GeneralPageProps> = ({
   general,
@@ -25,26 +28,19 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   generalListLoading,
 }) => {
   const [record, setRecord] = useState<GeneralItem | undefined>(undefined);
-
   const [source, setSource] = useState([]);
   const [tissue, setTissue] = useState([]);
   const [phenotype, setPhenotype] = useState([]);
   const [celltype, setCelltype] = useState([]);
   const [inst, setInst] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
-  const changeHandler = (value: any, options: any) => {
-    // console.log(value);
-    // console.log(options);
+  const changeHandler = (value: string, options: any) => {
     if (options.type == 'source') {
       setKeywords({ ...keywords, source: value });
     } else if (options.type == 'tissue') {
       setKeywords({ ...keywords, tissue: value });
     } else if (options.type == 'phenotype') {
       setKeywords({ ...keywords, phenotype: value });
-    } else if (options.type == 'celltype') {
-      setKeywords({ ...keywords, celltype: value });
-    } else if (options.type == 'inst') {
-      setKeywords({ ...keywords, inst: value });
     }
   };
   const sourceHandler = async (value: string) => {
@@ -55,7 +51,6 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       });
       if (remoteKeywords) {
         setSource(remoteKeywords);
-        // console.log(remoteKeywords);
       }
     }
   };
@@ -67,7 +62,6 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       });
       if (remoteKeywords) {
         setTissue(remoteKeywords);
-        // console.log(remoteKeywords);
       }
     }
   };
@@ -79,7 +73,6 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       });
       if (remoteKeywords) {
         setPhenotype(remoteKeywords);
-        // console.log(remoteKeywords);
       }
     }
   };
@@ -91,7 +84,6 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       });
       if (remoteKeywords) {
         setCelltype(remoteKeywords);
-        // console.log(remoteKeywords);
       }
     }
   };
@@ -120,24 +112,29 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       title: 'Source',
       dataIndex: 'source',
       key: 'source',
+      width: 100,
       // valueType: 'text',
       hideInForm: true,
       ellipsis: true,
       renderFormItem: () => {
         const options = source.map((item) => (
-          <Option key={item.id} value={item.name} type={item.type}>
+          <Select.Option key={item.id} value={item.name} type={item.type}>
             {item.name}
-          </Option>
+          </Select.Option>
         ));
         return (
           <Select
             key={'sourceSelect'}
             showSearch={true}
-            allowClear={true}
+            // allowClear={true}
             placeholder={'input and select a source'}
             filterOption={false}
             onSearch={sourceHandler}
             onChange={changeHandler}
+            // onClear={()=>{
+            //   setSource([])
+            //   setKeywords({...keywords,source:""});
+            // }}
           >
             {options}
           </Select>
@@ -149,6 +146,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'project',
       key: 'project',
       valueType: 'text',
+      width: 100,
       search: false,
       ellipsis: true,
     },
@@ -193,15 +191,14 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       ellipsis: true,
       renderFormItem: () => {
         const options = tissue.map((item) => (
-          <Option key={item.id} value={item.name} type={item.type}>
+          <Select.Option key={item.id} value={item.name} type={item.type}>
             {item.name}
-          </Option>
+          </Select.Option>
         ));
         return (
           <Select
             key={'tissueSelect'}
             showSearch={true}
-            allowClear={true}
             placeholder={'input and select a tissue'}
             filterOption={false}
             onSearch={tissueHandler}
@@ -223,15 +220,14 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       ellipsis: true,
       renderFormItem: () => {
         const options = phenotype.map((item) => (
-          <Option key={item.id} value={item.name} type={item.type}>
+          <Select.Option key={item.id} value={item.name} type={item.type}>
             {item.name}
-          </Option>
+          </Select.Option>
         ));
         return (
           <Select
             key={'phenotypeSelect'}
             showSearch={true}
-            allowClear={true}
             placeholder={'input and select a phenotype'}
             filterOption={false}
             onSearch={phenotypeHandler}
@@ -249,62 +245,71 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'celltype',
       key: 'celltype',
       valueType: 'text',
+      search: false,
       hideInForm: true,
       ellipsis: true,
-      renderFormItem: () => {
-        const options = celltype.map((item) => (
-          <Option key={item.id} value={item.name} type={item.type}>
-            {item.name}
-          </Option>
-        ));
-
-        return (
-          <Select
-            key={'celltypeSelect'}
-            showSearch={true}
-            allowClear={true}
-            placeholder={'input and select a cell type'}
-            filterOption={false}
-            onSearch={celltypeHandler}
-            onChange={(value, option) => {
-              changeHandler(value, option);
-            }}
-          >
-            {options}
-          </Select>
-        );
-      },
+      // renderFormItem: () => {
+      //   const options = celltype.map((item) => (
+      //     <Option key={item.id} value={item.name} type={item.type}>
+      //       {item.name}
+      //     </Option>
+      //   ));
+      //
+      //   return (
+      //     <Select
+      //       key={'celltypeSelect'}
+      //       showSearch={true}
+      //       allowClear={true}
+      //       placeholder={'input and select a cell type'}
+      //       filterOption={false}
+      //       onSearch={celltypeHandler}
+      //       onChange={(value, option) => {
+      //         changeHandler(value, option);
+      //       }}
+      //     >
+      //       {options}
+      //     </Select>
+      //   );
+      // },
     },
     {
       title: 'Drug',
-      dataIndex: 'inst',
-      key: 'inst',
+      dataIndex: 'drug',
+      key: 'drug',
       valueType: 'text',
       hideInForm: true,
+      search: false,
       ellipsis: true,
-      renderFormItem: () => {
-        const options = inst.map((item) => (
-          <Select.Option key={item.id} value={item.name} type={item.type}>
-            {item.name}
-          </Select.Option>
-        ));
-
-        return (
-          <Select
-            key={'instSelect'}
-            showSearch={true}
-            allowClear={true}
-            placeholder={'input and select a drug'}
-            filterOption={false}
-            onSearch={instHandler}
-            onChange={(value, option) => {
-              changeHandler(value, option);
-            }}
-          >
-            {options}
-          </Select>
-        );
-      },
+      // renderFormItem: () => {
+      //   const options = inst.map((item) => (
+      //     <Select.Option key={item.id} value={item.name} type={item.type}>
+      //       {item.name}
+      //     </Select.Option>
+      //   ));
+      //
+      //   return (
+      //     <Select
+      //       key={'instSelect'}
+      //       showSearch={true}
+      //       allowClear={true}
+      //       placeholder={'input and select a drug'}
+      //       filterOption={false}
+      //       onSearch={instHandler}
+      //       onChange={(value, option) => {
+      //         changeHandler(value, option);
+      //       }}
+      //     >
+      //       {options}
+      //     </Select>
+      //   );
+      // },
+    },
+    {
+      title: 'Reference',
+      key: 'reference',
+      dataIndex: 'reference',
+      ellipsis: true,
+      hideInSearch: true,
     },
   ];
 
@@ -340,23 +345,26 @@ const GeneralListPage: FC<GeneralPageProps> = ({
           return record.id.toString();
         }}
         onSubmit={(params) => {
-          const source = keywords.source;
-          const tissue = keywords.tissue;
-          const celltype = keywords.celltype;
-          const phenotype = keywords.phenotype;
-          const inst = keywords.inst;
-          // console.log('submit');
-          // console.log(keywords);
+          const { source, tissue, project, phenotype, subproject } = keywords;
           dispatch({
             type: 'general/getRemote',
             payload: {
               pageIndex: 1,
               pageSize: 10,
               source: source,
+              project: project,
+              subproject: subproject,
               tissue: tissue,
               phenotype: phenotype,
-              celltype: celltype,
-              inst: inst,
+            },
+          });
+        }}
+        onReset={() => {
+          dispatch({
+            type: 'general/getRemote',
+            payload: {
+              pageIndex: 1,
+              pageSize: 10,
             },
           });
         }}

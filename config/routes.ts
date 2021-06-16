@@ -46,12 +46,11 @@ export default [
         path: '/test',
         component: '@/pages/Test',
       },
-      {
-        name: '标准列表',
-        path: '/listbasiclist',
-        component: './ListBasicList',
-      },
-
+      // {
+      //   name: '标准列表',
+      //   path: '/table',
+      //   component: '@/pages/Table',
+      // },
       {
         path: '/high/:chart',
         component: '@/pages/Highcharts/[index]',

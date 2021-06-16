@@ -27,14 +27,28 @@ export const getRemoteSubproject = async ({
   pageSize,
   project,
   subproject,
+  celltype,
+  drug,
+  overlapgene,
+}: {
+  pageIndex: number | undefined;
+  pageSize: number | undefined;
+  project: string | undefined;
+  celltype: string | undefined;
+  subproject: string | undefined;
+  drug: string | undefined;
+  overlapgene: string | undefined;
 }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/search`, {
+  return extendRequest(`http://127.0.0.1:8887/api/subproject`, {
     method: 'get',
     params: {
       pageIndex: pageIndex,
       pageSize: pageSize,
       project: project,
       subproject: subproject,
+      celltype: celltype,
+      drug: drug,
+      overlapgene: overlapgene,
     },
   })
     .then(function (response) {

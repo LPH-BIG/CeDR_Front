@@ -5,7 +5,6 @@ import { pathToRegexp } from 'path-to-regexp';
 
 export interface SubprojectState {
   data: SubprojectItem[];
-  // remoteKeywords:keywordsItem;
   meta: {
     total: number;
     pageSize: number;
@@ -51,7 +50,17 @@ const SubprojectModel: SubprojectModelType = {
   },
   effects: {
     *getRemote(
-      { payload: { pageIndex, pageSize, project, subproject } },
+      {
+        payload: {
+          pageIndex,
+          pageSize,
+          project,
+          subproject,
+          celltype,
+          drug,
+          overlapgene,
+        },
+      },
       { put, call },
     ) {
       const data = yield call(getRemoteSubproject, {
@@ -59,6 +68,9 @@ const SubprojectModel: SubprojectModelType = {
         pageSize,
         project,
         subproject,
+        celltype,
+        drug,
+        overlapgene,
       });
       if (data) {
         yield put({

@@ -3,19 +3,12 @@ export interface GeneralItem {
   source: string;
   project: string;
   subproject: string;
-  // description: string;
+  description: string;
   tissue: string;
   phenotype: string;
   celltype: string;
-  inst: string;
-  pvalue1: number;
-  oddsratio1: number;
-  pvalue2: number;
-  oddsratio2: number;
-  spearman: number;
-  spvalue: number;
-  overlapgenenum: number;
-  overlapgene: string;
+  drug: string;
+  reference: string;
 }
 
 export interface keywordsItem {

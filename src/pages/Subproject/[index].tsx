@@ -16,6 +16,8 @@ import Pie from '@/components/Pie';
 import { getRemoteTsne, getRemoteNetwork, getRemotePie } from './service';
 import Network from '@/components/Network';
 import { SubprojectItem } from '@/pages/Subproject/data';
+import { getRemoteKeywords } from '@/pages/General/service';
+import { SearchKeywords } from '@/pages/General';
 interface SubprojectPageProps {
   subproject: SubprojectState;
   dispatch: Dispatch;
@@ -31,16 +33,18 @@ const Index: FC<SubprojectPageProps> = ({
   const [record, setRecord] = useState<SubprojectItem | undefined>(undefined);
   const [tsne, setTsne] = useState({});
   const [tsnetitle, setTsnetitle] = useState(' ');
-
   const [network, setNetwork] = useState([]);
   const [pie, setPie] = useState([]);
+  const [celltype, setCelltype] = useState([]);
+  const [drug, setDrug] = useState([]);
+  const [gene, setGene] = useState([]);
+  const [keywords, setKeywords] = useState<SearchKeywords>({});
 
-  const [project, setProject] = useState('');
-  // const [subproject,setSubproject] = useState("");
   useEffect(() => {
     const dataset = subproject.data[0];
     if (dataset) {
       const { project, subproject } = dataset;
+      setKeywords({ ...keywords, project: project, subproject: subproject });
       const name = project + ' ' + subproject;
       // console.log("name: "+kk);
       getRemoteTsne({ name: name }).then((res) => {
@@ -74,6 +78,38 @@ const Index: FC<SubprojectPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       width: 200,
+      renderFormItem: () => {
+        const options = celltype.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'celltypeSelect'}
+            showSearch={true}
+            placeholder={'input and select a source'}
+            filterOption={false}
+            onSearch={async (value) => {
+              // console.log(value);
+              getRemoteKeywords({
+                project: subproject.data[0].project,
+                subproject: subproject.data[0].subproject,
+                celltype: value,
+                drug: keywords.drug,
+                overlapgene: keywords.overlapgene,
+              }).then((res) => {
+                setCelltype(res.data.celltype);
+              });
+            }}
+            onChange={(value, option) => {
+              setKeywords({ ...keywords, celltype: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
       // search: false,
     },
     {
@@ -82,6 +118,39 @@ const Index: FC<SubprojectPageProps> = ({
       key: 'inst',
       valueType: 'text',
       hideInForm: true,
+      renderFormItem: () => {
+        const options = drug.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'drugSelect'}
+            showSearch={true}
+            placeholder={'input and select a drug'}
+            filterOption={false}
+            onSearch={async (value) => {
+              // console.log(value);
+              getRemoteKeywords({
+                project: subproject.data[0].project,
+                subproject: subproject.data[0].subproject,
+                celltype: keywords.celltype,
+                drug: value,
+                overlapgene: keywords.overlapgene,
+              }).then((res) => {
+                // console.log(res);
+                setDrug(res.data.drug);
+              });
+            }}
+            onChange={(value, option) => {
+              setKeywords({ ...keywords, drug: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
     },
     {
       title: 'p-value 1',
@@ -148,7 +217,39 @@ const Index: FC<SubprojectPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       ellipsis: true,
-      // search: false,
+      renderFormItem: () => {
+        const options = gene.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'geneSelect'}
+            showSearch={true}
+            placeholder={'input and select genes'}
+            filterOption={false}
+            onSearch={async (value) => {
+              // console.log(value);
+              getRemoteKeywords({
+                project: subproject.data[0].project,
+                subproject: subproject.data[0].subproject,
+                celltype: keywords.celltype,
+                drug: keywords.drug,
+                overlapgene: value,
+              }).then((res) => {
+                // console.log(res);
+                setGene(res.data.overlapgene);
+              });
+            }}
+            onChange={(value, option) => {
+              setKeywords({ ...keywords, overlapgene: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
     },
   ];
 
@@ -160,6 +261,9 @@ const Index: FC<SubprojectPageProps> = ({
         pageSize: pageSize ? pageSize : subproject.meta.pageSize,
         project: subproject.data[0].project,
         subproject: subproject.data[0].subproject,
+        overlapgene: keywords.overlapgene,
+        celltype: keywords.celltype,
+        drug: keywords.drug,
       },
     });
   };
@@ -171,6 +275,9 @@ const Index: FC<SubprojectPageProps> = ({
         pageSize: size,
         project: subproject.data[0].project,
         subproject: subproject.data[0].subproject,
+        overlapgene: keywords.overlapgene,
+        celltype: keywords.celltype,
+        drug: keywords.drug,
       },
     });
   };
@@ -238,27 +345,35 @@ const Index: FC<SubprojectPageProps> = ({
                     },
                   }}
                   rowKey={(record) => record.id}
-                  // onSubmit={(params) => {
-                  //   const source = keywords.source;
-                  //   const tissue = keywords.tissue;
-                  //   const celltype = keywords.celltype;
-                  //   const phenotype = keywords.phenotype;
-                  //   const inst = keywords.inst;
-                  //   // console.log('submit');
-                  //   // console.log(keywords);
-                  //   dispatch({
-                  //     type: 'general/getRemote',
-                  //     payload: {
-                  //       pageIndex: 1,
-                  //       pageSize: 10,
-                  //       source: source,
-                  //       tissue: tissue,
-                  //       phenotype: phenotype,
-                  //       celltype: celltype,
-                  //       inst: inst,
-                  //     },
-                  //   });
-                  // }}
+                  onSubmit={(params) => {
+                    const { project, subproject, celltype, drug, overlapgene } =
+                      keywords;
+                    console.log('submit');
+                    console.log(keywords);
+                    dispatch({
+                      type: 'subproject/getRemote',
+                      payload: {
+                        pageIndex: 1,
+                        pageSize: 10,
+                        project: project,
+                        subproject: subproject,
+                        overlapgene: overlapgene,
+                        celltype: celltype,
+                        drug: drug,
+                      },
+                    });
+                  }}
+                  onReset={() => {
+                    dispatch({
+                      type: 'subproject/getRemote',
+                      payload: {
+                        pageIndex: 1,
+                        pageSize: 10,
+                        project: keywords.project,
+                        subproject: keywords.subproject,
+                      },
+                    });
+                  }}
                   search={{
                     defaultCollapsed: false,
                     labelWidth: 'auto',

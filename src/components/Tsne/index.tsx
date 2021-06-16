@@ -33,9 +33,9 @@ export default function Page(props: any) {
           text: 'TSNE-2',
         },
         gridLineWidth: 0,
-        // labels:{
-        //   enabled:false,
-        // }
+        labels: {
+          enabled: true,
+        },
       },
       legend: {
         layout: 'vertical',

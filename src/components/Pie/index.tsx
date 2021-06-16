@@ -17,7 +17,7 @@ export default function Page(props: any) {
         type: 'pie',
       },
       title: {
-        text: 'summary',
+        text: 'Cell Fraction',
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.y}</b>',
@@ -40,6 +40,8 @@ export default function Page(props: any) {
       series: [
         {
           name: 'Cell Number',
+          type: 'pie',
+          innerSize: '80%',
           colorByPoint: true,
           data: [
             {

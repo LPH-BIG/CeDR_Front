@@ -22,24 +22,24 @@ const errorHandler = function (error: any) {
 };
 const extendRequest = extend({ errorHandler });
 
-export const getRemoteList = async ({
-  pageIndex,
-  pageSize,
-  source,
-  tissue,
-  phenotype,
-  celltype,
-  inst,
-}) => {
-  return extendRequest(`http://127.0.0.1:8887/api/search`, {
+export const getRemoteList = async (
+  pageIndex: number | undefined,
+  pageSize: number | undefined,
+  source: string | undefined,
+  project: string | undefined,
+  subproject: string | undefined,
+  tissue: string | undefined,
+  phenotype: string | undefined,
+) => {
+  return extendRequest(`http://127.0.0.1:8887/api/general`, {
     method: 'get',
     params: {
-      pageIndex: pageIndex,
+      current: pageIndex,
       pageSize: pageSize,
       source: source,
+      project: project,
+      subproject: subproject,
       tissue: tissue,
-      cellType: celltype,
-      drug: inst,
       phenotype: phenotype,
     },
   })
@@ -53,20 +53,29 @@ export const getRemoteList = async ({
 };
 
 export const getRemoteKeywords = async ({
-  source,
-  tissue,
-  phenotype,
+  // source,
+  project,
+  subproject,
   celltype,
-  inst,
+  drug,
+  overlapgene,
+}: {
+  // source:string,
+  project: string;
+  subproject: string;
+  celltype: string | undefined;
+  drug: string | undefined;
+  overlapgene: string | undefined;
 }) => {
   return extendRequest(`http://127.0.0.1:8887/api/searchLike`, {
     method: 'get',
     params: {
-      source: source,
-      tissue: tissue,
+      // source: source,
+      project: project,
+      subproject: subproject,
       cellType: celltype,
-      drug: inst,
-      phenotype: phenotype,
+      drug: drug,
+      overlapgene: overlapgene,
     },
   })
     .then(function (response) {
@@ -78,7 +87,13 @@ export const getRemoteKeywords = async ({
     });
 };
 
-export const getSelect = async ({ type, name }) => {
+export const getSelect = async ({
+  type,
+  name,
+}: {
+  type: string;
+  name: string;
+}) => {
   return extendRequest(`http://127.0.0.1:8887/api/select`, {
     method: 'get',
     params: {

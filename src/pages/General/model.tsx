@@ -6,7 +6,6 @@ import { message } from 'antd';
 
 export interface GeneralState {
   data: GeneralItem[];
-  // remoteKeywords:keywordsItem;
   meta: {
     total: number;
     pageSize: number;
@@ -52,11 +51,6 @@ const GeneralModel: GeneralModelType = {
       return payload;
       console.log(payload);
     },
-    // getListKeywords(state, { payload }) {
-    //   console.log("getListKeywords");
-    //   console.log(payload);
-    //   return payload;
-    // },
   },
   effects: {
     *getRemote(
@@ -65,23 +59,24 @@ const GeneralModel: GeneralModelType = {
           pageIndex,
           pageSize,
           source,
+          project,
+          subproject,
           tissue,
           phenotype,
-          celltype,
-          inst,
         },
       },
       { put, call },
     ) {
-      const data = yield call(getRemoteList, {
+      const data = yield call(
+        getRemoteList,
         pageIndex,
         pageSize,
         source,
+        project,
+        subproject,
         tissue,
         phenotype,
-        celltype,
-        inst,
-      });
+      );
       if (data) {
         yield put({
           type: 'getList',
@@ -90,33 +85,6 @@ const GeneralModel: GeneralModelType = {
       }
       // console.log(data);
     },
-    // *getKeywords({ payload: { keywords } }, { put, call }) {
-    //   // console.log(keywords);
-    //   console.log(Object.keys(keywords).length);
-    //   if (Object.keys(keywords).length!=0){
-    //     const source = keywords.source;
-    //     const tissue = keywords.tissue;
-    //     const celltype = keywords.celltype;
-    //     const phenotype = keywords.phenotype;
-    //     const inst = keywords.inst;
-    //     const remoteKeywords = yield call(getRemoteKeywords, {
-    //       source,
-    //       tissue,
-    //       phenotype,
-    //       celltype,
-    //       inst,
-    //     });
-    //     if (remoteKeywords) {
-    //       yield put({
-    //         type: 'getListKeywords',
-    //         payload: remoteKeywords,
-    //       });
-    //     } else {
-    //       message.success('getKeywords falied');
-    //     }
-    //   }
-    //
-    // },
   },
   subscriptions: {
     setup({ dispatch, history }) {
