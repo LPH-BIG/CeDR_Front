@@ -22,15 +22,12 @@ const Index = () => {
           if (activeKey == 'tab2') {
             history.push('/subproject/undefined');
           }
-          if (activeKey == 'tab3') {
-            history.push('/association');
-          }
         }}
       >
         <TabPane
           tab={
             <span>
-              <AppleOutlined />
+              {/*<AppleOutlined />*/}
               General Tables
             </span>
           }
@@ -41,7 +38,7 @@ const Index = () => {
         <TabPane
           tab={
             <span>
-              <AndroidOutlined />
+              {/*<AndroidOutlined />*/}
               Subproject
             </span>
           }
@@ -53,7 +50,7 @@ const Index = () => {
         <TabPane
           tab={
             <span>
-              <AndroidOutlined />
+              {/*<AndroidOutlined />*/}
               Cell Drug Association
             </span>
           }

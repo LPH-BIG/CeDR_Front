@@ -90,7 +90,23 @@ const StatusSvg = () => (
     ></path>
   </svg>
 );
-
+const DetailsSvg = () => (
+  <svg
+    t="1623920654667"
+    className="icon"
+    viewBox="0 0 1024 1024"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    p-id="2408"
+    width="1em"
+    height="1em"
+  >
+    <path
+      d="M816.3328 493.19936l-611.9424-339.968c-27.4432-15.1552-61.0304 4.5056-61.0304 35.6352v679.936c0 31.1296 33.5872 50.7904 61.0304 35.6352l611.9424-339.968a40.83712 40.83712 0 0 0 0-71.2704z m-178.176 76.5952L225.28 799.17056v-229.376h412.8768z m0-81.92H225.28v-229.376l412.8768 229.376z"
+      p-id="2409"
+    ></path>
+  </svg>
+);
 export const CellIcon = (props) => <Icon component={CellSvg} {...props} />;
 export const DrugIcon = (props) => <Icon component={DrugSvg} {...props} />;
 export const TissueIcon = (props) => <Icon component={TissueSvg} {...props} />;
@@ -98,3 +114,5 @@ export const ContactIcon = (props) => (
   <Icon component={ContactSvg} {...props} />
 );
 export const StatusIcon = (props) => <Icon component={StatusSvg} {...props} />;
+
+export const DetailIcon = (props) => <Icon component={DetailsSvg} {...props} />;

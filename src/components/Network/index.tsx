@@ -138,7 +138,7 @@ export default function Page(props: any) {
   }, [props]);
 
   return (
-    <div>
+    <div style={{ height: '400px' }}>
       <HighchartsReact highcharts={Highcharts} options={state.chartOptions} />
     </div>
   );

@@ -113,3 +113,35 @@ export const getRemotePie = async ({ name }: { name: string }) => {
       return false;
     });
 };
+
+export const getRemoteGene = async ({ name }: { name: string }) => {
+  return extendRequest(`http://127.0.0.1:8887/api/gene`, {
+    method: 'get',
+    params: {
+      symbol: name,
+    },
+  })
+    .then(function (response) {
+      // console.log(response);
+      return response;
+    })
+    .catch(function (error) {
+      return false;
+    });
+};
+
+export const getRemoteDrug = async ({ name }: { name: string }) => {
+  return extendRequest(`http://127.0.0.1:8887/api/drug`, {
+    method: 'get',
+    params: {
+      inst: name,
+    },
+  })
+    .then(function (response) {
+      // console.log(response);
+      return response;
+    })
+    .catch(function (error) {
+      return false;
+    });
+};

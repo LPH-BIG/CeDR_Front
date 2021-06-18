@@ -38,6 +38,8 @@ export default function Page(props: any) {
         },
       },
       legend: {
+        enabled: false,
+        // layout: 'horizontal',
         layout: 'vertical',
         align: 'left',
         verticalAlign: 'top',
@@ -46,6 +48,7 @@ export default function Page(props: any) {
         floating: true,
         backgroundColor: '#FFFFFF',
         borderWidth: 1,
+        symbolWidth: 10,
       },
       plotOptions: {
         scatter: {

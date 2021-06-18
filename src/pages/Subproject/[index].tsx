@@ -1,6 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './index.less';
-import { Col, Divider, message, Pagination, Row, Select, Tabs } from 'antd';
+import {
+  Col,
+  Divider,
+  Descriptions,
+  Pagination,
+  Row,
+  Select,
+  Tabs,
+} from 'antd';
 import { history } from '@@/core/history';
 import {
   AndroidOutlined,
@@ -13,11 +21,18 @@ import { connect } from 'umi';
 import ProTable from '@ant-design/pro-table';
 import Tsne from '@/components/Tsne';
 import Pie from '@/components/Pie';
-import { getRemoteTsne, getRemoteNetwork, getRemotePie } from './service';
+import {
+  getRemoteTsne,
+  getRemoteNetwork,
+  getRemotePie,
+  getRemoteGene,
+  getRemoteDrug,
+} from './service';
 import Network from '@/components/Network';
-import { SubprojectItem } from '@/pages/Subproject/data';
+import { DrugItem, SubprojectItem } from '@/pages/Subproject/data';
 import { getRemoteKeywords } from '@/pages/General/service';
 import { SearchKeywords } from '@/pages/General';
+import { DetailIcon } from '@/components/Icons';
 interface SubprojectPageProps {
   subproject: SubprojectState;
   dispatch: Dispatch;
@@ -39,6 +54,8 @@ const Index: FC<SubprojectPageProps> = ({
   const [drug, setDrug] = useState([]);
   const [gene, setGene] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
+  const [disabled, setDisabled] = useState<boolean>(true);
+  const [druginformation, setDruginformation] = useState<DrugItem>({});
 
   useEffect(() => {
     const dataset = subproject.data[0];
@@ -251,8 +268,32 @@ const Index: FC<SubprojectPageProps> = ({
         );
       },
     },
+    {
+      title: 'Detail',
+      dataIndex: 'index',
+      // valueType: 'index',
+      width: 58,
+      render: (text, record, index) => {
+        // console.log(record)
+        return (
+          <span
+            onClick={async () => {
+              // console.log("click");
+              setRecord(record);
+              setDisabled(false);
+              setActivekey('tab3');
+              console.log(record.inst);
+              getRemoteDrug({ name: record.inst }).then((res) => {
+                setDruginformation(res.data);
+              });
+            }}
+          >
+            <DetailIcon key={record.id} />
+          </span>
+        );
+      },
+    },
   ];
-
   const paginationHandler = (page: number, pageSize?: number) => {
     dispatch({
       type: 'subproject/getRemote',
@@ -282,27 +323,74 @@ const Index: FC<SubprojectPageProps> = ({
     });
   };
 
+  const columns2 = [
+    {
+      title: 'Order',
+      dataIndex: 'index',
+      valueType: 'index',
+      width: 58,
+    },
+    {
+      title: 'Gene Symbol',
+      dataIndex: 'symbol',
+      valueType: 'text',
+      hideInForm: true,
+      search: false,
+      ellipsis: true,
+    },
+    {
+      title: 'Full Name',
+      dataIndex: 'fullname',
+      valueType: 'text',
+      hideInForm: true,
+      search: false,
+      ellipsis: true,
+    },
+    {
+      title: 'Type',
+      dataIndex: 'type',
+      valueType: 'text',
+      hideInForm: true,
+      search: false,
+      ellipsis: true,
+    },
+    {
+      title: 'Chromosome',
+      dataIndex: 'chromosome',
+      valueType: 'text',
+      hideInForm: true,
+      search: false,
+      ellipsis: true,
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      valueType: 'text',
+      hideInForm: true,
+      search: false,
+      ellipsis: true,
+    },
+  ];
   return (
     <div>
       <Tabs
         defaultActiveKey={activeKey}
+        activeKey={activeKey}
         onChange={(activeKey) => {
           // console.log(activeKey)
           if (activeKey == 'tab1') {
             history.push('/browse');
           }
           if (activeKey == 'tab2') {
-            history.push('/subproject/');
-          }
-          if (activeKey == 'tab3') {
-            history.push('/association');
+            // console.log(activeKey);
+            window.location.reload();
           }
         }}
       >
         <TabPane
           tab={
             <span>
-              <AppleOutlined />
+              {/*<AppleOutlined />*/}
               General Tables
             </span>
           }
@@ -311,7 +399,7 @@ const Index: FC<SubprojectPageProps> = ({
         <TabPane
           tab={
             <span>
-              <AndroidOutlined />
+              {/*<AndroidOutlined />*/}
               Subproject
             </span>
           }
@@ -319,11 +407,14 @@ const Index: FC<SubprojectPageProps> = ({
         >
           <div>
             <Row>
-              <Col xs={4} sm={6} md={8} lg={10} xl={12}>
+              <Col xs={4} sm={6} md={8} lg={8} xl={8}>
                 <Tsne data={tsne} title={tsnetitle} />
               </Col>
-              <Col xs={4} sm={6} md={8} lg={10} xl={12}>
+              <Col xs={4} sm={6} md={8} lg={8} xl={8}>
                 <Pie data={pie} />
+              </Col>
+              <Col xs={4} sm={6} md={8} lg={8} xl={8}>
+                <Network network={network} />
               </Col>
             </Row>
             <Divider />
@@ -348,8 +439,8 @@ const Index: FC<SubprojectPageProps> = ({
                   onSubmit={(params) => {
                     const { project, subproject, celltype, drug, overlapgene } =
                       keywords;
-                    console.log('submit');
-                    console.log(keywords);
+                    // console.log('submit');
+                    // console.log(keywords);
                     dispatch({
                       type: 'subproject/getRemote',
                       payload: {
@@ -364,6 +455,7 @@ const Index: FC<SubprojectPageProps> = ({
                     });
                   }}
                   onReset={() => {
+                    setKeywords({});
                     dispatch({
                       type: 'subproject/getRemote',
                       payload: {
@@ -398,24 +490,78 @@ const Index: FC<SubprojectPageProps> = ({
                 />
               </Col>
             </Row>
-            <Row>
-              <Col xs={4} sm={6} md={8} lg={10} xl={12}>
-                <Network network={network} />
-              </Col>
-            </Row>
           </div>
         </TabPane>
         <TabPane
           tab={
             <span>
-              <AndroidOutlined />
+              {/*<AndroidOutlined />*/}
               Cell Drug Association
             </span>
           }
           key="tab3"
-          disabled
+          disabled={disabled}
         >
-          Cell Drug Association
+          <div>
+            <Row>
+              <Col xs={4} sm={6} md={8} lg={12} xl={12}>
+                <Descriptions title={'Drug Information'} bordered>
+                  <Descriptions.Item label="Name">
+                    {druginformation.name}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Concentration">
+                    {druginformation.concentration}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Duration">
+                    {druginformation.duration}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Array">
+                    {druginformation.array}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Vehicle">
+                    {druginformation.vehicle}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Scanner">
+                    {druginformation.scanner}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Vendor">
+                    {druginformation.vendor}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Vehicle_scan_id">
+                    {druginformation.vehicle_scan_id}
+                  </Descriptions.Item>
+                </Descriptions>
+              </Col>
+            </Row>
+            <Divider />
+            <ProTable
+              title={() => {}}
+              columns={columns2}
+              rowKey={'id'}
+              request={async (params) => {
+                // console.log("params");
+                // console.log(params);
+                let str = record?.overlapgene.substr(1);
+                if (str) {
+                  str = str.substr(0, str.length - 1);
+                  str = str.replaceAll("'", '');
+                  str = str.replace(/\s+/g, '');
+                } else {
+                  str = ' ';
+                }
+                // console.log(str);
+                const msg = await getRemoteGene({ name: str }).then((res) => {
+                  // console.log(res);
+                  return res;
+                });
+                return {
+                  data: msg.data,
+                  success: msg.status == 200 ? true : false,
+                };
+              }}
+              search={false}
+            />
+          </div>
         </TabPane>
       </Tabs>
     </div>
