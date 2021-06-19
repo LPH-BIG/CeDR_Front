@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import styles from './index.less';
 import ProTable, { ProColumns } from '@ant-design/pro-table';
 import { GeneralState } from '@/pages/General/model';
-import { Pagination, Select } from 'antd';
+import { Pagination, Select, Space } from 'antd';
 import { connect, Dispatch, Loading, history } from 'umi';
 import {
   GeneralItem,
@@ -185,9 +185,10 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               );
             }}
           >
-            {record.subproject}
-            &nbsp;&nbsp;
-            <DotChartOutlined />
+            <Space>
+              {record.subproject}
+              <DotChartOutlined />
+            </Space>
           </a>
         </span>
       ),

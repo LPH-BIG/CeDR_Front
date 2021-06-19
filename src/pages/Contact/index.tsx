@@ -22,7 +22,9 @@ export default function Page() {
       <Row justify={'center'}>
         <Col span={8}>
           <Card title="Team Leader" bordered={false}>
-            Peilin Jia
+            <p>
+              <strong>Peilin Jia</strong>
+            </p>
           </Card>
         </Col>
       </Row>
