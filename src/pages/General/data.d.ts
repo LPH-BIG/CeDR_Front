@@ -27,6 +27,8 @@ export interface SearchKeywords {
   celltype: string | undefined;
   drug: string | undefined;
   overlapgene: string | undefined;
+  pcutoff: number | undefined;
+  orcutoff: number | undefined;
 }
 export interface SelectKeywords {
   source: string | undefined;

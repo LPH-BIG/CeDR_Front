@@ -8,6 +8,7 @@ import {
   Row,
   Select,
   Tabs,
+  Space,
 } from 'antd';
 import { history } from '@@/core/history';
 import {
@@ -52,6 +53,8 @@ const Index: FC<SubprojectPageProps> = ({
   const [pie, setPie] = useState([]);
   const [celltype, setCelltype] = useState([]);
   const [drug, setDrug] = useState([]);
+  const [pcutoff, setPcutoff] = useState([0.05, 0.01, 0.001]);
+  const [orcutoff, setOrcutoff] = useState([1, 2, 3]);
   const [gene, setGene] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -174,17 +177,55 @@ const Index: FC<SubprojectPageProps> = ({
       dataIndex: 'pvalue1',
       key: 'pvalue1',
       valueType: 'text',
-      hideInForm: true,
-      search: false,
+      // search: false,
+      renderFormItem: () => {
+        const options = pcutoff.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'pcutoffSelect'}
+            showSearch={true}
+            placeholder={'select a p-value cutoff'}
+            filterOption={false}
+            onChange={(value, option) => {
+              setKeywords({ ...keywords, pcutoff: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
     },
     {
       title: 'Odds Ratio 1',
       dataIndex: 'oddsratio1',
       key: 'oddsratio1',
       valueType: 'text',
-      hideInForm: true,
-      search: false,
+      // search: false,
       ellipsis: true,
+      renderFormItem: () => {
+        const options = orcutoff.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'pcutoffSelect'}
+            showSearch={true}
+            placeholder={'select a Odds Ratio cutoff'}
+            filterOption={false}
+            onChange={(value, option) => {
+              setKeywords({ ...keywords, orcutoff: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
     },
     {
       title: 'p-value 2',
@@ -284,7 +325,7 @@ const Index: FC<SubprojectPageProps> = ({
                 setRecord(record);
                 setDisabled(false);
                 setActivekey('tab3');
-                console.log(record.inst);
+                // console.log(record.inst);
                 getRemoteDrug({ name: record.inst }).then((res) => {
                   setDruginformation(res.data);
                 });
@@ -408,7 +449,7 @@ const Index: FC<SubprojectPageProps> = ({
           }
           key="tab2"
         >
-          <div>
+          <div className={styles.plot}>
             <Row>
               <Col xs={4} sm={6} md={8} lg={8} xl={8}>
                 <Tsne data={tsne} title={tsnetitle} />
@@ -420,7 +461,9 @@ const Index: FC<SubprojectPageProps> = ({
                 <Network network={network} />
               </Col>
             </Row>
-            <Divider />
+          </div>
+          <Divider />
+          <div>
             <Row>
               <Col>
                 <ProTable<SubprojectItem>
@@ -441,8 +484,15 @@ const Index: FC<SubprojectPageProps> = ({
                   }}
                   rowKey={(record) => record.id}
                   onSubmit={(params) => {
-                    const { project, subproject, celltype, drug, overlapgene } =
-                      keywords;
+                    const {
+                      project,
+                      subproject,
+                      celltype,
+                      drug,
+                      overlapgene,
+                      pcutoff,
+                      orcutoff,
+                    } = keywords;
                     // console.log('submit');
                     // console.log(keywords);
                     dispatch({
@@ -455,6 +505,8 @@ const Index: FC<SubprojectPageProps> = ({
                         overlapgene: overlapgene,
                         celltype: celltype,
                         drug: drug,
+                        pcutoff: pcutoff,
+                        orcutoff: orcutoff,
                       },
                     });
                   }}

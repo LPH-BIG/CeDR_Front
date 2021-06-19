@@ -91,10 +91,7 @@ export default function (props) {
               </Menu.Item>
             </Menu>
           </Header>
-          <Content
-            className="site-layout"
-            style={{ padding: '0 50px', marginTop: 20 }}
-          >
+          <Content className="site-layout">
             {/*<Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />*/}
             <div
               className="site-layout-background"

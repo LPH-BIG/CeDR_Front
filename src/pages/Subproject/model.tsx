@@ -59,6 +59,8 @@ const SubprojectModel: SubprojectModelType = {
           celltype,
           drug,
           overlapgene,
+          pcutoff,
+          orcutoff,
         },
       },
       { put, call },
@@ -71,6 +73,8 @@ const SubprojectModel: SubprojectModelType = {
         celltype,
         drug,
         overlapgene,
+        pcutoff,
+        orcutoff,
       });
       if (data) {
         yield put({

@@ -30,6 +30,8 @@ export const getRemoteSubproject = async ({
   celltype,
   drug,
   overlapgene,
+  pcutoff,
+  orcutoff,
 }: {
   pageIndex: number | undefined;
   pageSize: number | undefined;
@@ -38,6 +40,8 @@ export const getRemoteSubproject = async ({
   subproject: string | undefined;
   drug: string | undefined;
   overlapgene: string | undefined;
+  pcutoff: number | undefined;
+  orcutoff: number | undefined;
 }) => {
   return extendRequest(`http://127.0.0.1:8887/api/subproject`, {
     method: 'get',
@@ -49,6 +53,8 @@ export const getRemoteSubproject = async ({
       celltype: celltype,
       drug: drug,
       overlapgene: overlapgene,
+      pcutoff: pcutoff,
+      orcutoff: orcutoff,
     },
   })
     .then(function (response) {

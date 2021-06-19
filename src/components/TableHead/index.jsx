@@ -90,7 +90,7 @@ const data = [
 ];
 
 function onChange(pagination, filters, sorter, extra) {
-  console.log('params', pagination, filters, sorter, extra);
+  // console.log('params', pagination, filters, sorter, extra);
 }
 
 export default () => (

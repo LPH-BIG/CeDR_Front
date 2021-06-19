@@ -1,5 +1,14 @@
 import styles from './index.less';
-import { Col, Input, Row, Breadcrumb, Divider, Card, Timeline } from 'antd';
+import {
+  Col,
+  Input,
+  Row,
+  Breadcrumb,
+  Divider,
+  Card,
+  Timeline,
+  Typography,
+} from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Wordcloud from '../components/wordcloud';
 import human from '../assets/human1.jpg';
@@ -34,7 +43,7 @@ export default function IndexPage() {
           <strong className={styles.introduction}>
             CeDR Atlas is a knowledgebase about cellular drug response.
           </strong>
-          <p>
+          <Typography>
             Previously, we developed an algorithm, deTS (R package) to decode
             tissue specificity and built the Tissue-Specific Enrichment Analysis
             DataBase (TSEA-DB). In this work, we leveraged the fast-growing
@@ -42,7 +51,7 @@ export default function IndexPage() {
             multiple international consortiums (e.g. Human Cell Landscape, The
             Human Lung Cell Atlas) and literature resources to conduct the cell
             type-specific enrichment analysis (CSEA) modified from deTS.
-          </p>
+          </Typography>
         </div>
         <Divider />
         <Col xs={2} sm={4} md={6} lg={8} xl={10}>

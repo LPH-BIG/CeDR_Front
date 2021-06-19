@@ -130,10 +130,10 @@ export default function Page(props: any) {
           enabled: true,
         },
         allowPointSelect: true,
-        data: props.network,
+        data: props.network.data,
       },
     ];
-    // console.log(props.network);
+    console.log(props.network);
     setState({ chartOptions: { series: series } });
   }, [props]);
 
