@@ -31,7 +31,7 @@ import {
 import Network from '@/components/Network';
 import { DrugItem, SubprojectItem } from '@/pages/Subproject/data';
 import { getRemoteKeywords } from '@/pages/General/service';
-import { SearchKeywords } from '@/pages/General';
+import { SearchKeywords } from '@/pages/General/data';
 import { DetailIcon } from '@/components/Icons';
 interface SubprojectPageProps {
   subproject: SubprojectState;
@@ -273,22 +273,25 @@ const Index: FC<SubprojectPageProps> = ({
       dataIndex: 'index',
       // valueType: 'index',
       width: 58,
+      search: false,
       render: (text, record, index) => {
         // console.log(record)
         return (
-          <span
-            onClick={async () => {
-              // console.log("click");
-              setRecord(record);
-              setDisabled(false);
-              setActivekey('tab3');
-              console.log(record.inst);
-              getRemoteDrug({ name: record.inst }).then((res) => {
-                setDruginformation(res.data);
-              });
-            }}
-          >
-            <DetailIcon key={record.id} />
+          <span>
+            <a
+              onClick={async () => {
+                // console.log("click");
+                setRecord(record);
+                setDisabled(false);
+                setActivekey('tab3');
+                console.log(record.inst);
+                getRemoteDrug({ name: record.inst }).then((res) => {
+                  setDruginformation(res.data);
+                });
+              }}
+            >
+              <DetailIcon key={record.id} />
+            </a>
           </span>
         );
       },
@@ -425,6 +428,7 @@ const Index: FC<SubprojectPageProps> = ({
                   dataSource={subproject.data}
                   loading={subprojectListLoading}
                   pagination={false}
+                  // headerTitle="日期类"
                   expandable={{
                     expandIconColumnIndex: 11,
                     expandedRowRender: (record, index, indent, expanded) => {
@@ -560,6 +564,7 @@ const Index: FC<SubprojectPageProps> = ({
                 };
               }}
               search={false}
+              headerTitle={'Gene Information'}
             />
           </div>
         </TabPane>

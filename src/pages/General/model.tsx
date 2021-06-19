@@ -49,7 +49,7 @@ const GeneralModel: GeneralModelType = {
   reducers: {
     getList(state, { payload }) {
       return payload;
-      console.log(payload);
+      // console.log(payload);
     },
   },
   effects: {

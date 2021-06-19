@@ -18,3 +18,22 @@ export interface keywordsItem {
   celltype: string[];
   inst: string[];
 }
+export interface SearchKeywords {
+  source: string | undefined;
+  project: string | undefined;
+  subproject: string | undefined;
+  tissue: string | undefined;
+  phenotype: string | undefined;
+  celltype: string | undefined;
+  drug: string | undefined;
+  overlapgene: string | undefined;
+}
+export interface SelectKeywords {
+  source: string | undefined;
+  project: string | undefined;
+  subproject: string | undefined;
+  tissue: string | undefined;
+  phenotype: string | undefined;
+  celltype: string | undefined;
+  drug: string | undefined;
+}

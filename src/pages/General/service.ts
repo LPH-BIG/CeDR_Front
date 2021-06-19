@@ -87,18 +87,56 @@ export const getRemoteKeywords = async ({
     });
 };
 
-export const getSelect = async ({
-  type,
-  name,
+// export const getSelect = async ({
+//   type,
+//   name,
+// }: {
+//   type: string;
+//   name: string;
+// }) => {
+//   return extendRequest(`http://127.0.0.1:8887/api/select`, {
+//     method: 'get',
+//     params: {
+//       type: type,
+//       name: name,
+//     },
+//   })
+//     .then(function (response) {
+//       // console.log(response);
+//       return response;
+//     })
+//     .catch(function (error) {
+//       return false;
+//     });
+// };
+
+export const getRemoteGeneralKeywords = async ({
+  source,
+  project,
+  subproject,
+  tissue,
+  phenotype,
+  celltype,
+  drug,
 }: {
-  type: string;
-  name: string;
+  source: string | undefined;
+  project: string | undefined;
+  subproject: string | undefined;
+  tissue: string | undefined;
+  phenotype: string | undefined;
+  celltype: string | undefined;
+  drug: string | undefined;
 }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/select`, {
+  return extendRequest(`http://127.0.0.1:8887/api/generalLike`, {
     method: 'get',
     params: {
-      type: type,
-      name: name,
+      source: source,
+      project: project,
+      subproject: subproject,
+      tissue: tissue,
+      phenotype: phenotype,
+      celltype: celltype,
+      drug: drug,
     },
   })
     .then(function (response) {

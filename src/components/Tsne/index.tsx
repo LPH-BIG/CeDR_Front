@@ -17,9 +17,6 @@ export default function Page(props: any) {
       title: {
         text: 'Title',
       },
-      // subtitle: {
-      //   text: 'subtitle',
-      // },
       xAxis: {
         title: {
           enabled: true,
