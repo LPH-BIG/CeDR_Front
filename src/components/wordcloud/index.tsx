@@ -3,6 +3,7 @@ import styles from './index.less';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import HighchartsWordcloud from 'highcharts/modules/wordcloud';
+import { history } from 'umi';
 HighchartsWordcloud(Highcharts);
 const Index = (props: any) => {
   const data = [
@@ -31,6 +32,17 @@ const Index = (props: any) => {
     chartOptions: {
       credits: {
         enabled: false,
+      },
+      plotOptions: {
+        wordcloud: {
+          cursor: 'pointer',
+          events: {
+            click: function (e) {
+              // console.log(e.point.name);
+              history.push('/subproject/SCP542 ' + e.point.name);
+            },
+          },
+        },
       },
       series: [
         {

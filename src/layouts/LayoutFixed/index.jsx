@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.less';
 import { Layout, Menu, Breadcrumb, BackTop } from 'antd';
 const { SubMenu } = Menu;
@@ -33,6 +33,16 @@ export default function (props) {
   };
   // console.log(history.location);
   // console.log(props);
+  const [selectKey, setSelectkey] = useState('1');
+  useEffect(() => {
+    if (
+      history.location.pathname.startsWith('/general') |
+      history.location.pathname.startsWith('/subproject')
+    ) {
+      setSelectkey('2');
+    }
+    // console.log(history.location.pathname);
+  }, [history.location]);
   return (
     <div className={styles.container}>
       <HeaderLab />
@@ -43,16 +53,29 @@ export default function (props) {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={['1']}
+              // defaultSelectedKeys={['1']}
+              selectedKeys={[selectKey]}
               // selectedKeys={[this.state.current]}
               style={{ lineHeight: '64px' }}
             >
-              <Menu.Item key="1" onClick={() => props.history.push('/home')}>
+              <Menu.Item
+                key="1"
+                onClick={() => {
+                  props.history.push('/home');
+                  setSelectkey('1');
+                }}
+              >
                 <HomeOutlined />
                 Home
               </Menu.Item>
 
-              <Menu.Item key="2" onClick={() => props.history.push('/browse')}>
+              <Menu.Item
+                key="2"
+                onClick={() => {
+                  props.history.push('/general');
+                  setSelectkey('2');
+                }}
+              >
                 <EyeOutlined />
                 Browse
               </Menu.Item>
@@ -67,25 +90,43 @@ export default function (props) {
               {/*  <Menu.Item key="sub4" icon={<StatusIcon />}*/}
               {/*             onClick={() => props.history.push('/diseases')}>Diseases</Menu.Item>*/}
               {/*</SubMenu>*/}
-              <Menu.Item key="3" onClick={() => props.history.push('/search')}>
+              <Menu.Item
+                key="3"
+                onClick={() => {
+                  props.history.push('/search');
+                  setSelectkey('3');
+                }}
+              >
                 <SearchOutlined />
                 Search
               </Menu.Item>
               <Menu.Item
                 key="4"
-                onClick={() => props.history.push('/downloads')}
+                onClick={() => {
+                  props.history.push('/downloads');
+                  setSelectkey('4');
+                }}
               >
                 <DownloadOutlined />
                 Downloads
               </Menu.Item>
               <Menu.Item
                 key="5"
-                onClick={() => props.history.push('/documentation')}
+                onClick={() => {
+                  props.history.push('/documentation');
+                  setSelectkey('5');
+                }}
               >
                 <FileTextOutlined />
                 Documentation
               </Menu.Item>
-              <Menu.Item key="6" onClick={() => props.history.push('/contact')}>
+              <Menu.Item
+                key="6"
+                onClick={() => {
+                  props.history.push('/contact');
+                  setSelectkey('6');
+                }}
+              >
                 <ContactIcon />
                 Contact
               </Menu.Item>

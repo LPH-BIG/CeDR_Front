@@ -4,7 +4,7 @@ import { getRemoteKeywords, getRemoteList } from '@/pages/General/service';
 import { GeneralItem, keywordsItem } from '@/pages/General/data';
 import { message } from 'antd';
 import { pathToRegexp } from 'path-to-regexp';
-
+import { history } from 'umi';
 export interface GeneralState {
   data: GeneralItem[];
   meta: {
@@ -49,8 +49,8 @@ const GeneralModel: GeneralModelType = {
   },
   reducers: {
     getList(state, { payload }) {
-      return payload;
       // console.log(payload);
+      return payload;
     },
   },
   effects: {
@@ -90,16 +90,14 @@ const GeneralModel: GeneralModelType = {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/browse/:type/:name').exec(
+        const match = pathToRegexp('/general/:type/:name').exec(
           location.pathname,
         );
-        console.log(match);
         if (match) {
           const type = match[1];
           const name = match[2];
           switch (type) {
             case 'source': {
-              console.log(type);
               dispatch({
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
@@ -112,7 +110,6 @@ const GeneralModel: GeneralModelType = {
               break;
             }
             case 'tissue': {
-              console.log(type);
               dispatch({
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数

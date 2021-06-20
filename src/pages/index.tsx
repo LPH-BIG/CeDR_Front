@@ -42,15 +42,12 @@ interface searchKeywordsItem {
   name: string;
 }
 export default function IndexPage() {
-  const onSearch = (value: any) => {
-    console.log(value);
-  };
   const [searchkey, setSearchkey] = useState<searchKeywordsItem>();
   const [options, setOptions] = useState([]);
 
-  useEffect(() => {
-    console.log(searchkey);
-  }, [searchkey]);
+  // useEffect(() => {
+  //   console.log(searchkey);
+  // }, [searchkey]);
   return (
     <div>
       <Row justify="center">
@@ -116,7 +113,7 @@ export default function IndexPage() {
             icon={<SearchOutlined />}
             onClick={() => {
               history.push(
-                '/browse/' + searchkey?.type + '/' + searchkey?.name,
+                '/general/' + searchkey?.type + '/' + searchkey?.name,
               );
             }}
           >
@@ -256,7 +253,7 @@ export default function IndexPage() {
             <Col xs={2} sm={4} md={10} lg={10} xl={10}>
               <Card
                 title="Resource Overview"
-                extra={<a href="/browse">More</a>}
+                extra={<a href="/general">More</a>}
                 style={{ width: 300 }}
                 bordered={true}
                 hoverable={true}

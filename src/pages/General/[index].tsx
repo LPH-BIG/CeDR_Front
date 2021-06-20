@@ -2,8 +2,9 @@ import React, { FC, useState } from 'react';
 import styles from './index.less';
 import ProTable, { ProColumns } from '@ant-design/pro-table';
 import { GeneralState } from '@/pages/General/model';
-import { Pagination, Select, Space } from 'antd';
-import { connect, Dispatch, Loading, history } from 'umi';
+import { Pagination, Select, Space, Tabs } from 'antd';
+import { connect, Dispatch, Loading } from 'umi';
+import { history } from 'umi';
 import {
   GeneralItem,
   SearchKeywords,
@@ -16,7 +17,7 @@ interface GeneralPageProps {
   dispatch: Dispatch;
   generalListLoading: boolean;
 }
-
+const { TabPane } = Tabs;
 const GeneralListPage: FC<GeneralPageProps> = ({
   general,
   dispatch,
@@ -348,64 +349,74 @@ const GeneralListPage: FC<GeneralPageProps> = ({
     });
   };
 
-  // console.log(props.activeKey);
   //{/*不加rowkey会报warning:Each child in a list should have a unique "key" prop.*/}
   return (
     <div>
-      <ProTable<GeneralItem>
-        columns={columns}
-        dataSource={general.data}
-        loading={generalListLoading}
-        pagination={false}
-        rowKey={(record: GeneralItem) => {
-          return record.id.toString();
-        }}
-        onSubmit={(params) => {
-          const { source, tissue, project, phenotype, subproject } = keywords;
-          dispatch({
-            type: 'general/getRemote',
-            payload: {
-              pageIndex: 1,
-              pageSize: 10,
-              source: source,
-              project: project,
-              subproject: subproject,
-              tissue: tissue,
-              phenotype: phenotype,
-            },
-          });
-        }}
-        onReset={() => {
-          dispatch({
-            type: 'general/getRemote',
-            payload: {
-              pageIndex: 1,
-              pageSize: 10,
-            },
-          });
-        }}
-        search={{
-          defaultCollapsed: false,
-          labelWidth: 'auto',
-          searchText: 'Search',
-          resetText: 'Reset',
-          // collapseRender: ()=>null,
-          // collapseRender: ()=>{return(<span>Collapse</span>)}
-        }}
-      />
-      <Pagination
-        key={'generalPagination'}
-        className={styles.pagenation}
-        showQuickJumper
-        defaultCurrent={1}
-        total={general.meta.total}
-        pageSize={general.meta.pageSize}
-        showSizeChanger
-        showTotal={(total) => `Total ${total} items`}
-        pageSizeOptions={[10, 20, 50, 100]}
-        onChange={paginationHandler}
-        onShowSizeChange={sizeChangeHandler}
-      />
+      <Tabs defaultActiveKey={'tab1'}>
+        <TabPane tab={<span>General Tables</span>} key="tab1">
+          <div>
+            <ProTable<GeneralItem>
+              columns={columns}
+              dataSource={general.data}
+              loading={generalListLoading}
+              pagination={false}
+              rowKey={(record: GeneralItem) => {
+                return record.id.toString();
+              }}
+              onSubmit={(params) => {
+                const { source, tissue, project, phenotype, subproject } =
+                  keywords;
+                dispatch({
+                  type: 'general/getRemote',
+                  payload: {
+                    pageIndex: 1,
+                    pageSize: 10,
+                    source: source,
+                    project: project,
+                    subproject: subproject,
+                    tissue: tissue,
+                    phenotype: phenotype,
+                  },
+                });
+              }}
+              onReset={() => {
+                dispatch({
+                  type: 'general/getRemote',
+                  payload: {
+                    pageIndex: 1,
+                    pageSize: 10,
+                  },
+                });
+              }}
+              search={{
+                defaultCollapsed: false,
+                labelWidth: 'auto',
+                searchText: 'Search',
+                resetText: 'Reset',
+                // collapseRender: ()=>null,
+                // collapseRender: ()=>{return(<span>Collapse</span>)}
+              }}
+            />
+            <Pagination
+              key={'generalPagination'}
+              className={styles.pagenation}
+              showQuickJumper
+              defaultCurrent={1}
+              total={general.meta.total}
+              pageSize={general.meta.pageSize}
+              showSizeChanger
+              showTotal={(total) => `Total ${total} items`}
+              pageSizeOptions={[10, 20, 50, 100]}
+              onChange={paginationHandler}
+              onShowSizeChange={sizeChangeHandler}
+            />
+          </div>
+        </TabPane>
+        <TabPane tab={<span>Subproject</span>} key="tab2" disabled></TabPane>
+        <TabPane tab={<span>Cell Drug Association</span>} key="tab3" disabled>
+          Cell Drug Association
+        </TabPane>
+      </Tabs>
     </div>
   );
 };
@@ -413,13 +424,12 @@ const GeneralListPage: FC<GeneralPageProps> = ({
 const mapStateToProps = ({
   general,
   loading,
-}: // props,
-{
+}: {
   general: GeneralState;
   loading: Loading;
 }) => {
   //这个传的是state对象，可以通过此处测试数据是否正确
-  // console.log(loading);
+  // console.log("loading");
   // console.log(general);
   return {
     general,

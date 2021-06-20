@@ -8,14 +8,9 @@ import {
   Row,
   Select,
   Tabs,
-  Space,
 } from 'antd';
 import { history } from '@@/core/history';
-import {
-  AndroidOutlined,
-  AppleOutlined,
-  DotChartOutlined,
-} from '@ant-design/icons';
+
 import { GeneralState } from '@/pages/General/model';
 import { Dispatch, Loading, SubprojectState } from '@@/plugin-dva/connect';
 import { connect } from 'umi';

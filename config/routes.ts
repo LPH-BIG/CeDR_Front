@@ -61,11 +61,11 @@ export default [
       // },
       {
         path: '/general',
-        component: '@/pages/General/',
+        component: '@/pages/General/[index]',
       },
       {
-        path: '/browse',
-        component: '@/pages/Browse',
+        path: '/general/:type/:name',
+        component: '@/pages/General/[index]',
       },
       {
         // exact: true,
