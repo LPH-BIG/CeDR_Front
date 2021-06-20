@@ -1,5 +1,6 @@
 import { extendRequest } from '@/pages/General/service';
-
+// @ts-ignore
+import { API_PREFIX } from '@/common/constants';
 export const getRemoteSubproject = async ({
   pageIndex,
   pageSize,
@@ -21,7 +22,7 @@ export const getRemoteSubproject = async ({
   pcutoff: number | undefined;
   orcutoff: number | undefined;
 }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/subproject`, {
+  return extendRequest(API_PREFIX + '/subproject', {
     method: 'get',
     params: {
       pageIndex: pageIndex,
@@ -51,7 +52,7 @@ export const getRemoteSummary = async ({
   project: string;
   subproject: string;
 }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/general`, {
+  return extendRequest(API_PREFIX + '/general', {
     method: 'get',
     params: {
       project: project,
@@ -68,7 +69,7 @@ export const getRemoteSummary = async ({
 };
 
 export const getRemoteTsne = async ({ name }: { name: string }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/tsne`, {
+  return extendRequest(API_PREFIX + '/tsne', {
     method: 'get',
     params: {
       name: name,
@@ -90,7 +91,7 @@ export const getRemoteNetwork = async ({
   project: string;
   subproject: string;
 }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/network`, {
+  return extendRequest(API_PREFIX + '/network', {
     method: 'get',
     params: {
       project: project,
@@ -106,7 +107,7 @@ export const getRemoteNetwork = async ({
     });
 };
 export const getRemotePie = async ({ name }: { name: string }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/pie`, {
+  return extendRequest(API_PREFIX + '/pie', {
     method: 'get',
     params: {
       name: name,
@@ -122,7 +123,7 @@ export const getRemotePie = async ({ name }: { name: string }) => {
 };
 
 export const getRemoteGene = async ({ name }: { name: string }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/gene`, {
+  return extendRequest(API_PREFIX + '/gene', {
     method: 'get',
     params: {
       symbol: name,
@@ -138,7 +139,7 @@ export const getRemoteGene = async ({ name }: { name: string }) => {
 };
 
 export const getRemoteDrug = async ({ name }: { name: string }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/drug`, {
+  return extendRequest(API_PREFIX + '/drug', {
     method: 'get',
     params: {
       inst: name,

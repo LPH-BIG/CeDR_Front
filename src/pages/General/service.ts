@@ -1,6 +1,6 @@
 import request, { extend } from 'umi-request';
 import { message } from 'antd';
-
+import { API_PREFIX } from '@/common/constants';
 const errorHandler = function (error: any) {
   if (error.response) {
     // The request was made and the server responded with a status code
@@ -31,7 +31,7 @@ export const getRemoteList = async (
   tissue: string | undefined,
   phenotype: string | undefined,
 ) => {
-  return extendRequest(`http://127.0.0.1:8887/api/general`, {
+  return extendRequest(API_PREFIX + '/general', {
     method: 'get',
     params: {
       current: pageIndex,
@@ -67,7 +67,7 @@ export const getRemoteKeywords = async ({
   drug: string | undefined;
   overlapgene: string | undefined;
 }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/searchLike`, {
+  return extendRequest(API_PREFIX + '/searchLike', {
     method: 'get',
     params: {
       // source: source,
@@ -127,7 +127,7 @@ export const getRemoteGeneralKeywords = async ({
   celltype: string | undefined;
   drug: string | undefined;
 }) => {
-  return extendRequest(`http://127.0.0.1:8887/api/generalLike`, {
+  return extendRequest(API_PREFIX + '/generalLike', {
     method: 'get',
     params: {
       source: source,

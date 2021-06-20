@@ -36,6 +36,7 @@ import eye from '../assets/eye.png';
 import React, { useEffect, useState } from 'react';
 import { getRemoteTypeKeywords } from '@/pages/Search/service';
 import { history } from 'umi';
+import { API_PREFIX } from '@/common/constants';
 
 interface searchKeywordsItem {
   type: string;
@@ -44,7 +45,7 @@ interface searchKeywordsItem {
 export default function IndexPage() {
   const [searchkey, setSearchkey] = useState<searchKeywordsItem>();
   const [options, setOptions] = useState([]);
-
+  console.log(API_PREFIX);
   // useEffect(() => {
   //   console.log(searchkey);
   // }, [searchkey]);
