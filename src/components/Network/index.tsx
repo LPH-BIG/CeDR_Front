@@ -133,8 +133,10 @@ export default function Page(props: any) {
         data: props.network.data,
       },
     ];
-    console.log(props.network);
+    // console.log(props.network);
+    // if (props.network.data){
     setState({ chartOptions: { series: series } });
+    // }
   }, [props]);
 
   return (

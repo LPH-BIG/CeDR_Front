@@ -3,6 +3,7 @@ import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
 import { getRemoteKeywords, getRemoteList } from '@/pages/General/service';
 import { GeneralItem, keywordsItem } from '@/pages/General/data';
 import { message } from 'antd';
+import { pathToRegexp } from 'path-to-regexp';
 
 export interface GeneralState {
   data: GeneralItem[];
@@ -88,14 +89,81 @@ const GeneralModel: GeneralModelType = {
   },
   subscriptions: {
     setup({ dispatch, history }) {
-      return history.listen((location) => {
-        if (
-          location.pathname === '/general' ||
-          location.pathname === '/browse'
-        ) {
+      history.listen((location) => {
+        const match = pathToRegexp('/browse/:type/:name').exec(
+          location.pathname,
+        );
+        console.log(match);
+        if (match) {
+          const type = match[1];
+          const name = match[2];
+          switch (type) {
+            case 'source': {
+              console.log(type);
+              dispatch({
+                type: 'getRemote',
+                //payload一般用于传输参数，即type指定函数的参数
+                payload: {
+                  pageIndex: 1,
+                  pageSize: 10,
+                  source: name,
+                },
+              });
+              break;
+            }
+            case 'tissue': {
+              console.log(type);
+              dispatch({
+                type: 'getRemote',
+                //payload一般用于传输参数，即type指定函数的参数
+                payload: {
+                  pageIndex: 1,
+                  pageSize: 10,
+                  tissue: name,
+                },
+              });
+              break;
+            }
+            case 'phenotype': {
+              dispatch({
+                type: 'getRemote',
+                //payload一般用于传输参数，即type指定函数的参数
+                payload: {
+                  pageIndex: 1,
+                  pageSize: 10,
+                  phenotype: name,
+                },
+              });
+              break;
+            }
+            case 'celltype': {
+              dispatch({
+                type: 'getRemote',
+                //payload一般用于传输参数，即type指定函数的参数
+                payload: {
+                  pageIndex: 1,
+                  pageSize: 10,
+                  celltype: name,
+                },
+              });
+              break;
+            }
+            case 'drug': {
+              dispatch({
+                type: 'getRemote',
+                //payload一般用于传输参数，即type指定函数的参数
+                payload: {
+                  pageIndex: 1,
+                  pageSize: 10,
+                  drug: name,
+                },
+              });
+              break;
+            }
+          }
+        } else {
           dispatch({
             type: 'getRemote',
-            //payload一般用于传输参数，即type指定函数的参数
             payload: {
               pageIndex: 1,
               pageSize: 10,

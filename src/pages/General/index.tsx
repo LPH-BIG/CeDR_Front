@@ -316,9 +316,14 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       // },
     },
     {
-      title: 'Reference',
-      key: 'reference',
-      dataIndex: 'reference',
+      title: 'Technique',
+      dataIndex: 'technique',
+      ellipsis: true,
+      hideInSearch: true,
+    },
+    {
+      title: 'Title',
+      dataIndex: 'title',
       ellipsis: true,
       hideInSearch: true,
     },

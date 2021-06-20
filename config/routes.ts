@@ -61,7 +61,7 @@ export default [
       // },
       {
         path: '/general',
-        component: '@/pages/General',
+        component: '@/pages/General/',
       },
       {
         path: '/browse',

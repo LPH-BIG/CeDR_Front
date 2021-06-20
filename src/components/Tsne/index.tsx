@@ -69,9 +69,11 @@ export default function Page(props: any) {
   });
   // console.log("title: "+props.title);
   useEffect(() => {
-    setState({
-      chartOptions: { series: props.data, title: { text: props.title } },
-    });
+    if (props.data) {
+      setState({
+        chartOptions: { series: props.data, title: { text: props.title } },
+      });
+    }
   }, [props]);
 
   return (

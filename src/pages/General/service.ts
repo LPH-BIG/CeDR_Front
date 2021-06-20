@@ -20,7 +20,7 @@ const errorHandler = function (error: any) {
   // return {some: 'data'}; If return, return the value as a return. If you don't write it is equivalent to return undefined, you can judge whether the response has a value when processing the result.
   // return {some: 'data'};
 };
-const extendRequest = extend({ errorHandler });
+export const extendRequest = extend({ errorHandler });
 
 export const getRemoteList = async (
   pageIndex: number | undefined,

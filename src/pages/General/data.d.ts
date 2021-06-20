@@ -9,6 +9,16 @@ export interface GeneralItem {
   celltype: string;
   drug: string;
   reference: string;
+  total_reported_cell: number;
+  celltype_num: number;
+  cell_source: string;
+  technique: string;
+  doi: string;
+  journal: string;
+  title: string;
+  date: string;
+  contrasts: string;
+  developmentalstage: string;
 }
 
 export interface keywordsItem {

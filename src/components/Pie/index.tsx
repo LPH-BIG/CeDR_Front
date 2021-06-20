@@ -90,7 +90,9 @@ export default function Page(props: any) {
   });
 
   useEffect(() => {
-    setState({ chartOptions: { series: { data: props.data } } });
+    if (props.data) {
+      setState({ chartOptions: { series: { data: props.data } } });
+    }
   }, [props]);
   return (
     <HighchartsReact highcharts={Highcharts} options={state.chartOptions} />

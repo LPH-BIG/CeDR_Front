@@ -3,12 +3,16 @@ import {
   Col,
   Input,
   Row,
-  Breadcrumb,
+  Tag,
   Divider,
   Card,
   Timeline,
   Typography,
+  Select,
+  Button,
+  // FlagOutlined
 } from 'antd';
+import { FlagOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
 import Wordcloud from '../components/wordcloud';
 import human from '../assets/human1.jpg';
@@ -29,13 +33,24 @@ import blood from '../assets/blood.png';
 import skin from '../assets/skin.png';
 import bone from '../assets/bone.png';
 import eye from '../assets/eye.png';
+import React, { useEffect, useState } from 'react';
+import { getRemoteTypeKeywords } from '@/pages/Search/service';
+import { history } from 'umi';
 
-const { Search } = Input;
+interface searchKeywordsItem {
+  type: string;
+  name: string;
+}
 export default function IndexPage() {
   const onSearch = (value: any) => {
     console.log(value);
   };
+  const [searchkey, setSearchkey] = useState<searchKeywordsItem>();
+  const [options, setOptions] = useState([]);
 
+  useEffect(() => {
+    console.log(searchkey);
+  }, [searchkey]);
   return (
     <div>
       <Row justify="center">
@@ -53,16 +68,60 @@ export default function IndexPage() {
             type-specific enrichment analysis (CSEA) modified from deTS.
           </Typography>
         </div>
-        <Divider />
-        <Col xs={2} sm={4} md={6} lg={8} xl={10}>
-          <Search
-            placeholder="input and select keyword"
-            enterButton="Search"
-            bordered={true}
-            size="large"
-            onSearch={onSearch}
-            // suffix={suffix}
-          />
+      </Row>
+      <Divider />
+      <Row justify="center">
+        <Col xs={2} sm={4} md={12} lg={12} xl={12}>
+          <Select
+            style={{ width: '70%' }}
+            placeholder="input and select a keyword"
+            showSearch={true}
+            allowClear={true}
+            onSearch={(value: string) => {
+              getRemoteTypeKeywords(value).then((res) => {
+                const op = res.data.map((item) => (
+                  <Select.Option
+                    key={item.id}
+                    value={item.name}
+                    type={item.type}
+                  >
+                    <Tag
+                      icon={<FlagOutlined />}
+                      style={{ float: 'left', color: '#3D84B8' }}
+                    >
+                      {item.type} is
+                    </Tag>
+                    <Tag
+                      icon={<EnvironmentOutlined />}
+                      style={{ float: 'right' }}
+                    >
+                      {item.name}
+                    </Tag>
+                  </Select.Option>
+                ));
+                setOptions(op);
+              });
+            }}
+            onChange={(value, option) => {
+              if (option) {
+                setSearchkey({ type: option.type, name: value });
+                // console.log(searchkey);
+              }
+            }}
+          >
+            {options}
+          </Select>
+          <Button
+            type="primary"
+            icon={<SearchOutlined />}
+            onClick={() => {
+              history.push(
+                '/browse/' + searchkey?.type + '/' + searchkey?.name,
+              );
+            }}
+          >
+            Search
+          </Button>
         </Col>
       </Row>
       <Divider />
@@ -230,12 +289,6 @@ export default function IndexPage() {
               </Card>
             </Col>
           </Row>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col xs={4} sm={6} md={10} lg={10} xl={10}>
-          {/*<Tsne />*/}
         </Col>
       </Row>
     </div>

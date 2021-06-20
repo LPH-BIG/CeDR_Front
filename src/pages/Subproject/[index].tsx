@@ -28,11 +28,12 @@ import {
   getRemotePie,
   getRemoteGene,
   getRemoteDrug,
+  getRemoteSummary,
 } from './service';
 import Network from '@/components/Network';
 import { DrugItem, SubprojectItem } from '@/pages/Subproject/data';
 import { getRemoteKeywords } from '@/pages/General/service';
-import { SearchKeywords } from '@/pages/General/data';
+import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DetailIcon } from '@/components/Icons';
 interface SubprojectPageProps {
   subproject: SubprojectState;
@@ -48,9 +49,10 @@ const Index: FC<SubprojectPageProps> = ({
   const [activeKey, setActivekey] = useState('tab2');
   const [record, setRecord] = useState<SubprojectItem | undefined>(undefined);
   const [tsne, setTsne] = useState({});
+  const [summary, setSummary] = useState<GeneralItem | undefined>(undefined);
   const [tsnetitle, setTsnetitle] = useState(' ');
   const [network, setNetwork] = useState([]);
-  const [pie, setPie] = useState([]);
+  const [pie, setPie] = useState();
   const [celltype, setCelltype] = useState([]);
   const [drug, setDrug] = useState([]);
   const [pcutoff, setPcutoff] = useState([0.05, 0.01, 0.001]);
@@ -67,6 +69,12 @@ const Index: FC<SubprojectPageProps> = ({
       setKeywords({ ...keywords, project: project, subproject: subproject });
       const name = project + ' ' + subproject;
       // console.log("name: "+kk);
+      getRemoteSummary({ project: project, subproject: subproject }).then(
+        (res) => {
+          // console.log(res.data[0]);
+          setSummary(res.data[0]);
+        },
+      );
       getRemoteTsne({ name: name }).then((res) => {
         // console.log(res.data)
         setTsne(res.data);
@@ -75,10 +83,12 @@ const Index: FC<SubprojectPageProps> = ({
 
       getRemoteNetwork({ project: project, subproject: subproject }).then(
         (res) => {
+          // console.log(res.data);
           setNetwork(res.data);
         },
       );
       getRemotePie({ name: name }).then((res) => {
+        // console.log(res.data);
         setPie(res.data);
       });
     }
@@ -450,6 +460,64 @@ const Index: FC<SubprojectPageProps> = ({
           key="tab2"
         >
           <div className={styles.plot}>
+            <Row>
+              <Col xs={6} sm={8} md={24} lg={24} xl={24}>
+                <Descriptions title={'Summary'} bordered>
+                  <Descriptions.Item label="Project">
+                    {summary?.project}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="SubProject">
+                    {summary?.subproject}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Source">
+                    {summary?.source}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Tissue">
+                    {summary?.tissue}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Phenotype">
+                    {summary?.phenotype}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Description">
+                    {summary?.description}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Drug">
+                    {summary?.drug}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Cell Type">
+                    {summary?.celltype}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Total reported cell">
+                    {summary?.total_reported_cell}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Number of reported Celltype">
+                    {summary?.celltype_num}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Cell Source">
+                    {summary?.cell_source}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Technique">
+                    {summary?.technique}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Journal">
+                    {summary?.journal}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Title">
+                    {summary?.title}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Date">
+                    {summary?.date}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Contrasts">
+                    {summary?.contrasts}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Developmental Stage">
+                    {summary?.developmentalstage}
+                  </Descriptions.Item>
+                </Descriptions>
+              </Col>
+            </Row>
+            <Divider />
             <Row>
               <Col xs={4} sm={6} md={8} lg={8} xl={8}>
                 <Tsne data={tsne} title={tsnetitle} />
