@@ -1,7 +1,6 @@
 import styles from './index.less';
 import {
   Col,
-  Input,
   Row,
   Tag,
   Divider,
@@ -10,7 +9,7 @@ import {
   Typography,
   Select,
   Button,
-  // FlagOutlined
+  Popover,
 } from 'antd';
 import { FlagOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
@@ -37,6 +36,7 @@ import React, { useEffect, useState } from 'react';
 import { getRemoteTypeKeywords } from '@/pages/Search/service';
 import { history } from 'umi';
 import { API_PREFIX } from '@/common/constants';
+const { Text, Title } = Typography;
 
 interface searchKeywordsItem {
   type: string;
@@ -46,6 +46,16 @@ export default function IndexPage() {
   const [searchkey, setSearchkey] = useState<searchKeywordsItem>();
   const [options, setOptions] = useState([]);
   console.log(API_PREFIX);
+  const content = (
+    <div>
+      <p>
+        <a href={'/general'}>cell type 1</a>
+      </p>
+      <p>
+        <a href={'/general'}>cell type 2</a>
+      </p>
+    </div>
+  );
   // useEffect(() => {
   //   console.log(searchkey);
   // }, [searchkey]);
@@ -53,10 +63,10 @@ export default function IndexPage() {
     <div>
       <Row justify="center">
         <div>
-          <strong className={styles.introduction}>
-            CeDR Atlas is a knowledgebase about cellular drug response.
-          </strong>
-          <Typography>
+          <Title level={2} className={styles.introduction}>
+            CeDR Atlas: a knowledgebase about cellular drug response.
+          </Title>
+          <Text>
             Previously, we developed an algorithm, deTS (R package) to decode
             tissue specificity and built the Tissue-Specific Enrichment Analysis
             DataBase (TSEA-DB). In this work, we leveraged the fast-growing
@@ -64,7 +74,7 @@ export default function IndexPage() {
             multiple international consortiums (e.g. Human Cell Landscape, The
             Human Lung Cell Atlas) and literature resources to conduct the cell
             type-specific enrichment analysis (CSEA) modified from deTS.
-          </Typography>
+          </Text>
         </div>
       </Row>
       <Divider />
@@ -146,100 +156,148 @@ export default function IndexPage() {
                   }}
                 />
                 <div className={styles.brain}>
-                  <img
-                    src={brain}
-                    style={{ width: '35%', height: '70%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Brain'} placement="right">
+                    <img
+                      src={brain}
+                      style={{ width: '35%', height: '70%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.lung}>
-                  <img
-                    src={lung}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Lung'} placement="right">
+                    <img
+                      src={lung}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.heart}>
-                  <img
-                    src={heart}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Heart'} placement="right">
+                    <img
+                      src={heart}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.liver}>
-                  <img
-                    src={liver}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Liver'} placement="right">
+                    <img
+                      src={liver}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.blood}>
-                  <img
-                    src={blood}
-                    style={{ width: '35%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Blood'} placement="right">
+                    <img
+                      src={blood}
+                      style={{ width: '35%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.largeintestine}>
-                  <img
-                    src={largeintestine}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover
+                    content={content}
+                    title={'Large Intestine'}
+                    placement="right"
+                  >
+                    <img
+                      src={largeintestine}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.smallintestine}>
-                  <img
-                    src={smallintestine}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover
+                    content={content}
+                    title={'Small Intestine'}
+                    placement="right"
+                  >
+                    <img
+                      src={smallintestine}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.bone}>
-                  <img
-                    src={bone}
-                    style={{ width: '30%', height: '60%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Bone'} placement="right">
+                    <img
+                      src={bone}
+                      style={{ width: '30%', height: '60%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.eye}>
-                  <img
-                    src={eye}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Eye'} placement="left">
+                    <img
+                      src={eye}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.bladder}>
-                  <img
-                    src={bladder}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Bladder'} placement="left">
+                    <img
+                      src={bladder}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.pancreas}>
-                  <img
-                    src={pancreas}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover
+                    content={content}
+                    title={'Pancreas'}
+                    placement="left"
+                  >
+                    <img
+                      src={pancreas}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.spleen}>
-                  <img
-                    src={spleen}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Spleen'} placement="left">
+                    <img
+                      src={spleen}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.uterus}>
-                  <img
-                    src={uterus}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Uterus'} placement="left">
+                    <img
+                      src={uterus}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.skin}>
-                  <img
-                    src={skin}
-                    style={{ width: '36%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Skin'} placement="left">
+                    <img
+                      src={skin}
+                      style={{ width: '36%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.kidney}>
-                  <img
-                    src={kidney}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover content={content} title={'Kidney'} placement="left">
+                    <img
+                      src={kidney}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
                 <div className={styles.gallbladder}>
-                  <img
-                    src={gallbladder}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
+                  <Popover
+                    content={content}
+                    title={'Gallbladder'}
+                    placement="left"
+                  >
+                    <img
+                      src={gallbladder}
+                      style={{ width: '40%', height: '80%', display: 'block' }}
+                    />
+                  </Popover>
                 </div>
               </div>
               <div></div>
