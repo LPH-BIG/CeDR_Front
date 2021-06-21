@@ -15,6 +15,11 @@ export default function Page(props: any) {
         plotBorderWidth: null,
         plotShadow: false,
         type: 'pie',
+        style: {
+          fontFamily: 'Arial',
+          fontSize: '20px',
+          fontWeight: 'bold',
+        },
       },
       title: {
         text: 'Cell Fraction',

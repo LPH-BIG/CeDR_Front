@@ -520,7 +520,14 @@ const Index: FC<SubprojectPageProps> = ({
               <Col xs={4} sm={6} md={8} lg={8} xl={8}>
                 <Pie data={pie} />
               </Col>
-              <Col xs={4} sm={6} md={8} lg={8} xl={8}>
+              <Col
+                xs={4}
+                sm={6}
+                md={8}
+                lg={8}
+                xl={8}
+                style={{ height: '400px' }}
+              >
                 <Network network={network} />
               </Col>
             </Row>

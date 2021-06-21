@@ -49,10 +49,10 @@ export default function IndexPage() {
   const content = (
     <div>
       <p>
-        <a href={'/general'}>cell type 1</a>
+        <a href={'/general'}>phenotype 1</a>
       </p>
       <p>
-        <a href={'/general'}>cell type 2</a>
+        <a href={'/general'}>phenotype 2</a>
       </p>
     </div>
   );

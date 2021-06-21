@@ -13,6 +13,11 @@ export default function Page(props: any) {
       chart: {
         type: 'scatter',
         zoomType: 'xy',
+        style: {
+          fontFamily: 'Arial',
+          fontSize: '20px',
+          fontWeight: 'bold',
+        },
       },
       title: {
         text: 'Title',

@@ -30,6 +30,15 @@ const Index = (props: any) => {
   ];
   const [state, setState] = useState({
     chartOptions: {
+      chart: {
+        style: {
+          fontFamily: 'Arial',
+          fontSize: '20px',
+          fontWeight: 'bold',
+        },
+        borderColor: '#92cce1',
+        borderWidth: 2,
+      },
       credits: {
         enabled: false,
       },

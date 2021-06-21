@@ -9,12 +9,19 @@ HighchartNetworkgraph(Highcharts);
 export default function Page(props: any) {
   const [state, setState] = useState({
     chartOptions: {
-      credits: {
-        enabled: false,
-      },
       chart: {
         type: 'networkgraph',
-        height: '100%',
+        style: {
+          fontFamily: 'Arial',
+          fontSize: '20px',
+          fontWeight: 'bold',
+        },
+        // height: '400px',
+        // borderColor:'#92cce1',
+        // borderWidth: 2,
+      },
+      credits: {
+        enabled: false,
       },
       title: {
         text: '',
