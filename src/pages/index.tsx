@@ -49,10 +49,10 @@ export default function IndexPage() {
   const content = (
     <div>
       <p>
-        <a href={'/general'}>phenotype 1</a>
+        <a href={'/cedr/general'}>phenotype 1</a>
       </p>
       <p>
-        <a href={'/general'}>phenotype 2</a>
+        <a href={'/cedr/general'}>phenotype 2</a>
       </p>
     </div>
   );
@@ -348,7 +348,7 @@ export default function IndexPage() {
         <Col xs={2} sm={2} md={4} lg={4} xl={4}>
           <Card
             title="Resource Overview"
-            extra={<a href="/general">More</a>}
+            extra={<a href="/cedr/general">More</a>}
             style={{ width: 300 }}
             bordered={true}
             hoverable={true}
