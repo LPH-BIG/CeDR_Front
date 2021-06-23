@@ -144,7 +144,7 @@ export default function IndexPage() {
         >
           <strong style={{ fontSize: '20px' }}>Human Tissues</strong>
           <Row className={styles.human}>
-            <Col xs={4} sm={6} md={12} lg={12} xl={12} push={1}>
+            <Col xs={4} sm={6} md={12} lg={12} xl={12}>
               <div>
                 <img
                   src={human}
@@ -300,9 +300,8 @@ export default function IndexPage() {
                   </Popover>
                 </div>
               </div>
-              <div></div>
             </Col>
-            <Col xs={4} sm={6} md={10} lg={10} xl={10}></Col>
+            {/*<Col xs={4} sm={6} md={10} lg={10} xl={10}></Col>*/}
           </Row>
         </Col>
         <Col xs={4} sm={6} md={12} lg={12} xl={12}>
