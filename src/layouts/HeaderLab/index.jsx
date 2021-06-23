@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.less';
 // import img from '../../../public/logo2.png';
 import { Col, Divider, Row } from 'antd';
-import Header from '../../assets/header2.jpg';
+import Header from '../../assets/header3.jpg';
 export default () => (
   <div>
     <img src={Header} style={{ height: '300px', width: '100%' }} />

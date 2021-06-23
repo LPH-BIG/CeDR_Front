@@ -16,12 +16,17 @@ export default defineConfig({
     baseSeparator: '-',
   },
   hash: true,
+  //由于最终部署在二级域名下，因此需要配置base,outputpath,publicpath
   base: '/cedr',
   outputPath: './dist/cedr',
   publicPath: '/cedr/',
+  //动态加载能减小初次加载时长
   dynamicImport: {
     loading: '@/Loading',
   },
+  // //SSR服务端渲染和预渲染
+  // ssr:{},
+  // exportStatic:{},
   theme: {
     '@primary-color': '#0a81ab',
   },
