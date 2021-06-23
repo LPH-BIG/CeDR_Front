@@ -1,49 +1,49 @@
 //config/routes.ts
 export default [
   {
-    path: '/',
+    path: '/cedr',
     component: '@/layouts/LayoutFixed',
     routes: [
       {
-        path: '/',
+        path: '/cedr',
         component: '@/pages/index',
         breadcrumbName: 'Home',
       },
       {
-        path: '/home',
+        path: '/cedr/home',
         component: '@/pages/index',
         breadcrumbName: 'Home',
       },
       {
-        path: '/users/:id',
+        path: '/cedr/users/:id',
         component: '@/pages/users/[index]',
       },
       {
-        path: '/search',
+        path: '/cedr/search',
         component: '@/pages/Search',
         breadcrumbName: 'Search',
       },
       {
-        path: '/downloads',
+        path: '/cedr/downloads',
         component: '@/pages/Downloads',
         breadcrumbName: 'Downloads',
       },
       {
-        path: '/documentation',
+        path: '/cedr/documentation',
         component: '@/pages/Documentation',
         breadcrumbName: 'Documentation',
       },
       {
-        path: '/contact',
+        path: '/cedr/contact',
         component: '@/pages/Contact',
         breadcrumbName: 'Contact',
       },
       {
-        path: '/high/:chart',
+        path: '/cedr/high/:chart',
         component: '@/pages/Highcharts/[index]',
       },
       {
-        path: '/test',
+        path: '/cedr/test',
         component: '@/pages/Test',
       },
       // {
@@ -52,7 +52,7 @@ export default [
       //   component: '@/pages/Table',
       // },
       {
-        path: '/high/:chart',
+        path: '/cedr/high/:chart',
         component: '@/pages/Highcharts/[index]',
       },
       // {
@@ -60,16 +60,16 @@ export default [
       //   component: '@/components/Network',
       // },
       {
-        path: '/general',
+        path: '/cedr/general',
         component: '@/pages/General/[index]',
       },
       {
-        path: '/general/:type/:name',
+        path: '/cedr/general/:type/:name',
         component: '@/pages/General/[index]',
       },
       {
         // exact: true,
-        path: '/subproject/:subproject',
+        path: '/cedr/subproject/:subproject',
         component: '@/pages/Subproject/[index]',
       },
     ],

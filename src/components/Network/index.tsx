@@ -27,7 +27,7 @@ export default function Page(props: any) {
         text: 'Associations of cell type and drug',
       },
       subtitle: {
-        text: '',
+        text: 'Cell Type with Drug',
       },
       plotOptions: {
         networkgraph: {

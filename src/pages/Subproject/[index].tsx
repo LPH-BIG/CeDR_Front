@@ -428,7 +428,7 @@ const Index: FC<SubprojectPageProps> = ({
         onChange={(activeKey) => {
           // console.log(activeKey)
           if (activeKey == 'tab1') {
-            history.push('/general');
+            history.push('/cedr/general');
           }
           if (activeKey == 'tab2') {
             // console.log(activeKey);

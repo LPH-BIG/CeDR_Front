@@ -36,8 +36,8 @@ export default function (props) {
   const [selectKey, setSelectkey] = useState('1');
   useEffect(() => {
     if (
-      history.location.pathname.startsWith('/general') |
-      history.location.pathname.startsWith('/subproject')
+      history.location.pathname.startsWith('/cedr/general') |
+      history.location.pathname.startsWith('/cedr/subproject')
     ) {
       setSelectkey('2');
     }
@@ -61,7 +61,7 @@ export default function (props) {
               <Menu.Item
                 key="1"
                 onClick={() => {
-                  props.history.push('/home');
+                  props.history.push('/cedr/home');
                   setSelectkey('1');
                 }}
               >
@@ -72,7 +72,7 @@ export default function (props) {
               <Menu.Item
                 key="2"
                 onClick={() => {
-                  props.history.push('/general');
+                  props.history.push('/cedr/general');
                   setSelectkey('2');
                 }}
               >
@@ -93,7 +93,7 @@ export default function (props) {
               <Menu.Item
                 key="3"
                 onClick={() => {
-                  props.history.push('/search');
+                  props.history.push('/cedr/search');
                   setSelectkey('3');
                 }}
               >
@@ -103,7 +103,7 @@ export default function (props) {
               <Menu.Item
                 key="4"
                 onClick={() => {
-                  props.history.push('/downloads');
+                  props.history.push('/cedr/downloads');
                   setSelectkey('4');
                 }}
               >
@@ -113,7 +113,7 @@ export default function (props) {
               <Menu.Item
                 key="5"
                 onClick={() => {
-                  props.history.push('/documentation');
+                  props.history.push('/cedr/documentation');
                   setSelectkey('5');
                 }}
               >
@@ -123,7 +123,7 @@ export default function (props) {
               <Menu.Item
                 key="6"
                 onClick={() => {
-                  props.history.push('/contact');
+                  props.history.push('/cedr/contact');
                   setSelectkey('6');
                 }}
               >

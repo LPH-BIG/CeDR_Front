@@ -182,7 +182,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               //   record: record.subproject,//传的值
               // }))
               history.push(
-                '/subproject/' + record.project + ' ' + record.subproject,
+                '/cedr/subproject/' + record.project + ' ' + record.subproject,
               );
             }}
           >
