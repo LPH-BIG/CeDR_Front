@@ -19,6 +19,9 @@ export default defineConfig({
   base: '/cedr',
   outputPath: './dist/cedr',
   publicPath: '/cedr/',
+  dynamicImport: {
+    loading: '@/Loading',
+  },
   theme: {
     '@primary-color': '#0a81ab',
   },

@@ -1,5 +1,4 @@
 import { extendRequest } from '@/pages/General/service';
-// @ts-ignore
 import { API_PREFIX } from '@/common/constants';
 export const getRemoteSubproject = async ({
   pageIndex,
