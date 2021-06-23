@@ -90,7 +90,7 @@ const GeneralModel: GeneralModelType = {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/cedr/general/:type/:name').exec(
+        const match = pathToRegexp('/general/:type/:name').exec(
           location.pathname,
         );
         if (match) {

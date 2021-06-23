@@ -16,6 +16,9 @@ export default defineConfig({
     baseSeparator: '-',
   },
   hash: true,
+  base: '/cedr',
+  outputPath: './dist/cedr',
+  publicPath: '/cedr/',
   theme: {
     '@primary-color': '#0a81ab',
   },

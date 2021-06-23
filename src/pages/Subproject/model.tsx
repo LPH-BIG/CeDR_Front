@@ -88,9 +88,7 @@ const SubprojectModel: SubprojectModelType = {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/cedr/subproject/:id').exec(
-          location.pathname,
-        );
+        const match = pathToRegexp('/subproject/:id').exec(location.pathname);
         if (match) {
           const id = match[1];
           const project = id.split(' ')[0];
