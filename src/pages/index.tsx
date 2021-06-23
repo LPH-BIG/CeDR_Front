@@ -137,12 +137,12 @@ export default function IndexPage() {
         <Col
           xs={4}
           sm={6}
-          md={12}
-          lg={12}
-          xl={12}
+          md={10}
+          lg={10}
+          xl={10}
           style={{ textAlign: 'center' }}
         >
-          <strong style={{ fontSize: '20px' }}>Human Tissues</strong>
+          <strong style={{ fontSize: '20px' }}>Human</strong>
           <Row className={styles.human}>
             <Col xs={4} sm={6} md={12} lg={12} xl={12}>
               <div>
@@ -304,46 +304,98 @@ export default function IndexPage() {
             {/*<Col xs={4} sm={6} md={10} lg={10} xl={10}></Col>*/}
           </Row>
         </Col>
-        <Col xs={4} sm={6} md={12} lg={12} xl={12}>
+        <Col xs={4} sm={6} md={10} lg={10} xl={10}>
           <Wordcloud />
           <Divider />
-          <Row>
-            <Col xs={2} sm={4} md={10} lg={10} xl={10}>
-              <Card
-                title="Resource Overview"
-                extra={<a href="/general">More</a>}
-                style={{ width: 300 }}
-                bordered={true}
-                hoverable={true}
-              >
-                <p>22 Cell Lines</p>
-                <p>16 Tissues</p>
-                <p>100 Datasets</p>
-                <p>30 Diseases</p>
-              </Card>
-            </Col>
-            <Col xs={2} sm={4} md={10} lg={10} xl={10} push={2}>
-              <Card
-                title="Recent Events"
-                style={{ width: 300 }}
-                bordered={true}
-                hoverable={true}
-              >
-                <Timeline>
-                  <Timeline.Item>
-                    Create a services site 2021-06-01
-                  </Timeline.Item>
-                  <Timeline.Item>
-                    Solve initial network problems 2021-06-08
-                  </Timeline.Item>
-                  <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>
-                  <Timeline.Item>
-                    Network problems being solved 2021-06-22
-                  </Timeline.Item>
-                </Timeline>
-              </Card>
-            </Col>
-          </Row>
+          {/*<Row>*/}
+          {/*  <Col xs={2} sm={4} md={10} lg={10} xl={10}>*/}
+          {/*    <Card*/}
+          {/*      title="Resource Overview"*/}
+          {/*      extra={<a href="/general">More</a>}*/}
+          {/*      style={{ width: 300 }}*/}
+          {/*      bordered={true}*/}
+          {/*      hoverable={true}*/}
+          {/*    >*/}
+          {/*      <p>22 Cell Lines</p>*/}
+          {/*      <p>16 Tissues</p>*/}
+          {/*      <p>100 Datasets</p>*/}
+          {/*      <p>30 Diseases</p>*/}
+          {/*    </Card>*/}
+          {/*  </Col>*/}
+          {/*  <Col xs={2} sm={4} md={10} lg={10} xl={10} push={2}>*/}
+          {/*    <Card*/}
+          {/*      title="Recent Events"*/}
+          {/*      style={{ width: 300 }}*/}
+          {/*      bordered={true}*/}
+          {/*      hoverable={true}*/}
+          {/*    >*/}
+          {/*      <Timeline>*/}
+          {/*        <Timeline.Item>*/}
+          {/*          Create a services site 2021-06-01*/}
+          {/*        </Timeline.Item>*/}
+          {/*        <Timeline.Item>*/}
+          {/*          Solve initial network problems 2021-06-08*/}
+          {/*        </Timeline.Item>*/}
+          {/*        <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>*/}
+          {/*        <Timeline.Item>*/}
+          {/*          Network problems being solved 2021-06-22*/}
+          {/*        </Timeline.Item>*/}
+          {/*      </Timeline>*/}
+          {/*    </Card>*/}
+          {/*  </Col>*/}
+          {/*</Row>*/}
+        </Col>
+        <Col xs={2} sm={2} md={4} lg={4} xl={4}>
+          <Card
+            title="Resource Overview"
+            extra={<a href="/general">More</a>}
+            style={{ width: 300 }}
+            bordered={true}
+            hoverable={true}
+          >
+            <p>22 Cell Lines</p>
+            <p>16 Tissues</p>
+            <p>100 Datasets</p>
+            <p>30 Diseases</p>
+          </Card>
+          <Divider />
+          <Card
+            title="Recent Events"
+            style={{ width: 300 }}
+            bordered={true}
+            hoverable={true}
+          >
+            <Timeline>
+              <Timeline.Item>
+                Network problems being solved 2021-06-22
+              </Timeline.Item>
+              <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>
+              <Timeline.Item>
+                Solve initial network problems 2021-06-08
+              </Timeline.Item>
+              <Timeline.Item>Create a services site 2021-06-01</Timeline.Item>
+            </Timeline>
+          </Card>
+          <Divider />
+          <Card
+            title="Exteneral Link"
+            style={{ width: 300 }}
+            bordered={true}
+            hoverable={true}
+          >
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+          </Card>
         </Col>
       </Row>
     </div>
