@@ -10,6 +10,7 @@ import {
   Select,
   Button,
   Popover,
+  Space,
 } from 'antd';
 import { FlagOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
@@ -32,6 +33,11 @@ import blood from '../assets/blood.png';
 import skin from '../assets/skin.png';
 import bone from '../assets/bone.png';
 import eye from '../assets/eye.png';
+import mouse from '../assets/mouse.jpg';
+import mbrain from '../assets/mbrain.png';
+import madipose from '../assets/madipose.png';
+import mblood from '../assets/mblood.jpg';
+
 import React, { useEffect, useState } from 'react';
 import { getRemoteTypeKeywords } from '@/pages/Search/service';
 import { history } from 'umi';
@@ -137,265 +143,388 @@ export default function IndexPage() {
         <Col
           xs={4}
           sm={6}
-          md={10}
-          lg={10}
-          xl={10}
+          md={12}
+          lg={12}
+          xl={12}
           style={{ textAlign: 'center' }}
         >
           <strong style={{ fontSize: '20px' }}>Human</strong>
           <Row className={styles.human}>
-            <Col xs={4} sm={6} md={12} lg={12} xl={12}>
-              <div>
-                <img
-                  src={human}
-                  style={{
-                    width: '50%',
-                    height: '80%',
-                    display: 'block',
-                    marginLeft: '120px',
-                  }}
-                />
-                <div className={styles.brain}>
-                  <Popover content={content} title={'Brain'} placement="right">
-                    <img
-                      src={brain}
-                      style={{ width: '35%', height: '70%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.lung}>
-                  <Popover content={content} title={'Lung'} placement="right">
-                    <img
-                      src={lung}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.heart}>
-                  <Popover content={content} title={'Heart'} placement="right">
-                    <img
-                      src={heart}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.liver}>
-                  <Popover content={content} title={'Liver'} placement="right">
-                    <img
-                      src={liver}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.blood}>
-                  <Popover content={content} title={'Blood'} placement="right">
-                    <img
-                      src={blood}
-                      style={{ width: '35%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.largeintestine}>
-                  <Popover
-                    content={content}
-                    title={'Large Intestine'}
-                    placement="right"
-                  >
-                    <img
-                      src={largeintestine}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.smallintestine}>
-                  <Popover
-                    content={content}
-                    title={'Small Intestine'}
-                    placement="right"
-                  >
-                    <img
-                      src={smallintestine}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.bone}>
-                  <Popover content={content} title={'Bone'} placement="right">
-                    <img
-                      src={bone}
-                      style={{ width: '30%', height: '60%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.eye}>
-                  <Popover content={content} title={'Eye'} placement="left">
-                    <img
-                      src={eye}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.bladder}>
-                  <Popover content={content} title={'Bladder'} placement="left">
-                    <img
-                      src={bladder}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.pancreas}>
-                  <Popover
-                    content={content}
-                    title={'Pancreas'}
-                    placement="left"
-                  >
-                    <img
-                      src={pancreas}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.spleen}>
-                  <Popover content={content} title={'Spleen'} placement="left">
-                    <img
-                      src={spleen}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.uterus}>
-                  <Popover content={content} title={'Uterus'} placement="left">
-                    <img
-                      src={uterus}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.skin}>
-                  <Popover content={content} title={'Skin'} placement="left">
-                    <img
-                      src={skin}
-                      style={{ width: '36%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.kidney}>
-                  <Popover content={content} title={'Kidney'} placement="left">
-                    <img
-                      src={kidney}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
-                <div className={styles.gallbladder}>
-                  <Popover
-                    content={content}
-                    title={'Gallbladder'}
-                    placement="left"
-                  >
-                    <img
-                      src={gallbladder}
-                      style={{ width: '40%', height: '80%', display: 'block' }}
-                    />
-                  </Popover>
-                </div>
+            <div>
+              <img
+                src={human}
+                style={{
+                  width: '50%',
+                  height: '40%',
+                  display: 'block',
+                  marginLeft: '14%',
+                }}
+              />
+              <div className={styles.brain}>
+                <Popover content={content} title={'Brain'} placement="right">
+                  <img
+                    src={brain}
+                    style={{ width: '35%', height: '70%', display: 'block' }}
+                  />
+                </Popover>
               </div>
-            </Col>
-            {/*<Col xs={4} sm={6} md={10} lg={10} xl={10}></Col>*/}
+              <div className={styles.lung}>
+                <Popover content={content} title={'Lung'} placement="right">
+                  <img
+                    src={lung}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.heart}>
+                <Popover content={content} title={'Heart'} placement="right">
+                  <img
+                    src={heart}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.liver}>
+                <Popover content={content} title={'Liver'} placement="right">
+                  <img
+                    src={liver}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.blood}>
+                <Popover content={content} title={'Blood'} placement="right">
+                  <img
+                    src={blood}
+                    style={{ width: '35%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.largeintestine}>
+                <Popover
+                  content={content}
+                  title={'Large Intestine'}
+                  placement="right"
+                >
+                  <img
+                    src={largeintestine}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.smallintestine}>
+                <Popover
+                  content={content}
+                  title={'Small Intestine'}
+                  placement="right"
+                >
+                  <img
+                    src={smallintestine}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.bone}>
+                <Popover content={content} title={'Bone'} placement="right">
+                  <img
+                    src={bone}
+                    style={{ width: '30%', height: '60%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.eye}>
+                <Popover content={content} title={'Eye'} placement="left">
+                  <img
+                    src={eye}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.bladder}>
+                <Popover content={content} title={'Bladder'} placement="left">
+                  <img
+                    src={bladder}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.pancreas}>
+                <Popover content={content} title={'Pancreas'} placement="left">
+                  <img
+                    src={pancreas}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.spleen}>
+                <Popover content={content} title={'Spleen'} placement="left">
+                  <img
+                    src={spleen}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.uterus}>
+                <Popover content={content} title={'Uterus'} placement="left">
+                  <img
+                    src={uterus}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.skin}>
+                <Popover content={content} title={'Skin'} placement="left">
+                  <img
+                    src={skin}
+                    style={{ width: '36%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.kidney}>
+                <Popover content={content} title={'Kidney'} placement="left">
+                  <img
+                    src={kidney}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.gallbladder}>
+                <Popover
+                  content={content}
+                  title={'Gallbladder'}
+                  placement="left"
+                >
+                  <img
+                    src={gallbladder}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+            </div>
+          </Row>
+          <Divider />
+          <Row>
+            <Wordcloud />
           </Row>
         </Col>
-        <Col xs={4} sm={6} md={10} lg={10} xl={10}>
-          <Wordcloud />
-          <Divider />
-          {/*<Row>*/}
-          {/*  <Col xs={2} sm={4} md={10} lg={10} xl={10}>*/}
-          {/*    <Card*/}
-          {/*      title="Resource Overview"*/}
-          {/*      extra={<a href="/general">More</a>}*/}
-          {/*      style={{ width: 300 }}*/}
-          {/*      bordered={true}*/}
-          {/*      hoverable={true}*/}
-          {/*    >*/}
-          {/*      <p>22 Cell Lines</p>*/}
-          {/*      <p>16 Tissues</p>*/}
-          {/*      <p>100 Datasets</p>*/}
-          {/*      <p>30 Diseases</p>*/}
-          {/*    </Card>*/}
-          {/*  </Col>*/}
-          {/*  <Col xs={2} sm={4} md={10} lg={10} xl={10} push={2}>*/}
-          {/*    <Card*/}
-          {/*      title="Recent Events"*/}
-          {/*      style={{ width: 300 }}*/}
-          {/*      bordered={true}*/}
-          {/*      hoverable={true}*/}
-          {/*    >*/}
-          {/*      <Timeline>*/}
-          {/*        <Timeline.Item>*/}
-          {/*          Create a services site 2021-06-01*/}
-          {/*        </Timeline.Item>*/}
-          {/*        <Timeline.Item>*/}
-          {/*          Solve initial network problems 2021-06-08*/}
-          {/*        </Timeline.Item>*/}
-          {/*        <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>*/}
-          {/*        <Timeline.Item>*/}
-          {/*          Network problems being solved 2021-06-22*/}
-          {/*        </Timeline.Item>*/}
-          {/*      </Timeline>*/}
-          {/*    </Card>*/}
-          {/*  </Col>*/}
-          {/*</Row>*/}
-        </Col>
-        <Col xs={2} sm={2} md={4} lg={4} xl={4}>
-          <Card
-            title="Resource Overview"
-            extra={<a href="/cedr/general">More</a>}
-            style={{ width: 300 }}
-            bordered={true}
-            hoverable={true}
-          >
-            <p>22 Cell Lines</p>
-            <p>16 Tissues</p>
-            <p>100 Datasets</p>
-            <p>30 Diseases</p>
-          </Card>
-          <Divider />
-          <Card
-            title="Recent Events"
-            style={{ width: 300 }}
-            bordered={true}
-            hoverable={true}
-          >
-            <Timeline>
-              <Timeline.Item>
-                Network problems being solved 2021-06-22
-              </Timeline.Item>
-              <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>
-              <Timeline.Item>
-                Solve initial network problems 2021-06-08
-              </Timeline.Item>
-              <Timeline.Item>Create a services site 2021-06-01</Timeline.Item>
-            </Timeline>
-          </Card>
-          <Divider />
-          <Card
-            title="Exteneral Link"
-            style={{ width: 300 }}
-            bordered={true}
-            hoverable={true}
-          >
-            <p>
-              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
-            </p>
-            <p>
-              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
-            </p>
-            <p>
-              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
-            </p>
-            <p>
-              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
-            </p>
-          </Card>
+        <Col
+          xs={4}
+          sm={6}
+          md={12}
+          lg={12}
+          xl={12}
+          style={{ textAlign: 'center' }}
+        >
+          <strong style={{ fontSize: '20px' }}>Mouse</strong>
+          <Row className={styles.mouse}>
+            <div>
+              <img
+                src={mouse}
+                style={{
+                  width: '45%',
+                  height: '40%',
+                  display: 'block',
+                  marginLeft: '18%',
+                  marginTop: '80px',
+                }}
+              />
+              <div className={styles.brain}>
+                <Popover content={content} title={'Brain'} placement="right">
+                  <img
+                    src={brain}
+                    style={{ width: '35%', height: '70%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.lung}>
+                <Popover content={content} title={'Lung'} placement="right">
+                  <img
+                    src={lung}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.heart}>
+                <Popover content={content} title={'Heart'} placement="right">
+                  <img
+                    src={heart}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.liver}>
+                <Popover content={content} title={'Liver'} placement="right">
+                  <img
+                    src={liver}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.blood}>
+                <Popover content={content} title={'Blood'} placement="right">
+                  <img
+                    src={blood}
+                    style={{ width: '35%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.largeintestine}>
+                <Popover
+                  content={content}
+                  title={'Large Intestine'}
+                  placement="right"
+                >
+                  <img
+                    src={largeintestine}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.smallintestine}>
+                <Popover
+                  content={content}
+                  title={'Small Intestine'}
+                  placement="right"
+                >
+                  <img
+                    src={smallintestine}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.bone}>
+                <Popover content={content} title={'Bone'} placement="right">
+                  <img
+                    src={bone}
+                    style={{ width: '30%', height: '60%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.eye}>
+                <Popover content={content} title={'Eye'} placement="left">
+                  <img
+                    src={eye}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.bladder}>
+                <Popover content={content} title={'Bladder'} placement="left">
+                  <img
+                    src={bladder}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.pancreas}>
+                <Popover content={content} title={'Pancreas'} placement="left">
+                  <img
+                    src={pancreas}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.spleen}>
+                <Popover content={content} title={'Spleen'} placement="left">
+                  <img
+                    src={spleen}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.uterus}>
+                <Popover content={content} title={'Uterus'} placement="left">
+                  <img
+                    src={uterus}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.skin}>
+                <Popover content={content} title={'Skin'} placement="left">
+                  <img
+                    src={skin}
+                    style={{ width: '36%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.kidney}>
+                <Popover content={content} title={'Kidney'} placement="left">
+                  <img
+                    src={kidney}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.gallbladder}>
+                <Popover
+                  content={content}
+                  title={'Gallbladder'}
+                  placement="left"
+                >
+                  <img
+                    src={gallbladder}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+            </div>
+          </Row>
+          {/*<Divider/>*/}
+          <Row style={{ marginTop: '10%' }}>
+            <Space>
+              <Card
+                title="Resource Overview"
+                extra={<a href="/cedr/general">More</a>}
+                style={{ width: 300 }}
+                bordered={true}
+                hoverable={true}
+              >
+                <p>22 Cell Lines</p>
+                <p>16 Tissues</p>
+                <p>100 Datasets</p>
+                <p>30 Diseases</p>
+              </Card>
+              <Card
+                title="Recent Events"
+                style={{ width: 300 }}
+                bordered={true}
+                hoverable={true}
+              >
+                <Timeline>
+                  <Timeline.Item>
+                    Network problems being solved 2021-06-22
+                  </Timeline.Item>
+                  <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>
+                  <Timeline.Item>
+                    Solve initial network problems 2021-06-08
+                  </Timeline.Item>
+                  <Timeline.Item>
+                    Create a services site 2021-06-01
+                  </Timeline.Item>
+                </Timeline>
+              </Card>
+            </Space>
+            {/*<Card*/}
+            {/*  title="Exteneral Link"*/}
+            {/*  style={{ width: 300 }}*/}
+            {/*  bordered={true}*/}
+            {/*  hoverable={true}*/}
+            {/*>*/}
+            {/*  <p>*/}
+            {/*    <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>*/}
+            {/*  </p>*/}
+            {/*  <p>*/}
+            {/*    <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>*/}
+            {/*  </p>*/}
+            {/*  <p>*/}
+            {/*    <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>*/}
+            {/*  </p>*/}
+            {/*  <p>*/}
+            {/*    <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>*/}
+            {/*  </p>*/}
+            {/*</Card>*/}
+          </Row>
         </Col>
       </Row>
     </div>

@@ -8,6 +8,8 @@ import {
   Row,
   Select,
   Tabs,
+  Space,
+  Image,
 } from 'antd';
 import { history } from '@@/core/history';
 
@@ -30,6 +32,7 @@ import { DrugItem, SubprojectItem } from '@/pages/Subproject/data';
 import { getRemoteKeywords } from '@/pages/General/service';
 import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DetailIcon } from '@/components/Icons';
+import Title from 'antd/es/typography/Title';
 interface SubprojectPageProps {
   subproject: SubprojectState;
   dispatch: Dispatch;
@@ -91,10 +94,35 @@ const Index: FC<SubprojectPageProps> = ({
 
   const columns = [
     {
-      title: 'Order',
-      dataIndex: 'index',
-      valueType: 'index',
-      width: 58,
+      // title: 'Order',
+      title: 'Association ID',
+      // dataIndex: 'index',
+      dataIndex: 'id',
+      // valueType: 'index',
+      // width: 58,
+      search: false,
+      render: (text, record, index) => {
+        // console.log(record)
+        return (
+          <span>
+            <a
+              onClick={async () => {
+                // console.log("click");
+                setRecord(record);
+                setDisabled(false);
+                setActivekey('tab3');
+                // console.log(record.inst);
+                getRemoteDrug({ name: record.inst }).then((res) => {
+                  setDruginformation(res.data);
+                });
+              }}
+            >
+              {' '}
+              <Space>{record.id}</Space>
+            </a>
+          </span>
+        );
+      },
     },
     {
       title: 'Cell Type',
@@ -688,6 +716,23 @@ const Index: FC<SubprojectPageProps> = ({
               search={false}
               headerTitle={'Gene Information'}
             />
+            <Row>
+              <Col>
+                <Image.PreviewGroup>
+                  <Title level={2}>GSEA:</Title>
+                  <Image
+                    width={600}
+                    src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                  />
+                  <Divider />
+                  <Title level={2}>GSEA:</Title>
+                  <Image
+                    width={600}
+                    src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
+                  />
+                </Image.PreviewGroup>
+              </Col>
+            </Row>
           </div>
         </TabPane>
       </Tabs>
