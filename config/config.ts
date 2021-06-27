@@ -8,6 +8,10 @@ export default defineConfig({
     immer: true,
     hmr: false,
   },
+  // antd: {
+  //   dark: true,
+  //   compact: true,
+  // },
   locale: {
     default: 'en-US',
     antd: false,
