@@ -14,6 +14,7 @@ import {
 } from 'antd';
 import { FlagOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
+import { HumanIcon } from '../components/Icons';
 import Wordcloud from '../components/wordcloud';
 import human from '../assets/human1.jpg';
 import heart from '../assets/heart.png';
@@ -70,7 +71,7 @@ export default function IndexPage() {
       <Row justify="center">
         <div>
           <Title level={2} className={styles.introduction}>
-            CeDR Atlas: a knowledgebase about cellular drug response.
+            CeDR Atlas: a knowledgebase of cellular drug response
           </Title>
           <Text>
             Previously, we developed an algorithm, deTS (R package) to decode
@@ -85,7 +86,7 @@ export default function IndexPage() {
       </Row>
       <Divider />
       <Row justify="center">
-        <Col md={12} lg={12} xl={12}>
+        <Col xs={18} sm={18} md={12} lg={12} xl={12}>
           <Select
             style={{ width: '70%' }}
             placeholder="input and select a keyword"
@@ -141,17 +142,26 @@ export default function IndexPage() {
       <Divider />
       <Row>
         <Col
-          md={12}
-          // lg={12}
-          // xl={12}
+          xs={18}
+          sm={18}
+          md={16}
+          lg={16}
+          xl={16}
           style={{
             textAlign: 'center',
-            borderStyle: 'dashed',
-            borderWidth: 'medium',
-            borderColor: '#4ecca3',
+            // borderStyle: 'dashed',
+            // borderWidth: 'medium',
+            // borderColor: '#4ecca3',
           }}
         >
-          <strong style={{ fontSize: '20px' }}>Human</strong>
+          {/*<strong style={{ fontSize: '20px' }}>Human</strong>*/}
+          <Row>
+            <Space>
+              <HumanIcon />
+              <HumanIcon />
+              <HumanIcon />
+            </Space>
+          </Row>
           <Row className={styles.human}>
             <div>
               <img
@@ -309,6 +319,58 @@ export default function IndexPage() {
           <Row style={{ marginTop: '30px' }}>
             <Wordcloud />
           </Row>
+        </Col>
+        <Col xs={5} sm={5} md={7} lg={7} xl={7} push={1}>
+          <Card
+            title="Resource Overview"
+            extra={<a href="/cedr/general">More</a>}
+            style={{ width: 300 }}
+            bordered={true}
+            hoverable={true}
+          >
+            <p>22 Cell Lines</p>
+            <p>16 Tissues</p>
+            <p>100 Datasets</p>
+            <p>30 Diseases</p>
+          </Card>
+          <Divider />
+          <Card
+            title="Recent Events"
+            style={{ width: 300 }}
+            bordered={true}
+            hoverable={true}
+          >
+            <Timeline>
+              <Timeline.Item>
+                Network problems being solved 2021-06-22
+              </Timeline.Item>
+              <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>
+              <Timeline.Item>
+                Solve initial network problems 2021-06-08
+              </Timeline.Item>
+              <Timeline.Item>Create a services site 2021-06-01</Timeline.Item>
+            </Timeline>
+          </Card>
+          <Divider />
+          <Card
+            title="Exteneral Link"
+            style={{ width: 300 }}
+            bordered={true}
+            hoverable={true}
+          >
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+            <p>
+              <a href={'https://www.ncbi.nlm.nih.gov/geo'}>GEO</a>
+            </p>
+          </Card>
         </Col>
         {/*<Col*/}
         {/*  md={12}*/}

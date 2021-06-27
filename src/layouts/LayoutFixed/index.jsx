@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.less';
-import { Layout, Menu, Breadcrumb, BackTop } from 'antd';
+import { Layout, Menu, Breadcrumb, BackTop, Typography } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
 import HeaderLab from '../HeaderLab';
@@ -21,7 +21,7 @@ import {
   DownOutlined,
 } from '@ant-design/icons';
 import { Link } from 'umi';
-
+const { Title } = Typography;
 export default function (props) {
   const itemRender = (route, params, routes, paths) => {
     const last = routes.indexOf(route) === routes.length - 1;
@@ -49,7 +49,6 @@ export default function (props) {
       <div id="components-layout-demo-fixed">
         <Layout>
           <Header style={{ zIndex: 1, width: '100%' }}>
-            <div className="logo" />
             <Menu
               theme="dark"
               mode="horizontal"
@@ -66,7 +65,8 @@ export default function (props) {
                 }}
               >
                 <HomeOutlined />
-                Home
+                &nbsp;
+                <strong style={{ color: '#fff' }}>Home</strong>
               </Menu.Item>
 
               <Menu.Item
@@ -77,7 +77,8 @@ export default function (props) {
                 }}
               >
                 <EyeOutlined />
-                Browse
+                &nbsp;
+                <strong style={{ color: '#fff' }}>Browse</strong>
               </Menu.Item>
               {/*<SubMenu key="2" icon={<EyeOutlined />} title={<><span>Browse </span><DownOutlined /></>}>*/}
 
@@ -98,7 +99,8 @@ export default function (props) {
                 }}
               >
                 <SearchOutlined />
-                Search
+                &nbsp;
+                <strong style={{ color: '#fff' }}>Search</strong>
               </Menu.Item>
               <Menu.Item
                 key="4"
@@ -108,7 +110,8 @@ export default function (props) {
                 }}
               >
                 <DownloadOutlined />
-                Downloads
+                &nbsp;
+                <strong style={{ color: '#fff' }}>Downloads</strong>
               </Menu.Item>
               <Menu.Item
                 key="5"
@@ -118,7 +121,8 @@ export default function (props) {
                 }}
               >
                 <FileTextOutlined />
-                Documentation
+                &nbsp;
+                <strong style={{ color: '#fff' }}>Documentation</strong>
               </Menu.Item>
               <Menu.Item
                 key="6"
@@ -128,7 +132,8 @@ export default function (props) {
                 }}
               >
                 <ContactIcon />
-                Contact
+                &nbsp;
+                <strong style={{ color: '#fff' }}>Contact</strong>
               </Menu.Item>
             </Menu>
           </Header>

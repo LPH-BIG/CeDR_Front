@@ -1,4 +1,14 @@
 .container {
+  min-width: 780px;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #fff;
+  @media screen and (max-width: 1200px) {
+    .container {
+      width: 1200px;
+    }
+  }
   :global {
     //padding-right: 0px;
     //padding-left: 0px;
@@ -6,8 +16,13 @@
     //margin-right: auto;
     [data-theme='dark'] .site-layout .site-layout-background {
       background: #141414;
+      //background: #fff;
     }
     .site-layout {
+      //max-width:1280px;
+      //min-width: 780px;
+      //margin-left:auto;
+      //margin-right:auto;
       margin-top: 0px;
       padding: 0 50px;
       background: #fff;
@@ -22,4 +37,8 @@
 }
 .site-layout .site-layout-background {
   background: #fff;
+}
+.headercontent {
+  font-size: larger;
+  font-family: Arial;
 }

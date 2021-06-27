@@ -108,6 +108,24 @@ const DetailsSvg = () => (
     ></path>
   </svg>
 );
+const humanSvg = () => (
+  <svg
+    t="1624797642034"
+    className="icon"
+    viewBox="0 0 1024 1024"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    p-id="4476"
+    width="100"
+    height="100"
+  >
+    <path
+      d="M533.333333 85.333333c46.933333 0 85.333333 38.4 85.333334 85.333334s-38.4 85.333333-85.333334 85.333333-85.333333-38.4-85.333333-85.333333 38.4-85.333333 85.333333-85.333334M469.333333 298.666667h128c46.933333 0 85.333333 38.4 85.333334 85.333333v234.666667h-64V938.666667h-170.666667v-320H384V384c0-46.933333 38.4-85.333333 85.333333-85.333333z"
+      p-id="4477"
+      fill="#1296db"
+    ></path>
+  </svg>
+);
 export const CellIcon = (props) => <Icon component={CellSvg} {...props} />;
 export const DrugIcon = (props) => <Icon component={DrugSvg} {...props} />;
 export const TissueIcon = (props) => <Icon component={TissueSvg} {...props} />;
@@ -117,3 +135,4 @@ export const ContactIcon = (props) => (
 export const StatusIcon = (props) => <Icon component={StatusSvg} {...props} />;
 
 export const DetailIcon = (props) => <Icon component={DetailsSvg} {...props} />;
+export const HumanIcon = (props) => <Icon component={humanSvg} {...props} />;
