@@ -86,9 +86,13 @@ export const getRemoteTsne = async ({ name }: { name: string }) => {
 export const getRemoteNetwork = async ({
   project,
   subproject,
+  celltype,
+  drug,
 }: {
-  project: string;
-  subproject: string;
+  project: string | undefined;
+  subproject: string | undefined;
+  celltype: string | undefined;
+  drug: string | undefined;
 }) => {
   return extendRequest(API_PREFIX + '/network', {
     method: 'get',

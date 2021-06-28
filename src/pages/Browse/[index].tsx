@@ -5,13 +5,13 @@ import {
   SubprojectState,
 } from '@@/plugin-dva/connect';
 import ProTable from '@ant-design/pro-table';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { connect, history } from 'umi';
-import { getRemoteDrug } from '@/pages/Subproject/service';
-import { Select, Space } from 'antd';
+import { getRemoteDrug, getRemoteNetwork } from '@/pages/Subproject/service';
+import { Col, Select, Space, Row } from 'antd';
 import { getRemoteKeywords } from '@/pages/General/service';
 import { SubprojectItem } from '@/pages/Subproject/data';
-
+import Network from '@/components/Network';
 interface BrowsePageProps {
   browse: SubprojectState;
   dispatch: Dispatch;
@@ -216,45 +216,33 @@ const Index: FC<BrowsePageProps> = ({
       ellipsis: true,
     },
   ];
-  const paginationHandler = (page: number, pageSize?: number) => {
-    dispatch({
-      type: 'subproject/getRemote',
-      payload: {
-        pageIndex: page,
-        pageSize: pageSize ? pageSize : browse.meta.pageSize,
-        // project: subproject.data[0].project,
-        // subproject: subproject.data[0].subproject,
-        // overlapgene: keywords.overlapgene,
-        // celltype: keywords.celltype,
-        // drug: keywords.drug,
-      },
+  const [network, setNetwork] = useState([]);
+  useEffect(() => {
+    //TODO://从后端拿网络图数据
+    console.log(history.location.pathname);
+    getRemoteNetwork({ celltype: undefined }).then((res) => {
+      // console.log(res.data);
+      setNetwork(res.data);
     });
-  };
-  const sizeChangeHandler = (current: number, size: number) => {
-    dispatch({
-      type: 'subproject/getRemote',
-      payload: {
-        pageIndex: current,
-        pageSize: size,
-        // project: subproject.data[0].project,
-        // subproject: subproject.data[0].subproject,
-        // overlapgene: keywords.overlapgene,
-        // celltype: keywords.celltype,
-        // drug: keywords.drug,
-      },
-    });
-  };
-
+  }, [browse.data]);
   return (
     <div>
-      <ProTable<SubprojectItem>
-        columns={columns}
-        dataSource={browse.data}
-        loading={browseListLoading}
-        rowKey={(record) => record.id}
-        search={false}
-        // pagination={false}
-      />
+      <Row>
+        <Network network={network} />
+      </Row>
+      <Row justify={'center'}>
+        <Col md={20}>
+          <div>
+            <ProTable<SubprojectItem>
+              columns={columns}
+              dataSource={browse.data}
+              loading={browseListLoading}
+              rowKey={(record) => record.id}
+              search={false}
+            />
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 };
