@@ -658,11 +658,11 @@ const Index: FC<SubprojectPageProps> = ({
         >
           <div>
             <Row>
-              <Col xs={18} sm={18} md={18} lg={12} xl={12}>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Descriptions
                   title={'Drug Information'}
                   bordered
-                  style={{ marginLeft: '5%' }}
+                  style={{ marginLeft: '2%' }}
                 >
                   <Descriptions.Item label="Name">
                     {druginformation.name}
@@ -720,8 +720,10 @@ const Index: FC<SubprojectPageProps> = ({
               search={false}
               headerTitle={'Gene Information'}
             />
+            <Divider />
             <Row>
-              {/*<Col>*/}
+              <strong style={{ fontSize: '18px' }}>GSEA analysis</strong>
+              <Divider />
               <Image.PreviewGroup>
                 <Space>
                   <Image
@@ -735,7 +737,6 @@ const Index: FC<SubprojectPageProps> = ({
                   />
                 </Space>
               </Image.PreviewGroup>
-              {/*</Col>*/}
             </Row>
           </div>
         </TabPane>

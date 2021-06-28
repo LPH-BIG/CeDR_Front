@@ -92,8 +92,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 1,
-                  pageSize: 10,
+                  pageIndex: 0,
+                  pageSize: 0,
                   source: name,
                 },
               });
@@ -104,8 +104,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 1,
-                  pageSize: 10,
+                  pageIndex: 0,
+                  pageSize: 0,
                   tissue: name,
                 },
               });
@@ -116,8 +116,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 1,
-                  pageSize: 10,
+                  pageIndex: 0,
+                  pageSize: 0,
                   phenotype: name,
                 },
               });
@@ -128,8 +128,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 1,
-                  pageSize: 10,
+                  pageIndex: 0,
+                  pageSize: 0,
                   celltype: name,
                 },
               });
@@ -140,8 +140,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 1,
-                  pageSize: 10,
+                  pageIndex: 0,
+                  pageSize: 0,
                   drug: name,
                 },
               });
@@ -152,8 +152,8 @@ const BrowseModel: BrowseModelType = {
           dispatch({
             type: 'getRemote',
             payload: {
-              pageIndex: 1,
-              pageSize: 10,
+              pageIndex: 0,
+              pageSize: 0,
             },
           });
         }

@@ -37,7 +37,8 @@ export default function (props) {
   useEffect(() => {
     if (
       history.location.pathname.startsWith('/general') |
-      history.location.pathname.startsWith('/subproject')
+      history.location.pathname.startsWith('/subproject') |
+      history.location.pathname.startsWith('/browse')
     ) {
       setSelectkey('2');
     }

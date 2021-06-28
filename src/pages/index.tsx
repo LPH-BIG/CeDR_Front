@@ -45,7 +45,7 @@ import { history } from 'umi';
 import { API_PREFIX } from '@/common/constants';
 const { Text, Title } = Typography;
 
-interface searchKeywordsItem {
+export interface searchKeywordsItem {
   type: string;
   name: string;
 }
@@ -213,8 +213,8 @@ export default function IndexPage() {
               <img
                 src={human}
                 style={{
-                  width: '50%',
-                  height: '40%',
+                  width: '350px',
+                  height: '550px',
                   display: 'block',
                   marginLeft: '18%',
                 }}
@@ -370,8 +370,8 @@ export default function IndexPage() {
               <img
                 src={mouse}
                 style={{
-                  width: '45%',
-                  height: '40%',
+                  width: '350px',
+                  height: '550px',
                   display: 'block',
                   marginLeft: '18%',
                   marginTop: '80px',
