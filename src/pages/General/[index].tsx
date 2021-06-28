@@ -353,7 +353,14 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   return (
     <div>
       <Tabs defaultActiveKey={'tab1'}>
-        <TabPane tab={<span>General Tables</span>} key="tab1">
+        <TabPane
+          tab={
+            <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
+              General Tables
+            </span>
+          }
+          key="tab1"
+        >
           <div>
             <ProTable<GeneralItem>
               columns={columns}
@@ -412,8 +419,24 @@ const GeneralListPage: FC<GeneralPageProps> = ({
             />
           </div>
         </TabPane>
-        <TabPane tab={<span>Subproject</span>} key="tab2" disabled></TabPane>
-        <TabPane tab={<span>Cell Drug Association</span>} key="tab3" disabled>
+        <TabPane
+          tab={
+            <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
+              Subproject
+            </span>
+          }
+          key="tab2"
+          disabled
+        ></TabPane>
+        <TabPane
+          tab={
+            <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
+              Cell Drug Association
+            </span>
+          }
+          key="tab3"
+          disabled
+        >
           Cell Drug Association
         </TabPane>
       </Tabs>

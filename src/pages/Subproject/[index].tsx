@@ -466,7 +466,7 @@ const Index: FC<SubprojectPageProps> = ({
       >
         <TabPane
           tab={
-            <span>
+            <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
               {/*<AppleOutlined />*/}
               General Tables
             </span>
@@ -475,7 +475,7 @@ const Index: FC<SubprojectPageProps> = ({
         ></TabPane>
         <TabPane
           tab={
-            <span>
+            <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
               {/*<AndroidOutlined />*/}
               Subproject
             </span>
@@ -648,7 +648,7 @@ const Index: FC<SubprojectPageProps> = ({
         </TabPane>
         <TabPane
           tab={
-            <span>
+            <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
               {/*<AndroidOutlined />*/}
               Cell Drug Association
             </span>
@@ -658,8 +658,12 @@ const Index: FC<SubprojectPageProps> = ({
         >
           <div>
             <Row>
-              <Col xs={4} sm={6} md={8} lg={12} xl={12}>
-                <Descriptions title={'Drug Information'} bordered>
+              <Col xs={18} sm={18} md={18} lg={12} xl={12}>
+                <Descriptions
+                  title={'Drug Information'}
+                  bordered
+                  style={{ marginLeft: '5%' }}
+                >
                   <Descriptions.Item label="Name">
                     {druginformation.name}
                   </Descriptions.Item>
@@ -717,21 +721,21 @@ const Index: FC<SubprojectPageProps> = ({
               headerTitle={'Gene Information'}
             />
             <Row>
-              <Col>
-                <Image.PreviewGroup>
-                  <Title level={2}>GSEA:</Title>
+              {/*<Col>*/}
+              <Image.PreviewGroup>
+                <Space>
                   <Image
-                    width={600}
+                    width={'50%'}
                     src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
                   />
-                  <Divider />
-                  <Title level={2}>GSEA:</Title>
+                  {/*<Title level={2}>GSEA drug:</Title>*/}
                   <Image
-                    width={600}
+                    width={'50%'}
                     src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
                   />
-                </Image.PreviewGroup>
-              </Col>
+                </Space>
+              </Image.PreviewGroup>
+              {/*</Col>*/}
             </Row>
           </div>
         </TabPane>

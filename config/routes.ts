@@ -72,6 +72,14 @@ export default [
         path: '/subproject/:subproject',
         component: '@/pages/Subproject/[index]',
       },
+      {
+        path: '/browse',
+        component: '@/pages/Browse/[index]',
+      },
+      {
+        path: '/browse/:type/:name',
+        component: '@/pages/Browse/[index]',
+      },
     ],
   },
 ];

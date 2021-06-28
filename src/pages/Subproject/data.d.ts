@@ -16,6 +16,8 @@ export interface SubprojectItem {
   spvalue: number;
   overlapgenenum: number;
   overlapgene: string;
+  photocelltype: string;
+  photodrug: string;
 }
 export interface DrugItem {
   id: number;

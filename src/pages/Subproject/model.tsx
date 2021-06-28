@@ -13,7 +13,7 @@ export interface SubprojectState {
   status: number;
   message: string;
 }
-interface SubprojectModelType {
+export interface SubprojectModelType {
   namespace: 'subproject';
   state: SubprojectState;
   reducers: {
