@@ -84,6 +84,8 @@ const BrowseModel: BrowseModelType = {
         if (match) {
           const type = match[1];
           const name = match[2];
+          console.log(type);
+          console.log(name);
           switch (type) {
             case 'source': {
               dispatch({

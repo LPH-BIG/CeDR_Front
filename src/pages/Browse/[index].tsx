@@ -4,11 +4,13 @@ import {
   Loading,
   SubprojectState,
 } from '@@/plugin-dva/connect';
+import ProTable from '@ant-design/pro-table';
 import React, { FC } from 'react';
 import { connect } from 'umi';
 import { getRemoteDrug } from '@/pages/Subproject/service';
 import { Select, Space } from 'antd';
 import { getRemoteKeywords } from '@/pages/General/service';
+import { SubprojectItem } from '@/pages/Subproject/data';
 
 interface BrowsePageProps {
   browse: SubprojectState;
@@ -29,28 +31,41 @@ const Index: FC<BrowsePageProps> = ({
       // valueType: 'index',
       // width: 58,
       search: false,
-      render: (text, record, index) => {
-        // console.log(record)
-        return (
-          <span>
-            <a
-              onClick={async () => {
-                // console.log("click");
-                // setRecord(record);
-                // setDisabled(false);
-                // setActivekey('tab3');
-                // console.log(record.inst);
-                // getRemoteDrug({ name: record.inst }).then((res) => {
-                //   setDruginformation(res.data);
-                // });
-              }}
-            >
-              {/*{' '}*/}
-              <Space>{record.id}</Space>
-            </a>
-          </span>
-        );
-      },
+    },
+    {
+      title: 'Source',
+      dataIndex: 'source',
+      valueType: 'text',
+      hideInForm: true,
+      // width: 200,
+    },
+    {
+      title: 'Project',
+      dataIndex: 'project',
+      valueType: 'text',
+      hideInForm: true,
+      // width: 200,
+    },
+    {
+      title: 'subproject',
+      dataIndex: 'subproject',
+      valueType: 'text',
+      hideInForm: true,
+      // width: 200,
+    },
+    {
+      title: 'tissue',
+      dataIndex: 'tissue',
+      valueType: 'text',
+      hideInForm: true,
+      // width: 200,
+    },
+    {
+      title: 'phenotype',
+      dataIndex: 'phenotype',
+      valueType: 'text',
+      hideInForm: true,
+      // width: 200,
     },
     {
       title: 'Cell Type',
@@ -58,107 +73,19 @@ const Index: FC<BrowsePageProps> = ({
       key: 'celltype',
       valueType: 'text',
       hideInForm: true,
-      width: 200,
-      // renderFormItem: () => {
-      //   const options = celltype.map((item) => (
-      //     <Select.Option key={item} value={item} type={item}>
-      //       {item}
-      //     </Select.Option>
-      //   ));
-      //   return (
-      //     <Select
-      //       key={'celltypeSelect'}
-      //       showSearch={true}
-      //       placeholder={'input and select a source'}
-      //       filterOption={false}
-      //       onSearch={async (value) => {
-      //         // console.log(value);
-      //         getRemoteKeywords({
-      //           project: subproject.data[0].project,
-      //           subproject: subproject.data[0].subproject,
-      //           celltype: value,
-      //           drug: keywords.drug,
-      //           overlapgene: keywords.overlapgene,
-      //         }).then((res) => {
-      //           setCelltype(res.data.celltype);
-      //         });
-      //       }}
-      //       onChange={(value, option) => {
-      //         setKeywords({ ...keywords, celltype: value });
-      //       }}
-      //     >
-      //       {options}
-      //     </Select>
-      //   );
-      // },
-      // // search: false,
+      // width: 200,
     },
     {
       title: 'Drug',
-      dataIndex: 'inst',
-      key: 'inst',
+      dataIndex: 'drug',
       valueType: 'text',
       hideInForm: true,
-      // renderFormItem: () => {
-      //   const options = drug.map((item) => (
-      //     <Select.Option key={item} value={item} type={item}>
-      //       {item}
-      //     </Select.Option>
-      //   ));
-      //   return (
-      //     <Select
-      //       key={'drugSelect'}
-      //       showSearch={true}
-      //       placeholder={'input and select a drug'}
-      //       filterOption={false}
-      //       onSearch={async (value) => {
-      //         // console.log(value);
-      //         getRemoteKeywords({
-      //           project: subproject.data[0].project,
-      //           subproject: subproject.data[0].subproject,
-      //           celltype: keywords.celltype,
-      //           drug: value,
-      //           overlapgene: keywords.overlapgene,
-      //         }).then((res) => {
-      //           // console.log(res);
-      //           setDrug(res.data.drug);
-      //         });
-      //       }}
-      //       onChange={(value, option) => {
-      //         setKeywords({ ...keywords, drug: value });
-      //       }}
-      //     >
-      //       {options}
-      //     </Select>
-      //   );
-      // },
     },
     {
       title: 'p-value 1',
       dataIndex: 'pvalue1',
       key: 'pvalue1',
       valueType: 'text',
-      // search: false,
-      // renderFormItem: () => {
-      //   const options = pcutoff.map((item) => (
-      //     <Select.Option key={item} value={item} type={item}>
-      //       {item}
-      //     </Select.Option>
-      //   ));
-      //   return (
-      //     <Select
-      //       key={'pcutoffSelect'}
-      //       showSearch={true}
-      //       placeholder={'select a p-value cutoff'}
-      //       filterOption={false}
-      //       onChange={(value, option) => {
-      //         setKeywords({ ...keywords, pcutoff: value });
-      //       }}
-      //     >
-      //       {options}
-      //     </Select>
-      //   );
-      // },
     },
     {
       title: 'Odds Ratio 1',
@@ -167,26 +94,6 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       // search: false,
       ellipsis: true,
-      // renderFormItem: () => {
-      //   const options = orcutoff.map((item) => (
-      //     <Select.Option key={item} value={item} type={item}>
-      //       {item}
-      //     </Select.Option>
-      //   ));
-      //   return (
-      //     <Select
-      //       key={'pcutoffSelect'}
-      //       showSearch={true}
-      //       placeholder={'select a Odds Ratio cutoff'}
-      //       filterOption={false}
-      //       onChange={(value, option) => {
-      //         setKeywords({ ...keywords, orcutoff: value });
-      //       }}
-      //     >
-      //       {options}
-      //     </Select>
-      //   );
-      // },
     },
     {
       title: 'p-value 2',
@@ -236,70 +143,49 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       ellipsis: true,
-      // renderFormItem: () => {
-      //   const options = gene.map((item) => (
-      //     <Select.Option key={item} value={item} type={item}>
-      //       {item}
-      //     </Select.Option>
-      //   ));
-      //   return (
-      //     <Select
-      //       key={'geneSelect'}
-      //       showSearch={true}
-      //       placeholder={'input and select genes'}
-      //       filterOption={false}
-      //       onSearch={async (value) => {
-      //         // console.log(value);
-      //         getRemoteKeywords({
-      //           project: subproject.data[0].project,
-      //           subproject: subproject.data[0].subproject,
-      //           celltype: keywords.celltype,
-      //           drug: keywords.drug,
-      //           overlapgene: value,
-      //         }).then((res) => {
-      //           // console.log(res);
-      //           setGene(res.data.overlapgene);
-      //         });
-      //       }}
-      //       onChange={(value, option) => {
-      //         setKeywords({ ...keywords, overlapgene: value });
-      //       }}
-      //     >
-      //       {options}
-      //     </Select>
-      //   );
-      // },
-    },
-    {
-      title: 'Detail',
-      dataIndex: 'index',
-      // valueType: 'index',
-      width: 58,
-      search: false,
-      // render: (text, record, index) => {
-      //   // console.log(record)
-      //   return (
-      //     <span>
-      //       <a
-      //         onClick={async () => {
-      //           // console.log("click");
-      //           setRecord(record);
-      //           setDisabled(false);
-      //           setActivekey('tab3');
-      //           // console.log(record.inst);
-      //           getRemoteDrug({ name: record.inst }).then((res) => {
-      //             setDruginformation(res.data);
-      //           });
-      //         }}
-      //       >
-      //         <DetailIcon key={record.id} />
-      //       </a>
-      //     </span>
-      //   );
-      // },
     },
   ];
-  return <div>browse</div>;
+  const paginationHandler = (page: number, pageSize?: number) => {
+    dispatch({
+      type: 'subproject/getRemote',
+      payload: {
+        pageIndex: page,
+        pageSize: pageSize ? pageSize : browse.meta.pageSize,
+        // project: subproject.data[0].project,
+        // subproject: subproject.data[0].subproject,
+        // overlapgene: keywords.overlapgene,
+        // celltype: keywords.celltype,
+        // drug: keywords.drug,
+      },
+    });
+  };
+  const sizeChangeHandler = (current: number, size: number) => {
+    dispatch({
+      type: 'subproject/getRemote',
+      payload: {
+        pageIndex: current,
+        pageSize: size,
+        // project: subproject.data[0].project,
+        // subproject: subproject.data[0].subproject,
+        // overlapgene: keywords.overlapgene,
+        // celltype: keywords.celltype,
+        // drug: keywords.drug,
+      },
+    });
+  };
+
+  return (
+    <div>
+      <ProTable<SubprojectItem>
+        columns={columns}
+        dataSource={browse.data}
+        loading={browseListLoading}
+        rowKey={(record) => record.id}
+        search={false}
+        // pagination={false}
+      />
+    </div>
+  );
 };
 
 const mapStateToProps = ({
