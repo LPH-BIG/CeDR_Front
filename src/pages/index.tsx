@@ -38,6 +38,20 @@ import mouse from '../assets/mouse.jpg';
 import mbrain from '../assets/mbrain.png';
 import madipose from '../assets/madipose.png';
 import mblood from '../assets/mblood.jpg';
+import mbone from '../assets/mbone.png';
+import mbladder from '../assets/mbladder.png';
+import meye from '../assets/meye.png';
+import mgallbladder from '../assets/mgallbladder.png';
+import mheart from '../assets/mheart.png';
+import mintestine from '../assets/mintestine.png';
+import mkidney from '../assets/mkidney.png';
+import mliver from '../assets/mliver.png';
+import mlung from '../assets/mlung.png';
+import movary from '../assets/movary.png';
+import mpancreas from '../assets/mpancreas.png';
+import mskin from '../assets/mskin.png';
+import mspleen from '../assets/mspleen.png';
+import mthyroid from '../assets/mthyroid.png';
 
 import React, { useEffect, useState } from 'react';
 import { getRemoteTypeKeywords } from '@/pages/Search/service';
@@ -377,59 +391,59 @@ export default function IndexPage() {
                   marginTop: '80px',
                 }}
               />
-              <div className={styles.brain}>
+              <div className={styles.mbrain}>
                 <Popover content={content} title={'Brain'} placement="right">
                   <img
-                    src={brain}
-                    style={{ width: '35%', height: '70%', display: 'block' }}
+                    src={mbrain}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.lung}>
+              <div className={styles.mlung}>
                 <Popover content={content} title={'Lung'} placement="right">
                   <img
-                    src={lung}
+                    src={mlung}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.heart}>
+              <div className={styles.mheart}>
                 <Popover content={content} title={'Heart'} placement="right">
                   <img
-                    src={heart}
+                    src={mheart}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.liver}>
+              <div className={styles.mliver}>
                 <Popover content={content} title={'Liver'} placement="right">
                   <img
-                    src={liver}
+                    src={mliver}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.blood}>
+              <div className={styles.mblood}>
                 <Popover content={content} title={'Blood'} placement="right">
                   <img
-                    src={blood}
-                    style={{ width: '35%', height: '80%', display: 'block' }}
+                    src={mblood}
+                    style={{ width: '30%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.largeintestine}>
+              <div className={styles.mlargeintestine}>
                 <Popover
                   content={content}
                   title={'Large Intestine'}
                   placement="right"
                 >
                   <img
-                    src={largeintestine}
+                    src={mintestine}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.smallintestine}>
+              <div className={styles.msmallintestine}>
                 <Popover
                   content={content}
                   title={'Small Intestine'}
@@ -437,82 +451,82 @@ export default function IndexPage() {
                 >
                   <img
                     src={smallintestine}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
+                    style={{ width: '35%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.bone}>
+              <div className={styles.mbone}>
                 <Popover content={content} title={'Bone'} placement="right">
                   <img
-                    src={bone}
-                    style={{ width: '30%', height: '60%', display: 'block' }}
+                    src={mbone}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.eye}>
+              <div className={styles.meye}>
                 <Popover content={content} title={'Eye'} placement="left">
                   <img
-                    src={eye}
+                    src={meye}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.bladder}>
+              <div className={styles.mbladder}>
                 <Popover content={content} title={'Bladder'} placement="left">
                   <img
-                    src={bladder}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
+                    src={mbladder}
+                    style={{ width: '30%', height: '70%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.pancreas}>
+              <div className={styles.mpancreas}>
                 <Popover content={content} title={'Pancreas'} placement="left">
                   <img
-                    src={pancreas}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
+                    src={mpancreas}
+                    style={{ width: '30%', height: '70%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.spleen}>
+              <div className={styles.mspleen}>
                 <Popover content={content} title={'Spleen'} placement="left">
                   <img
-                    src={spleen}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
+                    src={mspleen}
+                    style={{ width: '30%', height: '70%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.uterus}>
+              <div className={styles.muterus}>
                 <Popover content={content} title={'Uterus'} placement="left">
                   <img
-                    src={uterus}
+                    src={movary}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.skin}>
+              <div className={styles.mskin}>
                 <Popover content={content} title={'Skin'} placement="left">
                   <img
-                    src={skin}
-                    style={{ width: '36%', height: '80%', display: 'block' }}
+                    src={mskin}
+                    style={{ width: '30%', height: '70%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.kidney}>
+              <div className={styles.mkidney}>
                 <Popover content={content} title={'Kidney'} placement="left">
                   <img
-                    src={kidney}
+                    src={mkidney}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.gallbladder}>
+              <div className={styles.mgallbladder}>
                 <Popover
                   content={content}
                   title={'Gallbladder'}
                   placement="left"
                 >
                   <img
-                    src={gallbladder}
+                    src={mgallbladder}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>

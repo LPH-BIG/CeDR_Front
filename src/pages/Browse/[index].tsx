@@ -6,7 +6,7 @@ import {
 } from '@@/plugin-dva/connect';
 import ProTable from '@ant-design/pro-table';
 import React, { FC } from 'react';
-import { connect } from 'umi';
+import { connect, history } from 'umi';
 import { getRemoteDrug } from '@/pages/Subproject/service';
 import { Select, Space } from 'antd';
 import { getRemoteKeywords } from '@/pages/General/service';
@@ -30,42 +30,115 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'id',
       // valueType: 'index',
       // width: 58,
-      search: false,
+      render: (text, record, index) => {
+        return (
+          <div>
+            <span>
+              <a
+                onClick={() => {
+                  history.push(
+                    '/subproject/' + record.project + ' ' + record.subproject,
+                  );
+                }}
+              >
+                record.id
+              </a>
+            </span>
+          </div>
+        );
+      },
     },
     {
       title: 'Source',
       dataIndex: 'source',
       valueType: 'text',
       hideInForm: true,
-      // width: 200,
+      render: (text, record, index) => {
+        return (
+          <div>
+            <span>
+              <a
+                onClick={() => {
+                  history.push('/general/source/' + text);
+                }}
+              >
+                {text}
+              </a>
+            </span>
+          </div>
+        );
+      },
     },
     {
       title: 'Project',
       dataIndex: 'project',
       valueType: 'text',
       hideInForm: true,
-      // width: 200,
     },
     {
       title: 'subproject',
       dataIndex: 'subproject',
       valueType: 'text',
       hideInForm: true,
-      // width: 200,
+      render: (text, record, index) => {
+        return (
+          <div>
+            <span>
+              <a
+                onClick={() => {
+                  history.push(
+                    '/subproject/' + record.project + ' ' + record.subproject,
+                  );
+                }}
+              >
+                {text}
+              </a>
+            </span>
+          </div>
+        );
+      },
     },
     {
       title: 'tissue',
       dataIndex: 'tissue',
       valueType: 'text',
       hideInForm: true,
-      // width: 200,
+      render: (text, record, index) => {
+        return (
+          <div>
+            <span>
+              <a
+                onClick={() => {
+                  history.push('/general/tissue/' + text);
+                }}
+              >
+                {text}
+              </a>
+            </span>
+          </div>
+        );
+      },
     },
     {
       title: 'phenotype',
       dataIndex: 'phenotype',
       valueType: 'text',
       hideInForm: true,
-      // width: 200,
+      render: (text, record, index) => {
+        return (
+          <div>
+            <span>
+              <a
+                onClick={() => {
+                  history.push('/general/phenotype/' + text);
+                }}
+              >
+                {text}
+              </a>
+            </span>
+          </div>
+        );
+      },
     },
     {
       title: 'Cell Type',
@@ -73,7 +146,6 @@ const Index: FC<BrowsePageProps> = ({
       key: 'celltype',
       valueType: 'text',
       hideInForm: true,
-      // width: 200,
     },
     {
       title: 'Drug',
@@ -92,7 +164,6 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'oddsratio1',
       key: 'oddsratio1',
       valueType: 'text',
-      // search: false,
       ellipsis: true,
     },
     {

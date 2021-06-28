@@ -159,6 +159,21 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       width: 100,
       search: false,
       ellipsis: true,
+      render: (text, record, index) => {
+        return (
+          <div>
+            <span>
+              <a
+                onClick={() => {
+                  history.push(record.reference);
+                }}
+              >
+                {text}
+              </a>
+            </span>
+          </div>
+        );
+      },
     },
     {
       title: 'Subproject',
@@ -367,6 +382,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               dataSource={general.data}
               loading={generalListLoading}
               pagination={false}
+              headerTitle={'Datasets Overview'}
               rowKey={(record: GeneralItem) => {
                 return record.id.toString();
               }}
@@ -400,7 +416,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                 labelWidth: 'auto',
                 searchText: 'Search',
                 resetText: 'Reset',
-                // collapseRender: ()=>null,
+                collapseRender: false,
+                collapsed: false,
                 // collapseRender: ()=>{return(<span>Collapse</span>)}
               }}
             />

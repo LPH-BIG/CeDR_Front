@@ -487,10 +487,27 @@ const Index: FC<SubprojectPageProps> = ({
               <Col xs={6} sm={8} md={24} lg={24} xl={24}>
                 <Descriptions title={'Summary'} bordered>
                   <Descriptions.Item label="Project">
-                    {summary?.project}
+                    <a
+                      onClick={() => {
+                        history.push(summary?.reference);
+                      }}
+                    >
+                      {summary?.project}
+                    </a>
                   </Descriptions.Item>
                   <Descriptions.Item label="SubProject">
-                    {summary?.subproject}
+                    <a
+                      onClick={() => {
+                        history.push(
+                          '/subproject/' +
+                            summary?.project +
+                            ' ' +
+                            summary?.subproject,
+                        );
+                      }}
+                    >
+                      {summary?.subproject}
+                    </a>
                   </Descriptions.Item>
                   <Descriptions.Item label="Source">
                     {summary?.source}
@@ -625,8 +642,8 @@ const Index: FC<SubprojectPageProps> = ({
                     labelWidth: 'auto',
                     searchText: 'Search',
                     resetText: 'Reset',
-                    // collapseRender: ()=>null,
-                    // collapseRender: ()=>{return(<span>Collapse</span>)}
+                    collapseRender: false,
+                    collapsed: false,
                   }}
                 />
                 <Pagination
@@ -665,7 +682,7 @@ const Index: FC<SubprojectPageProps> = ({
                   style={{ marginLeft: '2%' }}
                 >
                   <Descriptions.Item label="Name">
-                    {druginformation.name}
+                    <a>{druginformation.name}</a>
                   </Descriptions.Item>
                   <Descriptions.Item label="Concentration">
                     {druginformation.concentration}
@@ -728,11 +745,13 @@ const Index: FC<SubprojectPageProps> = ({
                 <Space>
                   <Image
                     width={'50%'}
+                    // src={record?.photocelltype}
                     src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
                   />
                   {/*<Title level={2}>GSEA drug:</Title>*/}
                   <Image
                     width={'50%'}
+                    // src={record?.photodrug}
                     src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
                   />
                 </Space>
