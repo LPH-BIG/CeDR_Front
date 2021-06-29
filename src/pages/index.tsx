@@ -77,10 +77,10 @@ export default function IndexPage() {
   const content = (
     <div>
       <p>
-        <a href={'/cedr/general'}>phenotype 1</a>
+        <a href={'/cedr/general/tissue/Brain'}>Brain</a>
       </p>
       <p>
-        <a href={'/cedr/general'}>phenotype 2</a>
+        <a href={'/cedr/general/phenotype/Cancer'}>Cancer</a>
       </p>
     </div>
   );
@@ -98,7 +98,7 @@ export default function IndexPage() {
       </Row>
       <Divider />
       <Row justify="center">
-        <Col xs={18} sm={18} md={12} lg={12} xl={12}>
+        <Col xs={18} sm={18} md={18} lg={18} xl={12}>
           <Select
             style={{ width: '70%' }}
             placeholder="input and select a keyword"

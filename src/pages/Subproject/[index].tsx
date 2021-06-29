@@ -11,6 +11,7 @@ import {
   Tabs,
   Space,
   Image,
+  Alert,
 } from 'antd';
 import { history } from '@@/core/history';
 
@@ -60,6 +61,7 @@ const Index: FC<SubprojectPageProps> = ({
   const [keywords, setKeywords] = useState<SearchKeywords>({});
   const [disabled, setDisabled] = useState<boolean>(true);
   const [druginformation, setDruginformation] = useState<DrugItem>({});
+  const [alert, setAlert] = useState('none');
 
   useEffect(() => {
     const dataset = subproject.data[0];
@@ -486,14 +488,8 @@ const Index: FC<SubprojectPageProps> = ({
             <Row>
               <Col xs={6} sm={8} md={24} lg={24} xl={24}>
                 <Descriptions title={'Summary'} bordered>
-                  <Descriptions.Item label="Project">
-                    <a
-                      onClick={() => {
-                        history.push(summary?.reference);
-                      }}
-                    >
-                      {summary?.project}
-                    </a>
+                  <Descriptions.Item label="Project" span={3}>
+                    <a href={summary?.reference}>{summary?.project}</a>
                   </Descriptions.Item>
                   <Descriptions.Item label="SubProject">
                     <a
@@ -533,18 +529,18 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Number of reported Celltype">
                     {summary?.celltype_num}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Cell Source">
-                    {summary?.cell_source}
-                  </Descriptions.Item>
+                  {/*<Descriptions.Item label="Cell Source">*/}
+                  {/*  {summary?.cell_source}*/}
+                  {/*</Descriptions.Item>*/}
                   <Descriptions.Item label="Technique">
                     {summary?.technique}
                   </Descriptions.Item>
                   <Descriptions.Item label="Journal">
                     {summary?.journal}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Title">
-                    {summary?.title}
-                  </Descriptions.Item>
+                  {/*<Descriptions.Item label="Title">*/}
+                  {/*  {summary?.title}*/}
+                  {/*</Descriptions.Item>*/}
                   <Descriptions.Item label="Date">
                     {summary?.date}
                   </Descriptions.Item>
@@ -675,14 +671,55 @@ const Index: FC<SubprojectPageProps> = ({
         >
           <div>
             <Row>
+              <strong style={{ fontSize: '18px' }}>GSEA analysis</strong>
+              <Divider />
+              <Alert
+                message="Warning"
+                description="Sorry, there is no significant GSEA results"
+                type="warning"
+                showIcon
+                closable
+                style={{ display: alert }}
+              />
+              <Image.PreviewGroup>
+                <Space>
+                  <Image
+                    width={'50%'}
+                    src={IMG_PREFIX + record?.photocelltype}
+                    fallback={
+                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                    }
+                    onError={(event) => {
+                      setAlert('inline');
+                    }}
+                  />
+                  {/*<Title level={2}>GSEA drug:</Title>*/}
+                  <Image
+                    width={'50%'}
+                    src={IMG_PREFIX + record?.photodrug}
+                    fallback={
+                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                    }
+                  />
+                </Space>
+              </Image.PreviewGroup>
+            </Row>
+            <Divider />
+            <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Descriptions
                   title={'Drug Information'}
                   bordered
                   style={{ marginLeft: '2%' }}
                 >
-                  <Descriptions.Item label="Name">
-                    <a>{druginformation.name}</a>
+                  <Descriptions.Item label="Name" span={2}>
+                    <a
+                      onClick={() => {
+                        history.push('/browse/drug/' + druginformation.name);
+                      }}
+                    >
+                      {druginformation.name}
+                    </a>
                   </Descriptions.Item>
                   <Descriptions.Item label="Concentration">
                     {druginformation.concentration}
@@ -737,30 +774,6 @@ const Index: FC<SubprojectPageProps> = ({
               search={false}
               headerTitle={'Gene Information'}
             />
-            <Divider />
-            <Row>
-              <strong style={{ fontSize: '18px' }}>GSEA analysis</strong>
-              <Divider />
-              <Image.PreviewGroup>
-                <Space>
-                  <Image
-                    width={'50%'}
-                    src={IMG_PREFIX + record?.photocelltype}
-                    fallback={
-                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
-                    }
-                  />
-                  {/*<Title level={2}>GSEA drug:</Title>*/}
-                  <Image
-                    width={'50%'}
-                    src={IMG_PREFIX + record?.photodrug}
-                    fallback={
-                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
-                    }
-                  />
-                </Space>
-              </Image.PreviewGroup>
-            </Row>
           </div>
         </TabPane>
       </Tabs>

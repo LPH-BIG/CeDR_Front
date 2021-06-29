@@ -155,23 +155,17 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       title: 'Project',
       dataIndex: 'project',
       key: 'project',
-      valueType: 'text',
+      // valueType: 'text',
       width: 100,
       search: false,
       ellipsis: true,
-      render: (text, record, index) => {
+      render: (text: string, record: GeneralItem) => {
         return (
-          <div>
-            <span>
-              <a
-                onClick={() => {
-                  history.push(record.reference);
-                }}
-              >
-                {text}
-              </a>
-            </span>
-          </div>
+          <span>
+            <a className={styles.link} href={record.reference}>
+              <Space>{text}</Space>
+            </a>
+          </span>
         );
       },
     },

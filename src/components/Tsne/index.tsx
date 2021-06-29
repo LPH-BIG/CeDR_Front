@@ -25,14 +25,14 @@ export default function Page(props: any) {
       xAxis: {
         title: {
           enabled: true,
-          text: 'TSNE-1',
+          text: 'UMAP-1',
         },
         startOnTick: true,
         endOnTick: true,
       },
       yAxis: {
         title: {
-          text: 'TSNE-2',
+          text: 'UMAP-2',
         },
         gridLineWidth: 0,
         labels: {

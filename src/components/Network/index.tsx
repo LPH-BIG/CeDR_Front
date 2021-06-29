@@ -143,9 +143,24 @@ export default function Page(props: any) {
     ];
     // console.log(props.network);
     // if (props.network.data){
-    //TODO://修改高度
+    //TODO://修改高度,加图例
     setState({
-      chartOptions: { series: series, chart: { height: props.height } },
+      chartOptions: {
+        series: series,
+        chart: { height: props.height },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          x: -150,
+          y: 100,
+          floating: true,
+          borderWidth: 1,
+          backgroundColor:
+            (Highcharts.theme && Highcharts.theme.legendBackgroundColor) ||
+            '#FFFFFF',
+        },
+      },
     });
     // }
   }, [props]);
