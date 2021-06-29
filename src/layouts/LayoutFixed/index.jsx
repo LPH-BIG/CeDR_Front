@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.less';
-import { Layout, Menu, Breadcrumb, BackTop, Typography } from 'antd';
+import { Layout, Menu, Breadcrumb, BackTop, Typography, Row, Col } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
 import HeaderLab from '../HeaderLab';
@@ -138,15 +138,19 @@ export default function (props) {
               </Menu.Item>
             </Menu>
           </Header>
-          <Content className="site-layout">
-            {/*<Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />*/}
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: 380 }}
-            >
-              {props.children}
-            </div>
-          </Content>
+          <Row justify={'center'}>
+            <Col md={20}>
+              <Content className="site-layout">
+                {/*<Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />*/}
+                <div
+                  className="site-layout-background"
+                  style={{ padding: 24, minHeight: 380 }}
+                >
+                  {props.children}
+                </div>
+              </Content>
+            </Col>
+          </Row>
           <BackTop />
           <Footer style={{ textAlign: 'center' }}>
             <div>

@@ -99,6 +99,8 @@ export const getRemoteNetwork = async ({
     params: {
       project: project,
       subproject: subproject,
+      celltype: celltype,
+      drug: drug,
     },
   })
     .then(function (response) {

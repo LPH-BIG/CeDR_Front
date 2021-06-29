@@ -41,7 +41,7 @@ const Index: FC<BrowsePageProps> = ({
                   );
                 }}
               >
-                record.id
+                {record.id}
               </a>
             </span>
           </div>
@@ -219,16 +219,37 @@ const Index: FC<BrowsePageProps> = ({
   const [network, setNetwork] = useState([]);
   useEffect(() => {
     //TODO://从后端拿网络图数据
-    console.log(history.location.pathname);
-    getRemoteNetwork({ celltype: undefined }).then((res) => {
-      // console.log(res.data);
-      setNetwork(res.data);
-    });
+    // console.log(history.location.pathname);
+    const k = history.location.pathname.split('/');
+    if (k[2] == 'celltype') {
+      console.log(k[3]);
+      getRemoteNetwork({
+        project: undefined,
+        subproject: undefined,
+        celltype: k[3],
+        drug: undefined,
+      }).then((res) => {
+        // console.log(res.data);
+        setNetwork(res.data);
+      });
+    } else if (k[2] == 'drug') {
+      getRemoteNetwork({
+        project: undefined,
+        subproject: undefined,
+        celltype: undefined,
+        drug: k[3],
+      }).then((res) => {
+        // console.log(res.data);
+        setNetwork(res.data);
+      });
+    }
   }, [browse.data]);
   return (
     <div>
-      <Row>
-        <Network network={network} />
+      <Row justify={'center'}>
+        <Col md={12}>
+          <Network network={network} />
+        </Col>
       </Row>
       <Row justify={'center'}>
         <Col md={20}>

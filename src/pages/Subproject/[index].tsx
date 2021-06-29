@@ -167,8 +167,7 @@ const Index: FC<SubprojectPageProps> = ({
     },
     {
       title: 'Drug',
-      dataIndex: 'inst',
-      key: 'inst',
+      dataIndex: 'drug',
       valueType: 'text',
       hideInForm: true,
       renderFormItem: () => {
