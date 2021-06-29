@@ -134,6 +134,19 @@ const Index: FC<SubprojectPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       width: 200,
+      render: (text, record) => {
+        return (
+          <span>
+            <a
+              onClick={() => {
+                history.push('/browse/celltype/' + record.celltype);
+              }}
+            >
+              {record.celltype}
+            </a>
+          </span>
+        );
+      },
       renderFormItem: () => {
         const options = celltype.map((item) => (
           <Select.Option key={item} value={item} type={item}>
@@ -173,6 +186,19 @@ const Index: FC<SubprojectPageProps> = ({
       dataIndex: 'drug',
       valueType: 'text',
       hideInForm: true,
+      render: (text, record) => {
+        return (
+          <span>
+            <a
+              onClick={() => {
+                history.push('/browse/drug/' + record.drug);
+              }}
+            >
+              {record.drug}
+            </a>
+          </span>
+        );
+      },
       renderFormItem: () => {
         const options = drug.map((item) => (
           <Select.Option key={item} value={item} type={item}>
@@ -408,6 +434,28 @@ const Index: FC<SubprojectPageProps> = ({
       dataIndex: 'index',
       valueType: 'index',
       width: 58,
+    },
+    {
+      title: 'Ensembl ID',
+      dataIndex: 'refs',
+      valueType: 'text',
+      hideInForm: true,
+      search: false,
+      ellipsis: true,
+      render: (text, record, index) => {
+        return (
+          <span>
+            <a
+              href={
+                'https://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=' +
+                record.refs
+              }
+            >
+              {record.refs}
+            </a>
+          </span>
+        );
+      },
     },
     {
       title: 'Gene Symbol',

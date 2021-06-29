@@ -163,7 +163,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         return (
           <span>
             <a className={styles.link} href={record.reference}>
-              <Space>{text}</Space>
+              <Space>{record.project}</Space>
             </a>
           </span>
         );
@@ -182,14 +182,6 @@ const GeneralListPage: FC<GeneralPageProps> = ({
           <a
             className={styles.link}
             onClick={() => {
-              // console.log(record);
-              // console.log(history.location.pathname);
-              // @ts-ignore
-              // const {dispatch} = this.props;
-              // dispatch(routerRedux.push({
-              //   pathname: '/subproject',
-              //   record: record.subproject,//传的值
-              // }))
               history.push(
                 '/subproject/' + record.project + ' ' + record.subproject,
               );
