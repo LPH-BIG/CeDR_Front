@@ -248,7 +248,7 @@ const Index: FC<BrowsePageProps> = ({
     <div>
       <Row justify={'center'}>
         <Col md={12}>
-          <Network network={network} />
+          <Network network={network} height={'800px'} />
         </Col>
       </Row>
       <Row justify={'center'}>

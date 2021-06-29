@@ -43,56 +43,56 @@ export default function Page(props: any) {
             enabled: true,
           },
           allowPointSelect: true,
-          data: [
-            {
-              from: 'Europe',
-              to: 'UK',
-            },
-            {
-              from: 'Europe',
-              to: 'Poland',
-              color: 'red',
-              width: 4,
-              dashStyle: 'dot',
-            },
-            {
-              from: 'Europe',
-              to: 'Italy',
-              color: 'green',
-              width: 4,
-            },
-            {
-              from: 'UK',
-              to: 'London',
-            },
-            {
-              from: 'UK',
-              to: 'Bristol',
-              color: 'yellow',
-            },
-            {
-              from: 'London',
-              to: 'London Centre',
-            },
-            {
-              from: 'Poland',
-              to: 'Warsaw',
-            },
-            {
-              from: 'Poland',
-              to: 'Krakow',
-              color: 'red',
-              width: 4,
-            },
-            {
-              from: 'Italy',
-              to: 'Roma',
-            },
-            {
-              from: 'Italy',
-              to: 'Piza',
-            },
-          ],
+          // data: [
+          //   {
+          //     from: 'Europe',
+          //     to: 'UK',
+          //   },
+          //   {
+          //     from: 'Europe',
+          //     to: 'Poland',
+          //     color: 'red',
+          //     width: 4,
+          //     dashStyle: 'dot',
+          //   },
+          //   {
+          //     from: 'Europe',
+          //     to: 'Italy',
+          //     color: 'green',
+          //     width: 4,
+          //   },
+          //   {
+          //     from: 'UK',
+          //     to: 'London',
+          //   },
+          //   {
+          //     from: 'UK',
+          //     to: 'Bristol',
+          //     color: 'yellow',
+          //   },
+          //   {
+          //     from: 'London',
+          //     to: 'London Centre',
+          //   },
+          //   {
+          //     from: 'Poland',
+          //     to: 'Warsaw',
+          //   },
+          //   {
+          //     from: 'Poland',
+          //     to: 'Krakow',
+          //     color: 'red',
+          //     width: 4,
+          //   },
+          //   {
+          //     from: 'Italy',
+          //     to: 'Roma',
+          //   },
+          //   {
+          //     from: 'Italy',
+          //     to: 'Piza',
+          //   },
+          // ],
           // nodes: [
           //   {
           //     id: 'Krakow',
@@ -138,11 +138,15 @@ export default function Page(props: any) {
         },
         allowPointSelect: true,
         data: props.network.data,
+        nodes: props.network.nodes,
       },
     ];
     // console.log(props.network);
     // if (props.network.data){
-    setState({ chartOptions: { series: series } });
+    //TODO://修改高度
+    setState({
+      chartOptions: { series: series, chart: { height: props.height } },
+    });
     // }
   }, [props]);
 

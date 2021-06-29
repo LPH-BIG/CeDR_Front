@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './index.less';
+import { IMG_PREFIX } from '@/common/constants';
 import {
   Col,
   Divider,
@@ -744,14 +745,18 @@ const Index: FC<SubprojectPageProps> = ({
                 <Space>
                   <Image
                     width={'50%'}
-                    // src={record?.photocelltype}
-                    src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                    src={IMG_PREFIX + record?.photocelltype}
+                    fallback={
+                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                    }
                   />
                   {/*<Title level={2}>GSEA drug:</Title>*/}
                   <Image
                     width={'50%'}
-                    // src={record?.photodrug}
-                    src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
+                    src={IMG_PREFIX + record?.photodrug}
+                    fallback={
+                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                    }
                   />
                 </Space>
               </Image.PreviewGroup>
