@@ -723,7 +723,7 @@ const Index: FC<SubprojectPageProps> = ({
               <Divider />
               <Alert
                 message="Warning"
-                description="Sorry, there is no significant GSEA results"
+                description="Sorry, this association has no significant GSEA results"
                 type="warning"
                 showIcon
                 closable
@@ -731,8 +731,9 @@ const Index: FC<SubprojectPageProps> = ({
               />
               <Image.PreviewGroup>
                 <Space>
+                  <strong>Cell Type:</strong>
                   <Image
-                    width={'50%'}
+                    width={'80%'}
                     src={IMG_PREFIX + record?.photocelltype}
                     fallback={
                       'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
@@ -742,8 +743,9 @@ const Index: FC<SubprojectPageProps> = ({
                     }}
                   />
                   {/*<Title level={2}>GSEA drug:</Title>*/}
+                  <strong>Drug:</strong>
                   <Image
-                    width={'50%'}
+                    width={'80%'}
                     src={IMG_PREFIX + record?.photodrug}
                     fallback={
                       'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
