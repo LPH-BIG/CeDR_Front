@@ -6,28 +6,25 @@ import { DownloadOutlined } from '@ant-design/icons';
 export default function Page() {
   const data = [
     {
-      description: 'Drug Information',
-      download: 'xxx.gz',
-      link: 'http:xxxx',
-      fileSize: '123MB',
+      description: 'Selected Datasets',
+      download: 'Selected_datasets.xlsx',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/Selected_datasets.xlsx',
+      total: '67',
+      fileSize: '105KB',
     },
     {
-      description: 'Gene Information',
-      download: 'xxx.gz',
-      link: 'http:xxxx',
-      fileSize: '123MB',
+      description: 'All Drug Information',
+      download: 'drug.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/drug.csv',
+      total: '6101',
+      fileSize: '1.3MB',
     },
     {
-      description: 'Cancer Cell Line',
-      download: 'xxx.gz',
-      link: 'http:xxxx',
-      fileSize: '123MB',
-    },
-    {
-      description: 'Human',
-      download: 'xxx.gz',
-      link: 'http:xxxx',
-      fileSize: '123MB',
+      description: 'All Gene Information',
+      download: 'gene.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/gene.csv',
+      total: '62760',
+      fileSize: '8.3MB',
     },
   ];
   const columns = [
@@ -41,15 +38,14 @@ export default function Page() {
       dataIndex: 'download',
       render: (text, record) => (
         <Space size="middle">
-          <a
-            onClick={() => {
-              record.link;
-            }}
-          >
-            {text}
-          </a>
+          <a href={record.link}>{record.download}</a>
         </Space>
       ),
+    },
+    {
+      title: 'Number of Items',
+      // key: 'action',
+      dataIndex: 'total',
     },
     {
       title: 'File Size',
@@ -66,27 +62,27 @@ export default function Page() {
         bordered={true}
         hoverable={true}
       >
-        <Card type="inner" title="Download the Tool">
-          <a>
-            <strong>Github</strong>
-          </a>
-        </Card>
-        <Card type="inner" title="Download by Phenotype">
-          <div>
-            <Select
-              style={{ width: '30%' }}
-              placeholder="input and select a dataset"
-              showSearch={true}
-              // suffixIcon={()=>{return(<DownloadOutlined />)}}
-            >
-              {<Select.Option key={'id'}>Bone Cancer</Select.Option>}
-            </Select>
-            &nbsp;
-            <Button type="primary" shape="round" icon={<DownloadOutlined />}>
-              Download
-            </Button>
-          </div>
-        </Card>
+        {/*<Card type="inner" title="Download the Tool">*/}
+        {/*  <a>*/}
+        {/*    <strong>Github</strong>*/}
+        {/*  </a>*/}
+        {/*</Card>*/}
+        {/*<Card type="inner" title="Download by Phenotype">*/}
+        {/*  <div>*/}
+        {/*    <Select*/}
+        {/*      style={{ width: '30%' }}*/}
+        {/*      placeholder="input and select a dataset"*/}
+        {/*      showSearch={true}*/}
+        {/*      // suffixIcon={()=>{return(<DownloadOutlined />)}}*/}
+        {/*    >*/}
+        {/*      {<Select.Option key={'id'}>Bone Cancer</Select.Option>}*/}
+        {/*    </Select>*/}
+        {/*    &nbsp;*/}
+        {/*    <Button type="primary" shape="round" icon={<DownloadOutlined />}>*/}
+        {/*      Download*/}
+        {/*    </Button>*/}
+        {/*  </div>*/}
+        {/*</Card>*/}
         <Card style={{ marginTop: 16 }} type="inner" title="Batch Download">
           <Table columns={columns} dataSource={data} pagination={false} />
         </Card>

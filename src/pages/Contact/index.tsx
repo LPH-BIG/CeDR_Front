@@ -20,26 +20,38 @@ export default function Page() {
         </Col>
       </Row>
       <Row justify={'center'}>
-        <Col span={8}>
-          <Card title="Team Leader" bordered={false}>
-            <p>
-              <strong>Peilin Jia</strong>
-            </p>
-          </Card>
+        <Col span={18}>
+          <Descriptions title="Team Leader" bordered>
+            <Descriptions.Item label="Name" span={3}>
+              Peilin Jia
+            </Descriptions.Item>
+            <Descriptions.Item label="Email">pjia@big.ac.cn</Descriptions.Item>
+            {/*<Descriptions.Item label="Live">*/}
+            {/*  Hangzhou, Zhejiang*/}
+            {/*</Descriptions.Item>*/}
+            {/*<Descriptions.Item label="Remark">empty</Descriptions.Item>*/}
+            <Descriptions.Item label="Contribution">
+              Supervisor
+            </Descriptions.Item>
+          </Descriptions>
         </Col>
       </Row>
       <Divider />
       <Row justify={'center'}>
         <Col span={18}>
           <Descriptions title="Data Analysis" bordered>
-            <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
-            <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-            <Descriptions.Item label="Live">
-              Hangzhou, Zhejiang
+            <Descriptions.Item label="UserName" span={3}>
+              Yinying Wang
             </Descriptions.Item>
-            <Descriptions.Item label="Remark">empty</Descriptions.Item>
-            <Descriptions.Item label="Address">
-              No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
+            <Descriptions.Item label="Email">
+              wangyinying@big.ac.cn
+            </Descriptions.Item>
+            {/*<Descriptions.Item label="Live">*/}
+            {/*  Hangzhou, Zhejiang*/}
+            {/*</Descriptions.Item>*/}
+            {/*<Descriptions.Item label="Remark">empty</Descriptions.Item>*/}
+            <Descriptions.Item label="Contribution">
+              Data collection, Meta Curation, Data analysis.
             </Descriptions.Item>
           </Descriptions>
         </Col>
@@ -48,14 +60,18 @@ export default function Page() {
       <Row justify={'center'}>
         <Col span={18}>
           <Descriptions title="Web Development" bordered>
-            <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
-            <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-            <Descriptions.Item label="Live">
-              Hangzhou, Zhejiang
+            <Descriptions.Item label="UserName" span={3}>
+              Hongen Kang
             </Descriptions.Item>
-            <Descriptions.Item label="Remark">empty</Descriptions.Item>
-            <Descriptions.Item label="Address">
-              No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
+            <Descriptions.Item label="Email">
+              kanghongen2018m@big.ac.cn
+            </Descriptions.Item>
+            {/*<Descriptions.Item label="Live">*/}
+            {/*  Hangzhou, Zhejiang*/}
+            {/*</Descriptions.Item>*/}
+            {/*<Descriptions.Item label="Remark">empty</Descriptions.Item>*/}
+            <Descriptions.Item label="Contribution">
+              Web Development,Meta Curation.
             </Descriptions.Item>
           </Descriptions>
         </Col>

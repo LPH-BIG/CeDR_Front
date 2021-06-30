@@ -152,13 +152,11 @@ export default function Page(props: any) {
           layout: 'vertical',
           align: 'right',
           verticalAlign: 'top',
-          x: -150,
-          y: 100,
+          // x: -150,
+          // y: 100,
           floating: true,
-          borderWidth: 1,
-          backgroundColor:
-            (Highcharts.theme && Highcharts.theme.legendBackgroundColor) ||
-            '#FFFFFF',
+          backgroundColor: '#FFFFFF',
+          labelFormat: '<span> (click to hide or show)</span>',
         },
       },
     });

@@ -615,9 +615,15 @@ const Index: FC<SubprojectPageProps> = ({
                 md={8}
                 lg={8}
                 xl={8}
-                style={{ height: '400px' }}
+                style={{ height: '400px', textAlign: 'center' }}
               >
                 <Network network={network} />
+                <strong>
+                  Point Color: <span style={{ color: 'red' }}>dataset:red</span>{' '}
+                  &nbsp;{' '}
+                  <span style={{ color: 'orange' }}>cell type: orange</span>
+                  &nbsp; <span style={{ color: 'blue' }}>drug:blue</span>
+                </strong>
               </Col>
             </Row>
           </div>

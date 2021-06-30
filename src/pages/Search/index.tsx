@@ -25,7 +25,7 @@ export default function Page() {
         // subTitle="This is a subtitle"
       />
       <Divider />
-      <Row>
+      <Row style={{ height: '100px' }}>
         <Col push={2}>
           <Title level={4}>Cell Type:</Title>
         </Col>
@@ -74,7 +74,7 @@ export default function Page() {
         </Col>
       </Row>
       <Divider />
-      <Row>
+      <Row style={{ height: '100px' }}>
         <Col push={2}>
           <Title level={4}>Drug name:</Title>
         </Col>
@@ -123,7 +123,7 @@ export default function Page() {
         </Col>
       </Row>
       <Divider />
-      <Row>
+      <Row style={{ height: '100px' }}>
         <Col push={2}>
           <Title level={4}>Disease name:</Title>
         </Col>
@@ -172,7 +172,7 @@ export default function Page() {
         </Col>
       </Row>
       <Divider />
-      <Row>
+      <Row style={{ height: '100px' }}>
         <Col push={2}>
           <Title level={4}>Tissue name:</Title>
         </Col>
