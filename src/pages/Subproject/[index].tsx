@@ -64,6 +64,7 @@ const Index: FC<SubprojectPageProps> = ({
   const [alert, setAlert] = useState('none');
 
   useEffect(() => {
+    console.log('I fire once');
     const dataset = subproject.data[0];
     if (dataset) {
       const { project, subproject } = dataset;
@@ -76,24 +77,65 @@ const Index: FC<SubprojectPageProps> = ({
           setSummary(res.data[0]);
         },
       );
+      // getRemoteTsne({ name: name }).then((res) => {
+      //   // console.log(res.data)
+      //   setTsne(res.data);
+      // });
+      // setTsnetitle(dataset.project + ' ' + dataset.subproject);
+
+      // getRemoteNetwork({ project: project, subproject: subproject }).then(
+      //   (res) => {
+      //     // console.log(res.data);
+      //     setNetwork(res.data);
+      //   },
+      // );
+      // getRemotePie({ name: name }).then((res) => {
+      //   // console.log(res.data);
+      //   setPie(res.data);
+      // });
+    }
+  }, []);
+
+  useEffect(() => {
+    const dataset = subproject.data[0];
+    if (dataset) {
+      const { project, subproject } = dataset;
+      // setKeywords({ ...keywords, project: project, subproject: subproject });
+      const name = project + ' ' + subproject;
       getRemoteTsne({ name: name }).then((res) => {
         // console.log(res.data)
         setTsne(res.data);
       });
       setTsnetitle(dataset.project + ' ' + dataset.subproject);
+    }
+  }, []);
 
+  useEffect(() => {
+    const dataset = subproject.data[0];
+    if (dataset) {
+      const { project, subproject } = dataset;
+      // setKeywords({ ...keywords, project: project, subproject: subproject });
+      const name = project + ' ' + subproject;
       getRemoteNetwork({ project: project, subproject: subproject }).then(
         (res) => {
           // console.log(res.data);
           setNetwork(res.data);
         },
       );
+    }
+  }, []);
+  useEffect(() => {
+    const dataset = subproject.data[0];
+    if (dataset) {
+      const { project, subproject } = dataset;
+      // setKeywords({ ...keywords, project: project, subproject: subproject });
+      const name = project + ' ' + subproject;
       getRemotePie({ name: name }).then((res) => {
         // console.log(res.data);
         setPie(res.data);
       });
     }
-  }, [history.location.pathname]);
+  }, []);
 
   const columns = [
     {
@@ -581,25 +623,6 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Cell Type" span={3}>
                     {summary?.celltype.split(', ').slice(0, 10).join(', ')}
                   </Descriptions.Item>
-
-                  {/*<Descriptions.Item label="Technique">*/}
-                  {/*  {summary?.technique}*/}
-                  {/*</Descriptions.Item>*/}
-                  {/*<Descriptions.Item label="Journal">*/}
-                  {/*  {summary?.journal}*/}
-                  {/*</Descriptions.Item>*/}
-                  {/*<Descriptions.Item label="Title">*/}
-                  {/*  {summary?.title}*/}
-                  {/*</Descriptions.Item>*/}
-                  {/*<Descriptions.Item label="Date">*/}
-                  {/*  {summary?.date}*/}
-                  {/*</Descriptions.Item>*/}
-                  {/*<Descriptions.Item label="Contrasts">*/}
-                  {/*  {summary?.contrasts}*/}
-                  {/*</Descriptions.Item>*/}
-                  {/*<Descriptions.Item label="Developmental Stage">*/}
-                  {/*  {summary?.developmentalstage}*/}
-                  {/*</Descriptions.Item>*/}
                 </Descriptions>
               </Col>
             </Row>

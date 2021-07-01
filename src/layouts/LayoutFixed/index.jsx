@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.less';
+import NgdcHeader from '../ngdc/header';
 import { Layout, Menu, Breadcrumb, BackTop, Typography, Row, Col } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
@@ -46,10 +47,11 @@ export default function (props) {
   }, [history.location]);
   return (
     <div className={styles.container}>
+      <NgdcHeader />
       <HeaderLab />
       <div id="components-layout-demo-fixed">
         <Layout>
-          <Header style={{ zIndex: 1, width: '100%', paddingLeft: '10%' }}>
+          <Header style={{ zIndex: 2, width: '100%', paddingLeft: '25%' }}>
             <Menu
               theme="dark"
               mode="horizontal"

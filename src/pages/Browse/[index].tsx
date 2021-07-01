@@ -243,7 +243,7 @@ const Index: FC<BrowsePageProps> = ({
         setNetwork(res.data);
       });
     }
-  }, [browse.data]);
+  }, []);
   return (
     <div>
       <Row justify={'center'}>

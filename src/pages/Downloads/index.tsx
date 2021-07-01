@@ -6,6 +6,41 @@ import { DownloadOutlined } from '@ant-design/icons';
 export default function Page() {
   const data = [
     {
+      description: 'Human Associations',
+      download: 'humanAssociations.txt',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/humanAssociation.txt',
+      total: '619094',
+      fileSize: '388M',
+    },
+    {
+      description: 'Mouse Associations',
+      download: 'mouseAssociations.txt',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/mouseAssociation.txt',
+      total: '232871',
+      fileSize: '127M',
+    },
+    {
+      description: 'CCLE Associations',
+      download: 'ccleAssociations.txt',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/ccleAssociation.txt',
+      total: '64531',
+      fileSize: '36M',
+    },
+    {
+      description: 'HCL Associations',
+      download: 'hclAssociations.txt',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/hclAssociation.txt',
+      total: '298199',
+      fileSize: '160M',
+    },
+    {
+      description: 'MCA Associations',
+      download: 'mcaAssociations.txt',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/mcaAssociation.txt',
+      total: '154215',
+      fileSize: '83M',
+    },
+    {
       description: 'Selected Datasets',
       download: 'Selected_datasets.xlsx',
       link: 'https://ngdc.cncb.ac.cn/cedr/file/Selected_datasets.xlsx',

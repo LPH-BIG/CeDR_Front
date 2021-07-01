@@ -8,6 +8,7 @@ import d2 from '../../assets/d2.png';
 import d3 from '../../assets/d3.png';
 import d4 from '../../assets/d4.png';
 import d5 from '../../assets/d5.png';
+import d6 from '../../assets/d6.png';
 
 export default function Page() {
   return (
@@ -260,7 +261,19 @@ export default function Page() {
             <div id={'demonstration'}>
               <Title level={2}>Demonstration of CeDR result</Title>
               <Paragraph>In this page, we provide five sections:</Paragraph>
+              <Paragraph>
+                • Move the mouse to a point in the UMap diagram, and the
+                coordinate of the cell-type information will be displayed.
+              </Paragraph>
+              <Paragraph>
+                • Cell drug association: details of the gene signature
+              </Paragraph>
+              <Paragraph>
+                • GSEA prerank result for genes in drug and single cell
+                expression data.
+              </Paragraph>
               <Image src={d5} preview={false}></Image>
+              <Image src={d6} preview={false}></Image>
             </div>
           </div>
         </Col>
