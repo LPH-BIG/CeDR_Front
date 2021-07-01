@@ -93,7 +93,7 @@ const Index: FC<SubprojectPageProps> = ({
         setPie(res.data);
       });
     }
-  }, [subproject.data]);
+  }, [history.location.pathname]);
 
   const columns = [
     {
@@ -536,10 +536,10 @@ const Index: FC<SubprojectPageProps> = ({
             <Row>
               <Col xs={6} sm={8} md={24} lg={24} xl={24}>
                 <Descriptions title={'Summary'} bordered>
-                  <Descriptions.Item label="Project" span={3}>
+                  <Descriptions.Item label="Project" span={1}>
                     <a href={summary?.reference}>{summary?.project}</a>
                   </Descriptions.Item>
-                  <Descriptions.Item label="SubProject" span={3}>
+                  <Descriptions.Item label="SubProject" span={2}>
                     <a
                       onClick={() => {
                         history.push(
@@ -572,14 +572,14 @@ const Index: FC<SubprojectPageProps> = ({
                     {summary?.celltype_num}
                   </Descriptions.Item>
                   <Descriptions.Item label="Drug" span={3}>
-                    {summary?.drug}
+                    {summary?.drug.split(', ').slice(0, 10).join(', ')}
                   </Descriptions.Item>
                   <Descriptions.Item label="Number of reported Celltype">
                     {summary?.celltype_num}
                   </Descriptions.Item>
 
                   <Descriptions.Item label="Cell Type" span={3}>
-                    {summary?.celltype}
+                    {summary?.celltype.split(', ').slice(0, 10).join(', ')}
                   </Descriptions.Item>
 
                   {/*<Descriptions.Item label="Technique">*/}
@@ -689,14 +689,15 @@ const Index: FC<SubprojectPageProps> = ({
                       },
                     });
                   }}
-                  search={{
-                    defaultCollapsed: false,
-                    labelWidth: 'auto',
-                    searchText: 'Search',
-                    resetText: 'Reset',
-                    collapseRender: false,
-                    collapsed: false,
-                  }}
+                  search={false}
+                  // search={{
+                  //   defaultCollapsed: false,
+                  //   labelWidth: 'auto',
+                  //   searchText: 'Search',
+                  //   resetText: 'Reset',
+                  //   collapseRender: false,
+                  //   collapsed: false,
+                  // }}
                 />
                 <Pagination
                   key={'generalPagination'}

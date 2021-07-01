@@ -84,6 +84,285 @@ export default function IndexPage() {
       </p>
     </div>
   );
+  const chBrain = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chEye = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chPancreas = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chRespiratory = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chBlood = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chLung = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chHeart = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chBone = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chRectum = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+
+  const chEmbryo = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+
+  const chIntestinal = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+
+  const chColon = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+
+  const chKidney = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+
+  const chSpine = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chLiver = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+  const chSkin = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+
+  const chSkin = (
+    <div>
+      <p>
+        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+      </p>
+    </div>
+  );
+
   // useEffect(() => {
   //   console.log(searchkey);
   // }, [searchkey]);
@@ -227,7 +506,7 @@ export default function IndexPage() {
                 }}
               />
               <div className={styles.brain}>
-                <Popover content={content} title={'Brain'} placement="right">
+                <Popover content={chbrain} title={'Brain'} placement="right">
                   <img
                     src={brain}
                     style={{ width: '35%', height: '70%', display: 'block' }}
