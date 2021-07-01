@@ -156,7 +156,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'project',
       key: 'project',
       // valueType: 'text',
-      width: 100,
+      width: 150,
       search: false,
       ellipsis: true,
       render: (text: string, record: GeneralItem) => {
@@ -175,7 +175,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       key: 'subproject',
       // valueType: 'link',
       search: false,
-      // width: 200,
+      width: 300,
       ellipsis: true,
       render: (text: string, record: GeneralItem) => (
         <span>
@@ -199,6 +199,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       title: 'Tissue',
       dataIndex: 'tissue',
       key: 'tissue',
+      width: 100,
       // valueType: 'text',
       hideInForm: true,
       ellipsis: true,
@@ -252,6 +253,20 @@ const GeneralListPage: FC<GeneralPageProps> = ({
           </Select>
         );
       },
+    },
+    {
+      title: 'Total reported cell',
+      dataIndex: 'total_reported_cell',
+      ellipsis: true,
+      hideInSearch: true,
+      width: '100px',
+    },
+    {
+      title: 'Celltype number',
+      dataIndex: 'celltype_num',
+      ellipsis: true,
+      hideInSearch: true,
+      width: '100px',
     },
     {
       title: 'Cell Type',
@@ -316,18 +331,6 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       //     </Select>
       //   );
       // },
-    },
-    {
-      title: 'Technique',
-      dataIndex: 'technique',
-      ellipsis: true,
-      hideInSearch: true,
-    },
-    {
-      title: 'Title',
-      dataIndex: 'title',
-      ellipsis: true,
-      hideInSearch: true,
     },
   ];
 

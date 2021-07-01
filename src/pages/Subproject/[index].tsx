@@ -539,7 +539,7 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Project" span={3}>
                     <a href={summary?.reference}>{summary?.project}</a>
                   </Descriptions.Item>
-                  <Descriptions.Item label="SubProject">
+                  <Descriptions.Item label="SubProject" span={3}>
                     <a
                       onClick={() => {
                         history.push(
@@ -562,14 +562,8 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Phenotype">
                     {summary?.phenotype}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Description">
-                    {summary?.description}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Drug">
-                    {summary?.drug}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Cell Type">
-                    {summary?.celltype}
+                  <Descriptions.Item label="Cell Source">
+                    {summary?.cell_source}
                   </Descriptions.Item>
                   <Descriptions.Item label="Total reported cell">
                     {summary?.total_reported_cell}
@@ -577,27 +571,35 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Number of reported Celltype">
                     {summary?.celltype_num}
                   </Descriptions.Item>
-                  {/*<Descriptions.Item label="Cell Source">*/}
-                  {/*  {summary?.cell_source}*/}
+                  <Descriptions.Item label="Drug" span={3}>
+                    {summary?.drug}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Number of reported Celltype">
+                    {summary?.celltype_num}
+                  </Descriptions.Item>
+
+                  <Descriptions.Item label="Cell Type" span={3}>
+                    {summary?.celltype}
+                  </Descriptions.Item>
+
+                  {/*<Descriptions.Item label="Technique">*/}
+                  {/*  {summary?.technique}*/}
                   {/*</Descriptions.Item>*/}
-                  <Descriptions.Item label="Technique">
-                    {summary?.technique}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Journal">
-                    {summary?.journal}
-                  </Descriptions.Item>
+                  {/*<Descriptions.Item label="Journal">*/}
+                  {/*  {summary?.journal}*/}
+                  {/*</Descriptions.Item>*/}
                   {/*<Descriptions.Item label="Title">*/}
                   {/*  {summary?.title}*/}
                   {/*</Descriptions.Item>*/}
-                  <Descriptions.Item label="Date">
-                    {summary?.date}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Contrasts">
-                    {summary?.contrasts}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Developmental Stage">
-                    {summary?.developmentalstage}
-                  </Descriptions.Item>
+                  {/*<Descriptions.Item label="Date">*/}
+                  {/*  {summary?.date}*/}
+                  {/*</Descriptions.Item>*/}
+                  {/*<Descriptions.Item label="Contrasts">*/}
+                  {/*  {summary?.contrasts}*/}
+                  {/*</Descriptions.Item>*/}
+                  {/*<Descriptions.Item label="Developmental Stage">*/}
+                  {/*  {summary?.developmentalstage}*/}
+                  {/*</Descriptions.Item>*/}
                 </Descriptions>
               </Col>
             </Row>
@@ -776,6 +778,9 @@ const Index: FC<SubprojectPageProps> = ({
                     >
                       {druginformation.name}
                     </a>
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Catalog Name">
+                    {druginformation.catalog_name}
                   </Descriptions.Item>
                   <Descriptions.Item label="Concentration">
                     {druginformation.concentration}
