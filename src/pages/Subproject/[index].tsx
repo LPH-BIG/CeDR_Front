@@ -518,7 +518,7 @@ const Index: FC<SubprojectPageProps> = ({
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
               {/*<AppleOutlined />*/}
-              General Tables
+              General Table
             </span>
           }
           key="tab1"

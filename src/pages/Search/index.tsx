@@ -76,7 +76,7 @@ export default function Page() {
       <Divider />
       <Row style={{ height: '100px' }}>
         <Col push={2}>
-          <Title level={4}>Drug name:</Title>
+          <Title level={4}>Drug :</Title>
         </Col>
         <Col xs={18} sm={18} md={12} lg={12} xl={12} push={3}>
           <div>
@@ -125,7 +125,7 @@ export default function Page() {
       <Divider />
       <Row style={{ height: '100px' }}>
         <Col push={2}>
-          <Title level={4}>Disease name:</Title>
+          <Title level={4}>Disease :</Title>
         </Col>
         <Col xs={18} sm={18} md={12} lg={12} xl={12} push={3}>
           <div>
@@ -174,7 +174,7 @@ export default function Page() {
       <Divider />
       <Row style={{ height: '100px' }}>
         <Col push={2}>
-          <Title level={4}>Tissue name:</Title>
+          <Title level={4}>Tissue :</Title>
         </Col>
         <Col xs={18} sm={18} md={12} lg={12} xl={12} push={3}>
           <div>

@@ -360,7 +360,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         <TabPane
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
-              General Tables
+              General Table
             </span>
           }
           key="tab1"
@@ -371,7 +371,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               dataSource={general.data}
               loading={generalListLoading}
               pagination={false}
-              headerTitle={'Datasets Overview'}
+              headerTitle={'Dataset Overview'}
               rowKey={(record: GeneralItem) => {
                 return record.id.toString();
               }}

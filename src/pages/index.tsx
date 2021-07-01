@@ -58,7 +58,7 @@ import React, { useEffect, useState } from 'react';
 import { getRemoteTypeKeywords } from '@/pages/Search/service';
 import { history } from 'umi';
 import { API_PREFIX } from '@/common/constants';
-const { Text, Title } = Typography;
+const { Text, Title, Link } = Typography;
 
 export interface searchKeywordsItem {
   type: string;
@@ -77,295 +77,687 @@ export default function IndexPage() {
   const content = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>Brain</a>
+        <a href={'/cedr/general'}>To be summarize</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>Cancer</a>
-      </p>
-    </div>
-  );
-  const chBrain = (
-    <div>
-      <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general'}>To be summarize</a>
       </p>
     </div>
   );
-  const chEye = (
+
+  const chArtery = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
-  const chPancreas = (
+  const chBladder = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
-      </p>
-    </div>
-  );
-  const chRespiratory = (
-    <div>
-      <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
   const chBlood = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-ICU-SEP'}>
+          BacterialSepsis ICU SEP
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-ICU-NoSEP'}>
+          BacterialSepsis ICU NoSEP
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
-      </p>
-    </div>
-  );
-  const chLung = (
-    <div>
-      <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/MorphineTreated'}>Morphine Treated</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+        <a href={'/cedr/general/phenotype/BM-Normal'}>BM Normal</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+        <a href={'/cedr/general/phenotype/AML-malignant'}>AML Malignant</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
-      </p>
-    </div>
-  );
-  const chHeart = (
-    <div>
-      <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/AML-Normal'}>AML Normal</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+        <a href={'/cedr/general/phenotype/ImmuneCells-Normal'}>
+          ImmuneCells Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-URO'}>
+          BacterialSepsis URO
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/melanoma-TreatmentNaive'}>
+          Melanoma TreatmentNaive
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/HyperAcuteHIV-1-Infection'}>
+          HyperAcuteHIV 1 Infection
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Peripheral'}>Peripheral</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-Control'}>
+          Bacterial Sepsis Control
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-Pam3CSK4'}>
+          Bacterial Sepsis Pam3CSK4
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/MYE'}>MYE</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/IFNbTreated'}>IFNbTreated</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/MUT-Normal'}>MUT Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/OC-Normal'}>OC Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-LPS'}>
+          Bacterial Sepsis LPS
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-Bac-SEP'}>
+          Bacterial Sepsis Bac SEP
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/LPSTreated'}>LPS Treated</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/UlcerativeColitis'}>
+          Ulcerative Colitis
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/melanoma-treatment'}>
+          Melanoma Treatment
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/B-ALL'}>B-ALL</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-Leuk-UTI'}>
+          Bacterial Sepsis-Leuk-UTI
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-NT'}>
+          Bacterial Sepsis NT
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/BacterialSepsis-Int-URO'}>
+          Bacterial Sepsis Int URO
+        </a>
       </p>
     </div>
   );
   const chBone = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/Osteoarthritis'}>Osteoarthritis</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/RheumatoidArthritis'}>
+          Rheumatoid Arthritis
+        </a>
       </p>
     </div>
   );
-  const chRectum = (
+  const chBoneMarrow = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
-
-  const chEmbryo = (
+  const chBrain = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/CB-Normal'}>CB Normal</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+        <a href={'/cedr/general/phenotype/FC-Normal'}>FC Normal</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+        <a href={'/cedr/general/phenotype/DevelopingPFC-Normal'}>
+          DevelopingPFC Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/NeurologicalDisorders'}>
+          Neurological Disorders
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/VC-Normal'}>VC Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/AdultGBM'}>Adult GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/ALZ'}>ALZ</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/PediatricGBM'}>Pediatric GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/GBM'}>GBM</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/MultipleSclerosisAndControl'}>
+          Multiple Sclerosis
+        </a>
       </p>
     </div>
   );
-
-  const chIntestinal = (
+  const chBreast = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/TNBC'}>TNBC</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
-
   const chColon = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/ColorectalcancerTcells'}>
+          Colorectal Cancer Tcells
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
-
+  const chEmbryo = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/differentiation'}>Differentiation</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chEsophagus = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chEye = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chFat = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chGallbladder = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chHESC = (
+    <div>
+      <p>
+        <a href={' /cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chHeadNeck = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/HNSCC-Nonmalignant'}>
+          HNSCC Nonmalignant
+        </a>
+      </p>
+    </div>
+  );
+  const chHeart = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chIntestinal = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/UlcerativeColitis'}>
+          Ulcerative Colitis
+        </a>
+      </p>
+    </div>
+  );
   const chKidney = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/LupusNephritis'}>Lupus Nephritis</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+        <a href={'/cedr/general/phenotype/Kidneycancer'}>Kidney Cancer</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+        <a href={'/cedr/general/phenotype/tumor'}>Tumor</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
 
-  const chSpine = (
-    <div>
-      <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
-      </p>
-    </div>
-  );
   const chLiver = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/ImmuneCells-Normal'}>
+          ImmuneCells Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
-  const chSkin = (
+  const chLung = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
+        <a href={'/cedr/general/phenotype/asthma'}>Asthma</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
+        <a href={'/cedr/general/phenotype/COVID'}>COVID</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chLymph = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Lymphoma'}>Lymphoma</a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
+        <a href={'/cedr/general/phenotype/peripheral'}>Peripheral</a>
+      </p>
+    </div>
+  );
+  const chMuscle = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chOesophagus = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/ESCA'}>ESCA</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const chPancreas = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/pancreascancer'}>Pancreas Cancer</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmAorta = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmBladder = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmBlood = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmBrain = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/astrocyte-Normal'}>
+          Astrocyte Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Hypothalamus-Hungry'}>
+          Hypothalamus Hungry
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Hypothalamus-Normal'}>
+          Hypothalamus Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/PrimaryVisualCortex-Normal'}>
+          PrimaryVisualCortex Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Hypothalamic-Normal'}>
+          Hypothalamic Normal
+        </a>
+      </p>
+    </div>
+  );
+  const cmBreast = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/EpithelialStages'}>
+          Epithelial Stages
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmColon = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmDiaphragm = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmEmbryo = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmEye = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/ONC-ResilienceInjury'}>
+          ONC Resilience Injury
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmFat = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmHeart = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/TIP-MIDay3'}>TIP MIDay3</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/TIP-MIDay7'}>TIP MIDay7</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/GFP-ShamDay7'}>GFP ShamDay7</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/GFP-MIDay3'}>GFP MIDay3</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/AutoimmuneMyocarditis'}>
+          Autoimmune Myocarditis
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/GFP-MIDay7'}>GFP MIDay7</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/TIP-Sham'}>TIP Sham</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/GFP-ShamDay3'}>GFP ShamDay3</a>
+      </p>
+    </div>
+  );
+  const cmIntestinal = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmKidney = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmLiver = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmLung = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/ILCs-AllergicLungInflammation'}>
+          ILCs AllergicLung Inflammation
+        </a>
+      </p>
+    </div>
+  );
+  const cmMarrow = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmMesenchymalStemCells = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmMuscle = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmOvary = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmPancreas = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/PancreasEndocrinogenesis'}>
+          Pancreas Endocrinogenesis
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/atlas-Normal'}>Atlas Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmProstate = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/RegenerativeTimecourse'}>
+          Regenerative Timecourse
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmReproductive = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Development-Normal'}>
+          Development Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmRespiratory = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmRib = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmSkin = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmSmallIntestine = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Salmonella'}>Salmonella</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Hpoly'}>Hpoly</a>
+      </p>
+    </div>
+  );
+  const cmSpine = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmSpleen = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmStomach = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmThymus = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
+  const cmTongue = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
 
-  const chSkin = (
-    <div>
-      <p>
-        <a href={'/cedr/general/tissue/Brain'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>CB-Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Cancer'}>NeurologicalDisorders</a>
-      </p>
-    </div>
-  );
-
-  // useEffect(() => {
-  //   console.log(searchkey);
-  // }, [searchkey]);
   return (
     <div>
       <Row justify="center" style={{ background: '#f0f2f5' }}>
@@ -506,7 +898,7 @@ export default function IndexPage() {
                 }}
               />
               <div className={styles.brain}>
-                <Popover content={chbrain} title={'Brain'} placement="right">
+                <Popover content={chBrain} title={'Brain'} placement="right">
                   <img
                     src={brain}
                     style={{ width: '35%', height: '70%', display: 'block' }}
@@ -514,7 +906,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.lung}>
-                <Popover content={content} title={'Lung'} placement="right">
+                <Popover content={chLung} title={'Lung'} placement="right">
                   <img
                     src={lung}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -522,7 +914,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.heart}>
-                <Popover content={content} title={'Heart'} placement="right">
+                <Popover content={chHeart} title={'Heart'} placement="right">
                   <img
                     src={heart}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -530,7 +922,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.liver}>
-                <Popover content={content} title={'Liver'} placement="right">
+                <Popover content={chLiver} title={'Liver'} placement="right">
                   <img
                     src={liver}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -538,16 +930,16 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.blood}>
-                <Popover content={content} title={'Blood'} placement="right">
+                <Popover content={chBladder} title={'Bladder'} placement="left">
                   <img
-                    src={blood}
-                    style={{ width: '35%', height: '80%', display: 'block' }}
+                    src={bladder}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
               <div className={styles.largeintestine}>
                 <Popover
-                  content={content}
+                  content={chIntestinal}
                   title={'Large Intestine'}
                   placement="right"
                 >
@@ -559,7 +951,7 @@ export default function IndexPage() {
               </div>
               <div className={styles.smallintestine}>
                 <Popover
-                  content={content}
+                  content={chIntestinal}
                   title={'Small Intestine'}
                   placement="right"
                 >
@@ -570,7 +962,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.bone}>
-                <Popover content={content} title={'Bone'} placement="right">
+                <Popover content={chBone} title={'Bone'} placement="right">
                   <img
                     src={bone}
                     style={{ width: '30%', height: '60%', display: 'block' }}
@@ -578,23 +970,27 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.eye}>
-                <Popover content={content} title={'Eye'} placement="left">
+                <Popover content={chBlood} title={'Blood'} placement="right">
+                  <img
+                    src={blood}
+                    style={{ width: '35%', height: '80%', display: 'block' }}
+                  />
+                </Popover>
+              </div>
+              <div className={styles.bladder}>
+                <Popover content={chEye} title={'Eye'} placement="left">
                   <img
                     src={eye}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
-              <div className={styles.bladder}>
-                <Popover content={content} title={'Bladder'} placement="left">
-                  <img
-                    src={bladder}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
-                  />
-                </Popover>
-              </div>
               <div className={styles.pancreas}>
-                <Popover content={content} title={'Pancreas'} placement="left">
+                <Popover
+                  content={chPancreas}
+                  title={'Pancreas'}
+                  placement="left"
+                >
                   <img
                     src={pancreas}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -602,7 +998,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.spleen}>
-                <Popover content={content} title={'Spleen'} placement="left">
+                <Popover content={chFat} title={'Fat'} placement="left">
                   <img
                     src={spleen}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -626,7 +1022,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.kidney}>
-                <Popover content={content} title={'Kidney'} placement="left">
+                <Popover content={chKidney} title={'Kidney'} placement="left">
                   <img
                     src={kidney}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -635,7 +1031,7 @@ export default function IndexPage() {
               </div>
               <div className={styles.gallbladder}>
                 <Popover
-                  content={content}
+                  content={chGallbladder}
                   title={'Gallbladder'}
                   placement="left"
                 >
@@ -664,7 +1060,7 @@ export default function IndexPage() {
                 }}
               />
               <div className={styles.mbrain}>
-                <Popover content={content} title={'Brain'} placement="right">
+                <Popover content={cmBrain} title={'Brain'} placement="right">
                   <img
                     src={mbrain}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -672,7 +1068,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mlung}>
-                <Popover content={content} title={'Lung'} placement="right">
+                <Popover content={cmLung} title={'Lung'} placement="right">
                   <img
                     src={mlung}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -680,7 +1076,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mheart}>
-                <Popover content={content} title={'Heart'} placement="right">
+                <Popover content={cmHeart} title={'Heart'} placement="right">
                   <img
                     src={mheart}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -688,7 +1084,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mliver}>
-                <Popover content={content} title={'Liver'} placement="right">
+                <Popover content={cmLiver} title={'Liver'} placement="right">
                   <img
                     src={mliver}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -696,7 +1092,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mblood}>
-                <Popover content={content} title={'Blood'} placement="right">
+                <Popover content={cmBlood} title={'Blood'} placement="right">
                   <img
                     src={mblood}
                     style={{ width: '30%', height: '80%', display: 'block' }}
@@ -705,7 +1101,7 @@ export default function IndexPage() {
               </div>
               <div className={styles.mlargeintestine}>
                 <Popover
-                  content={content}
+                  content={cmIntestinal}
                   title={'Large Intestine'}
                   placement="right"
                 >
@@ -717,7 +1113,7 @@ export default function IndexPage() {
               </div>
               <div className={styles.msmallintestine}>
                 <Popover
-                  content={content}
+                  content={cmSmallIntestine}
                   title={'Small Intestine'}
                   placement="right"
                 >
@@ -736,7 +1132,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.meye}>
-                <Popover content={content} title={'Eye'} placement="left">
+                <Popover content={cmEye} title={'Eye'} placement="left">
                   <img
                     src={meye}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -744,7 +1140,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mbladder}>
-                <Popover content={content} title={'Bladder'} placement="left">
+                <Popover content={cmBladder} title={'Bladder'} placement="left">
                   <img
                     src={mbladder}
                     style={{ width: '30%', height: '70%', display: 'block' }}
@@ -752,7 +1148,11 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mpancreas}>
-                <Popover content={content} title={'Pancreas'} placement="left">
+                <Popover
+                  content={cmPancreas}
+                  title={'Pancreas'}
+                  placement="left"
+                >
                   <img
                     src={mpancreas}
                     style={{ width: '30%', height: '70%', display: 'block' }}
@@ -760,7 +1160,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mspleen}>
-                <Popover content={content} title={'Spleen'} placement="left">
+                <Popover content={cmSpleen} title={'Spleen'} placement="left">
                   <img
                     src={mspleen}
                     style={{ width: '30%', height: '70%', display: 'block' }}
@@ -776,7 +1176,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mskin}>
-                <Popover content={content} title={'Skin'} placement="left">
+                <Popover content={cmSkin} title={'Skin'} placement="left">
                   <img
                     src={mskin}
                     style={{ width: '30%', height: '70%', display: 'block' }}
@@ -784,7 +1184,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mkidney}>
-                <Popover content={content} title={'Kidney'} placement="left">
+                <Popover content={cmKidney} title={'Kidney'} placement="left">
                   <img
                     src={mkidney}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -814,7 +1214,7 @@ export default function IndexPage() {
                 className={styles.introduction}
                 style={{ textAlign: 'left' }}
               >
-                Introduction for CeDR Atlas:
+                Introduction of CeDR Atlas:
               </Title>
               <Text
                 style={{
@@ -825,8 +1225,24 @@ export default function IndexPage() {
                 strong={true}
               >
                 {
-                  'CeDR represents an omnibus systematic exploration of tissue-cell type specific drug response for human,mouse and cell lines. In this work, we collected the fast-growing single-cell transcriptome profiling generated by multiple international consortiums (e.g Human Cell Landscape, Mouse Cell Atlas and CCLE) and other available labeled datasets to conduct the tissue-cell type based drug perturbation analysis. These will help to reveal tissue-cell type specific drug response and further provide insight into identifying potential side effects, repositioned drugs and even combination therapies. Currently, CeDR maintained the results for more than 270 single cell data objects for human, mouse and cell lines, including more than 34 tissues and 700 tissue-cell combination types. In summary, we identified a total of *** significant drug-cell type associations (Enriched p-value<0.05, Correlation p-value<0.01). Users can browse and search the drugs, cell types, tissues, diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR finemaps drug response at cellular resolution and sheds light on the potential of drug combinations. For detail of usage of this database please see the documentation.'
+                  'CeDR represents an omnibus systematic exploration of tissue-cell type specific drug response for human, mouse and cell lines. We collected the fast-growing single-cell transcriptome profiling generated by multiple international consortiums (e.g Human Cell Landscape, Mouse Cell Atlas and '
                 }
+                <Link href={'https://sites.broadinstitute.org/ccle/'}>
+                  CCLE
+                </Link>
+                {
+                  ' and other available labeled datasets to conduct the tissue-cell type based drug perturbation analysis. These will help to reveal tissue-cell type specific drug response and further provide insight into identifying potential side effects, drug repurposing and even combination therapies. Currently, CeDR maintainsed the results for more than 270 single cell data objects for human, mouse and cell lines, including more than 34 tissues and 700 tissue-cell combination types. In summary, we identified a total of '
+                }
+                <strong style={{ color: 'red' }}>1368906</strong>
+                {' significant drug-cell type associations'}
+                <strong style={{ color: 'red' }}>
+                  {'(enriched p-value<0.05, correlation p-value<0.01)'}
+                </strong>
+                {
+                  '. Users can browse and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the potential of drug combinations. For details of usage of this database please see the '
+                }
+                <Link href={'/documentation'}>documentation</Link>
+                {' page.'}
               </Text>
             </div>
           </Row>
@@ -842,42 +1258,42 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Studies</strong>}
-                value={70}
+                value={67}
                 valueStyle={{ color: '#3f8600' }}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Datasets</strong>}
-                value={169}
+                value={332}
                 valueStyle={{ color: '#3f8600' }}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Tissues</strong>}
-                value={20}
+                value={47}
                 valueStyle={{ color: '#3f8600' }}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={<strong style={{ color: '#363636' }}>Cell Types</strong>}
-                value={300}
+                title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
+                value={59}
                 valueStyle={{ color: '#3f8600' }}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={<strong style={{ color: '#363636' }}>Diseases</strong>}
-                value={32}
+                title={<strong style={{ color: '#363636' }}>Cells</strong>}
+                value={4064272}
                 valueStyle={{ color: '#3f8600' }}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Drugs</strong>}
-                value={3000}
+                value={6100}
                 valueStyle={{ color: '#3f8600' }}
               />
             </Card.Grid>
@@ -897,7 +1313,7 @@ export default function IndexPage() {
               <Timeline.Item>
                 Solve initial network problems 2021-06-08
               </Timeline.Item>
-              <Timeline.Item>Create a services site 2021-06-01</Timeline.Item>
+              <Timeline.Item>Create the services site 2021-06-01</Timeline.Item>
             </Timeline>
           </Card>
           <Divider />
@@ -918,7 +1334,7 @@ export default function IndexPage() {
               <a href={'https://singlecell.broadinstitute.org/single_cell'}>
                 {' '}
                 <LinkOutlined />
-                &nbsp;Single Cell portal{' '}
+                &nbsp;Single Cell Portal{' '}
               </a>
             </p>
             <p>

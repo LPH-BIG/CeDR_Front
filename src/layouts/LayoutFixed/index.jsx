@@ -49,7 +49,7 @@ export default function (props) {
       <HeaderLab />
       <div id="components-layout-demo-fixed">
         <Layout>
-          <Header style={{ zIndex: 1, width: '100%' }}>
+          <Header style={{ zIndex: 1, width: '100%', paddingLeft: '10%' }}>
             <Menu
               theme="dark"
               mode="horizontal"
@@ -112,7 +112,7 @@ export default function (props) {
               >
                 <DownloadOutlined />
                 &nbsp;
-                <strong style={{ color: '#fff' }}>Downloads</strong>
+                <strong style={{ color: '#fff' }}>Download</strong>
               </Menu.Item>
               <Menu.Item
                 key="5"
