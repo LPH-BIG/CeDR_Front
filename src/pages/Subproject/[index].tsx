@@ -18,7 +18,9 @@ import { history } from '@@/core/history';
 import { GeneralState } from '@/pages/General/model';
 import { Dispatch, Loading, SubprojectState } from '@@/plugin-dva/connect';
 import { connect } from 'umi';
-import ProTable from '@ant-design/pro-table';
+import ProTable, { IntlProvider, enUSIntl } from '@ant-design/pro-table';
+// import enUSIntl from 'antd/lib/locale/en_US';
+// const enUSIntl = createIntl('en_US', enUS);
 import Tsne from '@/components/Tsne';
 import Pie from '@/components/Pie';
 import {
@@ -35,6 +37,7 @@ import { getRemoteKeywords } from '@/pages/General/service';
 import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DetailIcon } from '@/components/Icons';
 import Title from 'antd/es/typography/Title';
+import { createIntl } from '@@/plugin-locale/localeExports';
 interface SubprojectPageProps {
   subproject: SubprojectState;
   dispatch: Dispatch;
@@ -94,7 +97,7 @@ const Index: FC<SubprojectPageProps> = ({
       //   setPie(res.data);
       // });
     }
-  }, []);
+  }, [subproject, history.location.pathname]);
 
   useEffect(() => {
     const dataset = subproject.data[0];
@@ -108,7 +111,7 @@ const Index: FC<SubprojectPageProps> = ({
       });
       setTsnetitle(dataset.project + ' ' + dataset.subproject);
     }
-  }, []);
+  }, [subproject, history.location.pathname]);
 
   useEffect(() => {
     const dataset = subproject.data[0];
@@ -123,7 +126,7 @@ const Index: FC<SubprojectPageProps> = ({
         },
       );
     }
-  }, []);
+  }, [subproject, history.location.pathname]);
   useEffect(() => {
     const dataset = subproject.data[0];
     if (dataset) {
@@ -135,7 +138,7 @@ const Index: FC<SubprojectPageProps> = ({
         setPie(res.data);
       });
     }
-  }, []);
+  }, [subproject, history.location.pathname]);
 
   const columns = [
     {
@@ -378,6 +381,7 @@ const Index: FC<SubprojectPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       ellipsis: true,
+      search: false,
       renderFormItem: () => {
         const options = gene.map((item) => (
           <Select.Option key={item} value={item} type={item}>
@@ -581,7 +585,7 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Project" span={1}>
                     <a href={summary?.reference}>{summary?.project}</a>
                   </Descriptions.Item>
-                  <Descriptions.Item label="SubProject" span={2}>
+                  <Descriptions.Item label="Subproject" span={2}>
                     <a
                       onClick={() => {
                         history.push(
@@ -592,7 +596,7 @@ const Index: FC<SubprojectPageProps> = ({
                         );
                       }}
                     >
-                      {summary?.subproject}
+                      <p>{summary?.subproject}</p>
                     </a>
                   </Descriptions.Item>
                   <Descriptions.Item label="Source">
@@ -604,23 +608,23 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Phenotype">
                     {summary?.phenotype}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Cell Source">
+                  <Descriptions.Item label="Cell source">
                     {summary?.cell_source}
                   </Descriptions.Item>
                   <Descriptions.Item label="Total reported cell">
                     {summary?.total_reported_cell}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Number of reported Celltype">
+                  <Descriptions.Item label="Number of reported celltype">
                     {summary?.celltype_num}
                   </Descriptions.Item>
                   <Descriptions.Item label="Drug" span={3}>
                     {summary?.drug.split(', ').slice(0, 10).join(', ')}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Number of reported Celltype">
+                  <Descriptions.Item label="Number of reported celltype">
                     {summary?.celltype_num}
                   </Descriptions.Item>
 
-                  <Descriptions.Item label="Cell Type" span={3}>
+                  <Descriptions.Item label="Cell type" span={3}>
                     {summary?.celltype.split(', ').slice(0, 10).join(', ')}
                   </Descriptions.Item>
                 </Descriptions>
@@ -656,85 +660,87 @@ const Index: FC<SubprojectPageProps> = ({
           <div>
             <Row>
               <Col>
-                <ProTable<SubprojectItem>
-                  columns={columns}
-                  dataSource={subproject.data}
-                  loading={subprojectListLoading}
-                  pagination={false}
-                  // headerTitle="日期类"
-                  expandable={{
-                    expandIconColumnIndex: 11,
-                    expandedRowRender: (record, index, indent, expanded) => {
-                      return (
-                        <p style={{ textAlign: 'right' }}>
-                          overlap genes: {record.overlapgene}
-                        </p>
-                      );
-                    },
-                  }}
-                  rowKey={(record) => record.id}
-                  onSubmit={(params) => {
-                    const {
-                      project,
-                      subproject,
-                      celltype,
-                      drug,
-                      overlapgene,
-                      pcutoff,
-                      orcutoff,
-                    } = keywords;
-                    // console.log('submit');
-                    // console.log(keywords);
-                    dispatch({
-                      type: 'subproject/getRemote',
-                      payload: {
-                        pageIndex: 1,
-                        pageSize: 10,
-                        project: project,
-                        subproject: subproject,
-                        overlapgene: overlapgene,
-                        celltype: celltype,
-                        drug: drug,
-                        pcutoff: pcutoff,
-                        orcutoff: orcutoff,
+                <IntlProvider value={enUSIntl}>
+                  <ProTable<SubprojectItem>
+                    columns={columns}
+                    dataSource={subproject.data}
+                    loading={subprojectListLoading}
+                    pagination={false}
+                    // headerTitle="日期类"
+                    expandable={{
+                      expandIconColumnIndex: 11,
+                      expandedRowRender: (record, index, indent, expanded) => {
+                        return (
+                          <p style={{ textAlign: 'right' }}>
+                            overlap genes: {record.overlapgene}
+                          </p>
+                        );
                       },
-                    });
-                  }}
-                  onReset={() => {
-                    setKeywords({});
-                    dispatch({
-                      type: 'subproject/getRemote',
-                      payload: {
-                        pageIndex: 1,
-                        pageSize: 10,
-                        project: keywords.project,
-                        subproject: keywords.subproject,
-                      },
-                    });
-                  }}
-                  search={false}
-                  // search={{
-                  //   defaultCollapsed: false,
-                  //   labelWidth: 'auto',
-                  //   searchText: 'Search',
-                  //   resetText: 'Reset',
-                  //   collapseRender: false,
-                  //   collapsed: false,
-                  // }}
-                />
-                <Pagination
-                  key={'generalPagination'}
-                  className={styles.pagenation}
-                  showQuickJumper
-                  defaultCurrent={1}
-                  total={subproject.meta.total}
-                  pageSize={subproject.meta.pageSize}
-                  showSizeChanger
-                  showTotal={(total) => `Total ${total} items`}
-                  pageSizeOptions={[10, 20, 50, 100]}
-                  onChange={paginationHandler}
-                  onShowSizeChange={sizeChangeHandler}
-                />
+                    }}
+                    rowKey={(record) => record.id}
+                    onSubmit={(params) => {
+                      const {
+                        project,
+                        subproject,
+                        celltype,
+                        drug,
+                        overlapgene,
+                        pcutoff,
+                        orcutoff,
+                      } = keywords;
+                      // console.log('submit');
+                      // console.log(keywords);
+                      dispatch({
+                        type: 'subproject/getRemote',
+                        payload: {
+                          pageIndex: 1,
+                          pageSize: 10,
+                          project: project,
+                          subproject: subproject,
+                          overlapgene: overlapgene,
+                          celltype: celltype,
+                          drug: drug,
+                          pcutoff: pcutoff,
+                          orcutoff: orcutoff,
+                        },
+                      });
+                    }}
+                    onReset={() => {
+                      setKeywords({});
+                      dispatch({
+                        type: 'subproject/getRemote',
+                        payload: {
+                          pageIndex: 1,
+                          pageSize: 10,
+                          project: keywords.project,
+                          subproject: keywords.subproject,
+                        },
+                      });
+                    }}
+                    // search={false}
+                    search={{
+                      defaultCollapsed: false,
+                      labelWidth: 'auto',
+                      searchText: 'Search',
+                      resetText: 'Reset',
+                      collapseRender: false,
+                      collapsed: false,
+                    }}
+                  />
+                  <Pagination
+                    key={'generalPagination'}
+                    className={styles.pagenation}
+                    showQuickJumper
+                    defaultCurrent={1}
+                    total={subproject.meta.total}
+                    pageSize={subproject.meta.pageSize}
+                    showSizeChanger
+                    showTotal={(total) => `Total ${total} items`}
+                    pageSizeOptions={[10, 20, 50, 100]}
+                    onChange={paginationHandler}
+                    onShowSizeChange={sizeChangeHandler}
+                  />
+                </IntlProvider>
               </Col>
             </Row>
           </div>
@@ -763,7 +769,9 @@ const Index: FC<SubprojectPageProps> = ({
               />
               <Image.PreviewGroup>
                 <Space>
-                  <strong>Cell Type:</strong>
+                  <Title level={3} mark={true}>
+                    Cell Type:
+                  </Title>
                   <Image
                     width={'80%'}
                     src={IMG_PREFIX + record?.photocelltype}
@@ -774,8 +782,9 @@ const Index: FC<SubprojectPageProps> = ({
                       setAlert('inline');
                     }}
                   />
-                  {/*<Title level={2}>GSEA drug:</Title>*/}
-                  <strong>Drug:</strong>
+                  <Title level={3} mark={true}>
+                    Drug:
+                  </Title>
                   <Image
                     width={'80%'}
                     src={IMG_PREFIX + record?.photodrug}

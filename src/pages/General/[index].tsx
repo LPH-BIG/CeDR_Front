@@ -368,6 +368,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
           <div>
             <ProTable<GeneralItem>
               columns={columns}
+              options={false}
               dataSource={general.data}
               loading={generalListLoading}
               pagination={false}

@@ -23,7 +23,7 @@ export default function Page() {
         <Col span={18}>
           <Descriptions title="Team Leader" bordered>
             <Descriptions.Item label="Name" span={3}>
-              Pei-Lin Jia
+              Peilin Jia
             </Descriptions.Item>
             <Descriptions.Item label="Email">pjia@big.ac.cn</Descriptions.Item>
             {/*<Descriptions.Item label="Live">*/}
@@ -61,7 +61,7 @@ export default function Page() {
         <Col span={18}>
           <Descriptions title="Web Development" bordered>
             <Descriptions.Item label="UserName" span={3}>
-              Hong-En Kang
+              Hongen Kang
             </Descriptions.Item>
             <Descriptions.Item label="Email">
               kanghongen2018m@big.ac.cn
