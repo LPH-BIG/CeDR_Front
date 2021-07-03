@@ -145,9 +145,10 @@ const Index: FC<SubprojectPageProps> = ({
       // title: 'Order',
       title: 'Association ID',
       // dataIndex: 'index',
+      tooltip: 'Click to see the association detail',
+      ellipsis: true,
       dataIndex: 'id',
       // valueType: 'index',
-      // width: 58,
       search: false,
       render: (text, record, index) => {
         // console.log(record)
@@ -177,6 +178,9 @@ const Index: FC<SubprojectPageProps> = ({
       dataIndex: 'celltype',
       key: 'celltype',
       valueType: 'text',
+      ellipsis: true,
+      tooltip: 'Click to see all associations of the cell type',
+      ellipsis: true,
       hideInForm: true,
       width: 200,
       render: (text, record) => {
@@ -231,6 +235,9 @@ const Index: FC<SubprojectPageProps> = ({
       dataIndex: 'drug',
       valueType: 'text',
       hideInForm: true,
+      tooltip: 'Click to see all associations of the drug',
+      ellipsis: true,
+      width: 125,
       render: (text, record) => {
         return (
           <span>
@@ -283,6 +290,9 @@ const Index: FC<SubprojectPageProps> = ({
       dataIndex: 'pvalue1',
       key: 'pvalue1',
       valueType: 'text',
+      tooltip:
+        'The explanation of p-value 1 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
+      // ellipsis: true,
       // search: false,
       renderFormItem: () => {
         const options = pcutoff.map((item) => (
@@ -336,6 +346,8 @@ const Index: FC<SubprojectPageProps> = ({
     {
       title: 'p-value 2',
       dataIndex: 'pvalue2',
+      tooltip:
+        'The explanation of p-value 2 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
       key: 'pvalue2',
       valueType: 'text',
       hideInForm: true,
@@ -361,6 +373,8 @@ const Index: FC<SubprojectPageProps> = ({
       title: 'S p-value',
       dataIndex: 'spvalue',
       key: 'spvalue',
+      tooltip:
+        'The explanation of S p-value is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
       valueType: 'text',
       hideInForm: true,
       search: false,
@@ -726,6 +740,7 @@ const Index: FC<SubprojectPageProps> = ({
                       collapseRender: false,
                       collapsed: false,
                     }}
+                    options={false}
                   />
                   <Pagination
                     key={'generalPagination'}
@@ -867,6 +882,7 @@ const Index: FC<SubprojectPageProps> = ({
               }}
               search={false}
               headerTitle={'Gene Information'}
+              options={false}
             />
           </div>
         </TabPane>

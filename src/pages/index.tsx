@@ -322,6 +322,44 @@ export default function IndexPage() {
       </p>
     </div>
   );
+  const chSkin = (
+    <div>
+      <p>
+        <a href={'/cedr/general/phenotype/BCC-posttreatment'}>
+          BCC-posttreatment
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>BCC-pretreatment</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Psoriasis'}>Psoriasis</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/GA'}>GA</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Leprosy'}>Leprosy</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Acne'}>Acne</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Alopecia'}>Alopecia</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/FibroblastsPriming'}>
+          FibroblastsPriming
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/SCC'}>SCC</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+      </p>
+    </div>
+  );
   const chFat = (
     <div>
       <p>
@@ -1014,7 +1052,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.skin}>
-                <Popover content={content} title={'Skin'} placement="left">
+                <Popover content={chSkin} title={'Skin'} placement="left">
                   <img
                     src={skin}
                     style={{ width: '36%', height: '80%', display: 'block' }}

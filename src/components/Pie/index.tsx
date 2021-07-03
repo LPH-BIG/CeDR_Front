@@ -22,7 +22,7 @@ export default function Page(props: any) {
         },
       },
       title: {
-        text: 'Cell Fraction',
+        text: 'Cell fraction',
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.y}</b>',

@@ -335,20 +335,32 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   ];
 
   const paginationHandler = (page: number, pageSize?: number) => {
+    const { source, tissue, project, phenotype, subproject } = keywords;
     dispatch({
       type: 'general/getRemote',
       payload: {
         pageIndex: page,
         pageSize: pageSize ? pageSize : general.meta.pageSize,
+        source: source,
+        project: project,
+        subproject: subproject,
+        tissue: tissue,
+        phenotype: phenotype,
       },
     });
   };
   const sizeChangeHandler = (current: number, size: number) => {
+    const { source, tissue, project, phenotype, subproject } = keywords;
     dispatch({
       type: 'general/getRemote',
       payload: {
         pageIndex: current,
         pageSize: size,
+        source: source,
+        project: project,
+        subproject: subproject,
+        tissue: tissue,
+        phenotype: phenotype,
       },
     });
   };
@@ -393,6 +405,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                 });
               }}
               onReset={() => {
+                setKeywords({});
                 dispatch({
                   type: 'general/getRemote',
                   payload: {
