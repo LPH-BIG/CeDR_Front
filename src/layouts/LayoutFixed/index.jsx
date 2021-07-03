@@ -42,6 +42,14 @@ export default function (props) {
       history.location.pathname.startsWith('/browse')
     ) {
       setSelectkey('2');
+    } else if (history.location.pathname.startsWith('/search')) {
+      setSelectkey('3');
+    } else if (history.location.pathname.startsWith('/downloads')) {
+      setSelectkey('4');
+    } else if (history.location.pathname.startsWith('/documentation')) {
+      setSelectkey('5');
+    } else if (history.location.pathname.startsWith('/contact')) {
+      setSelectkey('6');
     }
     // console.log(history.location.pathname);
   }, [history.location]);

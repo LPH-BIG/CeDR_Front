@@ -20,6 +20,9 @@ import Wordcloud from '../components/wordcloud';
 import human from '../assets/human1.jpg';
 import heart from '../assets/heart.png';
 import bladder from '../assets/bladder.png';
+import Artery from '../assets/Artery.png';
+import Esophagus from '../assets/Esophagus.png';
+import muscle from '../assets/muscle.png';
 import brain from '../assets/brain.png';
 import gallbladder from '../assets/gallbladder.png';
 import kidney from '../assets/kidney.png';
@@ -978,7 +981,7 @@ export default function IndexPage() {
               <div className={styles.largeintestine}>
                 <Popover
                   content={chIntestinal}
-                  title={'Large Intestine'}
+                  title={'Intestine'}
                   placement="right"
                 >
                   <img
@@ -988,14 +991,10 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.smallintestine}>
-                <Popover
-                  content={chIntestinal}
-                  title={'Small Intestine'}
-                  placement="right"
-                >
+                <Popover content={chMuscle} title={'Muscle'} placement="right">
                   <img
-                    src={smallintestine}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
+                    src={muscle}
+                    style={{ width: '30%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
@@ -1038,16 +1037,20 @@ export default function IndexPage() {
               <div className={styles.spleen}>
                 <Popover content={chFat} title={'Fat'} placement="left">
                   <img
-                    src={spleen}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
+                    src={madipose}
+                    style={{ width: '20%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
               <div className={styles.uterus}>
-                <Popover content={content} title={'Uterus'} placement="left">
+                <Popover
+                  content={chEsophagus}
+                  title={'Esophagus'}
+                  placement="left"
+                >
                   <img
-                    src={uterus}
-                    style={{ width: '40%', height: '80%', display: 'block' }}
+                    src={Esophagus}
+                    style={{ width: '10%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>
@@ -1140,7 +1143,7 @@ export default function IndexPage() {
               <div className={styles.mlargeintestine}>
                 <Popover
                   content={cmIntestinal}
-                  title={'Large Intestine'}
+                  title={'Intestine'}
                   placement="right"
                 >
                   <img
@@ -1151,12 +1154,12 @@ export default function IndexPage() {
               </div>
               <div className={styles.msmallintestine}>
                 <Popover
-                  content={cmSmallIntestine}
-                  title={'Small Intestine'}
+                  content={cmStomach}
+                  title={'Stomach'}
                   placement="right"
                 >
                   <img
-                    src={smallintestine}
+                    src={stomach}
                     style={{ width: '35%', height: '80%', display: 'block' }}
                   />
                 </Popover>
@@ -1286,7 +1289,9 @@ export default function IndexPage() {
                 {
                   '. Users can browse and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the potential of drug combinations. For details of usage of this database please see the '
                 }
-                <Link href={'/documentation'}>documentation</Link>
+                <Link href={'https://ngdc.cncb.ac.cn/cedr/documentation'}>
+                  documentation
+                </Link>
                 {' page.'}
               </Text>
             </div>

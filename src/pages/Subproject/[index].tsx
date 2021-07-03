@@ -803,6 +803,9 @@ const Index: FC<SubprojectPageProps> = ({
                   <Image
                     width={'80%'}
                     src={IMG_PREFIX + record?.photodrug}
+                    onError={(event) => {
+                      setAlert('inline');
+                    }}
                     fallback={
                       'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
                     }
@@ -848,8 +851,11 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Vendor">
                     {druginformation.vendor}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Vehicle_scan_id">
-                    {druginformation.vehicle_scan_id}
+                  <Descriptions.Item label="Inst">
+                    {druginformation.inst}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Array">
+                    {druginformation.array}
                   </Descriptions.Item>
                 </Descriptions>
               </Col>

@@ -147,7 +147,7 @@ export default function Page(props: any) {
     setState({
       chartOptions: {
         series: series,
-        chart: { height: props.height },
+        chart: { height: props.height, width: props.width },
         legend: {
           layout: 'vertical',
           align: 'right',
@@ -164,7 +164,8 @@ export default function Page(props: any) {
   }, [props]);
 
   return (
-    <div style={{ height: '400px' }}>
+    // <div style={{ height: '400px' }}>
+    <div>
       <HighchartsReact highcharts={Highcharts} options={state.chartOptions} />
     </div>
   );

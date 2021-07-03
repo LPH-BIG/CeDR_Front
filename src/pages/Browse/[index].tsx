@@ -248,7 +248,7 @@ const Index: FC<BrowsePageProps> = ({
     <div>
       <Row justify={'center'}>
         <Col style={{ textAlign: 'center' }}>
-          <Network network={network} height={'100%'} />
+          <Network network={network} height={'1000px'} width={1000} />
           <strong>
             Point Color: <span style={{ color: 'red' }}>dataset:red</span>{' '}
             &nbsp; <span style={{ color: 'orange' }}>cell type: orange</span>

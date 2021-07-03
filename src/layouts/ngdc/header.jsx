@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './index.less';
 const Header = () => {
   return (
     <div
@@ -10,21 +9,9 @@ const Header = () => {
         fontFamily: ' Arial',
       }}
     >
-      <nav
-        className="bigd-navbar-default bigd-navbar"
-        style={{ height: '30px' }}
-      >
-        <div
-          className="bigd-container"
-          style={{ height: '30px', width: '100%' }}
-        >
-          <div
-            className="bigd-navbar-header"
-            style={{ height: '30px', width: '50%', marginLeft: '30px' }}
-          >
-            {/*<button type="button" className="bigd-navbar-toggle bigd-collapsed"><span className="bigd-sr-only">Toggle navigation</span><span*/}
-            {/*  className="bigd-icon-bar"></span><span className="bigd-icon-bar"></span> <span className="bigd-icon-bar"></span>*/}
-            {/*</button>*/}
+      <nav style={{ height: '30px' }}>
+        <div style={{ height: '30px', width: '100%' }}>
+          <div style={{ height: '30px', width: '100%', marginLeft: '30px' }}>
             <a
               href="https://www.cncb.ac.cn"
               target="_blank"
@@ -33,39 +20,46 @@ const Header = () => {
               <img
                 src="https://ngdc.cncb.ac.cn/cdn/image/cncb-nav.png"
                 className="bigd-img-responsive"
-                style={{ width: '10%', height: '22px' }}
+                style={{ width: '5%', height: '22px' }}
               />
             </a>
-            <a href="https://ngdc.cncb.ac.cn/" className="bigd-navbar-brand">
+            <a href="https://ngdc.cncb.ac.cn/">
               <img
                 src="https://ngdc.cncb.ac.cn/cdn/image/ngdc-nav.png"
-                className="bigd-img-responsive"
-                style={{ width: '10%', height: '22px' }}
+                style={{ width: '5%', height: '22px' }}
               />
             </a>
-          </div>
-          <div
-            className="bigd-collapse bigd-navbar-collapse"
-            id="bigd-coll"
-            style={{ width: '50%', height: '30px' }}
-          >
-            <ul className="bigd-nav bigd-navbar-nav bigd-navbar-right">
-              <li>
-                <a href="https://ngdc.cncb.ac.cn/databases"> Databases</a>
-              </li>
-              <li>
-                <a href="https://ngdc.cncb.ac.cn/tools">Tools</a>
-              </li>
-              <li>
-                <a href="https://ngdc.cncb.ac.cn/standards">Standards</a>
-              </li>
-              <li>
-                <a href="https://ngdc.cncb.ac.cn/publications">Publications</a>
-              </li>
-              <li>
-                <a href="https://ngdc.cncb.ac.cn/about">About</a>
-              </li>
-            </ul>
+            <a
+              href="https://ngdc.cncb.ac.cn/databases"
+              style={{ color: '#fff', marginLeft: '1000px' }}
+            >
+              {' '}
+              Databases
+            </a>
+            <a
+              href="https://ngdc.cncb.ac.cn/tools"
+              style={{ color: '#fff', marginLeft: '50px' }}
+            >
+              Tools
+            </a>
+            <a
+              href="https://ngdc.cncb.ac.cn/standards"
+              style={{ color: '#fff', marginLeft: '50px' }}
+            >
+              Standards
+            </a>
+            <a
+              href="https://ngdc.cncb.ac.cn/publications"
+              style={{ color: '#fff', marginLeft: '50px' }}
+            >
+              Publications
+            </a>
+            <a
+              href="https://ngdc.cncb.ac.cn/about"
+              style={{ color: '#fff', marginLeft: '50px' }}
+            >
+              About
+            </a>
           </div>
         </div>
       </nav>
