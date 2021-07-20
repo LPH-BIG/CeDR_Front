@@ -90,12 +90,15 @@ const GeneralModel: GeneralModelType = {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/general/:type/:name').exec(
+        const match1 = pathToRegexp('/general/:type/:name').exec(
           location.pathname,
         );
-        if (match) {
-          const type = match[1];
-          const name = match[2];
+        const match2 = pathToRegexp(
+          '/general/:type1/:name1/:type2/:name2',
+        ).exec(location.pathname);
+        if (match1) {
+          const type = match1[1];
+          const name = match1[2];
           switch (type) {
             case 'source': {
               dispatch({
@@ -157,6 +160,22 @@ const GeneralModel: GeneralModelType = {
               });
               break;
             }
+          }
+        } else if (match2) {
+          const type1 = match2[1];
+          const name1 = match2[2];
+          const type2 = match2[3];
+          const name2 = match2[4];
+          if (type1 == 'tissue' && type2 == 'phenotype') {
+            dispatch({
+              type: 'getRemote',
+              payload: {
+                pageIndex: 1,
+                pageSize: 10,
+                tissue: name1,
+                phenotype: name2,
+              },
+            });
           }
         } else {
           dispatch({

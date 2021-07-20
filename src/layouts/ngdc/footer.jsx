@@ -11,10 +11,10 @@ const Footer = () => {
           <a href="https://ngdc.cncb.ac.cn/">
             <img
               src="https://ngdc.cncb.ac.cn/static/image/CNCB-NGDC.png"
-              style={{ marginTop: '15px' }}
+              // style={{ marginTop: '0px' }}
             />
           </a>
-          <ul>
+          <ul style={{ listStyle: 'none' }}>
             <li>
               <a href="https://ngdc.cncb.ac.cn/about">About NGDC</a>
             </li>
@@ -42,7 +42,7 @@ const Footer = () => {
         </Col>
         <Col md={4}>
           <Title level={5}>Research &amp; Resources</Title>
-          <ul>
+          <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
             <li>
               <a href="https://ngdc.cncb.ac.cn/databases">Databases</a>
             </li>
@@ -63,8 +63,8 @@ const Footer = () => {
           </ul>
         </Col>
         <Col md={4}>
-          <Title level={5}>&nbsp; &nbsp;Featured</Title>
-          <ul>
+          <Title level={5}>Featured</Title>
+          <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
             <li>
               <a href="https://ngdc.cncb.ac.cn/databasecommons" target="_blank">
                 Database Commons
@@ -120,7 +120,7 @@ const Footer = () => {
         </Col>
         <Col md={4}>
           <Title level={5}>Conference &amp; Outreach</Title>
-          <ul>
+          <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
             <li>
               <a href="https://ngdc.cncb.ac.cn/conference">Conferences</a>
             </li>
@@ -142,7 +142,7 @@ const Footer = () => {
         </Col>
         <Col md={4}>
           <Title level={5}>Alliance &amp; Collaboration</Title>
-          <ul>
+          <ul style={{ listStyle: 'none', margin: '0', padding: '0' }}>
             <li>
               <a href="http://bhbd-alliance.org" target="_blank">
                 BHBD
@@ -218,7 +218,7 @@ const Footer = () => {
                 />
               </a>
             </span>
-            This work is licensed under a
+            &nbsp; This work is licensed under a
             <span>
               <a
                 rel="license"
@@ -237,7 +237,7 @@ const Footer = () => {
         </Col>
         <Col md={8}>
           <div>
-            <ul style={{ listStyle: 'none' }}>
+            <ul style={{ listStyle: 'none', marginLeft: '120px' }}>
               <Space>
                 <li style={{ display: 'inline' }}>
                   <a href="http://english.big.cas.cn" target="_blank">
