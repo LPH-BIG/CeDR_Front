@@ -114,11 +114,12 @@ const GeneralListPage: FC<GeneralPageProps> = ({
 
   const columns = [
     {
-      title: 'Order',
-      dataIndex: 'index',
-      valueType: 'index',
-      key: 'index',
+      title: 'Dataset ID',
+      dataIndex: 'id',
+      // valueType: 'index',
+      // key: 'index',
       width: 58,
+      search: false,
     },
     {
       title: 'Source',

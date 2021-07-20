@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.less';
 import NgdcHeader from '../ngdc/header';
+import NgdcFooter from '../ngdc/footer';
 import { Layout, Menu, Breadcrumb, BackTop, Typography, Row, Col } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
@@ -162,18 +163,8 @@ export default function (props) {
             </Col>
           </Row>
           <BackTop />
-          <Footer style={{ textAlign: 'center' }}>
-            <div>
-              © 2021 National Genomics Data Center, China National Center for
-              Bioinformation / Beijing Institute of Genomics, Chinese Academy of
-              Sciences
-            </div>
-            <div>
-              No.1 Beichen West Road, Chaoyang District, Beijing 100101, China
-            </div>
-            <div>
-              Tel: +86 (10) 8409-7340 | Fax: +86 (10) 8409-7200 | ngdc@big.ac.cn
-            </div>
+          <Footer>
+            <NgdcFooter />
           </Footer>
         </Layout>
       </div>

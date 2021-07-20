@@ -816,6 +816,32 @@ export default function IndexPage() {
             placeholder="input and select a keyword"
             showSearch={true}
             allowClear={true}
+            loading={true}
+            onFocus={() => {
+              getRemoteTypeKeywords('').then((res) => {
+                const op = res.data.map((item) => (
+                  <Select.Option
+                    key={item.id}
+                    value={item.name}
+                    type={item.type}
+                  >
+                    <Tag
+                      icon={<FlagOutlined />}
+                      style={{ float: 'left', color: '#3D84B8' }}
+                    >
+                      {item.type} is
+                    </Tag>
+                    <Tag
+                      icon={<EnvironmentOutlined />}
+                      style={{ float: 'right' }}
+                    >
+                      {item.name}
+                    </Tag>
+                  </Select.Option>
+                ));
+                setOptions(op);
+              });
+            }}
             onSearch={(value: string) => {
               getRemoteTypeKeywords(value).then((res) => {
                 const op = res.data.map((item) => (
@@ -971,7 +997,11 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.blood}>
-                <Popover content={chBladder} title={'Bladder'} placement="left">
+                <Popover
+                  content={chBladder}
+                  title={'Bladder'}
+                  placement="right"
+                >
                   <img
                     src={bladder}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -1299,9 +1329,109 @@ export default function IndexPage() {
         </Col>
         <Col xs={5} sm={5} md={5} lg={7} xl={7} push={4}>
           <Card
-            title={<strong>Resource Overview</strong>}
-            extra={<a href="/cedr/general">More</a>}
-            style={{ width: 300 }}
+            title={<strong>Human Resource Overview</strong>}
+            // extra={<a href="/cedr/general">More</a>}
+            style={{ width: 300, display: dhuman }}
+            bordered={true}
+            hoverable={true}
+          >
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Studies</strong>}
+                value={67}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Datasets</strong>}
+                value={283}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Tissues</strong>}
+                value={47}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
+                value={59}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Cells</strong>}
+                value={4064272}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Drugs</strong>}
+                value={6100}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+          </Card>
+          <Card
+            title={<strong>Mouse Resource Overview</strong>}
+            // extra={<a href="/cedr/general">More</a>}
+            style={{ width: 300, display: dmouse }}
+            bordered={true}
+            hoverable={true}
+          >
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Studies</strong>}
+                value={67}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Datasets</strong>}
+                value={283}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Tissues</strong>}
+                value={47}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
+                value={59}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Cells</strong>}
+                value={4064272}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+            <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
+              <Statistic
+                title={<strong style={{ color: '#363636' }}>Drugs</strong>}
+                value={6100}
+                valueStyle={{ color: '#3f8600' }}
+              />
+            </Card.Grid>
+          </Card>
+          <Card
+            title={<strong>Cell Line Resource Overview</strong>}
+            // extra={<a href="/cedr/general">More</a>}
+            style={{ width: 300, display: dcellline }}
             bordered={true}
             hoverable={true}
           >

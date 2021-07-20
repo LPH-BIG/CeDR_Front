@@ -32,6 +32,7 @@ export default defineConfig({
   // ssr:{},
   // exportStatic:{},
   theme: {
+    // '@primary-color': '#0a81ab',
     '@primary-color': '#0a81ab',
   },
 });

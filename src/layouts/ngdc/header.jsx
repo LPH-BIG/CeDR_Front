@@ -4,14 +4,23 @@ const Header = () => {
     <div
       style={{
         height: '30px',
-        backgroundColor: '#0c64b6',
-        borderColor: '#0c64b6',
+        // backgroundColor: '#0c64b6',
+        backgroundColor: '#001529',
+        // borderColor: '#0c64b6',
+        borderColor: '#001529',
         fontFamily: ' Arial',
       }}
     >
       <nav style={{ height: '30px' }}>
         <div style={{ height: '30px', width: '100%' }}>
-          <div style={{ height: '30px', width: '100%', marginLeft: '30px' }}>
+          <div
+            style={{
+              height: '30px',
+              width: '100%',
+              marginLeft: '150px',
+              paddingTop: '2px',
+            }}
+          >
             <a
               href="https://www.cncb.ac.cn"
               target="_blank"
@@ -20,13 +29,13 @@ const Header = () => {
               <img
                 src="https://ngdc.cncb.ac.cn/cdn/image/cncb-nav.png"
                 className="bigd-img-responsive"
-                style={{ width: '5%', height: '22px' }}
+                style={{ width: '67px', height: '22px' }}
               />
             </a>
             <a href="https://ngdc.cncb.ac.cn/">
               <img
                 src="https://ngdc.cncb.ac.cn/cdn/image/ngdc-nav.png"
-                style={{ width: '5%', height: '22px' }}
+                style={{ width: '67px', height: '22px' }}
               />
             </a>
             <a
