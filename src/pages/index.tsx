@@ -15,13 +15,23 @@ import {
 } from 'antd';
 import { FlagOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { SearchOutlined, LinkOutlined } from '@ant-design/icons';
-import { HumanIcon, MouseIcon, CelllineIcon } from '../components/Icons';
+import {
+  HumanIcon,
+  MouseIcon,
+  CelllineIcon,
+  StudyIcon,
+  DatasetIcon,
+  TissueIcon,
+  CellIcon,
+  DrugIcon,
+  PhenotypeIcon,
+} from '../components/Icons';
 import Wordcloud from '../components/wordcloud';
 import human from '../assets/human1.jpg';
 import heart from '../assets/heart.png';
 import bladder from '../assets/bladder.png';
 import Artery from '../assets/Artery.png';
-import Esophagus from '../assets/Esophagus.png';
+import Esophagus from '../assets/Esophagus.jpg';
 import muscle from '../assets/muscle.png';
 import brain from '../assets/brain.png';
 import gallbladder from '../assets/gallbladder.png';
@@ -1065,7 +1075,7 @@ export default function IndexPage() {
                   width: '350px',
                   height: '550px',
                   display: 'block',
-                  marginLeft: '18%',
+                  marginLeft: '20%',
                 }}
               />
               <div className={styles.brain}>
@@ -1128,7 +1138,7 @@ export default function IndexPage() {
                 <Popover content={chMuscle} title={'Muscle'} placement="right">
                   <img
                     src={muscle}
-                    style={{ width: '30%', height: '80%', display: 'block' }}
+                    style={{ width: '25%', height: '70%', display: 'block' }}
                   />
                 </Popover>
               </div>
@@ -1184,7 +1194,7 @@ export default function IndexPage() {
                 >
                   <img
                     src={Esophagus}
-                    style={{ width: '10%', height: '80%', display: 'block' }}
+                    style={{ width: '50%', height: '50%' }}
                   />
                 </Popover>
               </div>
@@ -1230,7 +1240,7 @@ export default function IndexPage() {
                   width: '350px',
                   height: '550px',
                   display: 'block',
-                  marginLeft: '18%',
+                  marginLeft: '20%',
                   marginTop: '80px',
                 }}
               />
@@ -1435,7 +1445,7 @@ export default function IndexPage() {
           <Card
             title={<strong>Human Resource Overview</strong>}
             // extra={<a href="/cedr/general">More</a>}
-            style={{ width: 300, display: dhuman }}
+            style={{ width: 400, display: dhuman }}
             bordered={true}
             hoverable={true}
           >
@@ -1444,6 +1454,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Studies</strong>}
                 value={67}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<StudyIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1451,6 +1462,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Datasets</strong>}
                 value={283}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<DatasetIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1458,6 +1470,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Tissues</strong>}
                 value={47}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<TissueIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1465,6 +1478,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
                 value={59}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<PhenotypeIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1472,6 +1486,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Cells</strong>}
                 value={4064272}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<CellIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1479,13 +1494,14 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Drugs</strong>}
                 value={6100}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<DrugIcon />}
               />
             </Card.Grid>
           </Card>
           <Card
             title={<strong>Mouse Resource Overview</strong>}
             // extra={<a href="/cedr/general">More</a>}
-            style={{ width: 300, display: dmouse }}
+            style={{ width: 400, display: dmouse }}
             bordered={true}
             hoverable={true}
           >
@@ -1494,6 +1510,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Studies</strong>}
                 value={67}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<StudyIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1501,6 +1518,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Datasets</strong>}
                 value={283}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<DatasetIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1508,6 +1526,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Tissues</strong>}
                 value={47}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<TissueIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1515,6 +1534,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
                 value={59}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<PhenotypeIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1522,6 +1542,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Cells</strong>}
                 value={4064272}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<CellIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1529,13 +1550,14 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Drugs</strong>}
                 value={6100}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<DrugIcon />}
               />
             </Card.Grid>
           </Card>
           <Card
             title={<strong>Cell Line Resource Overview</strong>}
             // extra={<a href="/cedr/general">More</a>}
-            style={{ width: 300, display: dcellline }}
+            style={{ width: 400, display: dcellline }}
             bordered={true}
             hoverable={true}
           >
@@ -1544,6 +1566,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Studies</strong>}
                 value={67}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<StudyIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1551,6 +1574,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Datasets</strong>}
                 value={283}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<DatasetIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1558,6 +1582,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Tissues</strong>}
                 value={47}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<TissueIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1565,6 +1590,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
                 value={59}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<PhenotypeIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1572,6 +1598,7 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Cells</strong>}
                 value={4064272}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<CellIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
@@ -1579,13 +1606,14 @@ export default function IndexPage() {
                 title={<strong style={{ color: '#363636' }}>Drugs</strong>}
                 value={6100}
                 valueStyle={{ color: '#3f8600' }}
+                prefix={<DrugIcon />}
               />
             </Card.Grid>
           </Card>
           <Divider />
           <Card
             title={<strong>Recent Events</strong>}
-            style={{ width: 300 }}
+            style={{ width: 400 }}
             bordered={true}
             hoverable={true}
           >
@@ -1603,7 +1631,7 @@ export default function IndexPage() {
           <Divider />
           <Card
             title={<strong>Exteneral Link</strong>}
-            style={{ width: 300 }}
+            style={{ width: 400 }}
             bordered={true}
             hoverable={true}
           >
