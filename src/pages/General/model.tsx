@@ -94,7 +94,7 @@ const GeneralModel: GeneralModelType = {
           location.pathname,
         );
         const match2 = pathToRegexp(
-          '/general/:type1/:name1/:type2/:name2',
+          '/general/:type1/:name1/:type2/:name2/:type3/:name3',
         ).exec(location.pathname);
         if (match1) {
           const type = match1[1];
@@ -166,14 +166,17 @@ const GeneralModel: GeneralModelType = {
           const name1 = match2[2];
           const type2 = match2[3];
           const name2 = match2[4];
-          if (type1 == 'tissue' && type2 == 'phenotype') {
+          const type3 = match2[5];
+          const name3 = match2[6];
+          if (type1 == 'source' && type2 == 'tissue' && type3 == 'phenotype') {
             dispatch({
               type: 'getRemote',
               payload: {
                 pageIndex: 1,
                 pageSize: 10,
-                tissue: name1,
-                phenotype: name2,
+                source: name1,
+                tissue: name2,
+                phenotype: name3,
               },
             });
           }

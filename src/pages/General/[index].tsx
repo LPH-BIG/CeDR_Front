@@ -79,38 +79,6 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       }
     }
   };
-  const celltypeHandler = async (value: string) => {
-    if (Object.keys(value).length != 0) {
-      const remoteKeywords = await getRemoteGeneralKeywords({
-        source: keywords.source,
-        project: keywords.project,
-        subproject: keywords.subproject,
-        tissue: keywords.tissue,
-        phenotype: keywords.phenotype,
-        celltype: value,
-        drug: keywords.drug,
-      });
-      if (remoteKeywords) {
-        setCelltype(remoteKeywords.data.celltype);
-      }
-    }
-  };
-  const instHandler = async (value: string) => {
-    if (Object.keys(value).length != 0) {
-      const remoteKeywords = await getRemoteGeneralKeywords({
-        source: keywords.source,
-        project: keywords.project,
-        subproject: keywords.subproject,
-        tissue: keywords.tissue,
-        phenotype: keywords.phenotype,
-        celltype: keywords.celltype,
-        drug: value,
-      });
-      if (remoteKeywords) {
-        setInst(remoteKeywords.data.drug);
-      }
-    }
-  };
 
   const columns = [
     {
@@ -142,6 +110,21 @@ const GeneralListPage: FC<GeneralPageProps> = ({
             // allowClear={true}
             placeholder={'input and select a source'}
             filterOption={false}
+            onFocus={async () => {
+              const remoteKeywords = await getRemoteGeneralKeywords({
+                source: undefined,
+                project: keywords.project,
+                subproject: keywords.subproject,
+                tissue: keywords.tissue,
+                phenotype: keywords.phenotype,
+                celltype: keywords.celltype,
+                drug: keywords.drug,
+              });
+              if (remoteKeywords) {
+                console.log(remoteKeywords);
+                setSource(remoteKeywords.data.source);
+              }
+            }}
             onSearch={sourceHandler}
             onChange={(value) => {
               setKeywords({ ...keywords, source: value });
@@ -216,6 +199,20 @@ const GeneralListPage: FC<GeneralPageProps> = ({
             showSearch={true}
             placeholder={'input and select a tissue'}
             filterOption={false}
+            onFocus={async () => {
+              const remoteKeywords = await getRemoteGeneralKeywords({
+                source: keywords.source,
+                project: keywords.project,
+                subproject: keywords.subproject,
+                tissue: undefined,
+                phenotype: keywords.phenotype,
+                celltype: keywords.celltype,
+                drug: keywords.drug,
+              });
+              if (remoteKeywords) {
+                setTissue(remoteKeywords.data.tissue);
+              }
+            }}
             onSearch={tissueHandler}
             onChange={(value) => {
               setKeywords({ ...keywords, tissue: value });
@@ -245,6 +242,20 @@ const GeneralListPage: FC<GeneralPageProps> = ({
             showSearch={true}
             placeholder={'input and select a phenotype'}
             filterOption={false}
+            onFocus={async () => {
+              const remoteKeywords = await getRemoteGeneralKeywords({
+                source: keywords.source,
+                project: keywords.project,
+                subproject: keywords.subproject,
+                tissue: keywords.tissue,
+                phenotype: undefined,
+                celltype: keywords.celltype,
+                drug: keywords.drug,
+              });
+              if (remoteKeywords) {
+                setPhenotype(remoteKeywords.data.phenotype);
+              }
+            }}
             onSearch={phenotypeHandler}
             onChange={(value) => {
               setKeywords({ ...keywords, phenotype: value });

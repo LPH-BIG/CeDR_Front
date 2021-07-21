@@ -150,7 +150,7 @@ export default function (props) {
             </Menu>
           </Header>
           <Row justify={'center'}>
-            <Col md={20}>
+            <Col md={24}>
               <Content className="site-layout">
                 {/*<Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />*/}
                 <div

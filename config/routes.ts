@@ -68,6 +68,10 @@ export default [
         component: '@/pages/General/[index]',
       },
       {
+        path: '/general/:type1/:name1/:type2/:name2/:type3/:name3',
+        component: '@/pages/General/[index]',
+      },
+      {
         // exact: true,
         path: '/subproject/:subproject',
         component: '@/pages/Subproject/[index]',

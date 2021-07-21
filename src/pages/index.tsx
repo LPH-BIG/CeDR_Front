@@ -98,7 +98,9 @@ export default function IndexPage() {
   const chBladder = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Bladder/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Bladder/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
@@ -106,54 +108,80 @@ export default function IndexPage() {
     <div>
       <p>
         <a
-          href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-ICU-SEP'}
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/ImmuneCells-normal'
+          }
+        >
+          ImmuneCells Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-ICU-SEP'
+          }
         >
           BacterialSepsis ICU SEP
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/tissue/Blood/phenotype/BacterialSepsis-ICU-NoSEP'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-ICU-NoSEP'
           }
         >
           BacterialSepsis ICU NoSEP
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/MorphineTreated'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/MorphineTreated'
+          }
+        >
           Morphine Treated
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/BM-Normal'}>BM Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/BM-Normal'}>
+          BM Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/AML-malignant'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/AML-malignant'
+          }
+        >
           AML Malignant
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/AML-Normal'}>
+        <a
+          href={'/cedr/general/source/Human/tissue/Blood/phenotype/AML-Normal'}
+        >
           AML Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/ImmuneCells-Normal'}>
-          ImmuneCells Normal
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-URO'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-URO'
+          }
+        >
           BacterialSepsis URO
         </a>
       </p>
       <p>
         <a
-          href={'/cedr/general/tissue/Blood/phenotype/melanoma-TreatmentNaive'}
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/melanoma-TreatmentNaive'
+          }
         >
           Melanoma TreatmentNaive
         </a>
@@ -161,92 +189,132 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/tissue/Blood/phenotype/HyperAcuteHIV-1-Infection'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/HyperAcuteHIV-1-Infection'
           }
         >
           HyperAcuteHIV 1 Infection
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/Peripheral'}>
+        <a
+          href={'/cedr/general/source/Human/tissue/Blood/phenotype/Peripheral'}
+        >
           Peripheral
         </a>
       </p>
       <p>
         <a
-          href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-Control'}
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Control'
+          }
         >
           Bacterial Sepsis Control
         </a>
       </p>
       <p>
         <a
-          href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-Pam3CSK4'}
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Pam3CSK4'
+          }
         >
           Bacterial Sepsis Pam3CSK4
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/MYE'}>MYE</a>
+        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/MYE'}>
+          MYE
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/IFNbTreated'}>
+        <a
+          href={'/cedr/general/source/Human/tissue/Blood/phenotype/IFNbTreated'}
+        >
           IFNbTreated
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/MUT-Normal'}>
+        <a
+          href={'/cedr/general/source/Human/tissue/Blood/phenotype/MUT-Normal'}
+        >
           MUT Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/OC-Normal'}>OC Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/OC-Normal'}>
+          OC Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-LPS'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-LPS'
+          }
+        >
           Bacterial Sepsis LPS
         </a>
       </p>
       <p>
         <a
-          href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-Bac-SEP'}
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Bac-SEP'
+          }
         >
           Bacterial Sepsis Bac SEP
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/LPSTreated'}>
+        <a
+          href={'/cedr/general/source/Human/tissue/Blood/phenotype/LPSTreated'}
+        >
           LPS Treated
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/UlcerativeColitis'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/UlcerativeColitis'
+          }
+        >
           Ulcerative Colitis
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/melanoma-treatment'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/melanoma-treatment'
+          }
+        >
           Melanoma Treatment
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/B-ALL'}>B-ALL</a>
+        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/B-ALL'}>
+          B-ALL
+        </a>
       </p>
       <p>
         <a
-          href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-Leuk-UTI'}
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Leuk-UTI'
+          }
         >
           Bacterial Sepsis-Leuk-UTI
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-NT'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-NT'
+          }
+        >
           Bacterial Sepsis NT
         </a>
       </p>
       <p>
         <a
-          href={'/cedr/general/tissue/Blood/phenotype/BacterialSepsis-Int-URO'}
+          href={
+            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Int-URO'
+          }
         >
           Bacterial Sepsis Int URO
         </a>

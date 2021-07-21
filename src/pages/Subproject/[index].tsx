@@ -208,6 +208,17 @@ const Index: FC<SubprojectPageProps> = ({
             showSearch={true}
             placeholder={'input and select a source'}
             filterOption={false}
+            onFocus={async () => {
+              getRemoteKeywords({
+                project: subproject.data[0].project,
+                subproject: subproject.data[0].subproject,
+                celltype: undefined,
+                drug: keywords.drug,
+                overlapgene: keywords.overlapgene,
+              }).then((res) => {
+                setCelltype(res.data.celltype);
+              });
+            }}
             onSearch={async (value) => {
               // console.log(value);
               getRemoteKeywords({
@@ -263,6 +274,19 @@ const Index: FC<SubprojectPageProps> = ({
             showSearch={true}
             placeholder={'input and select a drug'}
             filterOption={false}
+            onFocus={async () => {
+              // console.log(value);
+              getRemoteKeywords({
+                project: subproject.data[0].project,
+                subproject: subproject.data[0].subproject,
+                celltype: keywords.celltype,
+                drug: undefined,
+                overlapgene: keywords.overlapgene,
+              }).then((res) => {
+                // console.log(res);
+                setDrug(res.data.drug);
+              });
+            }}
             onSearch={async (value) => {
               // console.log(value);
               getRemoteKeywords({
