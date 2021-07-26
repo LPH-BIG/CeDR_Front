@@ -40,7 +40,8 @@ export default function (props) {
     if (
       history.location.pathname.startsWith('/general') |
       history.location.pathname.startsWith('/subproject') |
-      history.location.pathname.startsWith('/browse')
+      history.location.pathname.startsWith('/browse') |
+      history.location.pathname.startsWith('/association')
     ) {
       setSelectkey('2');
     } else if (history.location.pathname.startsWith('/search')) {

@@ -72,9 +72,12 @@ export default [
         component: '@/pages/General/[index]',
       },
       {
-        // exact: true,
         path: '/subproject/:subproject',
         component: '@/pages/Subproject/[index]',
+      },
+      {
+        path: '/association/:association',
+        component: '@/pages/Association/[index]',
       },
       {
         path: '/browse',
