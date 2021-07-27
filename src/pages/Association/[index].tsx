@@ -163,9 +163,7 @@ const Index = ({
               />
               <Image.PreviewGroup>
                 <Space>
-                  <Title level={3} mark={true}>
-                    Cell Type:
-                  </Title>
+                  <Title level={3}>Cell Type:</Title>
                   <Image
                     width={'80%'}
                     src={IMG_PREFIX + record?.photocelltype}
@@ -176,9 +174,7 @@ const Index = ({
                       setAlert('inline');
                     }}
                   />
-                  <Title level={3} mark={true}>
-                    Drug:
-                  </Title>
+                  <Title level={3}>Drug:</Title>
                   <Image
                     width={'80%'}
                     src={IMG_PREFIX + record?.photodrug}

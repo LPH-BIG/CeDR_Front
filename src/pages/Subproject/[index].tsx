@@ -67,7 +67,7 @@ const Index: FC<SubprojectPageProps> = ({
   const [alert, setAlert] = useState('none');
 
   useEffect(() => {
-    console.log('I fire once');
+    // console.log('I fire once');
     const dataset = subproject.data[0];
     if (dataset) {
       const { project, subproject } = dataset;
