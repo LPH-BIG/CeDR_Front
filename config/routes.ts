@@ -46,19 +46,10 @@ export default [
         path: '/test',
         component: '@/pages/Test',
       },
-      // {
-      //   name: '标准列表',
-      //   path: '/table',
-      //   component: '@/pages/Table',
-      // },
       {
         path: '/high/:chart',
         component: '@/pages/Highcharts/[index]',
       },
-      // {
-      //   path: '/network/',
-      //   component: '@/components/Network',
-      // },
       {
         path: '/general',
         component: '@/pages/General/[index]',
@@ -72,8 +63,8 @@ export default [
         component: '@/pages/General/[index]',
       },
       {
-        path: '/subproject/:subproject',
-        component: '@/pages/Subproject/[index]',
+        path: '/dataset/:datasetid',
+        component: '@/pages/Dataset/[index]',
       },
       {
         path: '/association/:association',

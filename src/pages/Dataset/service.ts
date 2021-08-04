@@ -1,3 +1,5 @@
+import request, { extend } from 'umi-request';
+import { message } from 'antd';
 import { extendRequest } from '@/pages/General/service';
 import { API_PREFIX } from '@/common/constants';
 export const getRemoteSubproject = async ({
@@ -21,7 +23,7 @@ export const getRemoteSubproject = async ({
   pcutoff: number | undefined;
   orcutoff: number | undefined;
 }) => {
-  return extendRequest(API_PREFIX + '/subproject', {
+  return extendRequest(API_PREFIX + '/dataset', {
     method: 'get',
     params: {
       pageIndex: pageIndex,
@@ -148,6 +150,40 @@ export const getRemoteDrug = async ({ name }: { name: string }) => {
     method: 'get',
     params: {
       inst: name,
+    },
+  })
+    .then(function (response) {
+      // console.log(response);
+      return response;
+    })
+    .catch(function (error) {
+      return false;
+    });
+};
+export const getRemoteKeywords = async ({
+  // source,
+  project,
+  subproject,
+  celltype,
+  drug,
+  overlapgene,
+}: {
+  // source:string,
+  project: string;
+  subproject: string;
+  celltype: string | undefined;
+  drug: string | undefined;
+  overlapgene: string | undefined;
+}) => {
+  return extendRequest(API_PREFIX + '/searchLike', {
+    method: 'get',
+    params: {
+      // source: source,
+      project: project,
+      subproject: subproject,
+      cellType: celltype,
+      drug: drug,
+      overlapgene: overlapgene,
     },
   })
     .then(function (response) {

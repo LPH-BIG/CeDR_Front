@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './index.less';
-import { IMG_PREFIX } from '@/common/constants';
 import {
   Col,
   Divider,
@@ -15,7 +14,6 @@ import {
 } from 'antd';
 import { history } from '@@/core/history';
 
-import { GeneralState } from '@/pages/General/model';
 import { Dispatch, Loading, SubprojectState } from '@@/plugin-dva/connect';
 import { connect } from 'umi';
 import ProTable, { IntlProvider, enUSIntl } from '@ant-design/pro-table';
@@ -27,17 +25,14 @@ import {
   getRemoteTsne,
   getRemoteNetwork,
   getRemotePie,
-  getRemoteGene,
   getRemoteDrug,
   getRemoteSummary,
+  getRemoteKeywords,
 } from './service';
 import Network from '@/components/Network';
-import { DrugItem, SubprojectItem } from '@/pages/Subproject/data';
-import { getRemoteKeywords } from '@/pages/General/service';
+import { DrugItem, SubprojectItem } from '@/pages/Dataset/data';
 import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DetailIcon } from '@/components/Icons';
-import Title from 'antd/es/typography/Title';
-import { createIntl } from '@@/plugin-locale/localeExports';
 interface SubprojectPageProps {
   subproject: SubprojectState;
   dispatch: Dispatch;
@@ -80,22 +75,6 @@ const Index: FC<SubprojectPageProps> = ({
           setSummary(res.data[0]);
         },
       );
-      // getRemoteTsne({ name: name }).then((res) => {
-      //   // console.log(res.data)
-      //   setTsne(res.data);
-      // });
-      // setTsnetitle(dataset.project + ' ' + dataset.subproject);
-
-      // getRemoteNetwork({ project: project, subproject: subproject }).then(
-      //   (res) => {
-      //     // console.log(res.data);
-      //     setNetwork(res.data);
-      //   },
-      // );
-      // getRemotePie({ name: name }).then((res) => {
-      //   // console.log(res.data);
-      //   setPie(res.data);
-      // });
     }
   }, [subproject, history.location.pathname]);
 
@@ -159,14 +138,14 @@ const Index: FC<SubprojectPageProps> = ({
                 // console.log("click");
                 setRecord(record);
                 setDisabled(false);
-                setActivekey('tab3');
+                // setActivekey('tab3');
                 // console.log(record.inst);
-                getRemoteDrug({ name: record.inst }).then((res) => {
-                  setDruginformation(res.data);
-                });
+                // getRemoteDrug({ name: record.inst }).then((res) => {
+                //   setDruginformation(res.data);
+                // });
+                history.push('/association/' + text);
               }}
             >
-              {' '}
               <Space>{record.id}</Space>
             </a>
           </span>
@@ -180,7 +159,6 @@ const Index: FC<SubprojectPageProps> = ({
       valueType: 'text',
       ellipsis: true,
       tooltip: 'Click to see all associations of the cell type',
-      ellipsis: true,
       hideInForm: true,
       width: 200,
       render: (text, record) => {
@@ -512,76 +490,6 @@ const Index: FC<SubprojectPageProps> = ({
     });
   };
 
-  const columns2 = [
-    {
-      title: 'Order',
-      dataIndex: 'index',
-      valueType: 'index',
-      width: 58,
-    },
-    {
-      title: 'Ensembl ID',
-      dataIndex: 'refs',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-      render: (text, record, index) => {
-        return (
-          <span>
-            <a
-              href={
-                'https://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=' +
-                record.refs
-              }
-            >
-              {record.refs}
-            </a>
-          </span>
-        );
-      },
-    },
-    {
-      title: 'Gene Symbol',
-      dataIndex: 'symbol',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-    },
-    {
-      title: 'Full Name',
-      dataIndex: 'fullname',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-    },
-    {
-      title: 'Type',
-      dataIndex: 'type',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-    },
-    {
-      title: 'Chromosome',
-      dataIndex: 'chromosome',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-    },
-    {
-      title: 'Description',
-      dataIndex: 'description',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-    },
-  ];
   return (
     <div>
       <Tabs
@@ -601,7 +509,6 @@ const Index: FC<SubprojectPageProps> = ({
         <TabPane
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
-              {/*<AppleOutlined />*/}
               General Table
             </span>
           }
@@ -787,135 +694,12 @@ const Index: FC<SubprojectPageProps> = ({
         <TabPane
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
-              {/*<AndroidOutlined />*/}
-              Cell Drug Association
+              Cellular Drug Association
             </span>
           }
           key="tab3"
           disabled={disabled}
-        >
-          <div>
-            <Row>
-              <strong style={{ fontSize: '18px' }}>GSEA analysis</strong>
-              <Divider />
-              <Alert
-                message="Warning"
-                description="Sorry, this association has no significant GSEA results"
-                type="warning"
-                showIcon
-                closable
-                style={{ display: alert }}
-              />
-              <Image.PreviewGroup>
-                <Space>
-                  <Title level={3} mark={true}>
-                    Cell Type:
-                  </Title>
-                  <Image
-                    width={'80%'}
-                    src={IMG_PREFIX + record?.photocelltype}
-                    fallback={
-                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
-                    }
-                    onError={(event) => {
-                      setAlert('inline');
-                    }}
-                  />
-                  <Title level={3} mark={true}>
-                    Drug:
-                  </Title>
-                  <Image
-                    width={'80%'}
-                    src={IMG_PREFIX + record?.photodrug}
-                    onError={(event) => {
-                      setAlert('inline');
-                    }}
-                    fallback={
-                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
-                    }
-                  />
-                </Space>
-              </Image.PreviewGroup>
-            </Row>
-            <Divider />
-            <Row>
-              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Descriptions
-                  title={'Drug Information'}
-                  bordered
-                  style={{ marginLeft: '2%' }}
-                >
-                  <Descriptions.Item label="Name" span={2}>
-                    <a
-                      onClick={() => {
-                        history.push('/browse/drug/' + druginformation.name);
-                      }}
-                    >
-                      {druginformation.name}
-                    </a>
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Catalog Name">
-                    {druginformation.catalog_name}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Concentration">
-                    {druginformation.concentration}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Duration">
-                    {druginformation.duration}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Array">
-                    {druginformation.array}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Vehicle">
-                    {druginformation.vehicle}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Scanner">
-                    {druginformation.scanner}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Vendor">
-                    {druginformation.vendor}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Inst">
-                    {druginformation.inst}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Array">
-                    {druginformation.array}
-                  </Descriptions.Item>
-                </Descriptions>
-              </Col>
-            </Row>
-            <Divider />
-            <ProTable
-              title={() => {}}
-              columns={columns2}
-              rowKey={'id'}
-              request={async (params) => {
-                // console.log("params");
-                // console.log(params);
-                let str = record?.overlapgene.substr(1);
-                if (str) {
-                  str = str.substr(0, str.length - 1);
-                  str = str.replaceAll("'", '');
-                  str = str.replace(/\s+/g, '');
-                } else {
-                  str = ' ';
-                }
-                // console.log(str);
-                const msg = await getRemoteGene({ name: str }).then((res) => {
-                  // console.log(res);
-                  return res;
-                });
-                return {
-                  data: msg.data,
-                  success: msg.status == 200 ? true : false,
-                };
-              }}
-              search={false}
-              headerTitle={'Gene Information'}
-              options={false}
-            />
-          </div>
-        </TabPane>
+        ></TabPane>
       </Tabs>
     </div>
   );
@@ -926,7 +710,7 @@ const mapStateToProps = ({
   loading,
 }: // props,
 {
-  subproject: GeneralState;
+  subproject: SubprojectState;
   loading: Loading;
 }) => {
   //这个传的是state对象，可以通过此处测试数据是否正确

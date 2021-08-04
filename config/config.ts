@@ -7,6 +7,8 @@ export default defineConfig({
   dva: {
     immer: true,
     hmr: false,
+    lazyLoad: true,
+    disableModelsReExport: true,
   },
   // antd: {
   //   dark: true,

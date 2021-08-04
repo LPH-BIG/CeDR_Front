@@ -1,6 +1,6 @@
-import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
-import { SubprojectItem } from '@/pages/Subproject/data';
-import { getRemoteSubproject } from '@/pages/Subproject/service';
+import { Effect, Reducer, Subscription } from 'umi';
+import { SubprojectItem } from '@/pages/Dataset/data';
+import { getRemoteSubproject } from '@/pages/Dataset/service';
 import { pathToRegexp } from 'path-to-regexp';
 
 export interface SubprojectState {
@@ -14,7 +14,7 @@ export interface SubprojectState {
   message: string;
 }
 export interface SubprojectModelType {
-  namespace: 'subproject';
+  namespace: string;
   state: SubprojectState;
   reducers: {
     getList: Reducer<SubprojectState>;
@@ -88,7 +88,7 @@ const SubprojectModel: SubprojectModelType = {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/subproject/:id').exec(location.pathname);
+        const match = pathToRegexp('/dataset/:id').exec(location.pathname);
         if (match) {
           const id = match[1];
           const project = id.split(' ')[0];
@@ -96,8 +96,6 @@ const SubprojectModel: SubprojectModelType = {
             .split(' ')
             .slice(1, id.split(' ').length)
             .join(' ');
-          // console.log(project);
-          // console.log(subproject);
           dispatch({
             type: 'getRemote',
             payload: {

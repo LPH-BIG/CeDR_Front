@@ -1,5 +1,5 @@
-import { SubprojectState } from '@/pages/Subproject/model';
-import { getRemoteSubproject } from '@/pages/Subproject/service';
+import { SubprojectState } from '@/pages/Dataset/model';
+import { getRemoteSubproject } from '@/pages/Dataset/service';
 import { pathToRegexp } from 'path-to-regexp';
 import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
 

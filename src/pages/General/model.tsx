@@ -1,10 +1,8 @@
-import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
+import { Effect, Reducer, Subscription } from 'umi';
 
-import { getRemoteKeywords, getRemoteList } from '@/pages/General/service';
-import { GeneralItem, keywordsItem } from '@/pages/General/data';
-import { message } from 'antd';
+import { getRemoteList } from '@/pages/General/service';
+import { GeneralItem } from '@/pages/General/data';
 import { pathToRegexp } from 'path-to-regexp';
-import { history } from 'umi';
 export interface GeneralState {
   data: GeneralItem[];
   meta: {
@@ -21,13 +19,9 @@ interface GeneralModelType {
   state: GeneralState;
   reducers: {
     getList: Reducer<GeneralState>;
-    // getListKeywords:Reducer<GeneralState>
   };
   effects: {
     getRemote: Effect;
-    // getKeywords: Effect;
-    // delete: Effect;
-    // add: Effect;
   };
   subscriptions: {
     setup: Subscription;
@@ -38,7 +32,6 @@ const GeneralModel: GeneralModelType = {
   namespace: 'general',
   state: {
     data: [],
-    // remoteKeywords: {},
     meta: {
       total: 10,
       pageSize: 10,
@@ -61,8 +54,8 @@ const GeneralModel: GeneralModelType = {
           pageSize,
           source,
           project,
-          subproject,
           tissue,
+          tissuegroup,
           phenotype,
         },
       },
@@ -74,8 +67,8 @@ const GeneralModel: GeneralModelType = {
         pageSize,
         source,
         project,
-        subproject,
         tissue,
+        tissuegroup,
         phenotype,
       );
       if (data) {
@@ -180,7 +173,7 @@ const GeneralModel: GeneralModelType = {
               },
             });
           }
-        } else {
+        } else if (location.pathname === '/general') {
           dispatch({
             type: 'getRemote',
             payload: {

@@ -36,7 +36,7 @@ export interface AssociationItem {
   spvalue: number;
   overlapgenenum: number;
   overlapgene: string;
-  overlapgenerank: number[];
+  // overlapgenerank: number[];
   photocelltype: string;
   photodrug: string;
 }

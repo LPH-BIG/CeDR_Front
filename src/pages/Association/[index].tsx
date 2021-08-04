@@ -14,8 +14,8 @@ import { history } from '@@/core/history';
 import { IMG_PREFIX } from '@/common/constants';
 import ProTable, { enUSIntl, IntlProvider } from '@ant-design/pro-table';
 import Title from 'antd/es/typography/Title';
-import { getRemoteGene } from '@/pages/Subproject/service';
-import { DrugItem, AssociationItem } from '@/pages/Subproject/data';
+import { getRemoteGene } from '@/pages/Dataset/service';
+import { DrugItem, AssociationItem } from '@/pages/Dataset/data';
 const { TabPane } = Tabs;
 const Index = ({
   match: {

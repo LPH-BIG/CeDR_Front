@@ -27,8 +27,8 @@ export const getRemoteList = async (
   pageSize: number | undefined,
   source: string | undefined,
   project: string | undefined,
-  subproject: string | undefined,
   tissue: string | undefined,
+  tissuegroup: string | undefined,
   phenotype: string | undefined,
 ) => {
   return extendRequest(API_PREFIX + '/general', {
@@ -38,48 +38,13 @@ export const getRemoteList = async (
       pageSize: pageSize,
       source: source,
       project: project,
-      subproject: subproject,
       tissue: tissue,
+      tissuegroup: tissuegroup,
       phenotype: phenotype,
     },
   })
     .then(function (response) {
-      // console.log(response);
-      return response;
-    })
-    .catch(function (error) {
-      return false;
-    });
-};
-
-export const getRemoteKeywords = async ({
-  // source,
-  project,
-  subproject,
-  celltype,
-  drug,
-  overlapgene,
-}: {
-  // source:string,
-  project: string;
-  subproject: string;
-  celltype: string | undefined;
-  drug: string | undefined;
-  overlapgene: string | undefined;
-}) => {
-  return extendRequest(API_PREFIX + '/searchLike', {
-    method: 'get',
-    params: {
-      // source: source,
-      project: project,
-      subproject: subproject,
-      cellType: celltype,
-      drug: drug,
-      overlapgene: overlapgene,
-    },
-  })
-    .then(function (response) {
-      // console.log(response);
+      // console.log("general response");
       return response;
     })
     .catch(function (error) {
@@ -90,16 +55,16 @@ export const getRemoteKeywords = async ({
 export const getRemoteGeneralKeywords = async ({
   source,
   project,
-  subproject,
   tissue,
+  tissuegroup,
   phenotype,
   celltype,
   drug,
 }: {
   source: string | undefined;
   project: string | undefined;
-  subproject: string | undefined;
   tissue: string | undefined;
+  tissuegroup: string | undefined;
   phenotype: string | undefined;
   celltype: string | undefined;
   drug: string | undefined;
@@ -109,8 +74,8 @@ export const getRemoteGeneralKeywords = async ({
     params: {
       source: source,
       project: project,
-      subproject: subproject,
       tissue: tissue,
+      tissuegroup: tissuegroup,
       phenotype: phenotype,
       celltype: celltype,
       drug: drug,

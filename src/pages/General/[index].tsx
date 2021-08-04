@@ -1,15 +1,11 @@
 import React, { FC, useState } from 'react';
 import styles from './index.less';
-import ProTable, { ProColumns } from '@ant-design/pro-table';
+import ProTable from '@ant-design/pro-table';
 import { GeneralState } from '@/pages/General/model';
 import { Pagination, Select, Space, Tabs } from 'antd';
 import { connect, Dispatch, Loading } from 'umi';
 import { history } from 'umi';
-import {
-  GeneralItem,
-  SearchKeywords,
-  SelectKeywords,
-} from '@/pages/General/data';
+import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DotChartOutlined } from '@ant-design/icons';
 import { getRemoteGeneralKeywords } from './service';
 interface GeneralPageProps {
@@ -26,6 +22,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   const [record, setRecord] = useState<GeneralItem | undefined>(undefined);
   const [source, setSource] = useState([]);
   const [tissue, setTissue] = useState([]);
+  const [tissuegroup, setTissuegroup] = useState([]);
   const [phenotype, setPhenotype] = useState([]);
   const [celltype, setCelltype] = useState([]);
   const [inst, setInst] = useState([]);
@@ -36,8 +33,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       const remoteKeywords = await getRemoteGeneralKeywords({
         source: value,
         project: keywords.project,
-        subproject: keywords.subproject,
         tissue: keywords.tissue,
+        tissuegroup: keywords.tissuegroup,
         phenotype: keywords.phenotype,
         celltype: keywords.celltype,
         drug: keywords.drug,
@@ -52,8 +49,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       const remoteKeywords = await getRemoteGeneralKeywords({
         source: keywords.source,
         project: keywords.project,
-        subproject: keywords.subproject,
         tissue: value,
+        tissuegroup: keywords.tissuegroup,
         phenotype: keywords.phenotype,
         celltype: keywords.celltype,
         drug: keywords.drug,
@@ -63,13 +60,29 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       }
     }
   };
+  const tissuegroupHandler = async (value: string) => {
+    if (Object.keys(value).length != 0) {
+      const remoteKeywords = await getRemoteGeneralKeywords({
+        source: keywords.source,
+        project: keywords.project,
+        tissue: keywords.tissue,
+        tissuegroup: value,
+        phenotype: keywords.phenotype,
+        celltype: keywords.celltype,
+        drug: keywords.drug,
+      });
+      if (remoteKeywords) {
+        setTissuegroup(remoteKeywords.data.tissuegroup);
+      }
+    }
+  };
   const phenotypeHandler = async (value: string) => {
     if (Object.keys(value).length != 0) {
       const remoteKeywords = await getRemoteGeneralKeywords({
         source: keywords.source,
         project: keywords.project,
-        subproject: keywords.subproject,
         tissue: keywords.tissue,
+        tissuegroup: keywords.tissuegroup,
         phenotype: value,
         celltype: keywords.celltype,
         drug: keywords.drug,
@@ -83,11 +96,47 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   const columns = [
     {
       title: 'Dataset ID',
-      dataIndex: 'id',
+      dataIndex: 'datasetid',
       // valueType: 'index',
       // key: 'index',
-      width: 58,
+      width: 120,
       search: false,
+      render: (text: string, record: GeneralItem) => (
+        <span>
+          <a
+            className={styles.link}
+            onClick={() => {
+              history.push('/dataset/' + record.datasetid);
+            }}
+          >
+            <Space>
+              {record.datasetid}
+              <DotChartOutlined />
+            </Space>
+          </a>
+        </span>
+      ),
+    },
+    {
+      title: 'Project',
+      dataIndex: 'project',
+      key: 'project',
+      // valueType: 'text',
+      width: 150,
+      search: false,
+      ellipsis: true,
+      render: (text: string, record: GeneralItem) => {
+        return (
+          <span>
+            <a
+              className={styles.link}
+              href={'https://www.doi.org/' + record.doi}
+            >
+              <Space>{record.project}</Space>
+            </a>
+          </span>
+        );
+      },
     },
     {
       title: 'Source',
@@ -114,14 +163,13 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               const remoteKeywords = await getRemoteGeneralKeywords({
                 source: undefined,
                 project: keywords.project,
-                subproject: keywords.subproject,
                 tissue: keywords.tissue,
+                tissuegroup: keywords.tissuegroup,
                 phenotype: keywords.phenotype,
                 celltype: keywords.celltype,
                 drug: keywords.drug,
               });
               if (remoteKeywords) {
-                console.log(remoteKeywords);
                 setSource(remoteKeywords.data.source);
               }
             }}
@@ -136,48 +184,11 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       },
     },
     {
-      title: 'Project',
-      dataIndex: 'project',
-      key: 'project',
-      // valueType: 'text',
-      width: 150,
+      title: 'Cell Source',
+      dataIndex: 'cell_source',
       search: false,
+      width: 160,
       ellipsis: true,
-      render: (text: string, record: GeneralItem) => {
-        return (
-          <span>
-            <a className={styles.link} href={record.reference}>
-              <Space>{record.project}</Space>
-            </a>
-          </span>
-        );
-      },
-    },
-    {
-      title: 'Subproject',
-      dataIndex: 'subproject',
-      key: 'subproject',
-      // valueType: 'link',
-      search: false,
-      width: 300,
-      ellipsis: true,
-      render: (text: string, record: GeneralItem) => (
-        <span>
-          <a
-            className={styles.link}
-            onClick={() => {
-              history.push(
-                '/subproject/' + record.project + ' ' + record.subproject,
-              );
-            }}
-          >
-            <Space>
-              {record.subproject}
-              <DotChartOutlined />
-            </Space>
-          </a>
-        </span>
-      ),
     },
     {
       title: 'Tissue',
@@ -203,8 +214,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               const remoteKeywords = await getRemoteGeneralKeywords({
                 source: keywords.source,
                 project: keywords.project,
-                subproject: keywords.subproject,
                 tissue: undefined,
+                tissuegroup: keywords.tissuegroup,
                 phenotype: keywords.phenotype,
                 celltype: keywords.celltype,
                 drug: keywords.drug,
@@ -224,12 +235,55 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       },
     },
     {
+      title: 'Tissue Group',
+      dataIndex: 'tissuegroup',
+      width: 100,
+      hideInForm: true,
+      ellipsis: true,
+      renderFormItem: () => {
+        const options = tissuegroup.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'tissuegroupSelect'}
+            showSearch={true}
+            placeholder={'input and select a tissuegroup'}
+            filterOption={false}
+            onFocus={async () => {
+              const remoteKeywords = await getRemoteGeneralKeywords({
+                source: keywords.source,
+                project: keywords.project,
+                tissue: keywords.tissue,
+                tissuegroup: undefined,
+                phenotype: keywords.phenotype,
+                celltype: keywords.celltype,
+                drug: keywords.drug,
+              });
+              if (remoteKeywords) {
+                setTissuegroup(remoteKeywords.data.tissuegroup);
+              }
+            }}
+            onSearch={tissuegroupHandler}
+            onChange={(value) => {
+              setKeywords({ ...keywords, tissuegroup: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
+    },
+    {
       title: 'Phenotype',
       dataIndex: 'phenotype',
       key: 'phenotype',
       valueType: 'text',
       hideInForm: true,
       ellipsis: true,
+      width: 180,
       renderFormItem: () => {
         const options = phenotype.map((item) => (
           <Select.Option key={item} value={item} type={item}>
@@ -246,8 +300,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               const remoteKeywords = await getRemoteGeneralKeywords({
                 source: keywords.source,
                 project: keywords.project,
-                subproject: keywords.subproject,
                 tissue: keywords.tissue,
+                tissuegroup: keywords.tissuegroup,
                 phenotype: undefined,
                 celltype: keywords.celltype,
                 drug: keywords.drug,
@@ -267,6 +321,13 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       },
     },
     {
+      title: 'Description',
+      dataIndex: 'title',
+      ellipsis: true,
+      hideInSearch: true,
+      width: 150,
+    },
+    {
       title: 'Total reported cell',
       dataIndex: 'total_reported_cell',
       ellipsis: true,
@@ -281,73 +342,27 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       width: '100px',
     },
     {
-      title: 'Cell Type',
+      title: 'Top 10 Cell Types',
       dataIndex: 'celltype',
       key: 'celltype',
       valueType: 'text',
       search: false,
       hideInForm: true,
       ellipsis: true,
-      // renderFormItem: () => {
-      //   const options = celltype.map((item) => (
-      //     <Option key={item.id} value={item.name} type={item.type}>
-      //       {item.name}
-      //     </Option>
-      //   ));
-      //
-      //   return (
-      //     <Select
-      //       key={'celltypeSelect'}
-      //       showSearch={true}
-      //       allowClear={true}
-      //       placeholder={'input and select a cell type'}
-      //       filterOption={false}
-      //       onSearch={celltypeHandler}
-      //       onChange={(value, option) => {
-      //         changeHandler(value, option);
-      //       }}
-      //     >
-      //       {options}
-      //     </Select>
-      //   );
-      // },
     },
     {
-      title: 'Drug',
+      title: 'Top 10 Drugs',
       dataIndex: 'drug',
       key: 'drug',
       valueType: 'text',
       hideInForm: true,
       search: false,
       ellipsis: true,
-      // renderFormItem: () => {
-      //   const options = inst.map((item) => (
-      //     <Select.Option key={item.id} value={item.name} type={item.type}>
-      //       {item.name}
-      //     </Select.Option>
-      //   ));
-      //
-      //   return (
-      //     <Select
-      //       key={'instSelect'}
-      //       showSearch={true}
-      //       allowClear={true}
-      //       placeholder={'input and select a drug'}
-      //       filterOption={false}
-      //       onSearch={instHandler}
-      //       onChange={(value, option) => {
-      //         changeHandler(value, option);
-      //       }}
-      //     >
-      //       {options}
-      //     </Select>
-      //   );
-      // },
     },
   ];
 
   const paginationHandler = (page: number, pageSize?: number) => {
-    const { source, tissue, project, phenotype, subproject } = keywords;
+    const { source, tissue, project, phenotype, tissuegroup } = keywords;
     dispatch({
       type: 'general/getRemote',
       payload: {
@@ -355,14 +370,14 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         pageSize: pageSize ? pageSize : general.meta.pageSize,
         source: source,
         project: project,
-        subproject: subproject,
         tissue: tissue,
+        tissuegroup: tissuegroup,
         phenotype: phenotype,
       },
     });
   };
   const sizeChangeHandler = (current: number, size: number) => {
-    const { source, tissue, project, phenotype, subproject } = keywords;
+    const { source, tissue, project, phenotype, tissuegroup } = keywords;
     dispatch({
       type: 'general/getRemote',
       payload: {
@@ -370,8 +385,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         pageSize: size,
         source: source,
         project: project,
-        subproject: subproject,
         tissue: tissue,
+        tissuegroup: tissuegroup,
         phenotype: phenotype,
       },
     });
@@ -401,7 +416,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                 return record.id.toString();
               }}
               onSubmit={(params) => {
-                const { source, tissue, project, phenotype, subproject } =
+                const { source, tissue, project, phenotype, tissuegroup } =
                   keywords;
                 dispatch({
                   type: 'general/getRemote',
@@ -410,8 +425,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                     pageSize: 10,
                     source: source,
                     project: project,
-                    subproject: subproject,
                     tissue: tissue,
+                    tissuegroup: tissuegroup,
                     phenotype: phenotype,
                   },
                 });

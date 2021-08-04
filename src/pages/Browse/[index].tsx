@@ -7,10 +7,10 @@ import {
 import ProTable from '@ant-design/pro-table';
 import React, { FC, useEffect, useState } from 'react';
 import { connect, history } from 'umi';
-import { getRemoteDrug, getRemoteNetwork } from '@/pages/Subproject/service';
+import { getRemoteDrug, getRemoteNetwork } from '@/pages/Dataset/service';
 import { Col, Select, Space, Row } from 'antd';
 import { getRemoteKeywords } from '@/pages/General/service';
-import { SubprojectItem } from '@/pages/Subproject/data';
+import { SubprojectItem } from '@/pages/Dataset/data';
 import Network from '@/components/Network';
 interface BrowsePageProps {
   browse: SubprojectState;
