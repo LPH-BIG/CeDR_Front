@@ -13,12 +13,9 @@ import {
   Alert,
 } from 'antd';
 import { history } from '@@/core/history';
-
-import { Dispatch, Loading, SubprojectState } from '@@/plugin-dva/connect';
+import { Dispatch, Loading, DatasetState } from 'umi';
 import { connect } from 'umi';
 import ProTable, { IntlProvider, enUSIntl } from '@ant-design/pro-table';
-// import enUSIntl from 'antd/lib/locale/en_US';
-// const enUSIntl = createIntl('en_US', enUS);
 import Tsne from '@/components/Tsne';
 import Pie from '@/components/Pie';
 import {
@@ -30,22 +27,23 @@ import {
   getRemoteKeywords,
 } from './service';
 import Network from '@/components/Network';
-import { DrugItem, SubprojectItem } from '@/pages/Dataset/data';
+import { AssociationItem } from '@/pages/Dataset/data';
 import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DetailIcon } from '@/components/Icons';
-interface SubprojectPageProps {
-  subproject: SubprojectState;
+import { DotChartOutlined } from '@ant-design/icons';
+interface DatasetPageProps {
+  dataset: DatasetState;
   dispatch: Dispatch;
-  subprojectListLoading: boolean;
+  datasetListLoading: boolean;
 }
 const { TabPane } = Tabs;
-const Index: FC<SubprojectPageProps> = ({
-  subproject,
+const Index: FC<DatasetPageProps> = ({
+  dataset,
   dispatch,
-  subprojectListLoading,
+  datasetListLoading,
 }) => {
   const [activeKey, setActivekey] = useState('tab2');
-  const [record, setRecord] = useState<SubprojectItem | undefined>(undefined);
+  const [record, setRecord] = useState<AssociationItem | undefined>(undefined);
   const [tsne, setTsne] = useState({});
   const [summary, setSummary] = useState<GeneralItem | undefined>(undefined);
   const [tsnetitle, setTsnetitle] = useState(' ');
@@ -58,76 +56,57 @@ const Index: FC<SubprojectPageProps> = ({
   const [gene, setGene] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
   const [disabled, setDisabled] = useState<boolean>(true);
-  const [druginformation, setDruginformation] = useState<DrugItem>({});
-  const [alert, setAlert] = useState('none');
 
   useEffect(() => {
-    // console.log('I fire once');
-    const dataset = subproject.data[0];
-    if (dataset) {
-      const { project, subproject } = dataset;
-      setKeywords({ ...keywords, project: project, subproject: subproject });
-      const name = project + ' ' + subproject;
-      // console.log("name: "+kk);
-      getRemoteSummary({ project: project, subproject: subproject }).then(
-        (res) => {
-          // console.log(res.data[0]);
-          setSummary(res.data[0]);
-        },
-      );
+    const data = dataset.data[0];
+    if (data) {
+      const { datasetid } = data;
+      setKeywords({ ...keywords, datasetid: datasetid });
+      getRemoteSummary({ datasetid: datasetid }).then((res) => {
+        setSummary(res.data[0]);
+      });
     }
-  }, [subproject, history.location.pathname]);
-
+  }, [dataset]);
   useEffect(() => {
-    const dataset = subproject.data[0];
-    if (dataset) {
-      const { project, subproject } = dataset;
-      // setKeywords({ ...keywords, project: project, subproject: subproject });
-      const name = project + ' ' + subproject;
-      getRemoteTsne({ name: name }).then((res) => {
-        // console.log(res.data)
+    const data = dataset.data[0];
+    if (data) {
+      const { datasetid } = data;
+      getRemoteTsne({ datasetid: datasetid }).then((res) => {
         setTsne(res.data);
       });
-      setTsnetitle(dataset.project + ' ' + dataset.subproject);
-    }
-  }, [subproject, history.location.pathname]);
-
-  useEffect(() => {
-    const dataset = subproject.data[0];
-    if (dataset) {
-      const { project, subproject } = dataset;
-      // setKeywords({ ...keywords, project: project, subproject: subproject });
-      const name = project + ' ' + subproject;
-      getRemoteNetwork({ project: project, subproject: subproject }).then(
-        (res) => {
-          // console.log(res.data);
-          setNetwork(res.data);
-        },
+      setTsnetitle(
+        data.project + ' ' + data.tissuegroup + ' ' + data.phenotype,
       );
     }
-  }, [subproject, history.location.pathname]);
+  }, [dataset, history.location.pathname]);
   useEffect(() => {
-    const dataset = subproject.data[0];
-    if (dataset) {
-      const { project, subproject } = dataset;
-      // setKeywords({ ...keywords, project: project, subproject: subproject });
-      const name = project + ' ' + subproject;
-      getRemotePie({ name: name }).then((res) => {
+    const data = dataset.data[0];
+    if (data) {
+      const { datasetid } = data;
+      getRemoteNetwork({ datasetid: datasetid }).then((res) => {
+        setNetwork(res.data);
+      });
+    }
+  }, [dataset]);
+  useEffect(() => {
+    const data = dataset.data[0];
+
+    if (data) {
+      const { datasetid } = data;
+      getRemotePie({ datasetid: datasetid }).then((res) => {
         // console.log(res.data);
         setPie(res.data);
       });
     }
-  }, [subproject, history.location.pathname]);
+  }, [dataset]);
 
   const columns = [
     {
       // title: 'Order',
       title: 'Association ID',
-      // dataIndex: 'index',
       tooltip: 'Click to see the association detail',
       ellipsis: true,
-      dataIndex: 'id',
-      // valueType: 'index',
+      dataIndex: 'associationid',
       search: false,
       render: (text, record, index) => {
         // console.log(record)
@@ -135,7 +114,6 @@ const Index: FC<SubprojectPageProps> = ({
           <span>
             <a
               onClick={async () => {
-                // console.log("click");
                 setRecord(record);
                 setDisabled(false);
                 // setActivekey('tab3');
@@ -143,10 +121,13 @@ const Index: FC<SubprojectPageProps> = ({
                 // getRemoteDrug({ name: record.inst }).then((res) => {
                 //   setDruginformation(res.data);
                 // });
-                history.push('/association/' + text);
+                history.push('/association/' + record.associationid);
               }}
             >
-              <Space>{record.id}</Space>
+              <Space>
+                {record.associationid}
+                <DotChartOutlined />
+              </Space>
             </a>
           </span>
         );
@@ -184,12 +165,11 @@ const Index: FC<SubprojectPageProps> = ({
           <Select
             key={'celltypeSelect'}
             showSearch={true}
-            placeholder={'input and select a source'}
+            placeholder={'input and select a cell type'}
             filterOption={false}
             onFocus={async () => {
               getRemoteKeywords({
-                project: subproject.data[0].project,
-                subproject: subproject.data[0].subproject,
+                datasetid: dataset.data[0].datasetid,
                 celltype: undefined,
                 drug: keywords.drug,
                 overlapgene: keywords.overlapgene,
@@ -200,8 +180,7 @@ const Index: FC<SubprojectPageProps> = ({
             onSearch={async (value) => {
               // console.log(value);
               getRemoteKeywords({
-                project: subproject.data[0].project,
-                subproject: subproject.data[0].subproject,
+                datasetid: dataset.data[0].datasetid,
                 celltype: value,
                 drug: keywords.drug,
                 overlapgene: keywords.overlapgene,
@@ -217,7 +196,6 @@ const Index: FC<SubprojectPageProps> = ({
           </Select>
         );
       },
-      // search: false,
     },
     {
       title: 'Drug',
@@ -255,8 +233,7 @@ const Index: FC<SubprojectPageProps> = ({
             onFocus={async () => {
               // console.log(value);
               getRemoteKeywords({
-                project: subproject.data[0].project,
-                subproject: subproject.data[0].subproject,
+                datasetid: dataset.data[0].datasetid,
                 celltype: keywords.celltype,
                 drug: undefined,
                 overlapgene: keywords.overlapgene,
@@ -268,8 +245,7 @@ const Index: FC<SubprojectPageProps> = ({
             onSearch={async (value) => {
               // console.log(value);
               getRemoteKeywords({
-                project: subproject.data[0].project,
-                subproject: subproject.data[0].subproject,
+                datasetid: dataset.data[0].datasetid,
                 celltype: keywords.celltype,
                 drug: value,
                 overlapgene: keywords.overlapgene,
@@ -413,8 +389,7 @@ const Index: FC<SubprojectPageProps> = ({
             onSearch={async (value) => {
               // console.log(value);
               getRemoteKeywords({
-                project: subproject.data[0].project,
-                subproject: subproject.data[0].subproject,
+                datasetid: dataset.data[0].datasetid,
                 celltype: keywords.celltype,
                 drug: keywords.drug,
                 overlapgene: value,
@@ -446,12 +421,13 @@ const Index: FC<SubprojectPageProps> = ({
               onClick={async () => {
                 // console.log("click");
                 setRecord(record);
-                setDisabled(false);
-                setActivekey('tab3');
+                history.push('/association/' + record.associationid);
+                // setDisabled(false);
+                // setActivekey('tab3');
                 // console.log(record.inst);
-                getRemoteDrug({ name: record.inst }).then((res) => {
-                  setDruginformation(res.data);
-                });
+                // getRemoteDrug({ name: record.inst }).then((res) => {
+                //   setDruginformation(res.data);
+                // });
               }}
             >
               <DetailIcon key={record.id} />
@@ -463,29 +439,31 @@ const Index: FC<SubprojectPageProps> = ({
   ];
   const paginationHandler = (page: number, pageSize?: number) => {
     dispatch({
-      type: 'subproject/getRemote',
+      type: 'dataset/getRemote',
       payload: {
         pageIndex: page,
-        pageSize: pageSize ? pageSize : subproject.meta.pageSize,
-        project: subproject.data[0].project,
-        subproject: subproject.data[0].subproject,
+        pageSize: pageSize ? pageSize : dataset.meta.pageSize,
+        datasetid: dataset.data[0].datasetid,
         overlapgene: keywords.overlapgene,
         celltype: keywords.celltype,
         drug: keywords.drug,
+        pcutoff: keywords.pcutoff,
+        orcutoff: keywords.orcutoff,
       },
     });
   };
   const sizeChangeHandler = (current: number, size: number) => {
     dispatch({
-      type: 'subproject/getRemote',
+      type: 'dataset/getRemote',
       payload: {
         pageIndex: current,
         pageSize: size,
-        project: subproject.data[0].project,
-        subproject: subproject.data[0].subproject,
+        datasetid: dataset.data[0].datasetid,
         overlapgene: keywords.overlapgene,
         celltype: keywords.celltype,
         drug: keywords.drug,
+        pcutoff: keywords.pcutoff,
+        orcutoff: keywords.orcutoff,
       },
     });
   };
@@ -518,7 +496,7 @@ const Index: FC<SubprojectPageProps> = ({
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
               {/*<AndroidOutlined />*/}
-              Subproject
+              Dataset Detail
             </span>
           }
           key="tab2"
@@ -530,19 +508,17 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Project" span={1}>
                     <a href={summary?.reference}>{summary?.project}</a>
                   </Descriptions.Item>
-                  <Descriptions.Item label="Subproject" span={2}>
+                  <Descriptions.Item label="Dataset ID">
                     <a
                       onClick={() => {
-                        history.push(
-                          '/subproject/' +
-                            summary?.project +
-                            ' ' +
-                            summary?.subproject,
-                        );
+                        history.push('/dataset/' + summary?.datasetid);
                       }}
                     >
-                      <p>{summary?.subproject}</p>
+                      {summary?.datasetid}
                     </a>
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Description">
+                    {summary?.title}
                   </Descriptions.Item>
                   <Descriptions.Item label="Source">
                     {summary?.source}
@@ -550,26 +526,25 @@ const Index: FC<SubprojectPageProps> = ({
                   <Descriptions.Item label="Tissue">
                     {summary?.tissue}
                   </Descriptions.Item>
+                  <Descriptions.Item label="Tissue Group">
+                    {summary?.tissuegroup}
+                  </Descriptions.Item>
                   <Descriptions.Item label="Phenotype">
                     {summary?.phenotype}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Cell source">
+                  <Descriptions.Item label="Cell Source">
                     {summary?.cell_source}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Total reported cell">
+                  <Descriptions.Item label="Total Reported Cells">
                     {summary?.total_reported_cell}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Number of reported celltype">
+                  <Descriptions.Item label="Number of Reported Celltypes">
                     {summary?.celltype_num}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Drug" span={3}>
+                  <Descriptions.Item label="Top 10 Drugs" span={3}>
                     {summary?.drug.split(', ').slice(0, 10).join(', ')}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Number of reported celltype">
-                    {summary?.celltype_num}
-                  </Descriptions.Item>
-
-                  <Descriptions.Item label="Cell type" span={3}>
+                  <Descriptions.Item label="Top 10 Cell Types" span={3}>
                     {summary?.celltype.split(', ').slice(0, 10).join(', ')}
                   </Descriptions.Item>
                 </Descriptions>
@@ -606,10 +581,10 @@ const Index: FC<SubprojectPageProps> = ({
             <Row>
               <Col>
                 <IntlProvider value={enUSIntl}>
-                  <ProTable<SubprojectItem>
+                  <ProTable<AssociationItem>
                     columns={columns}
-                    dataSource={subproject.data}
-                    loading={subprojectListLoading}
+                    dataSource={dataset.data}
+                    loading={datasetListLoading}
                     pagination={false}
                     // headerTitle="日期类"
                     expandable={{
@@ -625,8 +600,7 @@ const Index: FC<SubprojectPageProps> = ({
                     rowKey={(record) => record.id}
                     onSubmit={(params) => {
                       const {
-                        project,
-                        subproject,
+                        datasetid,
                         celltype,
                         drug,
                         overlapgene,
@@ -636,12 +610,11 @@ const Index: FC<SubprojectPageProps> = ({
                       // console.log('submit');
                       // console.log(keywords);
                       dispatch({
-                        type: 'subproject/getRemote',
+                        type: 'dataset/getRemote',
                         payload: {
                           pageIndex: 1,
                           pageSize: 10,
-                          project: project,
-                          subproject: subproject,
+                          datasetid: datasetid,
                           overlapgene: overlapgene,
                           celltype: celltype,
                           drug: drug,
@@ -653,12 +626,11 @@ const Index: FC<SubprojectPageProps> = ({
                     onReset={() => {
                       setKeywords({});
                       dispatch({
-                        type: 'subproject/getRemote',
+                        type: 'dataset/getRemote',
                         payload: {
                           pageIndex: 1,
                           pageSize: 10,
-                          project: keywords.project,
-                          subproject: keywords.subproject,
+                          datasetid: keywords.datasetid,
                         },
                       });
                     }}
@@ -678,8 +650,8 @@ const Index: FC<SubprojectPageProps> = ({
                     className={styles.pagenation}
                     showQuickJumper
                     defaultCurrent={1}
-                    total={subproject.meta.total}
-                    pageSize={subproject.meta.pageSize}
+                    total={dataset.meta.total}
+                    pageSize={dataset.meta.pageSize}
                     showSizeChanger
                     showTotal={(total) => `Total ${total} items`}
                     pageSizeOptions={[10, 20, 50, 100]}
@@ -706,19 +678,19 @@ const Index: FC<SubprojectPageProps> = ({
 };
 
 const mapStateToProps = ({
-  subproject,
+  dataset,
   loading,
 }: // props,
 {
-  subproject: SubprojectState;
+  dataset: DatasetState;
   loading: Loading;
 }) => {
   //这个传的是state对象，可以通过此处测试数据是否正确
   // console.log(loading);
-  // console.log(subproject);
+  // console.log(dataset);
   return {
-    subproject,
-    subprojectListLoading: loading.models.subproject,
+    dataset,
+    datasetListLoading: loading.models.dataset,
   };
 };
 

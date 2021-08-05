@@ -1,12 +1,10 @@
-import request, { extend } from 'umi-request';
-import { message } from 'antd';
 import { extendRequest } from '@/pages/General/service';
 import { API_PREFIX } from '@/common/constants';
-export const getRemoteSubproject = async ({
+export const getRemoteDataset = async ({
   pageIndex,
   pageSize,
-  project,
-  subproject,
+  // project,
+  datasetid,
   celltype,
   drug,
   overlapgene,
@@ -15,9 +13,9 @@ export const getRemoteSubproject = async ({
 }: {
   pageIndex: number | undefined;
   pageSize: number | undefined;
-  project: string | undefined;
+  // project: string | undefined;
+  datasetid: string | undefined;
   celltype: string | undefined;
-  subproject: string | undefined;
   drug: string | undefined;
   overlapgene: string | undefined;
   pcutoff: number | undefined;
@@ -28,8 +26,8 @@ export const getRemoteSubproject = async ({
     params: {
       pageIndex: pageIndex,
       pageSize: pageSize,
-      project: project,
-      subproject: subproject,
+      // project: project,
+      datasetid: datasetid,
       celltype: celltype,
       drug: drug,
       overlapgene: overlapgene,
@@ -47,17 +45,15 @@ export const getRemoteSubproject = async ({
 };
 
 export const getRemoteSummary = async ({
-  project,
-  subproject,
+  datasetid,
 }: {
-  project: string;
-  subproject: string;
+  // project: string;
+  datasetid: string;
 }) => {
   return extendRequest(API_PREFIX + '/general', {
     method: 'get',
     params: {
-      project: project,
-      subproject: subproject,
+      datasetid: datasetid,
     },
   })
     .then(function (response) {
@@ -69,11 +65,11 @@ export const getRemoteSummary = async ({
     });
 };
 
-export const getRemoteTsne = async ({ name }: { name: string }) => {
+export const getRemoteTsne = async ({ datasetid }: { datasetid: string }) => {
   return extendRequest(API_PREFIX + '/tsne', {
     method: 'get',
     params: {
-      name: name,
+      datasetid: datasetid,
     },
   })
     .then(function (response) {
@@ -86,21 +82,21 @@ export const getRemoteTsne = async ({ name }: { name: string }) => {
 };
 
 export const getRemoteNetwork = async ({
-  project,
-  subproject,
+  // project,
+  datasetid,
   celltype,
   drug,
 }: {
-  project: string | undefined;
-  subproject: string | undefined;
+  // project: string | undefined;
+  datasetid: string | undefined;
   celltype: string | undefined;
   drug: string | undefined;
 }) => {
   return extendRequest(API_PREFIX + '/network', {
     method: 'get',
     params: {
-      project: project,
-      subproject: subproject,
+      // project: project,
+      datasetid: datasetid,
       celltype: celltype,
       drug: drug,
     },
@@ -113,11 +109,11 @@ export const getRemoteNetwork = async ({
       return false;
     });
 };
-export const getRemotePie = async ({ name }: { name: string }) => {
+export const getRemotePie = async ({ datasetid }: { datasetid: string }) => {
   return extendRequest(API_PREFIX + '/pie', {
     method: 'get',
     params: {
-      name: name,
+      datasetid: datasetid,
     },
   })
     .then(function (response) {
@@ -161,16 +157,12 @@ export const getRemoteDrug = async ({ name }: { name: string }) => {
     });
 };
 export const getRemoteKeywords = async ({
-  // source,
-  project,
-  subproject,
+  datasetid,
   celltype,
   drug,
   overlapgene,
 }: {
-  // source:string,
-  project: string;
-  subproject: string;
+  datasetid: string;
   celltype: string | undefined;
   drug: string | undefined;
   overlapgene: string | undefined;
@@ -178,9 +170,7 @@ export const getRemoteKeywords = async ({
   return extendRequest(API_PREFIX + '/searchLike', {
     method: 'get',
     params: {
-      // source: source,
-      project: project,
-      subproject: subproject,
+      datasetid: datasetid,
       cellType: celltype,
       drug: drug,
       overlapgene: overlapgene,

@@ -1,10 +1,10 @@
 import { Effect, Reducer, Subscription } from 'umi';
-import { SubprojectItem } from '@/pages/Dataset/data';
-import { getRemoteSubproject } from '@/pages/Dataset/service';
+import { AssociationItem } from '@/pages/Dataset/data';
+import { getRemoteDataset } from '@/pages/Dataset/service';
 import { pathToRegexp } from 'path-to-regexp';
 
-export interface SubprojectState {
-  data: SubprojectItem[];
+export interface DatasetState {
+  data: AssociationItem[];
   meta: {
     total: number;
     pageSize: number;
@@ -13,11 +13,11 @@ export interface SubprojectState {
   status: number;
   message: string;
 }
-export interface SubprojectModelType {
+export interface DatasetModelType {
   namespace: string;
-  state: SubprojectState;
+  state: DatasetState;
   reducers: {
-    getList: Reducer<SubprojectState>;
+    getList: Reducer<DatasetState>;
   };
   effects: {
     getRemote: Effect;
@@ -29,8 +29,8 @@ export interface SubprojectModelType {
     setup: Subscription;
   };
 }
-const SubprojectModel: SubprojectModelType = {
-  namespace: 'subproject',
+const DatasetModel: DatasetModelType = {
+  namespace: 'dataset',
   state: {
     data: [],
     meta: {
@@ -54,8 +54,7 @@ const SubprojectModel: SubprojectModelType = {
         payload: {
           pageIndex,
           pageSize,
-          project,
-          subproject,
+          datasetid,
           celltype,
           drug,
           overlapgene,
@@ -65,11 +64,10 @@ const SubprojectModel: SubprojectModelType = {
       },
       { put, call },
     ) {
-      const data = yield call(getRemoteSubproject, {
+      const data = yield call(getRemoteDataset, {
         pageIndex,
         pageSize,
-        project,
-        subproject,
+        datasetid,
         celltype,
         drug,
         overlapgene,
@@ -91,18 +89,18 @@ const SubprojectModel: SubprojectModelType = {
         const match = pathToRegexp('/dataset/:id').exec(location.pathname);
         if (match) {
           const id = match[1];
-          const project = id.split(' ')[0];
-          const subproject = id
-            .split(' ')
-            .slice(1, id.split(' ').length)
-            .join(' ');
+          // console.log(id);
+          // const project = id.split(' ')[0];
+          // const datasetid = id
+          //   .split(' ')
+          //   .slice(1, id.split(' ').length)
+          //   .join(' ');
           dispatch({
             type: 'getRemote',
             payload: {
               pageIndex: 1,
               pageSize: 10,
-              project: project,
-              subproject: subproject,
+              datasetid: id,
             },
           });
         }
@@ -110,4 +108,4 @@ const SubprojectModel: SubprojectModelType = {
     },
   },
 };
-export default SubprojectModel;
+export default DatasetModel;

@@ -17,13 +17,6 @@ export interface GeneralItem {
   title: string;
 }
 
-export interface keywordsItem {
-  source: string[];
-  tissue: string[];
-  phenotype: string[];
-  celltype: string[];
-  inst: string[];
-}
 export interface SearchKeywords {
   source: string | undefined;
   project: string | undefined;

@@ -1,33 +1,15 @@
-export interface SubprojectItem {
-  id: number;
-  source: string;
-  project: string;
-  subproject: string;
-  // description: string;
-  tissue: string;
-  phenotype: string;
-  celltype: string;
-  inst: string;
-  pvalue1: number;
-  oddsratio1: number;
-  pvalue2: number;
-  oddsratio2: number;
-  spearman: number;
-  spvalue: number;
-  overlapgenenum: number;
-  overlapgene: string;
-  photocelltype: string;
-  photodrug: string;
-}
 export interface AssociationItem {
   id: number;
+  datasetid: string;
+  associationid: string;
   source: string;
   project: string;
-  subproject: string;
   tissue: string;
+  tissuegroup: string;
   phenotype: string;
   celltype: string;
   inst: string;
+  drug: string;
   pvalue1: number;
   oddsratio1: number;
   pvalue2: number;
@@ -36,9 +18,10 @@ export interface AssociationItem {
   spvalue: number;
   overlapgenenum: number;
   overlapgene: string;
-  // overlapgenerank: number[];
   photocelltype: string;
   photodrug: string;
+  matrixplot: string;
+  violinplot: string;
 }
 export interface DrugItem {
   id: number;
