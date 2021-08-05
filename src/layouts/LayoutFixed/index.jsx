@@ -39,7 +39,7 @@ export default function (props) {
   useEffect(() => {
     if (
       history.location.pathname.startsWith('/general') |
-      history.location.pathname.startsWith('/subproject') |
+      history.location.pathname.startsWith('/dataset') |
       history.location.pathname.startsWith('/browse') |
       history.location.pathname.startsWith('/association')
     ) {

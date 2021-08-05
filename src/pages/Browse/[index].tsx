@@ -1,19 +1,13 @@
-import {
-  Dispatch,
-  GeneralState,
-  Loading,
-  SubprojectState,
-} from '@@/plugin-dva/connect';
+import { Dispatch, GeneralState, Loading, DatasetState } from 'umi';
 import ProTable from '@ant-design/pro-table';
 import React, { FC, useEffect, useState } from 'react';
 import { connect, history } from 'umi';
-import { getRemoteDrug, getRemoteNetwork } from '@/pages/Dataset/service';
+import { getRemoteNetwork } from '@/pages/Dataset/service';
 import { Col, Select, Space, Row } from 'antd';
-import { getRemoteKeywords } from '@/pages/General/service';
-import { SubprojectItem } from '@/pages/Dataset/data';
+import { AssociationItem } from '@/pages/Dataset/data';
 import Network from '@/components/Network';
 interface BrowsePageProps {
-  browse: SubprojectState;
+  browse: DatasetState;
   dispatch: Dispatch;
   browseListLoading: boolean;
 }
@@ -24,24 +18,41 @@ const Index: FC<BrowsePageProps> = ({
 }) => {
   const columns = [
     {
-      // title: 'Order',
       title: 'Association ID',
-      // dataIndex: 'index',
-      dataIndex: 'id',
+      dataIndex: 'associationid',
       // valueType: 'index',
-      // width: 58,
+      width: 120,
       render: (text, record, index) => {
         return (
           <div>
             <span>
               <a
                 onClick={() => {
-                  history.push(
-                    '/subproject/' + record.project + ' ' + record.subproject,
-                  );
+                  history.push('/association/' + record.associationid);
                 }}
               >
-                {record.id}
+                {record.associationid}
+              </a>
+            </span>
+          </div>
+        );
+      },
+    },
+    {
+      title: 'Dataset ID',
+      dataIndex: 'datasetid',
+      valueType: 'text',
+      hideInForm: true,
+      render: (text, record, index) => {
+        return (
+          <div>
+            <span>
+              <a
+                onClick={() => {
+                  history.push('/dataset/' + record.datasetid);
+                }}
+              >
+                {text}
               </a>
             </span>
           </div>
@@ -74,35 +85,15 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'project',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
     },
+
     {
-      title: 'subproject',
-      dataIndex: 'subproject',
-      valueType: 'text',
-      hideInForm: true,
-      render: (text, record, index) => {
-        return (
-          <div>
-            <span>
-              <a
-                onClick={() => {
-                  history.push(
-                    '/subproject/' + record.project + ' ' + record.subproject,
-                  );
-                }}
-              >
-                {text}
-              </a>
-            </span>
-          </div>
-        );
-      },
-    },
-    {
-      title: 'tissue',
+      title: 'Tissue',
       dataIndex: 'tissue',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       render: (text, record, index) => {
         return (
           <div>
@@ -120,7 +111,7 @@ const Index: FC<BrowsePageProps> = ({
       },
     },
     {
-      title: 'phenotype',
+      title: 'Phenotype',
       dataIndex: 'phenotype',
       valueType: 'text',
       hideInForm: true,
@@ -146,24 +137,28 @@ const Index: FC<BrowsePageProps> = ({
       key: 'celltype',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
     },
     {
       title: 'Drug',
       dataIndex: 'drug',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
     },
     {
       title: 'p-value 1',
       dataIndex: 'pvalue1',
       key: 'pvalue1',
       valueType: 'text',
+      ellipsis: true,
     },
     {
       title: 'Odds Ratio 1',
       dataIndex: 'oddsratio1',
       key: 'oddsratio1',
       valueType: 'text',
+      ellipsis: true,
       ellipsis: true,
     },
     {
@@ -173,6 +168,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'Odds Ratio 2',
@@ -181,6 +177,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'Spearman',
@@ -189,6 +186,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'S p-value',
@@ -197,6 +195,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'Overlap Gene Number',
@@ -205,7 +204,8 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
-      width: 100,
+      ellipsis: true,
+      // width: 100,
     },
     {
       title: 'Overlap Gene',
@@ -224,9 +224,8 @@ const Index: FC<BrowsePageProps> = ({
     if (k[2] == 'celltype') {
       console.log(k[3]);
       getRemoteNetwork({
-        project: undefined,
-        subproject: undefined,
         celltype: k[3],
+        datasetid: undefined,
         drug: undefined,
       }).then((res) => {
         // console.log(res.data);
@@ -234,10 +233,9 @@ const Index: FC<BrowsePageProps> = ({
       });
     } else if (k[2] == 'drug') {
       getRemoteNetwork({
-        project: undefined,
-        subproject: undefined,
-        celltype: undefined,
         drug: k[3],
+        celltype: undefined,
+        datasetid: undefined,
       }).then((res) => {
         // console.log(res.data);
         setNetwork(res.data);
@@ -259,7 +257,7 @@ const Index: FC<BrowsePageProps> = ({
       <Row justify={'center'}>
         <Col md={20}>
           <div>
-            <ProTable<SubprojectItem>
+            <ProTable<AssociationItem>
               columns={columns}
               dataSource={browse.data}
               loading={browseListLoading}
@@ -277,7 +275,7 @@ const mapStateToProps = ({
   browse,
   loading,
 }: {
-  browse: SubprojectState;
+  browse: DatasetState;
   loading: Loading;
 }) => {
   //这个传的是state对象，可以通过此处测试数据是否正确

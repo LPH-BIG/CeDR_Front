@@ -469,7 +469,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         <TabPane
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
-              Subproject
+              Dataset Detail
             </span>
           }
           key="tab2"
@@ -478,7 +478,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
         <TabPane
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
-              Cell Drug Association
+              Cellular Drug Association
             </span>
           }
           key="tab3"

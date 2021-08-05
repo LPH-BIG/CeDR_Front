@@ -15,10 +15,6 @@ export default [
         breadcrumbName: 'Home',
       },
       {
-        path: '/users/:id',
-        component: '@/pages/users/[index]',
-      },
-      {
         path: '/search',
         component: '@/pages/Search',
         breadcrumbName: 'Search',
@@ -41,10 +37,6 @@ export default [
       {
         path: '/high/:chart',
         component: '@/pages/Highcharts/[index]',
-      },
-      {
-        path: '/test',
-        component: '@/pages/Test',
       },
       {
         path: '/high/:chart',

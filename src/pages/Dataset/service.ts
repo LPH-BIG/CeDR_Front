@@ -3,8 +3,8 @@ import { API_PREFIX } from '@/common/constants';
 export const getRemoteDataset = async ({
   pageIndex,
   pageSize,
-  // project,
   datasetid,
+  associationid,
   celltype,
   drug,
   overlapgene,
@@ -13,8 +13,8 @@ export const getRemoteDataset = async ({
 }: {
   pageIndex: number | undefined;
   pageSize: number | undefined;
-  // project: string | undefined;
   datasetid: string | undefined;
+  associationid: string | undefined;
   celltype: string | undefined;
   drug: string | undefined;
   overlapgene: string | undefined;
@@ -26,8 +26,8 @@ export const getRemoteDataset = async ({
     params: {
       pageIndex: pageIndex,
       pageSize: pageSize,
-      // project: project,
       datasetid: datasetid,
+      associationid: associationid,
       celltype: celltype,
       drug: drug,
       overlapgene: overlapgene,

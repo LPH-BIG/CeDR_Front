@@ -41,6 +41,7 @@ export default function Page(props: any) {
         {
           dataLabels: {
             enabled: true,
+            format: '{point.name}',
           },
           allowPointSelect: true,
           // data: [

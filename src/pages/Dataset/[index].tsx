@@ -22,7 +22,6 @@ import {
   getRemoteTsne,
   getRemoteNetwork,
   getRemotePie,
-  getRemoteDrug,
   getRemoteSummary,
   getRemoteKeywords,
 } from './service';
@@ -270,7 +269,7 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       tooltip:
         'The explanation of p-value 1 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
-      // ellipsis: true,
+      ellipsis: true,
       // search: false,
       renderFormItem: () => {
         const options = pcutoff.map((item) => (
@@ -329,6 +328,7 @@ const Index: FC<DatasetPageProps> = ({
       key: 'pvalue2',
       valueType: 'text',
       hideInForm: true,
+      ellipsis: true,
       search: false,
     },
     {
@@ -338,6 +338,7 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'Spearman',
@@ -346,6 +347,7 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'S p-value',
@@ -356,6 +358,7 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      ellipsis: true,
     },
     {
       title: 'Overlap Gene Number',
@@ -364,7 +367,8 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
-      width: 100,
+      // width: 100,
+      ellipsis: true,
     },
     {
       title: 'Overlap Gene',
@@ -554,6 +558,16 @@ const Index: FC<DatasetPageProps> = ({
             <Row>
               <Col xs={4} sm={6} md={8} lg={8} xl={8}>
                 <Tsne data={tsne} title={tsnetitle} />
+                <Row justify={'center'}>
+                  <strong>
+                    <span style={{ color: 'red' }}>
+                      Number of Displayed Cells:
+                      {summary?.total_reported_cell > 5000
+                        ? parseInt(summary?.total_reported_cell / 10)
+                        : summary?.total_reported_cell}
+                    </span>
+                  </strong>
+                </Row>
               </Col>
               <Col xs={4} sm={6} md={8} lg={8} xl={8}>
                 <Pie data={pie} />

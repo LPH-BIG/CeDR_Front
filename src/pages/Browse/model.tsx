@@ -1,13 +1,13 @@
-import { SubprojectState } from '@/pages/Dataset/model';
-import { getRemoteSubproject } from '@/pages/Dataset/service';
+import { DatasetState } from '@/pages/Dataset/model';
+import { getRemoteDataset } from '@/pages/Dataset/service';
 import { pathToRegexp } from 'path-to-regexp';
 import { Effect, Reducer, Subscription } from '@@/plugin-dva/connect';
 
 export interface BrowseModelType {
-  namespace: 'browse';
-  state: SubprojectState;
+  namespace: string;
+  state: DatasetState;
   reducers: {
-    getList: Reducer<SubprojectState>;
+    getList: Reducer<DatasetState>;
   };
   effects: {
     getRemote: Effect;
@@ -44,8 +44,8 @@ const BrowseModel: BrowseModelType = {
         payload: {
           pageIndex,
           pageSize,
-          project,
-          subproject,
+          datasetid,
+          associationid,
           celltype,
           drug,
           overlapgene,
@@ -55,11 +55,11 @@ const BrowseModel: BrowseModelType = {
       },
       { put, call },
     ) {
-      const data = yield call(getRemoteSubproject, {
+      const data = yield call(getRemoteDataset, {
         pageIndex,
         pageSize,
-        project,
-        subproject,
+        datasetid,
+        associationid,
         celltype,
         drug,
         overlapgene,
@@ -87,42 +87,6 @@ const BrowseModel: BrowseModelType = {
           console.log(type);
           console.log(name);
           switch (type) {
-            case 'source': {
-              dispatch({
-                type: 'getRemote',
-                //payload一般用于传输参数，即type指定函数的参数
-                payload: {
-                  pageIndex: 0,
-                  pageSize: 0,
-                  source: name,
-                },
-              });
-              break;
-            }
-            case 'tissue': {
-              dispatch({
-                type: 'getRemote',
-                //payload一般用于传输参数，即type指定函数的参数
-                payload: {
-                  pageIndex: 0,
-                  pageSize: 0,
-                  tissue: name,
-                },
-              });
-              break;
-            }
-            case 'phenotype': {
-              dispatch({
-                type: 'getRemote',
-                //payload一般用于传输参数，即type指定函数的参数
-                payload: {
-                  pageIndex: 0,
-                  pageSize: 0,
-                  phenotype: name,
-                },
-              });
-              break;
-            }
             case 'celltype': {
               dispatch({
                 type: 'getRemote',
@@ -148,14 +112,6 @@ const BrowseModel: BrowseModelType = {
               break;
             }
           }
-        } else {
-          dispatch({
-            type: 'getRemote',
-            payload: {
-              pageIndex: 0,
-              pageSize: 0,
-            },
-          });
         }
       });
     },

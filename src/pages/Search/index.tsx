@@ -21,7 +21,7 @@ export default function Page() {
     <div>
       <PageHeader
         className="site-page-header"
-        title="Search"
+        title="Advanced Search"
         // subTitle="This is a subtitle"
       />
       <Divider />
@@ -36,6 +36,20 @@ export default function Page() {
               placeholder="input and select a celltype"
               showSearch={true}
               allowClear={true}
+              onFocus={() => {
+                getSelect({ type: 'celltype', name: '' }).then((res) => {
+                  const op = res.map((item) => (
+                    <Select.Option
+                      key={item.id}
+                      value={item.name}
+                      type={item.type}
+                    >
+                      {item.name}
+                    </Select.Option>
+                  ));
+                  setCoptions(op);
+                });
+              }}
               onSearch={(value: string) => {
                 getSelect({ type: 'celltype', name: value }).then((res) => {
                   const op = res.map((item) => (
@@ -93,6 +107,20 @@ export default function Page() {
               placeholder="input and select a drug"
               showSearch={true}
               allowClear={true}
+              onFocus={() => {
+                getSelect({ type: 'drug', name: '' }).then((res) => {
+                  const op = res.map((item) => (
+                    <Select.Option
+                      key={item.id}
+                      value={item.name}
+                      type={item.type}
+                    >
+                      {item.name}
+                    </Select.Option>
+                  ));
+                  setCoptions(op);
+                });
+              }}
               onSearch={(value: string) => {
                 getSelect({ type: 'drug', name: value }).then((res) => {
                   const op = res.map((item) => (
@@ -150,6 +178,20 @@ export default function Page() {
               placeholder="input and select a disease"
               showSearch={true}
               allowClear={true}
+              onFocus={() => {
+                getSelect({ type: 'phenotype', name: '' }).then((res) => {
+                  const op = res.map((item) => (
+                    <Select.Option
+                      key={item.id}
+                      value={item.name}
+                      type={item.type}
+                    >
+                      {item.name}
+                    </Select.Option>
+                  ));
+                  setCoptions(op);
+                });
+              }}
               onSearch={(value: string) => {
                 getSelect({ type: 'phenotype', name: value }).then((res) => {
                   const op = res.map((item) => (
@@ -167,7 +209,7 @@ export default function Page() {
               onChange={(value, option) => {
                 if (option) {
                   setSearchkey({ type: option.type, name: value });
-                  console.log(searchkey);
+                  // console.log(searchkey);
                 }
               }}
             >
@@ -207,6 +249,20 @@ export default function Page() {
               placeholder="input and select a tissue"
               showSearch={true}
               allowClear={true}
+              onFocus={() => {
+                getSelect({ type: 'tissue', name: '' }).then((res) => {
+                  const op = res.map((item) => (
+                    <Select.Option
+                      key={item.id}
+                      value={item.name}
+                      type={item.type}
+                    >
+                      {item.name}
+                    </Select.Option>
+                  ));
+                  setCoptions(op);
+                });
+              }}
               onSearch={(value: string) => {
                 getSelect({ type: 'tissue', name: value }).then((res) => {
                   const op = res.map((item) => (
@@ -224,7 +280,7 @@ export default function Page() {
               onChange={(value, option) => {
                 if (option) {
                   setSearchkey({ type: option.type, name: value });
-                  console.log(searchkey);
+                  // console.log(searchkey);
                 }
               }}
             >

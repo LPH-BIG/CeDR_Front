@@ -168,7 +168,7 @@ const GeneralModel: GeneralModelType = {
                 pageIndex: 1,
                 pageSize: 10,
                 source: name1,
-                tissue: name2,
+                tissuegroup: name2,
                 phenotype: name3,
               },
             });

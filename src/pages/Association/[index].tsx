@@ -14,7 +14,11 @@ import { history } from '@@/core/history';
 import { IMG_PREFIX } from '@/common/constants';
 import ProTable, { enUSIntl, IntlProvider } from '@ant-design/pro-table';
 import Title from 'antd/es/typography/Title';
-import { getRemoteGene } from '@/pages/Dataset/service';
+import {
+  getRemoteDataset,
+  getRemoteDrug,
+  getRemoteGene,
+} from '@/pages/Dataset/service';
 import { DrugItem, AssociationItem } from '@/pages/Dataset/data';
 const { TabPane } = Tabs;
 const Index = ({
@@ -28,19 +32,19 @@ const Index = ({
   const [druginformation, setDruginformation] = useState<DrugItem>({});
 
   //TODO:修改association的条目，加上rank gene信息，拼接gene information与association的rank gene信息。
-  const columns2 = [
+  const columns = [
     {
       title: 'Order',
       dataIndex: 'index',
       valueType: 'index',
       width: 58,
     },
-    {
-      title: 'Rank',
-      dataIndex: 'rank',
-      valueType: 'text',
-      width: 88,
-    },
+    // {
+    //   title: 'Rank',
+    //   dataIndex: 'rank',
+    //   valueType: 'text',
+    //   width: 88,
+    // },
     {
       title: 'Ensembl ID',
       dataIndex: 'refs',
@@ -48,7 +52,7 @@ const Index = ({
       hideInForm: true,
       search: false,
       ellipsis: true,
-      render: (text, record, index) => {
+      render: (text: string, record) => {
         return (
           <span>
             <a
@@ -107,7 +111,22 @@ const Index = ({
 
   useEffect(() => {
     console.log(association);
+    if (association) {
+      getRemoteDataset({ associationid: association }).then((res) => {
+        setRecord(res.data[0]);
+        // console.log(res.data[0])
+      });
+    }
   }, [association]);
+
+  useEffect(() => {
+    console.log(record);
+    if (record) {
+      getRemoteDrug({ name: record.inst }).then((res) => {
+        setDruginformation(res.data);
+      });
+    }
+  }, [record]);
 
   return (
     <div>
@@ -120,7 +139,7 @@ const Index = ({
             history.push('/general');
           }
           if (activeKey == 'tab2') {
-            history.push('/subproject/' + record?.subproject);
+            history.push('/dataset/' + record?.datasetid);
           }
         }}
       >
@@ -135,7 +154,7 @@ const Index = ({
         <TabPane
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
-              Subproject
+              Dataset Detail
             </span>
           }
           key="tab2"
@@ -143,8 +162,7 @@ const Index = ({
         <TabPane
           tab={
             <span style={{ fontFamily: 'Arial', fontSize: 'large' }}>
-              {/*<AndroidOutlined />*/}
-              Cell Drug Association
+              Cellular Drug Association
             </span>
           }
           key="tab3"
@@ -196,7 +214,7 @@ const Index = ({
                   bordered
                   style={{ marginLeft: '2%' }}
                 >
-                  <Descriptions.Item label="Name" span={2}>
+                  <Descriptions.Item label="Name">
                     <a
                       onClick={() => {
                         history.push('/browse/drug/' + druginformation.name);
@@ -204,6 +222,9 @@ const Index = ({
                     >
                       {druginformation.name}
                     </a>
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Inst ID">
+                    {druginformation.inst}
                   </Descriptions.Item>
                   <Descriptions.Item label="Catalog Name">
                     {druginformation.catalog_name}
@@ -226,43 +247,36 @@ const Index = ({
                   <Descriptions.Item label="Vendor">
                     {druginformation.vendor}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Inst">
-                    {druginformation.inst}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Array">
-                    {druginformation.array}
-                  </Descriptions.Item>
                 </Descriptions>
               </Col>
             </Row>
             <Divider />
             <ProTable
-              title={() => {}}
-              columns={columns2}
+              columns={columns}
               rowKey={'id'}
-              request={async (params) => {
-                // console.log("params");
-                // console.log(params);
-                let str = record?.overlapgene.substr(1);
-                if (str) {
-                  str = str.substr(0, str.length - 1);
-                  str = str.replaceAll("'", '');
-                  str = str.replace(/\s+/g, '');
-                } else {
-                  str = ' ';
+              params={record}
+              request={async () => {
+                if (record) {
+                  let str = record.overlapgene.substr(1);
+                  if (str) {
+                    str = str.substr(0, str.length - 1);
+                    str = str.replaceAll("'", '');
+                    str = str.replace(/\s+/g, '');
+                  } else {
+                    str = ' ';
+                  }
+                  const msg = await getRemoteGene({ name: str }).then((res) => {
+                    // console.log(res);
+                    return res;
+                  });
+                  return {
+                    data: msg.data,
+                    success: msg.status == 200 ? true : false,
+                  };
                 }
-                // console.log(str);
-                const msg = await getRemoteGene({ name: str }).then((res) => {
-                  // console.log(res);
-                  return res;
-                });
-                return {
-                  data: msg.data,
-                  success: msg.status == 200 ? true : false,
-                };
               }}
               search={false}
-              headerTitle={'Gene Information'}
+              headerTitle={<strong>&nbsp;&nbsp; Gene Information</strong>}
               options={false}
             />
           </div>

@@ -101,15 +101,29 @@ export default function IndexPage() {
   const chArtery = (
     <div>
       <p>
-        <a href={'/cedr/general/tissue/Artery/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Artery/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const chBladder = (
     <div>
       <p>
-        <a href={'/cedr/general/source/Human/tissue/Bladder/phenotype/Normal'}>
+        <a href={'/cedr/general/source/Human/tissue/Uterine/phenotype/Normal'}>
           Normal
+        </a>
+        <a href={'/cedr/general/source/Human/tissue/Uterine/phenotype/UCEC'}>
+          UCEC
+        </a>
+        <a href={'/cedr/general/source/Human/tissue/Ovarian/phenotype/OV-FTC'}>
+          OV-FTC
+        </a>
+        <a href={'/cedr/general/source/Human/tissue/Ovarian/phenotype/Normal'}>
+          Normal Ovarian
+        </a>
+        <a href={'/cedr/general/source/Human/tissue/Testis/phenotype/Normal'}>
+          Normal Testis
         </a>
       </p>
     </div>
@@ -119,214 +133,139 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/ImmuneCells-normal'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Melanoma-Treatmentnaive'
           }
         >
-          ImmuneCells Normal
+          Melanoma-Treatmentnaive
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-ICU-SEP'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-ICU-NOSEP'
           }
         >
-          BacterialSepsis ICU SEP
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/Normal'}>
-          Normal
+          Bacterialsepsis-ICU-NOSEP
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-ICU-NoSEP'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-URO'
           }
         >
-          BacterialSepsis ICU NoSEP
+          Bacterialsepsis-URO
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/MorphineTreated'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-ICU-SEP'
           }
         >
-          Morphine Treated
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/BM-Normal'}>
-          BM Normal
+          Bacterialsepsis-ICU-SEP
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/AML-malignant'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-INT-URO'
           }
         >
-          AML Malignant
-        </a>
-      </p>
-      <p>
-        <a
-          href={'/cedr/general/source/Human/tissue/Blood/phenotype/AML-Normal'}
-        >
-          AML Normal
+          Bacterialsepsis-INT-URO
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-URO'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Hyperacutehiv-1-infection'
           }
         >
-          BacterialSepsis URO
+          Hyperacutehiv-1-infection
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/Healthy'}>
+          Healthy
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/melanoma-TreatmentNaive'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Ulcerativecolitis'
           }
         >
-          Melanoma TreatmentNaive
+          Ulcerativecolitis
+        </a>
+      </p>
+      <p>
+        <a
+          href={'/cedr/general/source/Human/tissue/Blood/phenotype/Lpstreated'}
+        >
+          Lpstreated
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/HyperAcuteHIV-1-Infection'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Morphine-Treated'
           }
         >
-          HyperAcuteHIV 1 Infection
-        </a>
-      </p>
-      <p>
-        <a
-          href={'/cedr/general/source/Human/tissue/Blood/phenotype/Peripheral'}
-        >
-          Peripheral
+          Morphine-Treated
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Control'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Ifnb-Treated'
           }
         >
-          Bacterial Sepsis Control
+          Ifnb-Treated
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Pam3CSK4'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-BAC-SEP'
           }
         >
-          Bacterial Sepsis Pam3CSK4
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/MYE'}>
-          MYE
-        </a>
-      </p>
-      <p>
-        <a
-          href={'/cedr/general/source/Human/tissue/Blood/phenotype/IFNbTreated'}
-        >
-          IFNbTreated
-        </a>
-      </p>
-      <p>
-        <a
-          href={'/cedr/general/source/Human/tissue/Blood/phenotype/MUT-Normal'}
-        >
-          MUT Normal
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/OC-Normal'}>
-          OC Normal
+          Bacterialsepsis-BAC-SEP
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-LPS'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Melanoma-Treatment'
           }
         >
-          Bacterial Sepsis LPS
+          Melanoma-Treatment
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Bac-SEP'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Immunecells-Normal'
           }
         >
-          Bacterial Sepsis Bac SEP
-        </a>
-      </p>
-      <p>
-        <a
-          href={'/cedr/general/source/Human/tissue/Blood/phenotype/LPSTreated'}
-        >
-          LPS Treated
+          Immunecells-Normal
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/UlcerativeColitis'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-Control'
           }
         >
-          Ulcerative Colitis
+          Bacterialsepsis-Control
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/melanoma-treatment'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-LEUK-UTI'
           }
         >
-          Melanoma Treatment
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/B-ALL'}>
-          B-ALL
-        </a>
-      </p>
-      <p>
-        <a
-          href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Leuk-UTI'
-          }
-        >
-          Bacterial Sepsis-Leuk-UTI
-        </a>
-      </p>
-      <p>
-        <a
-          href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-NT'
-          }
-        >
-          Bacterial Sepsis NT
-        </a>
-      </p>
-      <p>
-        <a
-          href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/BacterialSepsis-Int-URO'
-          }
-        >
-          Bacterial Sepsis Int URO
+          Bacterialsepsis-LEUK-UTI
         </a>
       </p>
     </div>
@@ -334,61 +273,176 @@ export default function IndexPage() {
   const chBone = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Osteoarthritis'}>Osteoarthritis</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/RheumatoidArthritis'}>
-          Rheumatoid Arthritis
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Bone/phenotype/Osteoarthritis'
+          }
+        >
+          Bone Osteoarthritis
         </a>
       </p>
-    </div>
-  );
-  const chBoneMarrow = (
-    <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Bone/phenotype/Rheumatoidarthritis'
+          }
+        >
+          Bone Rheumatoid Arthritis
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/AML-Normal'
+          }
+        >
+          Bone Marrow AML-Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/BoneMarrow/phenotype/BALL'}>
+          Bone Marrow BALL
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterialsepsis-LPS'
+          }
+        >
+          Bone Marrow Bacterialsepsis-LPS
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterialsepsis-NT'
+          }
+        >
+          Bone Marrow Bacterialsepsis-NT
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterialsepsis-PAM3CSK4'
+          }
+        >
+          Bone Marrow Bacterialsepsis-PAM3CSK4
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/OC-Normal'
+          }
+        >
+          Bone Marrow OC-Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/AML-Malignant'
+          }
+        >
+          Bone Marrow AML-Malignant
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/BM-Normal'
+          }
+        >
+          Bone Marrow Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/BoneMarrow/phenotype/MYE'}>
+          Bone Marrow MYE
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Peripheral'
+          }
+        >
+          Bone Marrow Peripheral
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/MUT-Normal'
+          }
+        >
+          Bone Marrow MUT-Normal
+        </a>
       </p>
     </div>
   );
   const chBrain = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/CB-Normal'}>CB Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/FC-Normal'}>FC Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/DevelopingPFC-Normal'}>
-          DevelopingPFC Normal
+        <a href={'/cedr/general/source/Human/tissue/Brain/phenotype/Normal'}>
+          Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Brain/phenotype/VC-Normal'}>
+          VC Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/NeurologicalDisorders'}>
+        <a href={'/cedr/general/source/Human/tissue/Brain/phenotype/FC-Normal'}>
+          FC-Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Developingpfc-Normal'
+          }
+        >
+          Developingpfc-Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Glioblastoma'
+          }
+        >
+          Glioblastoma
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Multiplesclerosisandcontrol'
+          }
+        >
+          Multiple Sclerosisand Control
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Pediatricgbm'
+          }
+        >
+          Pediatricgbm
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Neurologicaldisorders'
+          }
+        >
           Neurological Disorders
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/VC-Normal'}>VC Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/AdultGBM'}>Adult GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/ALZ'}>ALZ</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/PediatricGBM'}>Pediatric GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/GBM'}>GBM</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/MultipleSclerosisAndControl'}>
-          Multiple Sclerosis
         </a>
       </p>
     </div>
@@ -396,22 +450,32 @@ export default function IndexPage() {
   const chBreast = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/TNBC'}>TNBC</a>
+        <a href={'/cedr/general/source/Human/tissue/Breast/phenotype/TNBC'}>
+          TNBC
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Breast/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const chColon = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/ColorectalcancerTcells'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Colon/phenotype/ColorectalCancer'
+          }
+        >
           Colorectal Cancer Tcells
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Colon/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
@@ -428,52 +492,90 @@ export default function IndexPage() {
   const chEsophagus = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={'/cedr/general/source/Human/tissue/Oesophagus/phenotype/Normal'}
+        >
+          Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Oesophagus/phenotype/Esca'}>
+          Esophagus
+        </a>
       </p>
     </div>
   );
   const chEye = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Retina/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const chSkin = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/BCC-posttreatment'}>
+        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Normal'}>
+          Normal
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/GA'}>GA</a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Leprosy'}>
+          Leprosy
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Psoriasis'}>
+          Psoriasis
+        </a>
+      </p>
+
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Skin/phenotype/BCC-posttreatment'
+          }
+        >
           BCC-posttreatment
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>BCC-pretreatment</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Psoriasis'}>Psoriasis</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/GA'}>GA</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Leprosy'}>Leprosy</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Acne'}>Acne</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Alopecia'}>Alopecia</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/FibroblastsPriming'}>
-          FibroblastsPriming
+        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Normal'}>
+          BCC-pretreatment
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/SCC'}>SCC</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Skin/phenotype/Lupusnephritis'
+          }
+        >
+          Lupusnephritis
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Acne'}>
+          Acne
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Alopecia'}>
+          Alopecia
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Skin/phenotype/Fibroblastspriming'
+          }
+        >
+          Fibroblasts Priming
+        </a>
       </p>
     </div>
   );
@@ -501,7 +603,11 @@ export default function IndexPage() {
   const chHeadNeck = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/HNSCC-Nonmalignant'}>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/HeadNeck/phenotype/Hnscc-NonMalignant'
+          }
+        >
           HNSCC Nonmalignant
         </a>
       </p>
@@ -510,18 +616,31 @@ export default function IndexPage() {
   const chHeart = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Heart/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const chIntestinal = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Ileum/phenotype/Normal'}>
+          Ileum Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/UlcerativeColitis'}>
-          Ulcerative Colitis
+        <a href={'/cedr/general/source/Human/tissue/Rectum/phenotype/Normal'}>
+          Rectum Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Rectum/phenotype/UlcerativeColitis'
+          }
+        >
+          Rectum Ulcerative Colitis
         </a>
       </p>
     </div>
@@ -529,16 +648,32 @@ export default function IndexPage() {
   const chKidney = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/LupusNephritis'}>Lupus Nephritis</a>
+        <a href={'/cedr/general/source/Human/tissue/Kidney/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Kidneycancer'}>Kidney Cancer</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Kidney/phenotype/Lupusnephritis'
+          }
+        >
+          Lupus Nephritis
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/tumor'}>Tumor</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Kidney/phenotype/KidneyCancer'
+          }
+        >
+          Kidney Cancer
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Kidney/phenotype/Tumor'}>
+          Tumor
+        </a>
       </p>
     </div>
   );
@@ -546,25 +681,64 @@ export default function IndexPage() {
   const chLiver = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/ImmuneCells-Normal'}>
-          ImmuneCells Normal
+        <a href={'/cedr/general/source/Human/tissue/Liver/phenotype/Normal'}>
+          Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Liver/phenotype/ImmuneCells-Normal'
+          }
+        >
+          ImmuneCells Normal
+        </a>
       </p>
     </div>
   );
   const chLung = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/asthma'}>Asthma</a>
+        <a href={'/cedr/general/source/Human/tissue/Lung/phenotype/Normal'}>
+          Lung Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/COVID'}>COVID</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Respiratory/phenotype/Normal'
+          }
+        >
+          Respiratory Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Respiratory/phenotype/Allergicinflammatory'
+          }
+        >
+          Allergic Inflammatory
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Lung/phenotype/asthma'}>
+          Asthma
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Lung/phenotype/COVID19'}>
+          Lung COVID19
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Respiratory/phenotype/COVID19'
+          }
+        >
+          Respiratory COVID19
+        </a>
       </p>
     </div>
   );
@@ -598,10 +772,41 @@ export default function IndexPage() {
   const chPancreas = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/pancreascancer'}>Pancreas Cancer</a>
+        <a href={'/cedr/general/source/Human/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Pancreas/phenotype/PancreasCancer'
+          }
+        >
+          Pancreas Cancer
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Pancreas/phenotype/Type1diabetes'
+          }
+        >
+          Type1 Diabetes
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Pancreas/phenotype/Type2diabetes'
+          }
+        >
+          Type2 Diabetes
+        </a>
+      </p>
+      <p>
+        <a href={'/cedr/general/source/Human/tissue/Pancreas/phenotype/PAAD'}>
+          PAAD
+        </a>
       </p>
     </div>
   );
@@ -1492,7 +1697,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Drugs</strong>}
-                value={6100}
+                value={1309}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<DrugIcon />}
               />
@@ -1548,7 +1753,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Drugs</strong>}
-                value={6100}
+                value={1309}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<DrugIcon />}
               />
@@ -1604,7 +1809,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Drugs</strong>}
-                value={6100}
+                value={1309}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<DrugIcon />}
               />
