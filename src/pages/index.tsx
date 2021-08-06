@@ -113,15 +113,23 @@ export default function IndexPage() {
         <a href={'/cedr/general/source/Human/tissue/Uterine/phenotype/Normal'}>
           Normal
         </a>
+      </p>
+      <p>
         <a href={'/cedr/general/source/Human/tissue/Uterine/phenotype/UCEC'}>
           UCEC
         </a>
+      </p>
+      <p>
         <a href={'/cedr/general/source/Human/tissue/Ovarian/phenotype/OV-FTC'}>
           OV-FTC
         </a>
+      </p>
+      <p>
         <a href={'/cedr/general/source/Human/tissue/Ovarian/phenotype/Normal'}>
           Normal Ovarian
         </a>
+      </p>
+      <p>
         <a href={'/cedr/general/source/Human/tissue/Testis/phenotype/Normal'}>
           Normal Testis
         </a>
@@ -1318,7 +1326,7 @@ export default function IndexPage() {
               <div className={styles.blood}>
                 <Popover
                   content={chBladder}
-                  title={'Bladder'}
+                  title={'Reproductive organs'}
                   placement="right"
                 >
                   <img
