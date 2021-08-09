@@ -35,14 +35,6 @@ export default [
         breadcrumbName: 'Contact',
       },
       {
-        path: '/high/:chart',
-        component: '@/pages/Highcharts/[index]',
-      },
-      {
-        path: '/high/:chart',
-        component: '@/pages/Highcharts/[index]',
-      },
-      {
         path: '/general',
         component: '@/pages/General/[index]',
       },

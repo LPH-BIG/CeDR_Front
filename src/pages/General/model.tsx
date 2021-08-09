@@ -112,7 +112,7 @@ const GeneralModel: GeneralModelType = {
                 payload: {
                   pageIndex: 1,
                   pageSize: 10,
-                  tissue: name,
+                  tissuegroup: name,
                 },
               });
               break;
