@@ -209,7 +209,12 @@ const Index: FC<DatasetPageProps> = ({
           <span>
             <a
               onClick={() => {
-                history.push('/browse/drug/' + record.drug);
+                //go.drugbank.com/unearth/q?utf8=%E2%9C%93&searcher=drugs&query=
+                // history.push('/browse/drug/' + record.drug);
+                https: window.open(
+                  'https://go.drugbank.com/unearth/q?utf8=%E2%9C%93&searcher=drugs&query=' +
+                    record.drug,
+                );
               }}
             >
               {record.drug}
