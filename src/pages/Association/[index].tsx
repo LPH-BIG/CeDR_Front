@@ -178,7 +178,8 @@ const Index = ({
                 type="warning"
                 showIcon
                 closable
-                style={{ display: alert }}
+                // style={{ display: alert }}
+                style={{ display: 'none' }}
               />
             </Row>
             <Row>
