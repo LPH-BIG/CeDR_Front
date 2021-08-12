@@ -12,8 +12,9 @@ import {
 } from 'antd';
 import { history } from '@@/core/history';
 import { IMG_PREFIX } from '@/common/constants';
-import ProTable, { enUSIntl, IntlProvider } from '@ant-design/pro-table';
+import ProTable, { createIntl, IntlProvider } from '@ant-design/pro-table';
 import Title from 'antd/es/typography/Title';
+import enUSIntl from 'antd/lib/locale/en_US';
 import {
   getRemoteDataset,
   getRemoteDrug,
@@ -169,7 +170,7 @@ const Index = ({
         >
           <div>
             <Row>
-              <strong style={{ fontSize: '18px' }}>GSEA analysis</strong>
+              <Title level={4}>GSEA analysis:</Title>
               <Divider />
               <Alert
                 message="Warning"
@@ -179,12 +180,24 @@ const Index = ({
                 closable
                 style={{ display: alert }}
               />
+            </Row>
+            <Row>
+              <Col md={12}>
+                <Title level={4}>Cell Type:</Title>
+              </Col>
+              <Col md={12}>
+                <Title level={4}>Drug:</Title>
+              </Col>
+            </Row>
+            <Row>
               <Image.PreviewGroup>
                 <Space>
-                  <Title level={4}>Cell Type:</Title>
                   <Image
                     width={'80%'}
-                    src={IMG_PREFIX + record?.photocelltype}
+                    src={
+                      IMG_PREFIX + record?.photocelltype.replace('|||', '___')
+                    }
+                    preview={false}
                     fallback={
                       'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
                     }
@@ -192,10 +205,10 @@ const Index = ({
                       setAlert('inline');
                     }}
                   />
-                  <Title level={4}>Drug:</Title>
                   <Image
                     width={'80%'}
-                    src={IMG_PREFIX + record?.photodrug}
+                    src={IMG_PREFIX + record?.photodrug.replace('|||', '___')}
+                    preview={false}
                     onError={(event) => {
                       setAlert('inline');
                     }}
@@ -210,9 +223,9 @@ const Index = ({
             <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Descriptions
-                  title={'Drug Information'}
+                  title={<Title level={4}>Drug Information:</Title>}
                   bordered
-                  style={{ marginLeft: '2%' }}
+                  // style={{ marginLeft: '2%' }}
                 >
                   <Descriptions.Item label="Name">
                     <a
@@ -254,9 +267,9 @@ const Index = ({
             <Row>
               <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Descriptions
-                  title={'Cell Type Information'}
+                  title={<Title level={4}>Cell Type Information:</Title>}
                   bordered
-                  style={{ marginLeft: '4%' }}
+                  // style={{ marginLeft: '4%' }}
                 >
                   <Descriptions.Item label="Cell Type Name" span={1}>
                     {record?.celltype}
@@ -265,61 +278,66 @@ const Index = ({
               </Col>
             </Row>
             <Divider />
-            <Row>
-              <Col
-                style={{ marginLeft: '2%' }}
-                xs={24}
-                sm={24}
-                md={24}
-                lg={24}
-                xl={24}
-              >
+            <Row justify={'center'}>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Image.PreviewGroup>
-                  <Space>
-                    <Title level={4}>Matrix Plot:</Title>
-                    <Image
-                      width={'80%'}
-                      src={IMG_PREFIX + record?.matrixplot}
-                      fallback={
-                        'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
-                      }
-                      onError={(event) => {
-                        setAlert('inline');
-                      }}
-                    />
-                  </Space>
+                  {/*<Space>*/}
+                  <Title level={4}>Matrix Plot:</Title>
+                  <Image
+                    style={{ marginLeft: '10%' }}
+                    width={'80%'}
+                    preview={false}
+                    src={IMG_PREFIX + record?.matrixplot}
+                    fallback={
+                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                    }
+                    onError={(event) => {
+                      setAlert('inline');
+                    }}
+                  />
+                  {/*</Space>*/}
                 </Image.PreviewGroup>
               </Col>
             </Row>
             <Divider />
-            <ProTable
-              columns={columns}
-              rowKey={'id'}
-              params={record}
-              request={async () => {
-                if (record) {
-                  let str = record.overlapgene.substr(1);
-                  if (str) {
-                    str = str.substr(0, str.length - 1);
-                    str = str.replaceAll("'", '');
-                    str = str.replace(/\s+/g, '');
-                  } else {
-                    str = ' ';
+            <IntlProvider value={enUSIntl}>
+              <ProTable
+                columns={columns}
+                rowKey={'id'}
+                // showTotal={total => `Total ${total} items`}
+                pagination={{
+                  // total:record?.overlapgenenum,
+                  showTotal: (total) => `Total ${total} items`,
+                  showSizeChanger: false,
+                }}
+                params={record}
+                request={async () => {
+                  if (record) {
+                    let str = record.overlapgene.substr(1);
+                    if (str) {
+                      str = str.substr(0, str.length - 1);
+                      str = str.replaceAll("'", '');
+                      str = str.replace(/\s+/g, '');
+                    } else {
+                      str = ' ';
+                    }
+                    const msg = await getRemoteGene({ name: str }).then(
+                      (res) => {
+                        // console.log(res);
+                        return res;
+                      },
+                    );
+                    return {
+                      data: msg.data,
+                      success: msg.status == 200 ? true : false,
+                    };
                   }
-                  const msg = await getRemoteGene({ name: str }).then((res) => {
-                    // console.log(res);
-                    return res;
-                  });
-                  return {
-                    data: msg.data,
-                    success: msg.status == 200 ? true : false,
-                  };
-                }
-              }}
-              search={false}
-              headerTitle={<strong>&nbsp;&nbsp; Gene Information</strong>}
-              options={false}
-            />
+                }}
+                search={false}
+                headerTitle={<Title level={4}>Gene Information:</Title>}
+                options={false}
+              />
+            </IntlProvider>
           </div>
         </TabPane>
       </Tabs>

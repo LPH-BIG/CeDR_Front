@@ -17,8 +17,8 @@ const Header = () => {
             style={{
               height: '30px',
               width: '100%',
-              marginLeft: '150px',
               paddingTop: '2px',
+              paddingLeft: '50px',
             }}
           >
             <a
@@ -40,7 +40,7 @@ const Header = () => {
             </a>
             <a
               href="https://ngdc.cncb.ac.cn/databases"
-              style={{ color: '#fff', marginLeft: '1000px' }}
+              style={{ color: '#fff', marginLeft: '1200px' }}
             >
               {' '}
               Databases

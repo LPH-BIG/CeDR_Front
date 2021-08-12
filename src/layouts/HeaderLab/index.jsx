@@ -5,7 +5,7 @@ import { Col, Divider, Row } from 'antd';
 import Header from '../../assets/header3.jpg';
 export default () => (
   <div>
-    <img src={Header} style={{ height: '300px', width: '100%' }} />
+    <img src={Header} style={{ height: '310px', width: '100%' }} />
     {/*<div className={styles.header}>*/}
     {/*  <div>*/}
     {/*    /!*<img src={img} className={styles.logo} />*!/*/}

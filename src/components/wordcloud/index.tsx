@@ -48,7 +48,7 @@ const Index = (props: any) => {
           events: {
             click: function (e) {
               // console.log(e.point.name);
-              history.push('/subproject/SCP542 ' + e.point.name);
+              history.push('/general/source/Cell Line');
             },
           },
         },

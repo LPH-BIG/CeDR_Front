@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './index.less';
 import ProTable from '@ant-design/pro-table';
 import { GeneralState } from '@/pages/General/model';
@@ -8,6 +8,7 @@ import { history } from 'umi';
 import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DotChartOutlined } from '@ant-design/icons';
 import { getRemoteGeneralKeywords } from './service';
+import { pathToRegexp } from 'path-to-regexp';
 interface GeneralPageProps {
   general: GeneralState;
   dispatch: Dispatch;
@@ -28,6 +29,39 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   const [inst, setInst] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
 
+  useEffect(() => {
+    const match1 = pathToRegexp('/cedr/general/:type/:name').exec(
+      location.pathname,
+    );
+    console.log(location.pathname);
+    if (match1) {
+      const type = match1[1];
+      const name = decodeURIComponent(match1[2]);
+      switch (type) {
+        case 'source': {
+          setKeywords({ ...keywords, source: name });
+          console.log('kkk');
+          break;
+        }
+        case 'tissue': {
+          setKeywords({ ...keywords, tissuegroup: name });
+          break;
+        }
+        case 'phenotype': {
+          setKeywords({ ...keywords, phenotype: name });
+          break;
+        }
+        case 'celltype': {
+          setKeywords({ ...keywords, celltype: name });
+          break;
+        }
+        case 'drug': {
+          setKeywords({ ...keywords, drug: name });
+          break;
+        }
+      }
+    }
+  }, []);
   const sourceHandler = async (value: string) => {
     if (Object.keys(value).length != 0) {
       const remoteKeywords = await getRemoteGeneralKeywords({

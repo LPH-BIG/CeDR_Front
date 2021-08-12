@@ -821,52 +821,71 @@ export default function IndexPage() {
   const cmAorta = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmBladder = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Bladder/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmBlood = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Blood/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmBrain = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Brain/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/astrocyte-Normal'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Brain/phenotype/Astrocyte-Normal'
+          }
+        >
           Astrocyte Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Hypothalamus-Hungry'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Brain/phenotype/Hypothalamus-Hungry'
+          }
+        >
           Hypothalamus Hungry
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Hypothalamus-Normal'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Brain/phenotype/Hypothalamus-Normal'
+          }
+        >
           Hypothalamus Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/PrimaryVisualCortex-Normal'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Brain/phenotype/Primaryvisualcortex-Normal'
+          }
+        >
           PrimaryVisualCortex Normal
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Hypothalamic-Normal'}>
-          Hypothalamic Normal
         </a>
       </p>
     </div>
@@ -874,116 +893,239 @@ export default function IndexPage() {
   const cmBreast = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/EpithelialStages'}>
-          Epithelial Stages
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Breast/phenotype/Epithelialstages'
+          }
+        >
+          Breast Epithelial Stages
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Thymus/phenotype/Normal'}>
+          Normal Thymus
+        </a>
       </p>
     </div>
   );
   const cmColon = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Colon/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmDiaphragm = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={'/cedr/general/source/Mouse/tissue/Diaphragm/phenotype/Normal'}
+        >
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmEmbryo = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmEye = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/ONC-ResilienceInjury'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Retina/phenotype/Onc-Resilienceinjury'
+          }
+        >
           ONC Resilience Injury
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Retina/phenotype/Atlas-Normal'
+          }
+        >
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmFat = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmHeart = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/TIP-MIDay3'}>TIP MIDay3</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/TIP-MIDay7'}>TIP MIDay7</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/GFP-ShamDay7'}>GFP ShamDay7</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/GFP-MIDay3'}>GFP MIDay3</a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/AutoimmuneMyocarditis'}>
-          Autoimmune Myocarditis
+        <a href={'/cedr/general/source/Mouse/tissue/Heart/phenotype/Normal'}>
+          Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/GFP-MIDay7'}>GFP MIDay7</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Heart/phenotype/Tip-Sham'}>
+          TIP Sham
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/TIP-Sham'}>TIP Sham</a>
+        <a
+          href={'/cedr/general/source/Mouse/tissue/Heart/phenotype/Tip-Miday3'}
+        >
+          TIP MIDay3
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/GFP-ShamDay3'}>GFP ShamDay3</a>
+        <a
+          href={'/cedr/general/source/Mouse/tissue/Heart/phenotype/Tip-Miday7'}
+        >
+          TIP MIDay7
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Heart/phenotype/Gfp-Shamday3'
+          }
+        >
+          GFP ShamDay3
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Heart/phenotype/Gfp-Shamday7'
+          }
+        >
+          GFP ShamDay7
+        </a>
+      </p>
+      <p>
+        <a
+          href={'/cedr/general/source/Mouse/tissue/Heart/phenotype/Gfp-Miday3'}
+        >
+          GFP MIDay3
+        </a>
+      </p>
+      <p>
+        <a
+          href={'/cedr/general/source/Mouse/tissue/Heart/phenotype/Gfp-Miday7'}
+        >
+          GFP MIDay7
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Heart/phenotype/Autoimmunemyocarditis'
+          }
+        >
+          Autoimmune Myocarditis
+        </a>
       </p>
     </div>
   );
   const cmIntestinal = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Smallintestine/phenotype/Control'
+          }
+        >
+          Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Smallintestine/phenotype/Epithelialcellsatlas-Normal'
+          }
+        >
+          Normal Epithelialcellsatlas
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Smallintestine/phenotype/Hpoly'
+          }
+        >
+          Hpoly
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Smallintestine/phenotype/Hpoly-Day3-Treatment'
+          }
+        >
+          Hpoly-Day3-Treatment
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Smallintestine/phenotype/Hpoly-Day10-Treatment'
+          }
+        >
+          Hpoly-Day10-Treatment
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Smallintestine/phenotype/Salmonella'
+          }
+        >
+          Salmonella
+        </a>
       </p>
     </div>
   );
   const cmKidney = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Kidney/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmLiver = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Liver/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmLung = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Lung/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/ILCs-AllergicLungInflammation'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Lung/phenotype/Ilcs-Allergiclunginflammation'
+          }
+        >
           ILCs AllergicLung Inflammation
         </a>
       </p>
@@ -992,136 +1134,202 @@ export default function IndexPage() {
   const cmMarrow = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Lumbarspinalcord/phenotype/Normal'
+          }
+        >
+          Normal Lumbarspinalcord
+        </a>
       </p>
     </div>
   );
   const cmMesenchymalStemCells = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
-  const cmMuscle = (
+  const cmBone = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Muscle/phenotype/Normal'}>
+          Normal Muscle
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Lumbarspinalcord/phenotype/Normal'
+          }
+        >
+          Normal Lumbarspinalcord
+        </a>
       </p>
     </div>
   );
   const cmOvary = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Testis/phenotype/Develop-Normal'
+          }
+        >
+          Testis Development
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Testis Emptydrops/phenotype/Develop-Normal'
+          }
+        >
+          Emptydrops Testis Development
+        </a>
       </p>
     </div>
   );
   const cmPancreas = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/PancreasEndocrinogenesis'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Pancreas/phenotype/PancreasEndocrinogenesis'
+          }
+        >
           Pancreas Endocrinogenesis
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/atlas-Normal'}>Atlas Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Pancreas/phenotype/atlas-Normal'
+          }
+        >
+          Atlas Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmProstate = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/RegenerativeTimecourse'}>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Prostate/phenotype/RegenerativeTimecourse'
+          }
+        >
           Regenerative Timecourse
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
-      </p>
-    </div>
-  );
-  const cmReproductive = (
-    <div>
-      <p>
-        <a href={'/cedr/general/phenotype/Development-Normal'}>
-          Development Normal
+        <a href={'/cedr/general/source/Mouse/tissue/Prostate/phenotype/Normal'}>
+          Normal
         </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
       </p>
     </div>
   );
   const cmRespiratory = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmRib = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmSkin = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmSmallIntestine = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Salmonella'}>Salmonella</a>
+        <a
+          href={
+            '/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Salmonella'
+          }
+        >
+          Salmonella
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
       <p>
-        <a href={'/cedr/general/phenotype/Hpoly'}>Hpoly</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Hpoly'}>
+          Hpoly
+        </a>
       </p>
     </div>
   );
   const cmSpine = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Pancreas/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmSpleen = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Spleen/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmStomach = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Stomach/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmThymus = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Breast/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
   const cmTongue = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Mouse/tissue/Tongue/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
@@ -1131,7 +1339,7 @@ export default function IndexPage() {
       <Row justify="center" style={{ background: '#f0f2f5' }}>
         <div>
           <Title level={2} className={styles.introduction}>
-            CeDR Atlas: a knowledgebase of cellular drug response
+            CeDR Atlas: a knowledgebase of cellular drug sensitivity
           </Title>
         </div>
       </Row>
@@ -1522,7 +1730,7 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mbone}>
-                <Popover content={content} title={'Bone'} placement="right">
+                <Popover content={cmBone} title={'Bone'} placement="right">
                   <img
                     src={mbone}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -1566,7 +1774,11 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.muterus}>
-                <Popover content={content} title={'Uterus'} placement="left">
+                <Popover
+                  content={cmOvary}
+                  title={'Reproductive organs'}
+                  placement="left"
+                >
                   <img
                     src={movary}
                     style={{ width: '40%', height: '80%', display: 'block' }}
@@ -1590,13 +1802,9 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.mgallbladder}>
-                <Popover
-                  content={content}
-                  title={'Gallbladder'}
-                  placement="left"
-                >
+                <Popover content={cmBreast} title={'Breast'} placement="left">
                   <img
-                    src={mgallbladder}
+                    src={mthyroid}
                     style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
@@ -1638,7 +1846,7 @@ export default function IndexPage() {
                 {
                   ' and other available labeled datasets to conduct the tissue-cell type based drug perturbation analysis. These will help to reveal tissue-cell type specific drug response and further provide insight into identifying potential side effects, drug repurposing and even combination therapies. Currently, CeDR maintainsed the results for more than 270 single cell data objects for human, mouse and cell lines, including more than 34 tissues and 700 tissue-cell combination types. In summary, we identified a total of '
                 }
-                <strong style={{ color: 'red' }}>1368906</strong>
+                <strong style={{ color: 'red' }}>241116</strong>
                 {' significant drug-cell type associations'}
                 <strong style={{ color: 'red' }}>
                   {'(enriched p-value<0.05, correlation p-value<0.01)'}
@@ -1665,7 +1873,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Studies</strong>}
-                value={67}
+                value={94}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<StudyIcon />}
               />
@@ -1673,7 +1881,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Datasets</strong>}
-                value={283}
+                value={460}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<DatasetIcon />}
               />
@@ -1681,23 +1889,25 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Tissues</strong>}
-                value={47}
+                value={26}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<TissueIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
-                value={59}
+                title={<strong style={{ color: '#363636' }}>Phenotypes</strong>}
+                value={93}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<PhenotypeIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={<strong style={{ color: '#363636' }}>Cells</strong>}
-                value={4064272}
+                title={
+                  <strong style={{ color: '#363636' }}>Cells Types</strong>
+                }
+                value={684}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<CellIcon />}
               />
@@ -1721,7 +1931,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Studies</strong>}
-                value={67}
+                value={15}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<StudyIcon />}
               />
@@ -1729,7 +1939,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Datasets</strong>}
-                value={283}
+                value={102}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<DatasetIcon />}
               />
@@ -1737,23 +1947,25 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Tissues</strong>}
-                value={47}
+                value={25}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<TissueIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
-                value={59}
+                title={<strong style={{ color: '#363636' }}>Phenotypes</strong>}
+                value={27}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<PhenotypeIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={<strong style={{ color: '#363636' }}>Cells</strong>}
-                value={4064272}
+                title={
+                  <strong style={{ color: '#363636' }}>Cells Types</strong>
+                }
+                value={370}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<CellIcon />}
               />
@@ -1777,7 +1989,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Studies</strong>}
-                value={67}
+                value={1}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<StudyIcon />}
               />
@@ -1785,7 +1997,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Datasets</strong>}
-                value={283}
+                value={20}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<DatasetIcon />}
               />
@@ -1793,7 +2005,7 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Tissues</strong>}
-                value={47}
+                value={20}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<TissueIcon />}
               />
@@ -1801,15 +2013,17 @@ export default function IndexPage() {
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
                 title={<strong style={{ color: '#363636' }}>Phenotype</strong>}
-                value={59}
+                value={4}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<PhenotypeIcon />}
               />
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={<strong style={{ color: '#363636' }}>Cells</strong>}
-                value={4064272}
+                title={
+                  <strong style={{ color: '#363636' }}>Cells Types</strong>
+                }
+                value={196}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<CellIcon />}
               />
