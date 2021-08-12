@@ -181,7 +181,7 @@ const Index = ({
               />
               <Image.PreviewGroup>
                 <Space>
-                  <Title level={3}>Cell Type:</Title>
+                  <Title level={4}>Cell Type:</Title>
                   <Image
                     width={'80%'}
                     src={IMG_PREFIX + record?.photocelltype}
@@ -192,7 +192,7 @@ const Index = ({
                       setAlert('inline');
                     }}
                   />
-                  <Title level={3}>Drug:</Title>
+                  <Title level={4}>Drug:</Title>
                   <Image
                     width={'80%'}
                     src={IMG_PREFIX + record?.photodrug}
@@ -248,6 +248,47 @@ const Index = ({
                     {druginformation.vendor}
                   </Descriptions.Item>
                 </Descriptions>
+              </Col>
+            </Row>
+            <Divider />
+            <Row>
+              <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                <Descriptions
+                  title={'Cell Type Information'}
+                  bordered
+                  style={{ marginLeft: '4%' }}
+                >
+                  <Descriptions.Item label="Cell Type Name" span={1}>
+                    {record?.celltype}
+                  </Descriptions.Item>
+                </Descriptions>
+              </Col>
+            </Row>
+            <Divider />
+            <Row>
+              <Col
+                style={{ marginLeft: '2%' }}
+                xs={24}
+                sm={24}
+                md={24}
+                lg={24}
+                xl={24}
+              >
+                <Image.PreviewGroup>
+                  <Space>
+                    <Title level={4}>Matrix Plot:</Title>
+                    <Image
+                      width={'80%'}
+                      src={IMG_PREFIX + record?.matrixplot}
+                      fallback={
+                        'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                      }
+                      onError={(event) => {
+                        setAlert('inline');
+                      }}
+                    />
+                  </Space>
+                </Image.PreviewGroup>
               </Col>
             </Row>
             <Divider />
