@@ -293,7 +293,7 @@ const Index = ({
                       'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
                     }
                     onError={(event) => {
-                      setAlert('inline');
+                      // setAlert('inline');
                     }}
                   />
                   {/*</Space>*/}
