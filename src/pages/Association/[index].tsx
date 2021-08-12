@@ -231,7 +231,10 @@ const Index = ({
                   <Descriptions.Item label="Name">
                     <a
                       onClick={() => {
-                        history.push('/browse/drug/' + druginformation.name);
+                        https: window.open(
+                          'https://go.drugbank.com/unearth/q?utf8=%E2%9C%93&searcher=drugs&query=' +
+                            druginformation.name,
+                        );
                       }}
                     >
                       {druginformation.name}
