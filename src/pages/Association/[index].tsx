@@ -178,8 +178,8 @@ const Index = ({
                 type="warning"
                 showIcon
                 closable
-                // style={{ display: alert }}
-                style={{ display: 'none' }}
+                style={{ display: alert }}
+                // style={{ display: 'none' }}
               />
             </Row>
             <Row>
@@ -203,7 +203,7 @@ const Index = ({
                       'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
                     }
                     onError={(event) => {
-                      setAlert('inline');
+                      // setAlert('inline');
                     }}
                   />
                   <Image
@@ -211,7 +211,7 @@ const Index = ({
                     src={IMG_PREFIX + record?.photodrug.replace('|||', '___')}
                     preview={false}
                     onError={(event) => {
-                      setAlert('inline');
+                      // setAlert('inline');
                     }}
                     fallback={
                       'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
