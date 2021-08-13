@@ -111,6 +111,9 @@ export const getRemoteNetwork = async ({
       datasetid: datasetid,
       celltype: celltype,
       drug: drug,
+      pcutoff: 0.01,
+      pcutoff2: 0.01,
+      spcutoff: 0.01,
     },
   })
     .then(function (response) {

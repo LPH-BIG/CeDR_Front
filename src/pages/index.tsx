@@ -518,16 +518,16 @@ export default function IndexPage() {
       </p>
     </div>
   );
-  const chBreast = (
+  const chThyroid = (
     <div>
       <p>
-        <a href={'/cedr/general/source/Human/tissue/Breast/phenotype/TNBC'}>
-          TNBC
+        <a href={'/cedr/general/source/Human/tissue/Thyroid/phenotype/Normal'}>
+          Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/source/Human/tissue/Breast/phenotype/Normal'}>
-          Normal
+        <a href={'/cedr/general/source/Human/tissue/Thyroid/phenotype/THCA'}>
+          THCA
         </a>
       </p>
     </div>
@@ -664,10 +664,16 @@ export default function IndexPage() {
       </p>
     </div>
   );
-  const chFat = (
+  const chSpleen = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Spleen/phenotype/Immunecells-Normal'
+          }
+        >
+          Normal Immunecells
+        </a>
       </p>
     </div>
   );
@@ -1468,7 +1474,7 @@ export default function IndexPage() {
       <Row justify="center" style={{ background: '#f0f2f5' }}>
         <div>
           <Title level={2} className={styles.introduction}>
-            CeDR Atlas: a knowledgebase of cellular drug sensitivity
+            CeDR Atlas: a knowledgebase of cellular drug response
           </Title>
         </div>
       </Row>
@@ -1685,10 +1691,14 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.smallintestine}>
-                <Popover content={chMuscle} title={'Muscle'} placement="right">
+                <Popover
+                  content={chThyroid}
+                  title={'Thyroid'}
+                  placement="right"
+                >
                   <img
-                    src={muscle}
-                    style={{ width: '25%', height: '70%', display: 'block' }}
+                    src={mthyroid}
+                    style={{ width: '50%', height: '70%', display: 'block' }}
                   />
                 </Popover>
               </div>
@@ -1729,10 +1739,10 @@ export default function IndexPage() {
                 </Popover>
               </div>
               <div className={styles.spleen}>
-                <Popover content={chFat} title={'Fat'} placement="left">
+                <Popover content={chSpleen} title={'Spleen'} placement="left">
                   <img
-                    src={madipose}
-                    style={{ width: '20%', height: '80%', display: 'block' }}
+                    src={spleen}
+                    style={{ width: '40%', height: '80%', display: 'block' }}
                   />
                 </Popover>
               </div>

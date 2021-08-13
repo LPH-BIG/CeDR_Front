@@ -133,7 +133,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'datasetid',
       // valueType: 'index',
       // key: 'index',
-      width: 120,
+      width: 140,
       search: false,
       render: (text: string, record: GeneralItem) => (
         <span>
@@ -164,7 +164,11 @@ const GeneralListPage: FC<GeneralPageProps> = ({
           <span>
             <a
               className={styles.link}
-              href={'https://www.doi.org/' + record.doi}
+              href={
+                record.source == 'GEN'
+                  ? record.doi
+                  : 'https://www.doi.org/' + record.doi
+              }
             >
               <Space>{record.project}</Space>
             </a>
@@ -176,7 +180,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       title: 'Source',
       dataIndex: 'source',
       key: 'source',
-      width: 100,
+      width: 90,
       // valueType: 'text',
       hideInForm: true,
       ellipsis: true,

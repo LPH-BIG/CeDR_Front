@@ -7,43 +7,43 @@ export default function Page() {
   const data = [
     {
       description: 'Human Associations',
-      download: 'humanAssociations.txt',
-      link: 'https://ngdc.cncb.ac.cn/cedr/file/humanAssociations.txt',
+      download: 'humanAssociations.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/humanAssociations.csv',
       total: '53333',
       fileSize: '32.7M',
     },
     {
       description: 'Mouse Associations',
-      download: 'mouseAssociations.txt',
-      link: 'https://ngdc.cncb.ac.cn/cedr/file/mouseAssociations.txt',
+      download: 'mouseAssociations.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/mouseAssociations.csv',
       total: '26248',
       fileSize: '15.1M',
     },
     {
       description: 'CCLE Associations',
-      download: 'ccleAssociations.txt',
-      link: 'https://ngdc.cncb.ac.cn/cedr/file/ccleAssociations.txt',
+      download: 'ccleAssociations.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/ccleAssociations.csv',
       total: '10299',
       fileSize: '6.6M',
     },
     {
       description: 'HCL Associations',
-      download: 'hclAssociations.txt',
-      link: 'https://ngdc.cncb.ac.cn/cedr/file/hclAssociations.txt',
+      download: 'hclAssociations.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/hclAssociations.csv',
       total: '33546',
       fileSize: '20.7M',
     },
     {
       description: 'MCA Associations',
-      download: 'mcaAssociations.txt',
-      link: 'https://ngdc.cncb.ac.cn/cedr/file/mcaAssociations.txt',
+      download: 'mcaAssociations.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/mcaAssociations.csv',
       total: '16412',
       fileSize: '9.8M',
     },
     {
       description: 'GEN Associations',
-      download: 'genAssociations.txt',
-      link: 'https://ngdc.cncb.ac.cn/cedr/file/genAssociations.txt',
+      download: 'genAssociations.csv',
+      link: 'https://ngdc.cncb.ac.cn/cedr/file/genAssociations.csv',
       total: '101278',
       fileSize: '63.2M',
     },
@@ -80,7 +80,9 @@ export default function Page() {
       dataIndex: 'download',
       render: (text, record) => (
         <Space size="middle">
-          <a href={record.link}>{record.download}</a>
+          <a href={record.link} download={record.download}>
+            {record.download}
+          </a>
         </Space>
       ),
     },

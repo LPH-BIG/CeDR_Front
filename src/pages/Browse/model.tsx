@@ -107,6 +107,9 @@ const BrowseModel: BrowseModelType = {
                   pageIndex: 0,
                   pageSize: 0,
                   drug: name,
+                  pcutoff: 0.01,
+                  pcutoff2: 0.01,
+                  spcutoff: 0.01,
                 },
               });
               break;
