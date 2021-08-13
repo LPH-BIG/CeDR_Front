@@ -164,11 +164,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
           <span>
             <a
               className={styles.link}
-              href={
-                record.source == 'GEN'
-                  ? record.doi
-                  : 'https://www.doi.org/' + record.doi
-              }
+              href={'https://www.doi.org/' + record.doi}
             >
               <Space>{record.project}</Space>
             </a>
