@@ -568,6 +568,7 @@ const Index: FC<DatasetPageProps> = ({
                       {summary?.total_reported_cell > 5000
                         ? parseInt(summary?.total_reported_cell / 10)
                         : summary?.total_reported_cell}
+                      ({summary?.total_reported_cell > 5000 ? '10%' : '100%'})
                     </span>
                   </strong>
                 </Row>
