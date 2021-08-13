@@ -813,23 +813,9 @@ export default function IndexPage() {
   const chLung = (
     <div>
       <p>
-        <a href={'/cedr/general/source/Human/tissue/Lung/phenotype/Normal'}>
-          Lung Normal
-        </a>
-      </p>
-      <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Respiratory/phenotype/Normal'
-          }
-        >
-          Respiratory Normal
-        </a>
-      </p>
-      <p>
-        <a
-          href={
-            '/cedr/general/source/GEN/tissue/Respiratory/phenotype/Sars-Cov-2 Infection'
+            '/cedr/general/source/GEN/tissue/Lung/phenotype/Sars-Cov-2 Infection'
           }
         >
           SARS-Cov-2 Infection
@@ -838,7 +824,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/GEN/tissue/Respiratory/phenotype/Lung Adenocarcinoma'
+            '/cedr/general/source/GEN/tissue/Lung/phenotype/Lung Adenocarcinoma'
           }
         >
           Lung Adenocarcinoma
@@ -847,7 +833,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/GEN/tissue/Respiratory/phenotype/Lung Adenocarcinom + Large Cell Neuroendocrine Carcinoma'
+            '/cedr/general/source/GEN/tissue/Lung/phenotype/Lung Adenocarcinom + Large Cell Neuroendocrine Carcinoma'
           }
         >
           Lung Adenocarcinom & Large Cell Neuroendocrine Carcinoma
