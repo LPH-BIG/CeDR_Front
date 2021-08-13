@@ -10,6 +10,10 @@ export const getRemoteDataset = async ({
   overlapgene,
   pcutoff,
   orcutoff,
+  pcutoff2,
+  orcutoff2,
+  spcutoff,
+  spearman,
 }: {
   pageIndex: number | undefined;
   pageSize: number | undefined;
@@ -20,6 +24,10 @@ export const getRemoteDataset = async ({
   overlapgene: string | undefined;
   pcutoff: number | undefined;
   orcutoff: number | undefined;
+  pcutoff2: number | undefined;
+  orcutoff2: number | undefined;
+  spcutoff: number | undefined;
+  spearman: number | undefined;
 }) => {
   return extendRequest(API_PREFIX + '/dataset', {
     method: 'get',
@@ -33,6 +41,10 @@ export const getRemoteDataset = async ({
       overlapgene: overlapgene,
       pcutoff: pcutoff,
       orcutoff: orcutoff,
+      pcutoff2: pcutoff2,
+      orcutoff2: orcutoff2,
+      spcutoff: spcutoff,
+      spearman: spearman,
     },
   })
     .then(function (response) {

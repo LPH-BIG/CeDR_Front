@@ -50,8 +50,12 @@ const Index: FC<DatasetPageProps> = ({
   const [pie, setPie] = useState();
   const [celltype, setCelltype] = useState([]);
   const [drug, setDrug] = useState([]);
-  const [pcutoff, setPcutoff] = useState([0.05, 0.01, 0.001]);
+  const [pcutoff, setPcutoff] = useState([0.05, 0.01, 0.001, 0.0001]);
+  const [pcutoff2, setPcutoff2] = useState([0.05, 0.01, 0.001, 0.0001]);
+  const [spcutoff, setSpcutoff] = useState([0.05, 0.01, 0.001, 0.0001]);
   const [orcutoff, setOrcutoff] = useState([1, 2, 3]);
+  const [orcutoff2, setOrcutoff2] = useState([1, 2, 3]);
+  const [spearman, setSpearman] = useState([-0.2, -0.4, -0.6]);
   const [gene, setGene] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -266,10 +270,13 @@ const Index: FC<DatasetPageProps> = ({
       },
     },
     {
-      title: 'p-value 1',
+      title: 'p-value 1 (High Expression)',
       dataIndex: 'pvalue1',
       key: 'pvalue1',
-      valueType: 'text',
+      // valueType: (),
+      render: (text, record, index) => {
+        return parseFloat(record.pvalue1).toExponential(4);
+      },
       tooltip:
         'The explanation of p-value 1 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
       ellipsis: true,
@@ -300,39 +307,62 @@ const Index: FC<DatasetPageProps> = ({
       dataIndex: 'oddsratio1',
       key: 'oddsratio1',
       valueType: 'text',
-      // search: false,
+      search: false,
       ellipsis: true,
+      // renderFormItem: () => {
+      //   const options = orcutoff.map((item) => (
+      //     <Select.Option key={item} value={item} type={item}>
+      //       {item}
+      //     </Select.Option>
+      //   ));
+      //   return (
+      //     <Select
+      //       key={'pcutoffSelect'}
+      //       showSearch={true}
+      //       placeholder={'select a Odds Ratio cutoff'}
+      //       filterOption={false}
+      //       onChange={(value, option) => {
+      //         setKeywords({ ...keywords, orcutoff: value });
+      //       }}
+      //     >
+      //       {options}
+      //     </Select>
+      //   );
+      // },
+    },
+    {
+      title: 'p-value 2  (Low Expression)',
+      dataIndex: 'pvalue2',
+      tooltip:
+        'The explanation of p-value 2 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
+      key: 'pvalue2',
+      // valueType: 'text',
+      render: (text, record, index) => {
+        return parseFloat(record.pvalue2).toExponential(4);
+      },
+      hideInForm: true,
+      ellipsis: true,
+      // search: false,
       renderFormItem: () => {
-        const options = orcutoff.map((item) => (
+        const options = pcutoff2.map((item) => (
           <Select.Option key={item} value={item} type={item}>
             {item}
           </Select.Option>
         ));
         return (
           <Select
-            key={'pcutoffSelect'}
+            key={'pcutoff2Select'}
             showSearch={true}
-            placeholder={'select a Odds Ratio cutoff'}
+            placeholder={'select a p-value cutoff'}
             filterOption={false}
             onChange={(value, option) => {
-              setKeywords({ ...keywords, orcutoff: value });
+              setKeywords({ ...keywords, pcutoff2: value });
             }}
           >
             {options}
           </Select>
         );
       },
-    },
-    {
-      title: 'p-value 2',
-      dataIndex: 'pvalue2',
-      tooltip:
-        'The explanation of p-value 2 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
-      key: 'pvalue2',
-      valueType: 'text',
-      hideInForm: true,
-      ellipsis: true,
-      search: false,
     },
     {
       title: 'Odds Ratio 2',
@@ -344,27 +374,69 @@ const Index: FC<DatasetPageProps> = ({
       ellipsis: true,
     },
     {
-      title: 'Spearman',
+      title: 'Spearman Correlation Coefficient',
       dataIndex: 'spearman',
       key: 'spearman',
       valueType: 'text',
       hideInForm: true,
-      search: false,
+      // search: false,
       ellipsis: true,
+      renderFormItem: () => {
+        const options = spearman.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'spearmanSelect'}
+            showSearch={true}
+            placeholder={'select a spearman correlation coefficient cutoff'}
+            filterOption={false}
+            onChange={(value, option) => {
+              setKeywords({ ...keywords, spearman: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
     },
     {
-      title: 'S p-value',
+      title: 'Spearman p-value',
       dataIndex: 'spvalue',
       key: 'spvalue',
       tooltip:
         'The explanation of S p-value is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
-      valueType: 'text',
+      render: (text, record, index) => {
+        return parseFloat(record.spvalue).toExponential(4);
+      },
       hideInForm: true,
-      search: false,
+      // search: false,
       ellipsis: true,
+      renderFormItem: () => {
+        const options = spcutoff.map((item) => (
+          <Select.Option key={item} value={item} type={item}>
+            {item}
+          </Select.Option>
+        ));
+        return (
+          <Select
+            key={'spearmanSelect'}
+            showSearch={true}
+            placeholder={'select a spearman p-value cutoff'}
+            filterOption={false}
+            onChange={(value, option) => {
+              setKeywords({ ...keywords, spcutoff: value });
+            }}
+          >
+            {options}
+          </Select>
+        );
+      },
     },
     {
-      title: 'Overlap Gene Number',
+      title: '#Overlap Gene',
       dataIndex: 'overlapgenenum',
       key: 'overlapgenenum',
       valueType: 'text',
@@ -414,35 +486,35 @@ const Index: FC<DatasetPageProps> = ({
         );
       },
     },
-    {
-      title: 'Detail',
-      dataIndex: 'index',
-      // valueType: 'index',
-      width: 58,
-      search: false,
-      render: (text, record, index) => {
-        // console.log(record)
-        return (
-          <span>
-            <a
-              onClick={async () => {
-                // console.log("click");
-                setRecord(record);
-                history.push('/association/' + record.associationid);
-                // setDisabled(false);
-                // setActivekey('tab3');
-                // console.log(record.inst);
-                // getRemoteDrug({ name: record.inst }).then((res) => {
-                //   setDruginformation(res.data);
-                // });
-              }}
-            >
-              <DetailIcon key={record.id} />
-            </a>
-          </span>
-        );
-      },
-    },
+    // {
+    //   title: 'Detail',
+    //   dataIndex: 'index',
+    //   // valueType: 'index',
+    //   width: 58,
+    //   search: false,
+    //   render: (text, record, index) => {
+    //     // console.log(record)
+    //     return (
+    //       <span>
+    //         <a
+    //           onClick={async () => {
+    //             // console.log("click");
+    //             setRecord(record);
+    //             history.push('/association/' + record.associationid);
+    //             // setDisabled(false);
+    //             // setActivekey('tab3');
+    //             // console.log(record.inst);
+    //             // getRemoteDrug({ name: record.inst }).then((res) => {
+    //             //   setDruginformation(res.data);
+    //             // });
+    //           }}
+    //         >
+    //           <DetailIcon key={record.id} />
+    //         </a>
+    //       </span>
+    //     );
+    //   },
+    // },
   ];
   const paginationHandler = (page: number, pageSize?: number) => {
     dispatch({
@@ -456,6 +528,10 @@ const Index: FC<DatasetPageProps> = ({
         drug: keywords.drug,
         pcutoff: keywords.pcutoff,
         orcutoff: keywords.orcutoff,
+        pcutoff2: keywords.pcutoff2,
+        orcutoff2: keywords.orcutoff2,
+        spcutoff: keywords.spcutoff,
+        spearman: keywords.spearman,
       },
     });
   };
@@ -471,6 +547,10 @@ const Index: FC<DatasetPageProps> = ({
         drug: keywords.drug,
         pcutoff: keywords.pcutoff,
         orcutoff: keywords.orcutoff,
+        pcutoff2: keywords.pcutoff2,
+        orcutoff2: keywords.orcutoff2,
+        spcutoff: keywords.spcutoff,
+        spearman: keywords.spearman,
       },
     });
   };
@@ -624,6 +704,9 @@ const Index: FC<DatasetPageProps> = ({
                         overlapgene,
                         pcutoff,
                         orcutoff,
+                        pcutoff2,
+                        spearman,
+                        spcutoff,
                       } = keywords;
                       // console.log('submit');
                       // console.log(keywords);
@@ -638,6 +721,9 @@ const Index: FC<DatasetPageProps> = ({
                           drug: drug,
                           pcutoff: pcutoff,
                           orcutoff: orcutoff,
+                          pcutoff2: pcutoff2,
+                          spearman: spearman,
+                          spcutoff: spcutoff,
                         },
                       });
                     }}

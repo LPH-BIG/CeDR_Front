@@ -61,6 +61,10 @@ const DatasetModel: DatasetModelType = {
           overlapgene,
           pcutoff,
           orcutoff,
+          pcutoff2,
+          orcutoff2,
+          spcutoff,
+          spearman,
         },
       },
       { put, call },
@@ -75,6 +79,10 @@ const DatasetModel: DatasetModelType = {
         overlapgene,
         pcutoff,
         orcutoff,
+        pcutoff2,
+        orcutoff2,
+        spcutoff,
+        spearman,
       });
       if (data) {
         yield put({

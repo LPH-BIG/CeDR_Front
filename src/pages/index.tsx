@@ -141,6 +141,42 @@ export default function IndexPage() {
       <p>
         <a
           href={
+            '/cedr/general/source/GEN/tissue/Blood/phenotype/Healthy Control'
+          }
+        >
+          Healthy Control
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Blood/phenotype/Cytomegalovirus-Positive'
+          }
+        >
+          Cytomegalovirus Positive
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Blood/phenotype/Cytomegalovirus-Negative'
+          }
+        >
+          Cytomegalovirus Negative
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Blood/phenotype/Salmonella Enterica Serovar Typhimurium'
+          }
+        >
+          Salmonella Enterica Serovar Typhimurium
+        </a>
+      </p>
+      <p>
+        <a
+          href={
             '/cedr/general/source/Human/tissue/Blood/phenotype/Melanoma-Treatmentnaive'
           }
         >
@@ -283,6 +319,15 @@ export default function IndexPage() {
       <p>
         <a
           href={
+            '/cedr/general/source/GEN/tissue/Bone/phenotype/Healthy Control'
+          }
+        >
+          Healthy Control
+        </a>
+      </p>
+      <p>
+        <a
+          href={
             '/cedr/general/source/Human/tissue/Bone/phenotype/Osteoarthritis'
           }
         >
@@ -396,6 +441,24 @@ export default function IndexPage() {
       <p>
         <a href={'/cedr/general/source/Human/tissue/Brain/phenotype/Normal'}>
           Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            "/cedr/general/source/GEN/tissue/Brain/phenotype/Alzheimer's Disease"
+          }
+        >
+          Alzheimer's Disease
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            "/cedr/general/source/GEN/tissue/Brain/phenotype/Huntington's Disease"
+          }
+        >
+          Huntington's Disease
         </a>
       </p>
       <p>
@@ -520,6 +583,11 @@ export default function IndexPage() {
           Normal
         </a>
       </p>
+      <p>
+        <a href={'/cedr/general/source/GEN/tissue/Retina/phenotype/Normal'}>
+          Macular Degeneration
+        </a>
+      </p>
     </div>
   );
   const chSkin = (
@@ -527,6 +595,15 @@ export default function IndexPage() {
       <p>
         <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Normal'}>
           Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Skin/phenotype/Atopic Dermatitis'
+          }
+        >
+          Atopic Dermatitis
         </a>
       </p>
       <p>
@@ -638,6 +715,15 @@ export default function IndexPage() {
         </a>
       </p>
       <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Intestine/phenotype/Primary Neuroendocrine Tumor'
+          }
+        >
+          Primary Neuroendocrine Tumor
+        </a>
+      </p>
+      <p>
         <a href={'/cedr/general/source/Human/tissue/Rectum/phenotype/Normal'}>
           Rectum Normal
         </a>
@@ -683,6 +769,11 @@ export default function IndexPage() {
           Tumor
         </a>
       </p>
+      <p>
+        <a href={'/cedr/general/source/GEN/tissue/Kidney/phenotype/Diabetic'}>
+          Diabetic
+        </a>
+      </p>
     </div>
   );
 
@@ -702,6 +793,15 @@ export default function IndexPage() {
           ImmuneCells Normal
         </a>
       </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Liver/phenotype/Metastatic Neuroendocrine Tumor'
+          }
+        >
+          Metastatic Neuroendocrine Tumor
+        </a>
+      </p>
     </div>
   );
   const chLung = (
@@ -718,6 +818,33 @@ export default function IndexPage() {
           }
         >
           Respiratory Normal
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Respiratory/phenotype/Sars-Cov-2 Infection'
+          }
+        >
+          SARS-Cov-2 Infection
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Respiratory/phenotype/Lung Adenocarcinoma'
+          }
+        >
+          Lung Adenocarcinoma
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/GEN/tissue/Respiratory/phenotype/Lung Adenocarcinom + Large Cell Neuroendocrine Carcinoma'
+          }
+        >
+          Lung Adenocarcinom & Large Cell Neuroendocrine Carcinoma
         </a>
       </p>
       <p>
@@ -763,7 +890,9 @@ export default function IndexPage() {
   const chMuscle = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a href={'/cedr/general/source/Human/tissue/Muscle/phenotype/Normal'}>
+          Normal
+        </a>
       </p>
     </div>
   );
@@ -1351,7 +1480,7 @@ export default function IndexPage() {
             placeholder="input and select a keyword"
             showSearch={true}
             allowClear={true}
-            loading={true}
+            // loading={true}
             onFocus={() => {
               getRemoteTypeKeywords('').then((res) => {
                 const op = res.data.map((item) => (

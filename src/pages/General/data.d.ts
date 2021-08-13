@@ -29,4 +29,8 @@ export interface SearchKeywords {
   overlapgene: string | undefined;
   pcutoff: number | undefined;
   orcutoff: number | undefined;
+  pcutoff2: number | undefined;
+  orcutoff2: number | undefined;
+  spearman: number | undefined;
+  spcutoff: number | undefined;
 }
