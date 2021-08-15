@@ -21,6 +21,7 @@ import {
   getRemoteGene,
 } from '@/pages/Dataset/service';
 import { DrugItem, AssociationItem } from '@/pages/Dataset/data';
+import Text from 'antd/es/typography/Text';
 const { TabPane } = Tabs;
 const Index = ({
   match: {
@@ -40,12 +41,21 @@ const Index = ({
       valueType: 'index',
       width: 58,
     },
-    // {
-    //   title: 'Rank',
-    //   dataIndex: 'rank',
-    //   valueType: 'text',
-    //   width: 88,
-    // },
+    {
+      title: 'Gene ID',
+      dataIndex: 'id',
+      valueType: 'text',
+      width: 88,
+      render: (text: string, record) => {
+        return (
+          <span>
+            <a href={'https://www.ncbi.nlm.nih.gov/gene/?term=' + record.id}>
+              {record.id}
+            </a>
+          </span>
+        );
+      },
+    },
     {
       title: 'Ensembl ID',
       dataIndex: 'refs',
@@ -77,22 +87,6 @@ const Index = ({
       ellipsis: true,
     },
     {
-      title: 'Full Name',
-      dataIndex: 'fullname',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-    },
-    {
-      title: 'Type',
-      dataIndex: 'type',
-      valueType: 'text',
-      hideInForm: true,
-      search: false,
-      ellipsis: true,
-    },
-    {
       title: 'Chromosome',
       dataIndex: 'chromosome',
       valueType: 'text',
@@ -108,6 +102,23 @@ const Index = ({
       search: false,
       ellipsis: true,
     },
+    {
+      title: 'Other Name',
+      dataIndex: 'other_name',
+      valueType: 'text',
+      hideInForm: true,
+      search: false,
+      ellipsis: true,
+    },
+
+    // {
+    //   title: 'Type',
+    //   dataIndex: 'type',
+    //   valueType: 'text',
+    //   hideInForm: true,
+    //   search: false,
+    //   ellipsis: true,
+    // },
   ];
 
   useEffect(() => {
@@ -182,43 +193,41 @@ const Index = ({
                 // style={{ display: 'none' }}
               />
             </Row>
-            <Row>
-              <Col md={12}>
-                <Title level={4}>Cell Type:</Title>
+            <Row justify={'center'}>
+              <Col md={12} style={{ textAlign: 'center' }}>
+                <Title level={4}>Cell Type: &nbsp; {record?.celltype}</Title>
               </Col>
-              <Col md={12}>
-                <Title level={4}>Drug:</Title>
+              <Col md={12} style={{ textAlign: 'center' }}>
+                <Title level={4}>Drug: &nbsp;{druginformation.name}</Title>
               </Col>
             </Row>
-            <Row>
-              <Image.PreviewGroup>
-                <Space>
-                  <Image
-                    width={'80%'}
-                    src={
-                      IMG_PREFIX + record?.photocelltype.replace('|||', '___')
-                    }
-                    preview={false}
-                    fallback={
-                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
-                    }
-                    onError={(event) => {
-                      // setAlert('inline');
-                    }}
-                  />
-                  <Image
-                    width={'80%'}
-                    src={IMG_PREFIX + record?.photodrug.replace('|||', '___')}
-                    preview={false}
-                    onError={(event) => {
-                      // setAlert('inline');
-                    }}
-                    fallback={
-                      'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
-                    }
-                  />
-                </Space>
-              </Image.PreviewGroup>
+            <Row justify={'center'}>
+              <Col md={12} style={{ textAlign: 'center' }}>
+                <Image
+                  width={'50%'}
+                  src={IMG_PREFIX + record?.photocelltype.replace('|||', '___')}
+                  preview={false}
+                  fallback={
+                    'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                  }
+                  onError={(event) => {
+                    // setAlert('inline');
+                  }}
+                />
+              </Col>
+              <Col md={12} style={{ textAlign: 'center' }}>
+                <Image
+                  width={'50%'}
+                  src={IMG_PREFIX + record?.photodrug.replace('|||', '___')}
+                  preview={false}
+                  onError={(event) => {
+                    // setAlert('inline');
+                  }}
+                  fallback={
+                    'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+                  }
+                />
+              </Col>
             </Row>
             <Divider />
             <Row>
@@ -287,6 +296,11 @@ const Index = ({
                 <Image.PreviewGroup>
                   {/*<Space>*/}
                   <Title level={4}>Matrix Plot:</Title>
+                  <p style={{ textAlign: 'center', fontSize: '18px' }}>
+                    Matrix plot of signature genes in {record?.datasetid} scRNA
+                    dataset referring to {druginformation.name}-
+                    {record?.celltype} association
+                  </p>
                   <Image
                     style={{ marginLeft: '10%' }}
                     width={'80%'}

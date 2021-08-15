@@ -37,4 +37,10 @@ export default defineConfig({
     // '@primary-color': '#0a81ab',
     '@primary-color': '#0a81ab',
   },
+  metas: [
+    {
+      name: 'viewport',
+      content: 'shrink-to-fit=yes',
+    },
+  ],
 });

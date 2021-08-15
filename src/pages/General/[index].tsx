@@ -160,16 +160,21 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       search: false,
       ellipsis: true,
       render: (text: string, record: GeneralItem) => {
-        return (
-          <span>
-            <a
-              className={styles.link}
-              href={'https://www.doi.org/' + record.doi}
-            >
-              <Space>{record.project}</Space>
-            </a>
-          </span>
-        );
+        if (record.doi) {
+          return (
+            <span>
+              <a
+                className={styles.link}
+                href={'https://www.doi.org/' + record.doi}
+                target={'_blank'}
+              >
+                <Space>{record.project}</Space>
+              </a>
+            </span>
+          );
+        } else {
+          return <Space>{record.project}</Space>;
+        }
       },
     },
     {
@@ -221,7 +226,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       title: 'Cell Source',
       dataIndex: 'cell_source',
       search: false,
-      width: 160,
+      width: '10%',
+      valueType: 'text',
       ellipsis: true,
     },
     {
@@ -362,14 +368,14 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       width: 150,
     },
     {
-      title: 'Total reported cell',
+      title: 'Total Reported Cells',
       dataIndex: 'total_reported_cell',
       ellipsis: true,
       hideInSearch: true,
       width: '100px',
     },
     {
-      title: 'Celltype number',
+      title: 'Cell Types Number',
       dataIndex: 'celltype_num',
       ellipsis: true,
       hideInSearch: true,

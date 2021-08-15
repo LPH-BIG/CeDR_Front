@@ -205,7 +205,7 @@ const Index: FC<DatasetPageProps> = ({
       dataIndex: 'drug',
       valueType: 'text',
       hideInForm: true,
-      tooltip: 'Click to see all associations of the drug',
+      tooltip: 'Click to see the drug detail in DrugBank ',
       ellipsis: true,
       width: 125,
       render: (text, record) => {
@@ -436,7 +436,7 @@ const Index: FC<DatasetPageProps> = ({
       },
     },
     {
-      title: '#Overlap Gene',
+      title: '#Overlap Genes',
       dataIndex: 'overlapgenenum',
       key: 'overlapgenenum',
       valueType: 'text',
@@ -446,7 +446,7 @@ const Index: FC<DatasetPageProps> = ({
       ellipsis: true,
     },
     {
-      title: 'Overlap Gene',
+      title: 'Overlap Genes',
       dataIndex: 'overlapgene',
       key: 'overlapgene',
       valueType: 'text',

@@ -22,7 +22,7 @@ export default function Page(props: any) {
         },
       },
       title: {
-        text: 'Cell fraction',
+        text: 'Cell Fraction',
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.y}</b>',
@@ -48,46 +48,7 @@ export default function Page(props: any) {
           type: 'pie',
           innerSize: '80%',
           colorByPoint: true,
-          data: [
-            {
-              name: 'Cell Line',
-              y: 61.41,
-              // sliced: true,
-              // selected: true,
-            },
-            {
-              name: 'Development',
-              y: 11.84,
-            },
-            {
-              name: 'Immu',
-              y: 10.85,
-            },
-            {
-              name: 'Edge',
-              y: 4.67,
-            },
-            {
-              name: 'Safari',
-              y: 4.18,
-            },
-            {
-              name: 'Sogou Explorer',
-              y: 1.64,
-            },
-            {
-              name: 'Opera',
-              y: 1.6,
-            },
-            {
-              name: 'QQ',
-              y: 1.2,
-            },
-            {
-              name: 'Other',
-              y: 2.61,
-            },
-          ],
+          data: [],
         },
       ],
     },

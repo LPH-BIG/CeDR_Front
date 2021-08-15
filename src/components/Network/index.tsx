@@ -24,7 +24,7 @@ export default function Page(props: any) {
         enabled: false,
       },
       title: {
-        text: 'Associations of cell type and drug',
+        text: 'Associations of Cell type and Drug',
       },
       // subtitle: {
       //   text: 'Cell Type with Drug',
