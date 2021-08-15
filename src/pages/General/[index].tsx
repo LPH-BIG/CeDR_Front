@@ -229,6 +229,9 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       width: '10%',
       valueType: 'text',
       ellipsis: true,
+      // render:(text: string, record: GeneralItem)=>{
+      //   return (<span style={{textOverflow:'ellipsis',whiteSpace:'nowrap',overflow:'hidden'}}>{text}</span>)
+      // }
     },
     {
       title: 'Tissue',
@@ -451,6 +454,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
               dataSource={general.data}
               loading={generalListLoading}
               pagination={false}
+              // scroll={{ x: '100%' }}
               headerTitle={'Dataset Overview'}
               rowKey={(record: GeneralItem) => {
                 return record.id.toString();

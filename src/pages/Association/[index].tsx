@@ -49,7 +49,10 @@ const Index = ({
       render: (text: string, record) => {
         return (
           <span>
-            <a href={'https://www.ncbi.nlm.nih.gov/gene/?term=' + record.id}>
+            <a
+              href={'https://www.ncbi.nlm.nih.gov/gene/?term=' + record.id}
+              target={'_blank'}
+            >
               {record.id}
             </a>
           </span>
@@ -71,6 +74,7 @@ const Index = ({
                 'https://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=' +
                 record.refs
               }
+              target={'_blank'}
             >
               {record.refs}
             </a>

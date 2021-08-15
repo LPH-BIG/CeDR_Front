@@ -27,7 +27,7 @@ export default function Page() {
                 title={
                   <div>
                     <p>Data collection</p>
-                    <p>and analysis</p>
+                    {/*<p>and analysis</p>*/}
                   </div>
                 }
               />
@@ -82,8 +82,8 @@ export default function Page() {
                 href="#demonstration"
                 title={
                   <div>
-                    <p>Demonstration</p>
-                    <p>of CeDR result</p>
+                    <p>Download page</p>
+                    {/*<p>of CeDR result</p>*/}
                   </div>
                 }
               />
@@ -124,7 +124,7 @@ export default function Page() {
                 inference of cellular drug response for hundreds of cell types
                 from various tissues. We took advantage of the high-throughput
                 profiling of drug-induced gene expression available through the
-                Connectivity Map resource (CMAP) as well as hundreds of
+                Connectivity Map resource (CMap) as well as hundreds of
                 scRNA-seq data covering cells from a wide variety of
                 organs/tissues, diseases, and conditions. CeDR provides direct
                 references for cellular drug response profiles including not
@@ -138,50 +138,43 @@ export default function Page() {
           <div id={'dataprocess'}>
             <Title>Data Processing</Title>
             <div id={'analysis'}>
-              <Title level={2}>Data collection and analysis</Title>
+              <Title level={2}>Data collection</Title>
               <Paragraph>
                 In CeDR, we collected and preprocessed scRNA-seq data from
                 hundreds of individual studies, including those from large
                 consortiums (such as Huma Cell Landscape), consisting of
                 hundreds of cell types from human, mouse, and cell lines.
-                Specifically, CeDR deposits the following data:
+                Specifically, CeDR deposits the datasets as shown in following
+                figures.
               </Paragraph>
-              <Paragraph>
-                • Human Cell Landscape dataset: 34 tissues with 1361 tissue cell
-                types, resulting 599,926 cells.
-              </Paragraph>
-              <Paragraph>
-                • Human scRNA-seq data: 51 projects with 2,421,320 cells, which
-                resulting 55 tissues and 1313 tissue-cell types.
-              </Paragraph>
-              <Paragraph>
-                • Mouse Cell Atlas dataset: 24 tissues with 729 tissue-cell
-                types, resulting 333,778 cells.
-              </Paragraph>
-              <Paragraph>
-                • Mouse scRNA-seq data: 16 projects with 655,950 cells. These
-                projects finally result 25 tissues and 745 tissue-cell types.
-              </Paragraph>
-              <Paragraph>
-                • Cancer cell line single-cell dataset: 21 cancer cell lines and
-                197 cancer-cell types with 53,298 cells.
-              </Paragraph>
+              <Image
+                src={d1}
+                preview={false}
+                style={{ width: '200%', display: 'inline' }}
+              ></Image>
             </div>
             <div id={'processing'}>
               <Title level={2}>Quality control and processing</Title>
               <Paragraph>
-                The current version of our dataset, we mainly use labeled count
-                and normalized expression data in public resources. For each
-                project, we split it into sub objects based on the
-                phenotypes/diseases. In summary, we totally obtain more than 270
-                sub objects for human, mouse and cell lines.
-              </Paragraph>
-              <Paragraph>
-                • For each single-cell expression tissue, we selected those cell
-                types to have at least 20 cells.
-              </Paragraph>
-              <Paragraph>
-                • Remove the cells that less than 500 genes expressed.
+                In the current version of our database, we mainly collected the
+                expression data that have well-annotated cell types. Datasets
+                with unavailable annotations were discarded from further
+                analyses. All datasets were preprocessed using the Python
+                package Scanpy and recorded as an AnnData object in Python.
+                Genes detected in less than 5 cells were filtered out. Cells
+                with a 5% threshold of mitochondrial gene proportion (mtDNA%,
+                the fraction of mitochondrial transcript counts of the total
+                transcript counts) were further filtered out due to the
+                low-quality. Raw count expression matrices were subsequently
+                normalized using the normalize_per_total function and log
+                transformed. For each project, we split it into sub-objects
+                based on the phenotype or disease status. For each single-cell
+                expression sub-object, we kept only the cell types that
+                contained at least 20 cells and further removed the cell types
+                that had less than 500 expressed genes. In summary, we processed
+                about 120 projects, resulting in 582 data objects, 140
+                phenotypes and 1250 tissue specific cell types for human, mouse
+                and cell lines.
               </Paragraph>
             </div>
             <div id={'expression'}>
@@ -189,7 +182,7 @@ export default function Page() {
               <Paragraph>
                 To systematically analyze the tissue-celltype drug responses
                 across different perturbations. We assembled drug induced gene
-                signatures from the CMAP database which contains 6,100
+                signatures from the CMap database which contains 6,100
                 expression profiles relating 1,309 compounds with different
                 doses.
               </Paragraph>
@@ -204,76 +197,103 @@ export default function Page() {
               in the opposite direction as the query transcriptome (As shown in
               below figure). The detailed procedures are described as follows:
             </Paragraph>
-            <Image src={d1} preview={false}></Image>
+            <Image
+              src={d2}
+              preview={false}
+              style={{ alignContent: 'center' }}
+            ></Image>
             <Paragraph>
-              • For each cell type in a given tissue, we calculated the average
-              gene expression across all cells.
+              • For each cell type, we first rank the expressed genes (defined
+              as those with non-zero average expression values) according to
+              their average expression across all cells for the same type. The k
+              most highly expressed genes and the k most lowly expressed genes
+              were then selected as the “within cell type” signature gene set
+              for the cell type.
             </Paragraph>
             <Paragraph>
-              • A signature gene set was created for each gene expression
-              profile of the cell type which consists of the top k and bottom k
-              ranked genes. We also created the signature gene set for each
-              drug.
+              • We conducted differentially expressed gene (DEG) analysis for
+              each cell type as compared to other cell types, which is a
+              standard procedure in scRNA-seq analysis. DEGs identified in this
+              way are deemed as cell-type specific genes. We similarly selected
+              the k most highly specifically expressed genes and the k most
+              lowly specifically expressed genes as the signature gene set for
+              the “across cell type” information. The “within cell type” gene
+              set and the “across cell type” gene set were combined to define
+              the cellular signature genes.
             </Paragraph>
             <Paragraph>
-              • We are assuming that the effect of a drug to a cell type is to
-              reverse the expression of a signature gene set (anti-correlation).
-              To get the association score between drug and cell type: The down
-              and up-regulated features of drugs should be significantly
-              enriched in up and down features of cell type respectively. For
-              each cell type-drug association, we used the Fisher’s exact test
-              to perform the enrichment. Moreover, we required that the
-              expression of drug and cell type should also be significantly
-              anti-correlated which performed by Spearman correlation.
+              • For each compound, we also defined a signature gene set based on
+              their rank as provided by the CMap data, i.e., the top k and
+              bottom k genes.
+            </Paragraph>
+            <Paragraph>
+              • Following the concept of “anti-correlation”, we next constructed
+              contingency tables using the down-regulated signature genes of
+              each drug and the cellular signature genes that were highly (or
+              highly specifically) expressed, followed by the chi-square test
+              for drug and cell type association test (denoted as p-value 1).
+              Similarly, we constructed contingency tables using the
+              up-regulated signature genes of each drug and the cellular
+              signature genes that were lowly expressed or lowly specifically
+              expressed, followed by the chi-square test (denoted as p-value 2).
+              The two contingency tables should be constructed separately to
+              ensure that the chi-square test was conducted purposely to
+              identify the anti-correlation relationship.
+            </Paragraph>
+            <Paragraph>
+              • We further required that the expression of the overlapping genes
+              from the two signature sets of the drug and the cell type should
+              also be significantly anti-correlated, which is examined by
+              Spearman correlation coefficient.
             </Paragraph>
             <div id={'home'}>
               <Title level={2}>Overview-Home page</Title>
               <Paragraph>
                 The home page summarizes the main resources in the database,
                 including the number of samples, projects, and cells that have
-                been collected. The diagrammatic sketch shows the generalized
-                tissues and phenotypes. By clicking the corresponding sources,
-                you can jump to the different species page with corresponding
-                tissues and phenotypes shown on the icons.
+                been collected. The home page provides an overview of phenotypes
+                across different tissues and a quick search function for users
+                to query the database for species, tissues, cell types, or
+                phenotypes conveniently. Datasets have been classified by
+                tissues where users can select relevant dataset in a pop-up
+                window to retrieve the corresponding phenotypes.
               </Paragraph>
-              <Image src={d2} preview={false}></Image>
+              <Image src={d3} preview={false}></Image>
             </div>
             <div id={'search'}>
               <Title level={2}>Browse and search function</Title>
               <Paragraph>
-                The browse page displays meta information of all subjects and
-                provides data advanced search functions. The visible part of the
-                table row contains the major meta information of the data,
-                including Source, Project ID, Tissue, Phenotype, Celltype, Drug
-                and other information specific to this subject. Clicking the
-                **detail button** will enable the browse of detailed results for
-                cell drug associations.
-              </Paragraph>
-              <Image src={d3} preview={false}></Image>
-              <Paragraph>
-                We provide multiple search functions for users to identify cell
-                type, drug, disease or tissue of interest. For a user-input
-                query string to search, we will search both the short names and
-                the full names of interest.
+                The “Browse” page displays a general table of all sub-objects
+                and provides data advanced search functions. The visible part of
+                the table row contains the major meta information of the data,
+                including Source, Project ID, Tissue, Phenotype, Cell type, Drug
+                and other information specific to this sub-object. Users can
+                select a sub dataset of interest and clicking the corresponding
+                “Dataset ID” button will enable the browse of detailed results
+                for tissue specific cell type-drug associations. In particular,
+                cell types-drug associations with significant p-values will be
+                returned. The result page contains an intuitive table with more
+                detailed information about the sub-object. Moreover, the
+                visualization of cell types, fraction and predicted association
+                network will be displayed. Moving the mouse to a point in the
+                UMap diagram, and the coordinate of the cell-type information
+                will be displayed. Clicking the “Detail” button for each
+                association, the gene signature with GSEA prerank result in drug
+                and single cell expression data will be further displayed.
               </Paragraph>
               <Image src={d4} preview={false}></Image>
-            </div>
-            <div id={'demonstration'}>
-              <Title level={2}>Demonstration of CeDR result</Title>
-              <Paragraph>In this page, we provide five sections:</Paragraph>
-              <Paragraph>
-                • Move the mouse to a point in the UMap diagram, and the
-                coordinate of the cell-type information will be displayed.
-              </Paragraph>
-              <Paragraph>
-                • Cell drug association: details of the gene signature
-              </Paragraph>
-              <Paragraph>
-                • GSEA prerank result for genes in drug and single cell
-                expression data.
-              </Paragraph>
               <Image src={d5} preview={false}></Image>
               <Image src={d6} preview={false}></Image>
+            </div>
+            <div id={'demonstration'}>
+              <Title level={2}>Download page</Title>
+              <Paragraph>
+                We also provide multiple search function pages for users to
+                identify cell type, drug, disease or tissue of interest. For a
+                user-input query string, we will search both the short names and
+                the full names of interest. In addition, users can download all
+                data via the “Download” page.
+              </Paragraph>
             </div>
           </div>
         </Col>
