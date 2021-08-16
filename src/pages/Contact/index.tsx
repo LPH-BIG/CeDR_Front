@@ -40,7 +40,7 @@ export default function Page() {
       <Row justify={'center'}>
         <Col span={18}>
           <Descriptions title="Data Analysis" bordered>
-            <Descriptions.Item label="UserName" span={3}>
+            <Descriptions.Item label="Name" span={3}>
               Yin-Ying Wang
             </Descriptions.Item>
             <Descriptions.Item label="Email">
@@ -60,7 +60,7 @@ export default function Page() {
       <Row justify={'center'}>
         <Col span={18}>
           <Descriptions title="Web Development" bordered>
-            <Descriptions.Item label="UserName" span={3}>
+            <Descriptions.Item label="Name" span={3}>
               Hongen Kang
             </Descriptions.Item>
             <Descriptions.Item label="Email">

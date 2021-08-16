@@ -114,6 +114,36 @@ const BrowseModel: BrowseModelType = {
               });
               break;
             }
+            case 'phenotype': {
+              dispatch({
+                type: 'getRemote',
+                //payload一般用于传输参数，即type指定函数的参数
+                payload: {
+                  pageIndex: 0,
+                  pageSize: 0,
+                  phenotype: name,
+                  pcutoff: 0.01,
+                  pcutoff2: 0.01,
+                  spcutoff: 0.01,
+                },
+              });
+              break;
+            }
+            case 'tissue': {
+              dispatch({
+                type: 'getRemote',
+                //payload一般用于传输参数，即type指定函数的参数
+                payload: {
+                  pageIndex: 0,
+                  pageSize: 0,
+                  tissuegroup: name,
+                  pcutoff: 0.01,
+                  pcutoff2: 0.01,
+                  spcutoff: 0.01,
+                },
+              });
+              break;
+            }
           }
         }
       });
