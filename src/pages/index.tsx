@@ -1985,12 +1985,12 @@ export default function IndexPage() {
                 {/*  CCLE*/}
                 {/*</Link>*/}
                 {
-                  ' and other available labeled datasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 phenotypes and 1250 tissue-cell combination types.which result about '
+                  ' and other available labeled datasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 phenotypes and 1250 tissue-cell combination types, which result about '
                 }
                 <strong style={{ color: 'red' }}>188,157</strong>
                 {'  for human,'}
                 <strong style={{ color: 'red' }}>42,660 </strong>
-                {'  for mouse and,'}
+                {'  for mouse and '}
                 <strong style={{ color: 'red' }}>10,299</strong>
                 {'  for cell line significant cell type-drug associations '}
                 <strong style={{ color: 'red' }}>
