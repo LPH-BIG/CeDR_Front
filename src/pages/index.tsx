@@ -186,46 +186,46 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-ICU-NOSEP'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterial Sepsis-ICU-NOSEP'
           }
         >
-          Bacterialsepsis-ICU-NOSEP
+          Bacterial Sepsis-ICU-NOSEP
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-URO'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterial Sepsis-URO'
           }
         >
-          Bacterialsepsis-URO
+          Bacterial Sepsis-URO
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-ICU-SEP'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterial Sepsis-ICU-SEP'
           }
         >
-          Bacterialsepsis-ICU-SEP
+          Bacterial Sepsis-ICU-SEP
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-INT-URO'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterial Sepsis-INT-URO'
           }
         >
-          Bacterialsepsis-INT-URO
+          Bacterial Sepsis-INT-URO
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Hyperacutehiv-1-infection'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Hyperacute HIV-1-Infection'
           }
         >
-          Hyperacutehiv-1-infection
+          Hyperacute HIV-1-Infection
         </a>
       </p>
       <p>
@@ -236,17 +236,17 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Ulcerativecolitis'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Ulcerative Colitis'
           }
         >
-          Ulcerativecolitis
+          Ulcerative Colitis
         </a>
       </p>
       <p>
         <a
-          href={'/cedr/general/source/Human/tissue/Blood/phenotype/Lpstreated'}
+          href={'/cedr/general/source/Human/tissue/Blood/phenotype/Lps Treated'}
         >
-          Lpstreated
+          Lps Treated
         </a>
       </p>
       <p>
@@ -270,10 +270,10 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-BAC-SEP'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterial Sepsis-BAC-SEP'
           }
         >
-          Bacterialsepsis-BAC-SEP
+          Bacterial Sepsis-BAC-SEP
         </a>
       </p>
       <p>
@@ -288,28 +288,28 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Immunecells-Normal'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Immune Cells-Normal'
           }
         >
-          Immunecells-Normal
+          Immune Cells-Normal
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-Control'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterial Sepsis-Control'
           }
         >
-          Bacterialsepsis-Control
+          Bacterial Sepsis-Control
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterialsepsis-LEUK-UTI'
+            '/cedr/general/source/Human/tissue/Blood/phenotype/Bacterial Sepsis-LEUK-UTI'
           }
         >
-          Bacterialsepsis-LEUK-UTI
+          Bacterial Sepsis-LEUK-UTI
         </a>
       </p>
     </div>
@@ -337,7 +337,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Bone/phenotype/Rheumatoidarthritis'
+            '/cedr/general/source/Human/tissue/Bone/phenotype/Rheumatoid Arthritis'
           }
         >
           Bone Rheumatoid Arthritis
@@ -360,28 +360,28 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterialsepsis-LPS'
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterial Sepsis-LPS'
           }
         >
-          Bone Marrow Bacterialsepsis-LPS
+          Bone Marrow Bacterial Sepsis-LPS
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterialsepsis-NT'
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterial Sepsis-NT'
           }
         >
-          Bone Marrow Bacterialsepsis-NT
+          Bone Marrow Bacterial Sepsis-NT
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterialsepsis-PAM3CSK4'
+            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterial Sepsis-PAM3CSK4'
           }
         >
-          Bone Marrow Bacterialsepsis-PAM3CSK4
+          Bone Marrow Bacterial Sepsis-PAM3CSK4
         </a>
       </p>
       <p>
@@ -474,10 +474,10 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Brain/phenotype/Developingpfc-Normal'
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Developing Pfc-Normal'
           }
         >
-          Developingpfc-Normal
+          Developing Pfc-Normal
         </a>
       </p>
       <p>
@@ -492,25 +492,25 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Brain/phenotype/Multiplesclerosisandcontrol'
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Multiple Sclerosis and Control'
           }
         >
-          Multiple Sclerosisand Control
+          Multiple Sclerosis and Control
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Brain/phenotype/Pediatricgbm'
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Pediatric GBM'
           }
         >
-          Pediatricgbm
+          Pediatric GBM
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Brain/phenotype/Neurologicaldisorders'
+            '/cedr/general/source/Human/tissue/Brain/phenotype/Neurological Disorders'
           }
         >
           Neurological Disorders
@@ -623,24 +623,28 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Skin/phenotype/BCC-posttreatment'
+            '/cedr/general/source/Human/tissue/Skin/phenotype/BCC-Post Treatment'
           }
         >
-          BCC-posttreatment
-        </a>
-      </p>
-      <p>
-        <a href={'/cedr/general/source/Human/tissue/Skin/phenotype/Normal'}>
-          BCC-pretreatment
+          BCC-Post Treatment
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Skin/phenotype/Lupusnephritis'
+            '/cedr/general/source/Human/tissue/Skin/phenotype/BCC-Pre Treatment'
           }
         >
-          Lupusnephritis
+          BCC-Pre Treatment
+        </a>
+      </p>
+      <p>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Skin/phenotype/Lupus Nephritis'
+          }
+        >
+          Lupus Nephritis
         </a>
       </p>
       <p>
@@ -656,7 +660,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Skin/phenotype/Fibroblastspriming'
+            '/cedr/general/source/Human/tissue/Skin/phenotype/Fibroblasts Priming'
           }
         >
           Fibroblasts Priming
@@ -669,10 +673,10 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Spleen/phenotype/Immunecells-Normal'
+            '/cedr/general/source/Human/tissue/Spleen/phenotype/Immune Cells-Normal'
           }
         >
-          Normal Immunecells
+          Normal Immune Cells
         </a>
       </p>
     </div>
@@ -680,7 +684,13 @@ export default function IndexPage() {
   const chGallbladder = (
     <div>
       <p>
-        <a href={'/cedr/general/phenotype/Normal'}>Normal</a>
+        <a
+          href={
+            '/cedr/general/source/Human/tissue/Gallbladder/phenotype/Normal'
+          }
+        >
+          Normal
+        </a>
       </p>
     </div>
   );
@@ -737,7 +747,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Rectum/phenotype/UlcerativeColitis'
+            '/cedr/general/source/Human/tissue/Rectum/phenotype/Ulcerative Colitis'
           }
         >
           Rectum Ulcerative Colitis
@@ -755,7 +765,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Kidney/phenotype/Lupusnephritis'
+            '/cedr/general/source/Human/tissue/Kidney/phenotype/Lupus Nephritis'
           }
         >
           Lupus Nephritis
@@ -764,7 +774,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Kidney/phenotype/KidneyCancer'
+            '/cedr/general/source/Human/tissue/Kidney/phenotype/Kidney Cancer'
           }
         >
           Kidney Cancer
@@ -793,10 +803,10 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Liver/phenotype/ImmuneCells-Normal'
+            '/cedr/general/source/Human/tissue/Liver/phenotype/Immune Cells-Normal'
           }
         >
-          ImmuneCells Normal
+          Immune Cells Normal
         </a>
       </p>
       <p>
@@ -908,7 +918,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Pancreas/phenotype/PancreasCancer'
+            '/cedr/general/source/Human/tissue/Pancreas/phenotype/Pancreas Cancer'
           }
         >
           Pancreas Cancer
@@ -917,7 +927,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Pancreas/phenotype/Type1diabetes'
+            '/cedr/general/source/Human/tissue/Pancreas/phenotype/Type 1 Diabetes'
           }
         >
           Type1 Diabetes
@@ -926,7 +936,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/Pancreas/phenotype/Type2diabetes'
+            '/cedr/general/source/Human/tissue/Pancreas/phenotype/Type 2 Diabetes'
           }
         >
           Type2 Diabetes
