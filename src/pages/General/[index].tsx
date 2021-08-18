@@ -247,6 +247,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
             {item}
           </Select.Option>
         ));
+
         return (
           <Select
             key={'tissueSelect'}
@@ -284,11 +285,15 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       hideInForm: true,
       ellipsis: true,
       renderFormItem: () => {
-        const options = tissuegroup.map((item) => (
-          <Select.Option key={item} value={item} type={item}>
-            {item}
-          </Select.Option>
-        ));
+        const options = tissuegroup.map((item) => {
+          if (item) {
+            return (
+              <Select.Option key={item} value={item} type={item}>
+                {item}
+              </Select.Option>
+            );
+          }
+        });
         return (
           <Select
             key={'tissuegroupSelect'}
@@ -328,11 +333,15 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       ellipsis: true,
       width: 180,
       renderFormItem: () => {
-        const options = phenotype.map((item) => (
-          <Select.Option key={item} value={item} type={item}>
-            {item}
-          </Select.Option>
-        ));
+        const options = phenotype.map((item) => {
+          if (item) {
+            return (
+              <Select.Option key={item} value={item} type={item}>
+                {item}
+              </Select.Option>
+            );
+          }
+        });
         return (
           <Select
             key={'phenotypeSelect'}
