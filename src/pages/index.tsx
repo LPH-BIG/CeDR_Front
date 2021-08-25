@@ -1560,15 +1560,19 @@ export default function IndexPage() {
       <Row>
         <Col xs={16} sm={16} md={16} lg={16} xl={12} push={2}>
           <Row style={{ textAlign: 'center' }}>
-            <Col>
-              <Text type={'danger'} strong={true} style={{ fontSize: '20px' }}>
+            <Col push={1}>
+              <Text
+                type={'danger'}
+                strong={true}
+                style={{ fontSize: '20px', marginLeft: '1px' }}
+              >
                 Click the buttons to switch source and the organs to quick
                 search
               </Text>
             </Col>
           </Row>
           <Row justify={'center'} style={{ marginTop: '10px' }}>
-            <Col md={10}>
+            <Col md={10} pull={2}>
               <Space>
                 <Button
                   type={bhuman}
@@ -1786,7 +1790,9 @@ export default function IndexPage() {
           </Row>
 
           <Row style={{ display: dcellline }} className={styles.wordcloud}>
-            <Wordcloud />
+            <Col pull={2}>
+              <Wordcloud />
+            </Col>
           </Row>
           <Row className={styles.mouse} style={{ display: dmouse }}>
             <div>
@@ -1960,8 +1966,10 @@ export default function IndexPage() {
               <Text
                 style={{
                   fontFamily: 'Arial',
-                  fontSize: '1em',
-                  textAlign: 'justify',
+                  fontSize: '16px',
+                  textAlign: 'auto',
+                  textJustify: 'newspaper',
+                  // textAlign: 'auto',
                 }}
                 // strong={true}
               >
@@ -1985,7 +1993,7 @@ export default function IndexPage() {
                 {/*  CCLE*/}
                 {/*</Link>*/}
                 {
-                  ' and other available labeled datasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 phenotypes and 1250 tissue-cell combination types, which result about '
+                  ' and other available labeled da-tasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 pheno-types and 1250 tissue-cell combination types, which result about '
                 }
                 <strong style={{ color: 'red' }}>188,157</strong>
                 {'  for human,'}
@@ -1997,7 +2005,7 @@ export default function IndexPage() {
                   {'(enriched p-values<0.05, correlation p-value<0.01)'}
                 </strong>
                 {
-                  '. Users can browse and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the design of combinatory treatments and identification of drug resistance and even drug side effects. For details of usage of this database please see the '
+                  '. Users can brow-se and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the design of combinatory treatments and identification of drug resistance and even drug side effects. For details of usage of this database please see the '
                 }
                 <Link href={'https://ngdc.cncb.ac.cn/cedr/documentation'}>
                   documentation
