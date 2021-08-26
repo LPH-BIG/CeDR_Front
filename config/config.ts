@@ -37,6 +37,9 @@ export default defineConfig({
     // '@primary-color': '#0a81ab',
     '@primary-color': '#0a81ab',
   },
+  headScripts: [
+    `https://v1.cnzz.com/z_stat.php?id=1280252008&web_id=1280252008`,
+  ],
   metas: [
     {
       name: 'viewport',

@@ -1980,7 +1980,7 @@ export default function IndexPage() {
                 <Link
                   href={'https://singlecell.broadinstitute.org/single_cell'}
                 >
-                  Single Cell portal, &nbsp;
+                  Single Cell portal,
                 </Link>
                 <Link href={'https://db.cngb.org/HCL/'}>
                   Human Cell Landscape,
@@ -2005,13 +2005,9 @@ export default function IndexPage() {
                 <strong style={{ color: 'red' }}>
                   {'(enriched p-values<0.05, correlation p-value<0.01)'}
                 </strong>
-                &nbsp;
-                {'.'}
-                &nbsp;
                 {
-                  '  Users can browse and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the design of combinatory treatments and identification of drug resistance and even drug side effects.'
+                  '.  Users can browse and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the design of combinatory treatments and identification of drug resistance and even drug side effects.'
                 }
-                &nbsp;
                 {' For details of usage of this database please see the '}
                 <Link href={'https://ngdc.cncb.ac.cn/cedr/documentation'}>
                   documentation
