@@ -58,6 +58,8 @@ const Index = (props: any) => {
           type: 'wordcloud',
           data: data,
           name: 'Cell Type Number',
+          minFontSize: 10,
+          rotation: 0,
         },
       ],
       title: {

@@ -181,7 +181,7 @@ export default function Page() {
               <Title level={2}>Drug induced gene expression data</Title>
               <Paragraph>
                 To systematically analyze the tissue-celltype drug responses
-                across different perturbations. We assembled drug induced gene
+                across different perturbations, we assembled drug induced gene
                 signatures from the CMap database which contains 6,100
                 expression profiles relating 1,309 compounds with different
                 doses.

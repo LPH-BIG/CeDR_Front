@@ -11,7 +11,7 @@ const Footer = () => {
           <a href="https://ngdc.cncb.ac.cn/">
             <img
               src="https://ngdc.cncb.ac.cn/static/image/CNCB-NGDC.png"
-              // style={{ marginTop: '0px' }}
+              style={{ maxHeight: '100%', maxWidth: '100%' }}
             />
           </a>
           <ul style={{ listStyle: 'none' }}>

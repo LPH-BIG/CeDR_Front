@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styles from './index.less';
 import ProTable from '@ant-design/pro-table';
 import { GeneralState } from '@/pages/General/model';
-import { Pagination, Select, Space, Tabs } from 'antd';
+import { Col, Pagination, Row, Select, Space, Tabs } from 'antd';
 import { connect, Dispatch, Loading } from 'umi';
 import { history } from 'umi';
 import { GeneralItem, SearchKeywords } from '@/pages/General/data';
@@ -133,8 +133,9 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'datasetid',
       // valueType: 'index',
       // key: 'index',
-      width: 140,
+      width: 120,
       search: false,
+      fixed: 'left',
       render: (text: string, record: GeneralItem) => (
         <span>
           <a
@@ -226,7 +227,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       title: 'Cell Source',
       dataIndex: 'cell_source',
       search: false,
-      width: '10%',
+      width: 100,
       valueType: 'text',
       ellipsis: true,
       // render:(text: string, record: GeneralItem)=>{
@@ -384,21 +385,23 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'total_reported_cell',
       ellipsis: true,
       hideInSearch: true,
-      width: '100px',
+      width: 100,
     },
     {
       title: 'Cell Types Number',
       dataIndex: 'celltype_num',
       ellipsis: true,
       hideInSearch: true,
-      width: '100px',
+      width: 100,
     },
     {
       title: 'Top 10 Cell Types',
       dataIndex: 'celltype',
       key: 'celltype',
       valueType: 'text',
+      width: 100,
       search: false,
+      // fixed:'right',
       hideInForm: true,
       ellipsis: true,
     },
@@ -407,6 +410,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       dataIndex: 'drug',
       key: 'drug',
       valueType: 'text',
+      width: 100,
+      // fixed:'right',
       hideInForm: true,
       search: false,
       ellipsis: true,
@@ -456,68 +461,71 @@ const GeneralListPage: FC<GeneralPageProps> = ({
           }
           key="tab1"
         >
-          <div>
-            <ProTable<GeneralItem>
-              columns={columns}
-              options={false}
-              dataSource={general.data}
-              loading={generalListLoading}
-              pagination={false}
-              // scroll={{ x: '100%' }}
-              headerTitle={'Dataset Overview'}
-              rowKey={(record: GeneralItem) => {
-                return record.id.toString();
-              }}
-              onSubmit={(params) => {
-                const { source, tissue, project, phenotype, tissuegroup } =
-                  keywords;
-                dispatch({
-                  type: 'general/getRemote',
-                  payload: {
-                    pageIndex: 1,
-                    pageSize: 10,
-                    source: source,
-                    project: project,
-                    tissue: tissue,
-                    tissuegroup: tissuegroup,
-                    phenotype: phenotype,
-                  },
-                });
-              }}
-              onReset={() => {
-                setKeywords({});
-                dispatch({
-                  type: 'general/getRemote',
-                  payload: {
-                    pageIndex: 1,
-                    pageSize: 10,
-                  },
-                });
-              }}
-              search={{
-                defaultCollapsed: false,
-                labelWidth: 'auto',
-                searchText: 'Search',
-                resetText: 'Reset',
-                collapseRender: false,
-                collapsed: false,
-                // collapseRender: ()=>{return(<span>Collapse</span>)}
-              }}
-            />
-            <Pagination
-              key={'generalPagination'}
-              className={styles.pagenation}
-              showQuickJumper
-              defaultCurrent={1}
-              total={general.meta.total}
-              pageSize={general.meta.pageSize}
-              showSizeChanger
-              showTotal={(total) => `Total ${total} items`}
-              pageSizeOptions={[10, 20, 50, 100]}
-              onChange={paginationHandler}
-              onShowSizeChange={sizeChangeHandler}
-            />
-          </div>
+          <Row>
+            <Col>
+              <ProTable<GeneralItem>
+                columns={columns}
+                options={false}
+                dataSource={general.data}
+                loading={generalListLoading}
+                pagination={false}
+                // scroll={{ x: 500 }}
+                scroll={{ x: true }}
+                headerTitle={'Dataset Overview'}
+                rowKey={(record: GeneralItem) => {
+                  return record.id.toString();
+                }}
+                onSubmit={(params) => {
+                  const { source, tissue, project, phenotype, tissuegroup } =
+                    keywords;
+                  dispatch({
+                    type: 'general/getRemote',
+                    payload: {
+                      pageIndex: 1,
+                      pageSize: 10,
+                      source: source,
+                      project: project,
+                      tissue: tissue,
+                      tissuegroup: tissuegroup,
+                      phenotype: phenotype,
+                    },
+                  });
+                }}
+                onReset={() => {
+                  setKeywords({});
+                  dispatch({
+                    type: 'general/getRemote',
+                    payload: {
+                      pageIndex: 1,
+                      pageSize: 10,
+                    },
+                  });
+                }}
+                search={{
+                  defaultCollapsed: false,
+                  labelWidth: 'auto',
+                  searchText: 'Search',
+                  resetText: 'Reset',
+                  collapseRender: false,
+                  collapsed: false,
+                  // collapseRender: ()=>{return(<span>Collapse</span>)}
+                }}
+              />
+              <Pagination
+                key={'generalPagination'}
+                className={styles.pagenation}
+                showQuickJumper
+                defaultCurrent={1}
+                total={general.meta.total}
+                pageSize={general.meta.pageSize}
+                showSizeChanger
+                showTotal={(total) => `Total ${total} items`}
+                pageSizeOptions={[10, 20, 50, 100]}
+                onChange={paginationHandler}
+                onShowSizeChange={sizeChangeHandler}
+              />
+            </Col>
+          </Row>
         </TabPane>
         <TabPane
           tab={

@@ -322,44 +322,49 @@ const Index = ({
               </Col>
             </Row>
             <Divider />
-            <IntlProvider value={enUSIntl}>
-              <ProTable
-                columns={columns}
-                rowKey={'id'}
-                // showTotal={total => `Total ${total} items`}
-                pagination={{
-                  // total:record?.overlapgenenum,
-                  showTotal: (total) => `Total ${total} items`,
-                  showSizeChanger: false,
-                }}
-                params={record}
-                request={async () => {
-                  if (record) {
-                    let str = record.overlapgene.substr(1);
-                    if (str) {
-                      str = str.substr(0, str.length - 1);
-                      str = str.replaceAll("'", '');
-                      str = str.replace(/\s+/g, '');
-                    } else {
-                      str = ' ';
-                    }
-                    const msg = await getRemoteGene({ name: str }).then(
-                      (res) => {
-                        // console.log(res);
-                        return res;
-                      },
-                    );
-                    return {
-                      data: msg.data,
-                      success: msg.status == 200 ? true : false,
-                    };
-                  }
-                }}
-                search={false}
-                headerTitle={<Title level={4}>Gene Information:</Title>}
-                options={false}
-              />
-            </IntlProvider>
+            <Row>
+              <Col>
+                <IntlProvider value={enUSIntl}>
+                  <ProTable
+                    columns={columns}
+                    rowKey={'id'}
+                    // showTotal={total => `Total ${total} items`}
+                    pagination={{
+                      // total:record?.overlapgenenum,
+                      showTotal: (total) => `Total ${total} items`,
+                      showSizeChanger: false,
+                    }}
+                    // scroll={{x:true}}
+                    params={record}
+                    request={async () => {
+                      if (record) {
+                        let str = record.overlapgene.substr(1);
+                        if (str) {
+                          str = str.substr(0, str.length - 1);
+                          str = str.replaceAll("'", '');
+                          str = str.replace(/\s+/g, '');
+                        } else {
+                          str = ' ';
+                        }
+                        const msg = await getRemoteGene({ name: str }).then(
+                          (res) => {
+                            // console.log(res);
+                            return res;
+                          },
+                        );
+                        return {
+                          data: msg.data,
+                          success: msg.status == 200 ? true : false,
+                        };
+                      }
+                    }}
+                    search={false}
+                    headerTitle={<Title level={4}>Gene Information:</Title>}
+                    options={false}
+                  />
+                </IntlProvider>
+              </Col>
+            </Row>
           </div>
         </TabPane>
       </Tabs>

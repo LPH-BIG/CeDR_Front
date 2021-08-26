@@ -1468,11 +1468,9 @@ export default function IndexPage() {
   return (
     <div>
       <Row justify="center" style={{ background: '#f0f2f5' }}>
-        <div>
-          <Title level={2} className={styles.introduction}>
-            CeDR Atlas: a knowledgebase of cellular drug response
-          </Title>
-        </div>
+        <Title level={2} className={styles.introduction}>
+          CeDR Atlas: a knowledgebase of cellular drug response
+        </Title>
       </Row>
       <Divider />
       <Row justify="center">
@@ -1623,15 +1621,18 @@ export default function IndexPage() {
             </Col>
           </Row>
           {/*<Divider />*/}
-          <Row className={styles.human} style={{ display: dhuman }}>
-            <div>
+          <Row
+            className={styles.human}
+            style={{ display: dhuman }}
+            justify={'center'}
+          >
+            <Col>
               <img
                 src={human}
                 style={{
-                  width: '350px',
-                  height: '550px',
+                  height: '80%',
+                  width: '80%',
                   display: 'block',
-                  marginLeft: '20%',
                 }}
               />
               <div className={styles.brain}>
@@ -1786,7 +1787,7 @@ export default function IndexPage() {
                   />
                 </Popover>
               </div>
-            </div>
+            </Col>
           </Row>
 
           <Row style={{ display: dcellline }} className={styles.wordcloud}>
@@ -1795,15 +1796,13 @@ export default function IndexPage() {
             </Col>
           </Row>
           <Row className={styles.mouse} style={{ display: dmouse }}>
-            <div>
+            <Col>
               <img
                 src={mouse}
                 style={{
-                  width: '350px',
-                  height: '550px',
+                  height: '80%',
+                  width: '80%',
                   display: 'block',
-                  marginLeft: '20%',
-                  marginTop: '80px',
                 }}
               />
               <div className={styles.mbrain}>
@@ -1950,10 +1949,10 @@ export default function IndexPage() {
                   />
                 </Popover>
               </div>
-            </div>
+            </Col>
           </Row>
           {/*<Divider />*/}
-          <Row style={{ marginTop: '100px' }}>
+          <Row style={{ marginTop: '10%' }}>
             <Divider />
             <div>
               <Title
@@ -1966,9 +1965,11 @@ export default function IndexPage() {
               <Text
                 style={{
                   fontFamily: 'Arial',
-                  fontSize: '16px',
-                  textAlign: 'auto',
-                  textJustify: 'newspaper',
+                  fontSize: '17px',
+                  textAlign: 'justify',
+                  display: 'inline-block',
+                  // textIndent:'inter-word',
+                  // textJustify: '',
                   // textAlign: 'auto',
                 }}
                 // strong={true}
@@ -1993,7 +1994,7 @@ export default function IndexPage() {
                 {/*  CCLE*/}
                 {/*</Link>*/}
                 {
-                  ' and other available labeled da-tasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 pheno-types and 1250 tissue-cell combination types, which result about '
+                  ' and other available labeled datasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 phenotypes and 1250 tissue-cell combination types, which result about '
                 }
                 <strong style={{ color: 'red' }}>188,157</strong>
                 {'  for human,'}
@@ -2004,9 +2005,14 @@ export default function IndexPage() {
                 <strong style={{ color: 'red' }}>
                   {'(enriched p-values<0.05, correlation p-value<0.01)'}
                 </strong>
+                &nbsp;
+                {'.'}
+                &nbsp;
                 {
-                  '. Users can brow-se and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the design of combinatory treatments and identification of drug resistance and even drug side effects. For details of usage of this database please see the '
+                  '  Users can browse and search the drugs, cell types, tissues, and diseases and could also filter and prioritize the associations with exact gene signatures. Overall, CeDR infers drug response at cellular resolution and sheds light on the design of combinatory treatments and identification of drug resistance and even drug side effects.'
                 }
+                &nbsp;
+                {' For details of usage of this database please see the '}
                 <Link href={'https://ngdc.cncb.ac.cn/cedr/documentation'}>
                   documentation
                 </Link>
@@ -2015,11 +2021,11 @@ export default function IndexPage() {
             </div>
           </Row>
         </Col>
-        <Col xs={5} sm={5} md={5} lg={7} xl={7} push={4}>
+        <Col xs={6} sm={6} md={4} lg={7} xl={7} push={4}>
           <Card
             title={<strong>Human Resource Overview</strong>}
             // extra={<a href="/cedr/general">More</a>}
-            style={{ width: 400, display: dhuman }}
+            style={{ display: dhuman }}
             bordered={true}
             hoverable={true}
           >
@@ -2077,7 +2083,7 @@ export default function IndexPage() {
           <Card
             title={<strong>Mouse Resource Overview</strong>}
             // extra={<a href="/cedr/general">More</a>}
-            style={{ width: 400, display: dmouse }}
+            style={{ display: dmouse }}
             bordered={true}
             hoverable={true}
           >
@@ -2135,7 +2141,7 @@ export default function IndexPage() {
           <Card
             title={<strong>Cell Line Resource Overview</strong>}
             // extra={<a href="/cedr/general">More</a>}
-            style={{ width: 400, display: dcellline }}
+            style={{ display: dcellline }}
             bordered={true}
             hoverable={true}
           >
@@ -2193,25 +2199,29 @@ export default function IndexPage() {
           <Divider />
           <Card
             title={<strong>Recent Events</strong>}
-            style={{ width: 400 }}
+            // style={{ width: 400 }}
             bordered={true}
             hoverable={true}
           >
             <Timeline>
-              <Timeline.Item>
+              <Timeline.Item style={{ fontSize: '16px' }}>
                 Network problems being solved 2021-06-22
               </Timeline.Item>
-              <Timeline.Item>Technical testing 2021-06-18</Timeline.Item>
-              <Timeline.Item>
+              <Timeline.Item style={{ fontSize: '16px' }}>
+                Technical testing 2021-06-18
+              </Timeline.Item>
+              <Timeline.Item style={{ fontSize: '16px' }}>
                 Solve initial network problems 2021-06-08
               </Timeline.Item>
-              <Timeline.Item>Create the services site 2021-06-01</Timeline.Item>
+              <Timeline.Item style={{ fontSize: '16px' }}>
+                Create the services site 2021-06-01
+              </Timeline.Item>
             </Timeline>
           </Card>
           <Divider />
           <Card
             title={<strong>Exteneral Link</strong>}
-            style={{ width: 400 }}
+            // style={{ width: 400 }}
             bordered={true}
             hoverable={true}
           >

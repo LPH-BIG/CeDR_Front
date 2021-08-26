@@ -111,6 +111,8 @@ const Index: FC<DatasetPageProps> = ({
       ellipsis: true,
       dataIndex: 'associationid',
       search: false,
+      fixed: 'left',
+      width: 100,
       render: (text, record, index) => {
         // console.log(record)
         return (
@@ -684,6 +686,7 @@ const Index: FC<DatasetPageProps> = ({
                     dataSource={dataset.data}
                     loading={datasetListLoading}
                     pagination={false}
+                    scroll={{ x: true }}
                     // headerTitle="日期类"
                     expandable={{
                       expandIconColumnIndex: 11,

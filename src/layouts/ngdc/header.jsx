@@ -1,7 +1,8 @@
 import React from 'react';
+import { Row, Col } from 'antd';
 const Header = () => {
   return (
-    <div
+    <Row
       style={{
         height: '30px',
         // backgroundColor: '#0c64b6',
@@ -11,68 +12,75 @@ const Header = () => {
         fontFamily: ' Arial',
       }}
     >
-      <nav style={{ height: '30px' }}>
-        <div style={{ height: '30px', width: '100%' }}>
-          <div
-            style={{
-              height: '30px',
-              width: '100%',
-              paddingTop: '2px',
-              paddingLeft: '50px',
-            }}
+      <Col md={12} style={{ height: '30px' }}>
+        <div
+          style={{
+            height: '30px',
+            paddingTop: '2px',
+            paddingLeft: '5%',
+          }}
+        >
+          <a
+            href="https://www.cncb.ac.cn"
+            target="_blank"
+            className="bigd-navbar-brand"
           >
-            <a
-              href="https://www.cncb.ac.cn"
-              target="_blank"
-              className="bigd-navbar-brand"
-            >
-              <img
-                src="https://ngdc.cncb.ac.cn/cdn/image/cncb-nav.png"
-                className="bigd-img-responsive"
-                style={{ width: '67px', height: '22px' }}
-              />
-            </a>
-            <a href="https://ngdc.cncb.ac.cn/">
-              <img
-                src="https://ngdc.cncb.ac.cn/cdn/image/ngdc-nav.png"
-                style={{ width: '67px', height: '22px' }}
-              />
-            </a>
-            <a
-              href="https://ngdc.cncb.ac.cn/databases"
-              style={{ color: '#fff', marginLeft: '1200px' }}
-            >
-              {' '}
-              Databases
-            </a>
-            <a
-              href="https://ngdc.cncb.ac.cn/tools"
-              style={{ color: '#fff', marginLeft: '50px' }}
-            >
-              Tools
-            </a>
-            <a
-              href="https://ngdc.cncb.ac.cn/standards"
-              style={{ color: '#fff', marginLeft: '50px' }}
-            >
-              Standards
-            </a>
-            <a
-              href="https://ngdc.cncb.ac.cn/publications"
-              style={{ color: '#fff', marginLeft: '50px' }}
-            >
-              Publications
-            </a>
-            <a
-              href="https://ngdc.cncb.ac.cn/about"
-              style={{ color: '#fff', marginLeft: '50px' }}
-            >
-              About
-            </a>
-          </div>
+            <img
+              src="https://ngdc.cncb.ac.cn/cdn/image/cncb-nav.png"
+              className="bigd-img-responsive"
+              style={{ width: '67px', height: '22px' }}
+            />
+          </a>
+          <a href="https://ngdc.cncb.ac.cn/">
+            <img
+              src="https://ngdc.cncb.ac.cn/cdn/image/ngdc-nav.png"
+              style={{ width: '67px', height: '22px' }}
+            />
+          </a>
         </div>
-      </nav>
-    </div>
+      </Col>
+      <Col md={12} style={{ height: '30px' }}>
+        <div
+          style={{
+            height: '30px',
+            paddingTop: '2px',
+            paddingLeft: '2%',
+          }}
+        >
+          <a
+            href="https://ngdc.cncb.ac.cn/databases"
+            style={{ color: '#fff', marginLeft: '40%' }}
+          >
+            {' '}
+            Databases
+          </a>
+          <a
+            href="https://ngdc.cncb.ac.cn/tools"
+            style={{ color: '#fff', marginLeft: '4%' }}
+          >
+            Tools
+          </a>
+          <a
+            href="https://ngdc.cncb.ac.cn/standards"
+            style={{ color: '#fff', marginLeft: '4%' }}
+          >
+            Standards
+          </a>
+          <a
+            href="https://ngdc.cncb.ac.cn/publications"
+            style={{ color: '#fff', marginLeft: '4%' }}
+          >
+            Publications
+          </a>
+          <a
+            href="https://ngdc.cncb.ac.cn/about"
+            style={{ color: '#fff', marginLeft: '4%' }}
+          >
+            About
+          </a>
+        </div>
+      </Col>
+    </Row>
   );
 };
 

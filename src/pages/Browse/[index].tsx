@@ -22,6 +22,7 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'associationid',
       // valueType: 'index',
       width: 120,
+      fixed: 'left',
       render: (text, record, index) => {
         return (
           <div>
@@ -259,6 +260,7 @@ const Index: FC<BrowsePageProps> = ({
           <div>
             <ProTable<AssociationItem>
               columns={columns}
+              scroll={{ x: true }}
               dataSource={browse.data}
               loading={browseListLoading}
               rowKey={(record) => record.id}
