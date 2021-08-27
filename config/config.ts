@@ -38,9 +38,13 @@ export default defineConfig({
     '@primary-color': '#0a81ab',
   },
   headScripts: [
+    // {
+    //   type: 'text/javascript',
+    //   src: `https://v1.cnzz.com/z_stat.php?id=1280252008&web_id=1280252008`,
+    // },
     {
       type: 'text/javascript',
-      src: `https://v1.cnzz.com/z_stat.php?id=1280252008&web_id=1280252008`,
+      content: `document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1280252008'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1280252008' type='text/javascript'%3E%3C/script%3E"));`,
     },
   ],
   metas: [

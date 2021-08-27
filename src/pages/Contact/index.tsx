@@ -4,7 +4,7 @@ import { Card, Col, Descriptions, Divider, Row, Space } from 'antd';
 
 export default function Page() {
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <Row justify={'center'}>
         <Col className={styles.contact} xs={2} sm={4} md={6} lg={8} xl={10}>
           <h1 className={styles.title}>CONTACT US</h1>

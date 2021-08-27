@@ -602,7 +602,9 @@ const Index: FC<DatasetPageProps> = ({
               <Col xs={6} sm={8} md={24} lg={24} xl={24}>
                 <Descriptions title={'Summary'} bordered>
                   <Descriptions.Item label="Project" span={1}>
-                    <a href={summary?.reference}>{summary?.project}</a>
+                    <a href={'https://www.doi.org/' + summary?.doi}>
+                      {summary?.project}
+                    </a>
                   </Descriptions.Item>
                   <Descriptions.Item label="Dataset ID">
                     <a
@@ -634,7 +636,7 @@ const Index: FC<DatasetPageProps> = ({
                   <Descriptions.Item label="Total Reported Cells">
                     {summary?.total_reported_cell}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Number of Reported Celltypes">
+                  <Descriptions.Item label="Number of Reported Cell Types">
                     {summary?.celltype_num}
                   </Descriptions.Item>
                   <Descriptions.Item label="Top 10 Drugs" span={3}>
