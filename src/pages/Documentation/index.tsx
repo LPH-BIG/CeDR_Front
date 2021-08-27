@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div>
       <Row>
-        <Col xs={2} sm={4} md={4} lg={4} xl={4}>
+        <Col md={4} lg={4} xl={4}>
           <Anchor>
             <Link href="#introduction" title="Introduction">
               <Link href="#background" title="Background" />
@@ -90,7 +90,7 @@ export default function Page() {
             </Link>
           </Anchor>
         </Col>
-        <Col xs={12} sm={14} md={20} lg={20} xl={20}>
+        <Col md={20} lg={20} xl={20}>
           <div id={'introduction'}>
             <Title>Introduction</Title>
             <div id={'background'}>

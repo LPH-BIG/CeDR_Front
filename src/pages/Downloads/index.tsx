@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.less';
-import { Card, Table, Space, Select, Button } from 'antd';
+import { Card, Table, Space, Select, Button, Row, Col } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
 export default function Page() {
@@ -100,37 +100,41 @@ export default function Page() {
 
   return (
     <div>
-      <Card
-        title="Downloads"
-        style={{ justifyContent: 'center' }}
-        bordered={true}
-        hoverable={true}
-      >
-        {/*<Card type="inner" title="Download the Tool">*/}
-        {/*  <a>*/}
-        {/*    <strong>Github</strong>*/}
-        {/*  </a>*/}
-        {/*</Card>*/}
-        {/*<Card type="inner" title="Download by Phenotype">*/}
-        {/*  <div>*/}
-        {/*    <Select*/}
-        {/*      style={{ width: '30%' }}*/}
-        {/*      placeholder="input and select a dataset"*/}
-        {/*      showSearch={true}*/}
-        {/*      // suffixIcon={()=>{return(<DownloadOutlined />)}}*/}
-        {/*    >*/}
-        {/*      {<Select.Option key={'id'}>Bone Cancer</Select.Option>}*/}
-        {/*    </Select>*/}
-        {/*    &nbsp;*/}
-        {/*    <Button type="primary" shape="round" icon={<DownloadOutlined />}>*/}
-        {/*      Download*/}
-        {/*    </Button>*/}
-        {/*  </div>*/}
-        {/*</Card>*/}
-        <Card style={{ marginTop: 16 }} type="inner" title="Batch Download">
-          <Table columns={columns} dataSource={data} pagination={false} />
-        </Card>
-      </Card>
+      <Row>
+        <Col md={24} lg={24} xl={24} xxl={24}>
+          <Card
+            title="Downloads"
+            style={{ justifyContent: 'center' }}
+            bordered={true}
+            hoverable={true}
+          >
+            {/*<Card type="inner" title="Download the Tool">*/}
+            {/*  <a>*/}
+            {/*    <strong>Github</strong>*/}
+            {/*  </a>*/}
+            {/*</Card>*/}
+            {/*<Card type="inner" title="Download by Phenotype">*/}
+            {/*  <div>*/}
+            {/*    <Select*/}
+            {/*      style={{ width: '30%' }}*/}
+            {/*      placeholder="input and select a dataset"*/}
+            {/*      showSearch={true}*/}
+            {/*      // suffixIcon={()=>{return(<DownloadOutlined />)}}*/}
+            {/*    >*/}
+            {/*      {<Select.Option key={'id'}>Bone Cancer</Select.Option>}*/}
+            {/*    </Select>*/}
+            {/*    &nbsp;*/}
+            {/*    <Button type="primary" shape="round" icon={<DownloadOutlined />}>*/}
+            {/*      Download*/}
+            {/*    </Button>*/}
+            {/*  </div>*/}
+            {/*</Card>*/}
+            <Card style={{ marginTop: 16 }} type="inner" title="Batch Download">
+              <Table columns={columns} dataSource={data} pagination={false} />
+            </Card>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 }

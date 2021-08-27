@@ -57,13 +57,14 @@ export default function (props) {
   }, [history.location]);
   return (
     <Row className={styles.container}>
-      <Col>
+      <Col md={24}>
         <NgdcHeader />
         <HeaderLab />
-        <div id="components-layout-demo-fixed">
-          <Layout>
-            <Header style={{ zIndex: 2, width: '100%' }}>
-              <Row justify={'center'}>
+        {/*<div id="components-layout-demo-fixed">*/}
+        <Layout>
+          <Header>
+            <Row justify={'center'}>
+              <Col md={12} style={{ justifyContent: 'center' }}>
                 <Menu
                   theme="dark"
                   mode="horizontal"
@@ -151,27 +152,28 @@ export default function (props) {
                     <strong style={{ color: '#fff' }}>Contact</strong>
                   </Menu.Item>
                 </Menu>
-              </Row>
-            </Header>
-            <Row justify={'center'}>
-              <Col md={24}>
-                <Content className="site-layout">
-                  {/*<Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />*/}
-                  <div
-                    className="site-layout-background"
-                    style={{ padding: 24, minHeight: 380 }}
-                  >
-                    {props.children}
-                  </div>
-                </Content>
               </Col>
             </Row>
-            <BackTop />
-            <Footer>
-              <NgdcFooter />
-            </Footer>
-          </Layout>
-        </div>
+          </Header>
+          <Row>
+            <Col md={24} xl={24} lg={24}>
+              <Content className="site-layout">
+                {/*<Breadcrumb itemRender={itemRender} routes={props.routes[0].routes} />*/}
+                <div
+                  className="site-layout-background"
+                  style={{ padding: 24, minHeight: 380 }}
+                >
+                  {props.children}
+                </div>
+              </Content>
+            </Col>
+          </Row>
+          <BackTop />
+          <Footer>
+            <NgdcFooter />
+          </Footer>
+        </Layout>
+        {/*</div>*/}
       </Col>
     </Row>
   );

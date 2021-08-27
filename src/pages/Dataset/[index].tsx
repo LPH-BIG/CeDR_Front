@@ -112,7 +112,7 @@ const Index: FC<DatasetPageProps> = ({
       dataIndex: 'associationid',
       search: false,
       fixed: 'left',
-      width: 100,
+      width: 150,
       render: (text, record, index) => {
         // console.log(record)
         return (
@@ -146,7 +146,7 @@ const Index: FC<DatasetPageProps> = ({
       ellipsis: true,
       tooltip: 'Click to see all associations of the cell type',
       hideInForm: true,
-      width: 200,
+      width: 220,
       render: (text, record) => {
         return (
           <span>
@@ -275,6 +275,7 @@ const Index: FC<DatasetPageProps> = ({
       title: 'p-value 1 (High Expression)',
       dataIndex: 'pvalue1',
       key: 'pvalue1',
+      width: 150,
       // valueType: (),
       render: (text, record, index) => {
         return parseFloat(record.pvalue1).toExponential(4);
@@ -311,6 +312,7 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       search: false,
       ellipsis: true,
+      width: 150,
       // renderFormItem: () => {
       //   const options = orcutoff.map((item) => (
       //     <Select.Option key={item} value={item} type={item}>
@@ -339,6 +341,7 @@ const Index: FC<DatasetPageProps> = ({
         'The explanation of p-value 2 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
       key: 'pvalue2',
       // valueType: 'text',
+      width: 150,
       render: (text, record, index) => {
         return parseFloat(record.pvalue2).toExponential(4);
       },
@@ -372,6 +375,7 @@ const Index: FC<DatasetPageProps> = ({
       key: 'oddsratio2',
       valueType: 'text',
       hideInForm: true,
+      width: 150,
       search: false,
       ellipsis: true,
     },
@@ -380,6 +384,7 @@ const Index: FC<DatasetPageProps> = ({
       dataIndex: 'spearman',
       key: 'spearman',
       valueType: 'text',
+      width: 100,
       hideInForm: true,
       // search: false,
       ellipsis: true,
@@ -408,6 +413,7 @@ const Index: FC<DatasetPageProps> = ({
       title: 'Spearman p-value',
       dataIndex: 'spvalue',
       key: 'spvalue',
+      width: 100,
       tooltip:
         'The explanation of S p-value is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
       render: (text, record, index) => {
@@ -444,7 +450,7 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
-      // width: 100,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -454,39 +460,40 @@ const Index: FC<DatasetPageProps> = ({
       valueType: 'text',
       hideInForm: true,
       ellipsis: true,
+      width: 200,
       search: false,
-      renderFormItem: () => {
-        const options = gene.map((item) => (
-          <Select.Option key={item} value={item} type={item}>
-            {item}
-          </Select.Option>
-        ));
-        return (
-          <Select
-            key={'geneSelect'}
-            showSearch={true}
-            placeholder={'input and select genes'}
-            filterOption={false}
-            onSearch={async (value) => {
-              // console.log(value);
-              getRemoteKeywords({
-                datasetid: dataset.data[0].datasetid,
-                celltype: keywords.celltype,
-                drug: keywords.drug,
-                overlapgene: value,
-              }).then((res) => {
-                // console.log(res);
-                setGene(res.data.overlapgene);
-              });
-            }}
-            onChange={(value, option) => {
-              setKeywords({ ...keywords, overlapgene: value });
-            }}
-          >
-            {options}
-          </Select>
-        );
-      },
+      // renderFormItem: () => {
+      //   const options = gene.map((item) => (
+      //     <Select.Option key={item} value={item} type={item}>
+      //       {item}
+      //     </Select.Option>
+      //   ));
+      //   return (
+      //     <Select
+      //       key={'geneSelect'}
+      //       showSearch={true}
+      //       placeholder={'input and select genes'}
+      //       filterOption={false}
+      //       onSearch={async (value) => {
+      //         // console.log(value);
+      //         getRemoteKeywords({
+      //           datasetid: dataset.data[0].datasetid,
+      //           celltype: keywords.celltype,
+      //           drug: keywords.drug,
+      //           overlapgene: value,
+      //         }).then((res) => {
+      //           // console.log(res);
+      //           setGene(res.data.overlapgene);
+      //         });
+      //       }}
+      //       onChange={(value, option) => {
+      //         setKeywords({ ...keywords, overlapgene: value });
+      //       }}
+      //     >
+      //       {options}
+      //     </Select>
+      //   );
+      // },
     },
     // {
     //   title: 'Detail',
@@ -686,7 +693,7 @@ const Index: FC<DatasetPageProps> = ({
                     dataSource={dataset.data}
                     loading={datasetListLoading}
                     pagination={false}
-                    scroll={{ x: true }}
+                    scroll={{ x: 2000 }}
                     // headerTitle="日期类"
                     expandable={{
                       expandIconColumnIndex: 11,

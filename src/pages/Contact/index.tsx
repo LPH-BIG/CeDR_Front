@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.less';
-import { Card, Col, Descriptions, Divider, Row } from 'antd';
+import { Card, Col, Descriptions, Divider, Row, Space } from 'antd';
 
 export default function Page() {
   return (
@@ -20,12 +20,14 @@ export default function Page() {
         </Col>
       </Row>
       <Row justify={'center'}>
-        <Col span={18}>
+        <Space>
           <Descriptions title="Team Leader" bordered>
             <Descriptions.Item label="Name" span={3}>
               Peilin Jia
             </Descriptions.Item>
-            <Descriptions.Item label="Email">pjia@big.ac.cn</Descriptions.Item>
+            <Descriptions.Item label="Email" span={3}>
+              pjia@big.ac.cn
+            </Descriptions.Item>
             {/*<Descriptions.Item label="Live">*/}
             {/*  Hangzhou, Zhejiang*/}
             {/*</Descriptions.Item>*/}
@@ -34,16 +36,11 @@ export default function Page() {
               Supervisor
             </Descriptions.Item>
           </Descriptions>
-        </Col>
-      </Row>
-      <Divider />
-      <Row justify={'center'}>
-        <Col span={18}>
           <Descriptions title="Data Analysis" bordered>
             <Descriptions.Item label="Name" span={3}>
               Yin-Ying Wang
             </Descriptions.Item>
-            <Descriptions.Item label="Email">
+            <Descriptions.Item label="Email" span={3}>
               wangyinying@big.ac.cn
             </Descriptions.Item>
             {/*<Descriptions.Item label="Live">*/}
@@ -54,16 +51,11 @@ export default function Page() {
               Data collection, Meta Curation, Data analysis.
             </Descriptions.Item>
           </Descriptions>
-        </Col>
-      </Row>
-      <Divider />
-      <Row justify={'center'}>
-        <Col span={18}>
           <Descriptions title="Web Development" bordered>
             <Descriptions.Item label="Name" span={3}>
               Hongen Kang
             </Descriptions.Item>
-            <Descriptions.Item label="Email">
+            <Descriptions.Item label="Email" span={3}>
               kanghongen2018m@big.ac.cn
             </Descriptions.Item>
             {/*<Descriptions.Item label="Live">*/}
@@ -74,7 +66,7 @@ export default function Page() {
               Web Development,Meta Curation.
             </Descriptions.Item>
           </Descriptions>
-        </Col>
+        </Space>
       </Row>
     </div>
   );

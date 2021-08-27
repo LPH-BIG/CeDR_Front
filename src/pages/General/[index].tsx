@@ -470,7 +470,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                 loading={generalListLoading}
                 pagination={false}
                 // scroll={{ x: 500 }}
-                scroll={{ x: true }}
+                scroll={{ x: 2000 }}
                 headerTitle={'Dataset Overview'}
                 rowKey={(record: GeneralItem) => {
                   return record.id.toString();
