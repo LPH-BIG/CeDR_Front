@@ -333,6 +333,7 @@ const Index = ({
                       // total:record?.overlapgenenum,
                       showTotal: (total) => `Total ${total} items`,
                       showSizeChanger: false,
+                      defaultPageSize: 10,
                     }}
                     // scroll={{x:true}}
                     params={record}

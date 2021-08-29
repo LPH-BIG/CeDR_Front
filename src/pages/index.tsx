@@ -2059,9 +2059,7 @@ export default function IndexPage() {
             </Card.Grid>
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
-                title={
-                  <strong style={{ color: '#363636' }}>Cells Types</strong>
-                }
+                title={<strong style={{ color: '#363636' }}>Cell Types</strong>}
                 value={684}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<CellIcon />}
@@ -2200,6 +2198,9 @@ export default function IndexPage() {
             hoverable={true}
           >
             <Timeline>
+              <Timeline.Item style={{ fontSize: '16px' }}>
+                Bugs being fixed 2021-08-27
+              </Timeline.Item>
               <Timeline.Item style={{ fontSize: '16px' }}>
                 Network problems being solved 2021-06-22
               </Timeline.Item>

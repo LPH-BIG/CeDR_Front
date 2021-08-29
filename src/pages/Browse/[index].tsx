@@ -261,6 +261,12 @@ const Index: FC<BrowsePageProps> = ({
             <ProTable<AssociationItem>
               columns={columns}
               scroll={{ x: true }}
+              pagination={{
+                // total:record?.overlapgenenum,
+                showTotal: (total) => `Total ${total} items`,
+                showSizeChanger: false,
+                defaultPageSize: 10,
+              }}
               dataSource={browse.data}
               loading={browseListLoading}
               rowKey={(record) => record.id}
