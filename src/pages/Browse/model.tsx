@@ -92,8 +92,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 0,
-                  pageSize: 0,
+                  pageIndex: 1,
+                  pageSize: 10,
                   celltype: name,
                 },
               });
@@ -104,8 +104,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 0,
-                  pageSize: 0,
+                  pageIndex: 1,
+                  pageSize: 10,
                   drug: name,
                   pcutoff: 0.01,
                   pcutoff2: 0.01,
@@ -119,8 +119,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 0,
-                  pageSize: 0,
+                  pageIndex: 1,
+                  pageSize: 10,
                   phenotype: name,
                   pcutoff: 0.01,
                   pcutoff2: 0.01,
@@ -134,8 +134,8 @@ const BrowseModel: BrowseModelType = {
                 type: 'getRemote',
                 //payload一般用于传输参数，即type指定函数的参数
                 payload: {
-                  pageIndex: 0,
-                  pageSize: 0,
+                  pageIndex: 1,
+                  pageSize: 10,
                   tissuegroup: name,
                   pcutoff: 0.01,
                   pcutoff2: 0.01,

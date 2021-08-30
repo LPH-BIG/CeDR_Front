@@ -59,6 +59,7 @@ const Index: FC<DatasetPageProps> = ({
   const [gene, setGene] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
   const [disabled, setDisabled] = useState<boolean>(true);
+  const [selectitems, setSelectitems] = useState<AssociationItem>([]);
 
   useEffect(() => {
     const data = dataset.data[0];
@@ -760,6 +761,38 @@ const Index: FC<DatasetPageProps> = ({
                       collapsed: false,
                     }}
                     options={false}
+                    // rowSelection={{fixed:true,
+                    //   onSelect:(record, selected, selectedRows, nativeEvent)=>{
+                    //     if (selected){
+                    //       setSelectitems(Array.from(new Set(selectitems.concat(selectedRows))));
+                    //     }else {
+                    //       setSelectitems(Array.from(new Set(selectitems.concat(selectedRows))));
+                    //     }
+                    //   },
+                    //   onSelectAll:(selected, selectedRows, changeRows)=>{
+                    //
+                    //   }
+                    // }}
+                    // tableAlertRender={({ selectedRowKeys, selectedRows, onCleanSelected }) => (
+                    //   <Space size={24}>
+                    //     <span>
+                    //       selected {selectitems.length} items
+                    //       <a style={{ marginLeft: 8 }} onClick={onCleanSelected}>
+                    //         cancel selected
+                    //       </a>
+                    //     </span>
+                    //     {/*<span>*/}
+                    //     {/*  {`total overlap genes: ${selectedRows.reduce((pre, item) => pre + item.overlapgenenum,0)}`}*/}
+                    //     {/*</span>*/}
+                    //   </Space>
+                    // )}
+                    // tableAlertOptionRender={()=>{
+                    //   return (
+                    //     <Space size={16}>
+                    //       <a>Download</a>
+                    //     </Space>
+                    //   );
+                    // }}
                   />
                   <Pagination
                     key={'generalPagination'}

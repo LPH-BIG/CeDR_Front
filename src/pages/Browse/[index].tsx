@@ -44,6 +44,8 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'datasetid',
       valueType: 'text',
       hideInForm: true,
+      width: 120,
+      fixed: 'left',
       render: (text, record, index) => {
         return (
           <div>
@@ -64,6 +66,8 @@ const Index: FC<BrowsePageProps> = ({
       title: 'Source',
       dataIndex: 'source',
       valueType: 'text',
+      width: 100,
+      ellipsis: true,
       hideInForm: true,
       render: (text, record, index) => {
         return (
@@ -86,6 +90,7 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'project',
       valueType: 'text',
       hideInForm: true,
+      width: 100,
       ellipsis: true,
     },
 
@@ -94,6 +99,7 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'tissue',
       valueType: 'text',
       hideInForm: true,
+      width: 100,
       ellipsis: true,
       render: (text, record, index) => {
         return (
@@ -115,6 +121,8 @@ const Index: FC<BrowsePageProps> = ({
       title: 'Phenotype',
       dataIndex: 'phenotype',
       valueType: 'text',
+      width: 100,
+      ellipsis: true,
       hideInForm: true,
       render: (text, record, index) => {
         return (
@@ -138,6 +146,7 @@ const Index: FC<BrowsePageProps> = ({
       key: 'celltype',
       valueType: 'text',
       hideInForm: true,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -145,6 +154,7 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'drug',
       valueType: 'text',
       hideInForm: true,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -152,6 +162,7 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'pvalue1',
       key: 'pvalue1',
       valueType: 'text',
+      width: 100,
       ellipsis: true,
     },
     {
@@ -159,7 +170,7 @@ const Index: FC<BrowsePageProps> = ({
       dataIndex: 'oddsratio1',
       key: 'oddsratio1',
       valueType: 'text',
-      ellipsis: true,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -169,6 +180,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -178,6 +190,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -187,6 +200,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -196,6 +210,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      width: 100,
       ellipsis: true,
     },
     {
@@ -205,6 +220,7 @@ const Index: FC<BrowsePageProps> = ({
       valueType: 'text',
       hideInForm: true,
       search: false,
+      width: 100,
       ellipsis: true,
       // width: 100,
     },
@@ -214,58 +230,104 @@ const Index: FC<BrowsePageProps> = ({
       key: 'overlapgene',
       valueType: 'text',
       hideInForm: true,
+      width: 300,
       ellipsis: true,
     },
   ];
-  const [network, setNetwork] = useState([]);
+  // const [network, setNetwork] = useState([]);
+  // useEffect(() => {
+  //   //TODO://从后端拿网络图数据
+  //   // console.log(history.location.pathname);
+  //   const k = history.location.pathname.split('/');
+  //   if (k[2] == 'celltype') {
+  //     console.log(k[3]);
+  //     getRemoteNetwork({
+  //       celltype: k[3],
+  //       datasetid: undefined,
+  //       drug: undefined,
+  //     }).then((res) => {
+  //       // console.log(res.data);
+  //       setNetwork(res.data);
+  //     });
+  //   } else if (k[2] == 'drug') {
+  //     getRemoteNetwork({
+  //       drug: k[3],
+  //       celltype: undefined,
+  //       datasetid: undefined,
+  //     }).then((res) => {
+  //       // console.log(res.data);
+  //       setNetwork(res.data);
+  //     });
+  //   }
+  // }, []);
+
+  const [celltype, setCelltype] = useState(undefined);
+  const [drug, setDrug] = useState(undefined);
   useEffect(() => {
-    //TODO://从后端拿网络图数据
-    // console.log(history.location.pathname);
     const k = history.location.pathname.split('/');
     if (k[2] == 'celltype') {
-      console.log(k[3]);
-      getRemoteNetwork({
-        celltype: k[3],
-        datasetid: undefined,
-        drug: undefined,
-      }).then((res) => {
-        // console.log(res.data);
-        setNetwork(res.data);
-      });
+      // console.log(k[3]);
+      setCelltype(k[3]);
     } else if (k[2] == 'drug') {
-      getRemoteNetwork({
-        drug: k[3],
-        celltype: undefined,
-        datasetid: undefined,
-      }).then((res) => {
-        // console.log(res.data);
-        setNetwork(res.data);
-      });
+      setDrug(k[3]);
     }
-  }, []);
+  });
+
+  const paginationHandler = (page: number, pageSize?: number) => {
+    dispatch({
+      type: 'browse/getRemote',
+      payload: {
+        pageIndex: page,
+        pageSize: pageSize ? pageSize : browse.meta.pageSize,
+        celltype: celltype,
+        drug: drug,
+        pcutoff: 0.01,
+        pcutoff2: 0.01,
+        spcutoff: 0.01,
+      },
+    });
+  };
+  const sizeChangeHandler = (current: number, size: number) => {
+    dispatch({
+      type: 'browse/getRemote',
+      payload: {
+        pageIndex: current,
+        pageSize: size,
+        celltype: celltype,
+        drug: drug,
+        pcutoff: 0.01,
+        pcutoff2: 0.01,
+        spcutoff: 0.01,
+      },
+    });
+  };
+
   return (
     <div>
+      {/*<Row justify={'center'}>*/}
+      {/*  <Col style={{ textAlign: 'center' }}>*/}
+      {/*    <Network network={network} height={'500px'} width={1000} />*/}
+      {/*    <strong>*/}
+      {/*      Point Color: <span style={{ color: 'red' }}>dataset:red</span>{' '}*/}
+      {/*      &nbsp; <span style={{ color: 'orange' }}>cell type: orange</span>*/}
+      {/*      &nbsp; <span style={{ color: 'blue' }}>drug:blue</span>*/}
+      {/*    </strong>*/}
+      {/*  </Col>*/}
+      {/*</Row>*/}
       <Row justify={'center'}>
-        <Col style={{ textAlign: 'center' }}>
-          <Network network={network} height={'500px'} width={1000} />
-          <strong>
-            Point Color: <span style={{ color: 'red' }}>dataset:red</span>{' '}
-            &nbsp; <span style={{ color: 'orange' }}>cell type: orange</span>
-            &nbsp; <span style={{ color: 'blue' }}>drug:blue</span>
-          </strong>
-        </Col>
-      </Row>
-      <Row justify={'center'}>
-        <Col md={20}>
+        <Col md={24}>
           <div>
             <ProTable<AssociationItem>
               columns={columns}
-              scroll={{ x: true }}
+              scroll={{ x: 1000 }}
               pagination={{
                 // total:record?.overlapgenenum,
                 showTotal: (total) => `Total ${total} items`,
                 showSizeChanger: false,
                 defaultPageSize: 10,
+                total: browse.meta.total,
+                onChange: paginationHandler,
+                onShowSizeChange: sizeChangeHandler,
               }}
               dataSource={browse.data}
               loading={browseListLoading}
