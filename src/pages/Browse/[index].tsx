@@ -263,6 +263,8 @@ const Index: FC<BrowsePageProps> = ({
 
   const [celltype, setCelltype] = useState(undefined);
   const [drug, setDrug] = useState(undefined);
+  const [phenotype, setPhenotype] = useState(undefined);
+  const [tissue, setTissue] = useState(undefined);
   useEffect(() => {
     const k = history.location.pathname.split('/');
     if (k[2] == 'celltype') {
@@ -270,6 +272,10 @@ const Index: FC<BrowsePageProps> = ({
       setCelltype(k[3]);
     } else if (k[2] == 'drug') {
       setDrug(k[3]);
+    } else if (k[2] == 'phenotype') {
+      setPhenotype(k[3]);
+    } else if (k[2] == 'tissue') {
+      setTissue(k[3]);
     }
   });
 
@@ -281,6 +287,8 @@ const Index: FC<BrowsePageProps> = ({
         pageSize: pageSize ? pageSize : browse.meta.pageSize,
         celltype: celltype,
         drug: drug,
+        tissuegroup: tissue,
+        phenotype: phenotype,
         pcutoff: 0.01,
         pcutoff2: 0.01,
         spcutoff: 0.01,
@@ -295,6 +303,8 @@ const Index: FC<BrowsePageProps> = ({
         pageSize: size,
         celltype: celltype,
         drug: drug,
+        tissuegroup: tissue,
+        phenotype: phenotype,
         pcutoff: 0.01,
         pcutoff2: 0.01,
         spcutoff: 0.01,

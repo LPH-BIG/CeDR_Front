@@ -1544,14 +1544,20 @@ export default function IndexPage() {
             type="primary"
             icon={<SearchOutlined />}
             onClick={() => {
-              history.push(
-                '/general/' + searchkey?.type + '/' + searchkey?.name,
-              );
+              if (searchkey?.type == 'celltype' || searchkey?.type == 'drug') {
+                history.push(
+                  '/browse/' + searchkey?.type + '/' + searchkey?.name,
+                );
+              } else {
+                history.push(
+                  '/general/' + searchkey?.type + '/' + searchkey?.name,
+                );
+              }
             }}
           >
             Search
           </Button>
-          <span></span>
+          {/*<span></span>*/}
         </Col>
       </Row>
       <Divider />
@@ -2024,6 +2030,9 @@ export default function IndexPage() {
             style={{ display: dhuman }}
             bordered={true}
             hoverable={true}
+            onClick={() => {
+              history.push('/general/source/Human');
+            }}
           >
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
@@ -2080,6 +2089,9 @@ export default function IndexPage() {
             style={{ display: dmouse }}
             bordered={true}
             hoverable={true}
+            onClick={() => {
+              history.push('/general/source/Mouse');
+            }}
           >
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic
@@ -2138,6 +2150,9 @@ export default function IndexPage() {
             style={{ display: dcellline }}
             bordered={true}
             hoverable={true}
+            onClick={() => {
+              history.push('/general/source/Cell Line');
+            }}
           >
             <Card.Grid style={{ width: '50%', textAlign: 'center' }}>
               <Statistic

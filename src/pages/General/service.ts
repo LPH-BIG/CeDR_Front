@@ -30,6 +30,8 @@ export const getRemoteList = async (
   tissue: string | undefined,
   tissuegroup: string | undefined,
   phenotype: string | undefined,
+  celltype: string | undefined,
+  drug: string | undefined,
 ) => {
   return extendRequest(API_PREFIX + '/general', {
     method: 'get',
@@ -41,6 +43,8 @@ export const getRemoteList = async (
       tissue: tissue,
       tissuegroup: tissuegroup,
       phenotype: phenotype,
+      cellType: celltype,
+      drug: drug,
     },
   })
     .then(function (response) {

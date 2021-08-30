@@ -7,6 +7,8 @@ export const getRemoteDataset = async ({
   associationid,
   celltype,
   drug,
+  tissuegroup,
+  phenotype,
   overlapgene,
   pcutoff,
   orcutoff,
@@ -21,6 +23,8 @@ export const getRemoteDataset = async ({
   associationid: string | undefined;
   celltype: string | undefined;
   drug: string | undefined;
+  tissuegroup: string | undefined;
+  phenotype: string | undefined;
   overlapgene: string | undefined;
   pcutoff: number | undefined;
   orcutoff: number | undefined;
@@ -38,6 +42,8 @@ export const getRemoteDataset = async ({
       associationid: associationid,
       celltype: celltype,
       drug: drug,
+      tissuegroup: tissuegroup,
+      phenotype: phenotype,
       overlapgene: overlapgene,
       pcutoff: pcutoff,
       orcutoff: orcutoff,

@@ -214,7 +214,7 @@ export default function Page() {
                   icon={<SearchOutlined />}
                   onClick={() => {
                     history.push(
-                      '/general/' + searchkey?.type + '/' + searchkey?.name,
+                      '/browse/' + searchkey?.type + '/' + searchkey?.name,
                     );
                   }}
                 >
@@ -280,7 +280,7 @@ export default function Page() {
                   icon={<SearchOutlined />}
                   onClick={() => {
                     history.push(
-                      '/general/' + searchkey?.type + '/' + searchkey?.name,
+                      '/browse/' + searchkey?.type + '/' + searchkey?.name,
                     );
                   }}
                 >

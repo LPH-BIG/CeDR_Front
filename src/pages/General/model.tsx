@@ -57,6 +57,8 @@ const GeneralModel: GeneralModelType = {
           tissue,
           tissuegroup,
           phenotype,
+          celltype,
+          drug,
         },
       },
       { put, call },
@@ -70,6 +72,8 @@ const GeneralModel: GeneralModelType = {
         tissue,
         tissuegroup,
         phenotype,
+        celltype,
+        drug,
       );
       if (data) {
         yield put({
