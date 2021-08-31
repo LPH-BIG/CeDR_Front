@@ -1557,7 +1557,6 @@ export default function IndexPage() {
           >
             Search
           </Button>
-          {/*<span></span>*/}
         </Col>
       </Row>
       <Divider />

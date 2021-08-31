@@ -18,6 +18,7 @@ import { connect } from 'umi';
 import ProTable, { IntlProvider, enUSIntl } from '@ant-design/pro-table';
 import Tsne from '@/components/Tsne';
 import Pie from '@/components/Pie';
+import { Parser } from 'json2csv';
 import {
   getRemoteTsne,
   getRemoteNetwork,
@@ -70,7 +71,7 @@ const Index: FC<DatasetPageProps> = ({
         setSummary(res.data[0]);
       });
     }
-  }, [dataset]);
+  }, []);
   useEffect(() => {
     const data = dataset.data[0];
     if (data) {
@@ -82,7 +83,7 @@ const Index: FC<DatasetPageProps> = ({
         data.project + ' ' + data.tissuegroup + ' ' + data.phenotype,
       );
     }
-  }, [dataset, history.location.pathname]);
+  }, []);
   useEffect(() => {
     const data = dataset.data[0];
     if (data) {
@@ -91,7 +92,7 @@ const Index: FC<DatasetPageProps> = ({
         setNetwork(res.data);
       });
     }
-  }, [dataset]);
+  }, []);
   useEffect(() => {
     const data = dataset.data[0];
 
@@ -102,7 +103,7 @@ const Index: FC<DatasetPageProps> = ({
         setPie(res.data);
       });
     }
-  }, [dataset]);
+  }, []);
 
   const columns = [
     {
@@ -761,38 +762,121 @@ const Index: FC<DatasetPageProps> = ({
                       collapsed: false,
                     }}
                     options={false}
-                    // rowSelection={{fixed:true,
-                    //   onSelect:(record, selected, selectedRows, nativeEvent)=>{
-                    //     if (selected){
-                    //       setSelectitems(Array.from(new Set(selectitems.concat(selectedRows))));
-                    //     }else {
-                    //       setSelectitems(Array.from(new Set(selectitems.concat(selectedRows))));
-                    //     }
-                    //   },
-                    //   onSelectAll:(selected, selectedRows, changeRows)=>{
-                    //
-                    //   }
-                    // }}
-                    // tableAlertRender={({ selectedRowKeys, selectedRows, onCleanSelected }) => (
-                    //   <Space size={24}>
-                    //     <span>
-                    //       selected {selectitems.length} items
-                    //       <a style={{ marginLeft: 8 }} onClick={onCleanSelected}>
-                    //         cancel selected
-                    //       </a>
-                    //     </span>
-                    //     {/*<span>*/}
-                    //     {/*  {`total overlap genes: ${selectedRows.reduce((pre, item) => pre + item.overlapgenenum,0)}`}*/}
-                    //     {/*</span>*/}
-                    //   </Space>
-                    // )}
-                    // tableAlertOptionRender={()=>{
-                    //   return (
-                    //     <Space size={16}>
-                    //       <a>Download</a>
-                    //     </Space>
-                    //   );
-                    // }}
+                    rowSelection={{
+                      fixed: true,
+                      onSelect: (
+                        record,
+                        selected,
+                        selectedRows,
+                        nativeEvent,
+                      ) => {
+                        if (selected) {
+                          let a = Array.from(
+                            new Set(selectitems.concat(selectedRows)),
+                          );
+                          let b = a.filter((res) => res != undefined);
+                          setSelectitems(b);
+                        } else {
+                          let a = new Set();
+                          a.add(record);
+                          let b = selectitems.filter((x) => !a.has(x));
+                          setSelectitems(b);
+                        }
+                      },
+                      onSelectAll: (selected, selectedRows, changeRows) => {
+                        if (selected) {
+                          let a = Array.from(
+                            new Set(selectitems.concat(selectedRows)),
+                          );
+                          let b = a.filter((res) => res != undefined);
+                          setSelectitems(b);
+                        } else {
+                          let a = new Set(changeRows);
+                          let b = selectitems.filter((x) => !a.has(x));
+                          setSelectitems(b);
+                        }
+                      },
+                    }}
+                    tableAlertRender={({
+                      selectedRowKeys,
+                      selectedRows,
+                      onCleanSelected,
+                    }) => {
+                      const onCancelselected = () => {
+                        setSelectitems([]);
+                      };
+                      return (
+                        <Space size={24}>
+                          <span>
+                            {selectitems.length} items selected
+                            <span onClick={onCancelselected}>
+                              <a
+                                style={{ marginLeft: 8 }}
+                                onClick={onCleanSelected}
+                              >
+                                cancel selected
+                              </a>
+                            </span>
+                          </span>
+                          {/*<span>*/}
+                          {/*  {`total overlap genes: ${selectedRows.reduce((pre, item) => pre + item.overlapgenenum,0)}`}*/}
+                          {/*</span>*/}
+                        </Space>
+                      );
+                    }}
+                    tableAlertOptionRender={({
+                      selectedRowKeys,
+                      selectedRows,
+                      onCleanSelected,
+                    }) => {
+                      return (
+                        <Space size={16}>
+                          <a
+                            onClick={() => {
+                              let element = document.createElement('a');
+                              const fields = [
+                                'datasetid',
+                                'associationid',
+                                'source',
+                                'project',
+                                'tissue',
+                                'tissuegroup',
+                                'phenotype',
+                                'celltype',
+                                'inst',
+                                'drug',
+                                'pvalue1',
+                                'oddsratio1',
+                                'pvalue2',
+                                'oddsratio2',
+                                'spearman',
+                                'spvalue',
+                                'overlapgenenum',
+                                'overlapgene',
+                              ];
+                              const json2csvParser = new Parser({ fields });
+                              const csv = json2csvParser.parse(selectitems);
+                              element.setAttribute(
+                                'href',
+                                'data:text/csv;charset=utf-8,' +
+                                  encodeURIComponent(csv),
+                              );
+                              element.setAttribute(
+                                'download',
+                                'cedr_associations.csv',
+                              );
+                              element.style.display = 'none';
+                              document.body.appendChild(element);
+                              element.click();
+                              document.body.removeChild(element);
+                              onCleanSelected;
+                            }}
+                          >
+                            Download
+                          </a>
+                        </Space>
+                      );
+                    }}
                   />
                   <Pagination
                     key={'generalPagination'}
