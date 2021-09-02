@@ -6,6 +6,7 @@ import { getRemoteNetwork } from '@/pages/Dataset/service';
 import { Col, Select, Space, Row } from 'antd';
 import { AssociationItem } from '@/pages/Dataset/data';
 import Network from '@/components/Network';
+import { Parser } from 'json2csv';
 interface BrowsePageProps {
   browse: DatasetState;
   dispatch: Dispatch;
@@ -265,6 +266,8 @@ const Index: FC<BrowsePageProps> = ({
   const [drug, setDrug] = useState(undefined);
   const [phenotype, setPhenotype] = useState(undefined);
   const [tissue, setTissue] = useState(undefined);
+  const [selectitems, setSelectitems] = useState<AssociationItem>([]);
+
   useEffect(() => {
     const k = history.location.pathname.split('/');
     if (k[2] == 'celltype') {
@@ -343,6 +346,113 @@ const Index: FC<BrowsePageProps> = ({
               loading={browseListLoading}
               rowKey={(record) => record.id}
               search={false}
+              rowSelection={{
+                fixed: true,
+                onSelect: (record, selected, selectedRows, nativeEvent) => {
+                  if (selected) {
+                    let a = Array.from(
+                      new Set(selectitems.concat(selectedRows)),
+                    );
+                    let b = a.filter((res) => res != undefined);
+                    setSelectitems(b);
+                  } else {
+                    let a = new Set();
+                    a.add(record);
+                    let b = selectitems.filter((x) => !a.has(x));
+                    setSelectitems(b);
+                  }
+                },
+                onSelectAll: (selected, selectedRows, changeRows) => {
+                  if (selected) {
+                    let a = Array.from(
+                      new Set(selectitems.concat(selectedRows)),
+                    );
+                    let b = a.filter((res) => res != undefined);
+                    setSelectitems(b);
+                  } else {
+                    let a = new Set(changeRows);
+                    let b = selectitems.filter((x) => !a.has(x));
+                    setSelectitems(b);
+                  }
+                },
+              }}
+              tableAlertRender={({
+                selectedRowKeys,
+                selectedRows,
+                onCleanSelected,
+              }) => {
+                const onCancelselected = () => {
+                  setSelectitems([]);
+                };
+                return (
+                  <Space size={24}>
+                    <span>
+                      {selectitems.length} items selected
+                      <span onClick={onCancelselected}>
+                        <a style={{ marginLeft: 8 }} onClick={onCleanSelected}>
+                          cancel selected
+                        </a>
+                      </span>
+                    </span>
+                    {/*<span>*/}
+                    {/*  {`total overlap genes: ${selectedRows.reduce((pre, item) => pre + item.overlapgenenum,0)}`}*/}
+                    {/*</span>*/}
+                  </Space>
+                );
+              }}
+              tableAlertOptionRender={({
+                selectedRowKeys,
+                selectedRows,
+                onCleanSelected,
+              }) => {
+                return (
+                  <Space size={16}>
+                    <a
+                      onClick={() => {
+                        let element = document.createElement('a');
+                        const fields = [
+                          'datasetid',
+                          'associationid',
+                          'source',
+                          'project',
+                          'tissue',
+                          'tissuegroup',
+                          'phenotype',
+                          'celltype',
+                          'inst',
+                          'drug',
+                          'pvalue1',
+                          'oddsratio1',
+                          'pvalue2',
+                          'oddsratio2',
+                          'spearman',
+                          'spvalue',
+                          'overlapgenenum',
+                          'overlapgene',
+                        ];
+                        const json2csvParser = new Parser({ fields });
+                        const csv = json2csvParser.parse(selectitems);
+                        element.setAttribute(
+                          'href',
+                          'data:text/csv;charset=utf-8,' +
+                            encodeURIComponent(csv),
+                        );
+                        element.setAttribute(
+                          'download',
+                          'CeDR_associations.csv',
+                        );
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+                        onCleanSelected;
+                      }}
+                    >
+                      Download
+                    </a>
+                  </Space>
+                );
+              }}
             />
           </div>
         </Col>

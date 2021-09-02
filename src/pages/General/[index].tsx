@@ -9,6 +9,7 @@ import { GeneralItem, SearchKeywords } from '@/pages/General/data';
 import { DotChartOutlined } from '@ant-design/icons';
 import { getRemoteGeneralKeywords } from './service';
 import { pathToRegexp } from 'path-to-regexp';
+import { Parser } from 'json2csv';
 interface GeneralPageProps {
   general: GeneralState;
   dispatch: Dispatch;
@@ -28,6 +29,7 @@ const GeneralListPage: FC<GeneralPageProps> = ({
   const [celltype, setCelltype] = useState([]);
   const [inst, setInst] = useState([]);
   const [keywords, setKeywords] = useState<SearchKeywords>({});
+  const [selectitems, setSelectitems] = useState<GeneralItem>([]);
 
   useEffect(() => {
     const match1 = pathToRegexp('/cedr/general/:type/:name').exec(
@@ -476,8 +478,13 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                   return record.id.toString();
                 }}
                 onSubmit={(params) => {
-                  const { source, tissue, project, phenotype, tissuegroup } =
-                    keywords;
+                  const {
+                    source,
+                    tissue,
+                    project,
+                    phenotype,
+                    tissuegroup,
+                  } = keywords;
                   dispatch({
                     type: 'general/getRemote',
                     payload: {
@@ -509,6 +516,109 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                   collapseRender: false,
                   collapsed: false,
                   // collapseRender: ()=>{return(<span>Collapse</span>)}
+                }}
+                rowSelection={{
+                  fixed: true,
+                  onSelect: (record, selected, selectedRows, nativeEvent) => {
+                    if (selected) {
+                      let a = Array.from(
+                        new Set(selectitems.concat(selectedRows)),
+                      );
+                      let b = a.filter((res) => res != undefined);
+                      setSelectitems(b);
+                    } else {
+                      let a = new Set();
+                      a.add(record);
+                      let b = selectitems.filter((x) => !a.has(x));
+                      setSelectitems(b);
+                    }
+                  },
+                  onSelectAll: (selected, selectedRows, changeRows) => {
+                    if (selected) {
+                      let a = Array.from(
+                        new Set(selectitems.concat(selectedRows)),
+                      );
+                      let b = a.filter((res) => res != undefined);
+                      setSelectitems(b);
+                    } else {
+                      let a = new Set(changeRows);
+                      let b = selectitems.filter((x) => !a.has(x));
+                      setSelectitems(b);
+                    }
+                  },
+                }}
+                tableAlertRender={({
+                  selectedRowKeys,
+                  selectedRows,
+                  onCleanSelected,
+                }) => {
+                  const onCancelselected = () => {
+                    setSelectitems([]);
+                  };
+                  return (
+                    <Space size={24}>
+                      <span>
+                        {selectitems.length} items selected
+                        <span onClick={onCancelselected}>
+                          <a
+                            style={{ marginLeft: 8 }}
+                            onClick={onCleanSelected}
+                          >
+                            cancel selected
+                          </a>
+                        </span>
+                      </span>
+                      {/*<span>*/}
+                      {/*  {`total overlap genes: ${selectedRows.reduce((pre, item) => pre + item.overlapgenenum,0)}`}*/}
+                      {/*</span>*/}
+                    </Space>
+                  );
+                }}
+                tableAlertOptionRender={({
+                  selectedRowKeys,
+                  selectedRows,
+                  onCleanSelected,
+                }) => {
+                  return (
+                    <Space size={16}>
+                      <a
+                        onClick={() => {
+                          let element = document.createElement('a');
+                          const fields = [
+                            'datasetid',
+                            'source',
+                            'cell_source',
+                            'project',
+                            'tissue',
+                            'tissuegroup',
+                            'phenotype',
+                            'celltype',
+                            'drug',
+                            'total_reported_cell',
+                            'celltype_num',
+                            'technique',
+                            'title',
+                            'doi',
+                          ];
+                          const json2csvParser = new Parser({ fields });
+                          const csv = json2csvParser.parse(selectitems);
+                          element.setAttribute(
+                            'href',
+                            'data:text/csv;charset=utf-8,' +
+                              encodeURIComponent(csv),
+                          );
+                          element.setAttribute('download', 'CeDR_datasets.csv');
+                          element.style.display = 'none';
+                          document.body.appendChild(element);
+                          element.click();
+                          document.body.removeChild(element);
+                          onCleanSelected;
+                        }}
+                      >
+                        Download
+                      </a>
+                    </Space>
+                  );
                 }}
               />
               <Pagination

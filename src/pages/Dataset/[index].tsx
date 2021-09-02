@@ -71,7 +71,7 @@ const Index: FC<DatasetPageProps> = ({
         setSummary(res.data[0]);
       });
     }
-  }, []);
+  }, [dataset]);
   useEffect(() => {
     const data = dataset.data[0];
     if (data) {
@@ -83,7 +83,7 @@ const Index: FC<DatasetPageProps> = ({
         data.project + ' ' + data.tissuegroup + ' ' + data.phenotype,
       );
     }
-  }, []);
+  }, [dataset]);
   useEffect(() => {
     const data = dataset.data[0];
     if (data) {
@@ -92,7 +92,7 @@ const Index: FC<DatasetPageProps> = ({
         setNetwork(res.data);
       });
     }
-  }, []);
+  }, [dataset]);
   useEffect(() => {
     const data = dataset.data[0];
 
@@ -103,7 +103,7 @@ const Index: FC<DatasetPageProps> = ({
         setPie(res.data);
       });
     }
-  }, []);
+  }, [dataset]);
 
   const columns = [
     {
@@ -863,7 +863,7 @@ const Index: FC<DatasetPageProps> = ({
                               );
                               element.setAttribute(
                                 'download',
-                                'cedr_associations.csv',
+                                'CeDR_associations.csv',
                               );
                               element.style.display = 'none';
                               document.body.appendChild(element);

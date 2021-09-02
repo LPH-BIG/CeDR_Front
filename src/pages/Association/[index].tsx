@@ -185,7 +185,7 @@ const Index = ({
         >
           <div>
             <Row>
-              <Title level={4}>GSEA analysis:</Title>
+              <Title level={4}>GSEA Analysis:</Title>
               <Divider />
               <Alert
                 message="Warning"

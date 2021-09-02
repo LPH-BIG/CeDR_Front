@@ -53,4 +53,12 @@ export default defineConfig({
       content: 'shrink-to-fit=yes',
     },
   ],
+  mfsu: {
+    development: {
+      output: './.mfsu-dev',
+    },
+    production: {
+      output: './.mfsu-prod',
+    },
+  },
 });

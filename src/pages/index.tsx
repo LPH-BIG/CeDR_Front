@@ -1985,7 +1985,7 @@ export default function IndexPage() {
                 <Link
                   href={'https://singlecell.broadinstitute.org/single_cell'}
                 >
-                  Single Cell portal,
+                  Single Cell portal,&nbsp;
                 </Link>
                 <Link href={'https://db.cngb.org/HCL/'}>
                   Human Cell Landscape,
@@ -1999,10 +1999,10 @@ export default function IndexPage() {
                 {/*  CCLE*/}
                 {/*</Link>*/}
                 {
-                  ' and other available labeled datasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 phenotypes and 1250 tissue-cell combination types, which result about '
+                  ') and other available labeled datasets to conduct the tissue cell type specific drug response analysis. CeDR provides direct references for cellular drug response profiles including not only disease cell types but also normal cell types. Currently, CeDR maintains the results for more than 582 single cell data objects for human, mouse and cell lines, including about 140 phenotypes and 1250 tissue-cell combination types, which result about '
                 }
                 <strong style={{ color: 'red' }}>188,157</strong>
-                {'  for human,'}
+                {'  for human, '}
                 <strong style={{ color: 'red' }}>42,660 </strong>
                 {'  for mouse and '}
                 <strong style={{ color: 'red' }}>10,299</strong>
@@ -2015,7 +2015,7 @@ export default function IndexPage() {
                 }
                 {' For details of usage of this database please see the '}
                 <Link href={'https://ngdc.cncb.ac.cn/cedr/documentation'}>
-                  documentation
+                  Documentation
                 </Link>
                 {' page.'}
               </Text>
@@ -2212,6 +2212,9 @@ export default function IndexPage() {
             hoverable={true}
           >
             <Timeline>
+              <Timeline.Item style={{ fontSize: '16px' }}>
+                Add Download function to tables 2021-09-02
+              </Timeline.Item>
               <Timeline.Item style={{ fontSize: '16px' }}>
                 Bugs being fixed 2021-08-27
               </Timeline.Item>
