@@ -26,7 +26,7 @@ export default defineConfig({
   base: '/cedr',
   outputPath: './dist/cedr',
   publicPath: '/cedr/',
-  //动态加载能减小初次加载时长
+  // //动态加载能减小初次加载时长
   dynamicImport: {
     loading: '@/Loading',
   },
@@ -53,12 +53,12 @@ export default defineConfig({
       content: 'shrink-to-fit=yes',
     },
   ],
-  mfsu: {
-    development: {
-      output: './.mfsu-dev',
-    },
-    production: {
-      output: './.mfsu-prod',
-    },
-  },
+  // mfsu: {
+  //   development: {
+  //     output: './.mfsu-dev',
+  //   },
+  //   production: {
+  //     output: './.mfsu-prod',
+  //   },
+  // },
 });
