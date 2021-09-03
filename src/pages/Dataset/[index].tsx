@@ -601,15 +601,14 @@ const Index: FC<DatasetPageProps> = ({
               <Col xs={6} sm={8} md={24} lg={24} xl={24}>
                 <Descriptions title={'Summary'} bordered>
                   <Descriptions.Item label="Project" span={1}>
-                    <a href={'https://www.doi.org/' + summary?.doi}>
+                    <a href={summary?.projectsource} target={'_blank'}>
                       {summary?.project}
                     </a>
                   </Descriptions.Item>
                   <Descriptions.Item label="Dataset ID">
                     <a
-                      onClick={() => {
-                        history.push('/dataset/' + summary?.datasetid);
-                      }}
+                      href={'https://www.doi.org/' + summary?.doi}
+                      target={'_blank'}
                     >
                       {summary?.datasetid}
                     </a>
