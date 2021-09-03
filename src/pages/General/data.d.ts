@@ -3,6 +3,7 @@ export interface GeneralItem {
   datasetid: string;
   source: string;
   project: string;
+  projectsource: string;
   // subproject: string;
   tissue: string;
   tissuegroup: string;

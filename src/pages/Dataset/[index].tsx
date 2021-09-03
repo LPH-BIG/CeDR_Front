@@ -282,8 +282,7 @@ const Index: FC<DatasetPageProps> = ({
       render: (text, record, index) => {
         return parseFloat(record.pvalue1).toExponential(4);
       },
-      tooltip:
-        'The explanation of p-value 1 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
+      tooltip: 'The explanation of p-value 1 is in Documentation page.',
       ellipsis: true,
       // search: false,
       renderFormItem: () => {
@@ -339,8 +338,7 @@ const Index: FC<DatasetPageProps> = ({
     {
       title: 'p-value 2  (Low Expression)',
       dataIndex: 'pvalue2',
-      tooltip:
-        'The explanation of p-value 2 is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
+      tooltip: 'The explanation of p-value 2 is in Documentation page.',
       key: 'pvalue2',
       // valueType: 'text',
       width: 150,
@@ -416,8 +414,7 @@ const Index: FC<DatasetPageProps> = ({
       dataIndex: 'spvalue',
       key: 'spvalue',
       width: 100,
-      tooltip:
-        'The explanation of S p-value is in Documentation page and it means the p-value <0.00001 when this column shows 0.',
+      tooltip: 'The explanation of S p-value is in Documentation page.',
       render: (text, record, index) => {
         return parseFloat(record.spvalue).toExponential(4);
       },
@@ -700,7 +697,7 @@ const Index: FC<DatasetPageProps> = ({
                     scroll={{ x: 2000 }}
                     // headerTitle="日期类"
                     expandable={{
-                      expandIconColumnIndex: 11,
+                      expandIconColumnIndex: 12,
                       expandedRowRender: (record, index, indent, expanded) => {
                         return (
                           <p style={{ textAlign: 'right' }}>

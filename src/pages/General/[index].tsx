@@ -163,21 +163,17 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       search: false,
       ellipsis: true,
       render: (text: string, record: GeneralItem) => {
-        if (record.doi) {
-          return (
-            <span>
-              <a
-                className={styles.link}
-                href={'https://www.doi.org/' + record.doi}
-                target={'_blank'}
-              >
-                <Space>{record.project}</Space>
-              </a>
-            </span>
-          );
-        } else {
-          return <Space>{record.project}</Space>;
-        }
+        return (
+          <span>
+            <a
+              className={styles.link}
+              href={record.projectsource}
+              target={'_blank'}
+            >
+              <Space>{record.project}</Space>
+            </a>
+          </span>
+        );
       },
     },
     {
@@ -232,6 +228,9 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       width: 100,
       valueType: 'text',
       ellipsis: true,
+      render: (text: string, record: GeneralItem) => {
+        return <div className={styles.link}>{record.cell_source}</div>;
+      },
       // render:(text: string, record: GeneralItem)=>{
       //   return (<span style={{textOverflow:'ellipsis',whiteSpace:'nowrap',overflow:'hidden'}}>{text}</span>)
       // }
@@ -376,11 +375,20 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       },
     },
     {
-      title: 'Description',
+      title: 'Title',
       dataIndex: 'title',
-      ellipsis: true,
+      // ellipsis: true,
       hideInSearch: true,
       width: 150,
+      render: (text: string, record: GeneralItem) => {
+        return (
+          <span>
+            <a href={'https://www.doi.org/' + record.doi} target={'_blank'}>
+              <div className={styles.link}>{record.title}</div>
+            </a>
+          </span>
+        );
+      },
     },
     {
       title: 'Total Reported Cells',
@@ -406,6 +414,9 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       // fixed:'right',
       hideInForm: true,
       ellipsis: true,
+      render: (text: string, record: GeneralItem) => {
+        return <div className={styles.link}>{record.celltype}</div>;
+      },
     },
     {
       title: 'Top 10 Drugs',
@@ -417,6 +428,9 @@ const GeneralListPage: FC<GeneralPageProps> = ({
       hideInForm: true,
       search: false,
       ellipsis: true,
+      render: (text: string, record: GeneralItem) => {
+        return <div className={styles.link}>{record.cell_source}</div>;
+      },
     },
   ];
 
@@ -478,13 +492,8 @@ const GeneralListPage: FC<GeneralPageProps> = ({
                   return record.id.toString();
                 }}
                 onSubmit={(params) => {
-                  const {
-                    source,
-                    tissue,
-                    project,
-                    phenotype,
-                    tissuegroup,
-                  } = keywords;
+                  const { source, tissue, project, phenotype, tissuegroup } =
+                    keywords;
                   dispatch({
                     type: 'general/getRemote',
                     payload: {

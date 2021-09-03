@@ -1985,7 +1985,7 @@ export default function IndexPage() {
                 <Link
                   href={'https://singlecell.broadinstitute.org/single_cell'}
                 >
-                  Single Cell portal,&nbsp;
+                  Single Cell Portal,&nbsp;
                 </Link>
                 <Link href={'https://db.cngb.org/HCL/'}>
                   Human Cell Landscape,
@@ -2244,6 +2244,13 @@ export default function IndexPage() {
                 {' '}
                 <LinkOutlined />
                 &nbsp;GEO{' '}
+              </a>
+            </p>
+            <p>
+              <a href={'https://ngdc.cncb.ac.cn/gen'}>
+                {' '}
+                <LinkOutlined />
+                &nbsp;GEN{' '}
               </a>
             </p>
             <p>
