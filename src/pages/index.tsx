@@ -139,12 +139,8 @@ export default function IndexPage() {
   const chBlood = (
     <div>
       <p>
-        <a
-          href={
-            '/cedr/general/source/GEN/tissue/Blood/phenotype/Healthy Control'
-          }
-        >
-          Healthy Control
+        <a href={'/cedr/general/source/GEN/tissue/Blood/phenotype/Normal'}>
+          Normal
         </a>
       </p>
       <p>
@@ -229,8 +225,8 @@ export default function IndexPage() {
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/Healthy'}>
-          Healthy
+        <a href={'/cedr/general/source/Human/tissue/Blood/phenotype/Normal'}>
+          Normal
         </a>
       </p>
       <p>
@@ -317,12 +313,8 @@ export default function IndexPage() {
   const chBone = (
     <div>
       <p>
-        <a
-          href={
-            '/cedr/general/source/GEN/tissue/Bone/phenotype/Healthy Control'
-          }
-        >
-          Healthy Control
+        <a href={'/cedr/general/source/GEN/tissue/Bone/phenotype/Normal'}>
+          Normal
         </a>
       </p>
       <p>
@@ -346,21 +338,23 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/AML-Normal'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/AML-Normal'
           }
         >
           Bone Marrow AML-Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/source/Human/tissue/BoneMarrow/phenotype/BALL'}>
+        <a
+          href={'/cedr/general/source/Human/tissue/Bone Marrow/phenotype/BALL'}
+        >
           Bone Marrow BALL
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterial Sepsis-LPS'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/Bacterial Sepsis-LPS'
           }
         >
           Bone Marrow Bacterial Sepsis-LPS
@@ -369,7 +363,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterial Sepsis-NT'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/Bacterial Sepsis-NT'
           }
         >
           Bone Marrow Bacterial Sepsis-NT
@@ -378,7 +372,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Bacterial Sepsis-PAM3CSK4'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/Bacterial Sepsis-PAM3CSK4'
           }
         >
           Bone Marrow Bacterial Sepsis-PAM3CSK4
@@ -387,7 +381,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/OC-Normal'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/OC-Normal'
           }
         >
           Bone Marrow OC-Normal
@@ -396,7 +390,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/AML-Malignant'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/AML-Malignant'
           }
         >
           Bone Marrow AML-Malignant
@@ -405,21 +399,21 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/BM-Normal'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/BM-Normal'
           }
         >
           Bone Marrow Normal
         </a>
       </p>
       <p>
-        <a href={'/cedr/general/source/Human/tissue/BoneMarrow/phenotype/MYE'}>
+        <a href={'/cedr/general/source/Human/tissue/Bone Marrow/phenotype/MYE'}>
           Bone Marrow MYE
         </a>
       </p>
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/Peripheral'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/Peripheral'
           }
         >
           Bone Marrow Peripheral
@@ -428,7 +422,7 @@ export default function IndexPage() {
       <p>
         <a
           href={
-            '/cedr/general/source/Human/tissue/BoneMarrow/phenotype/MUT-Normal'
+            '/cedr/general/source/Human/tissue/Bone Marrow/phenotype/MUT-Normal'
           }
         >
           Bone Marrow MUT-Normal

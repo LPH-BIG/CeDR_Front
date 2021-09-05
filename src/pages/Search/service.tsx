@@ -1,5 +1,12 @@
 import { extendRequest } from '@/pages/General/service';
 import { API_PREFIX } from '@/common/constants';
+export interface multipleKeywordsItem {
+  source: string | undefined;
+  tissuegroup: string | undefined;
+  phenotype: string | undefined;
+  celltype: string | undefined;
+  drug: string | undefined;
+}
 export const getSelect = async ({
   type,
   name,

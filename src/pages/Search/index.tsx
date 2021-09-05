@@ -8,23 +8,25 @@ import {
 } from '@ant-design/icons';
 import { Typography } from 'antd';
 import { searchKeywordsItem } from '@/pages/index';
-import { getSelect } from '@/pages/Search/service';
+import {
+  getRemoteTypeKeywords,
+  getSelect,
+  multipleKeywordsItem,
+} from '@/pages/Search/service';
 import { history } from 'umi';
 const { Title } = Typography;
 export default function Page() {
-  const [celltypes, setCelltypes] = useState([]);
-  const [drugs, setDrugs] = useState([]);
   const [searchkey, setSearchkey] = useState<searchKeywordsItem>();
+  const [multiplekey, setMultiplekey] = useState<multipleKeywordsItem>({});
   const [coptions, setCoptions] = useState([]);
-  const [doptions, setDoptions] = useState([]);
+  const [options, setOptions] = useState([]);
   return (
     <div>
       <Row style={{ justifyContent: 'center' }}>
         <Col md={24}>
           <PageHeader
             className="site-page-header"
-            title="Advanced Search"
-            // subTitle="This is a subtitle"
+            title="Single Criteria  Search"
           />
           <Divider />
           <Row style={{ height: '100px' }}>
@@ -287,6 +289,153 @@ export default function Page() {
                   Search
                 </Button>
               </div>
+            </Col>
+          </Row>
+          <Divider />
+          <PageHeader
+            className="site-page-header"
+            title="Multiple Criteria  Search"
+          />
+          <Row justify="center" style={{ marginBottom: '10%' }}>
+            <Col xs={18} sm={18} md={18} lg={18} xl={12}>
+              <Select
+                style={{ width: '70%' }}
+                placeholder="input and select multiple keyword"
+                showSearch={true}
+                allowClear={true}
+                showArrow
+                optionLabelProp="value"
+                mode="multiple"
+                onFocus={() => {
+                  getRemoteTypeKeywords('').then((res) => {
+                    const op = res.data.map((item) => (
+                      <Select.Option
+                        key={item.id}
+                        value={item.name}
+                        type={item.type}
+                      >
+                        <Tag
+                          icon={<FlagOutlined />}
+                          style={{ float: 'left', color: '#3D84B8' }}
+                        >
+                          {item.type} is
+                        </Tag>
+                        <Tag
+                          icon={<EnvironmentOutlined />}
+                          style={{ float: 'right' }}
+                        >
+                          {item.name}
+                        </Tag>
+                      </Select.Option>
+                    ));
+                    setOptions(op);
+                  });
+                }}
+                onSearch={(value: string) => {
+                  getRemoteTypeKeywords(value).then((res) => {
+                    const op = res.data.map((item) => (
+                      <Select.Option
+                        key={item.id}
+                        value={item.name}
+                        type={item.type}
+                      >
+                        <Tag
+                          icon={<FlagOutlined />}
+                          style={{ float: 'left', color: '#3D84B8' }}
+                        >
+                          {item.type} is
+                        </Tag>
+                        <Tag
+                          icon={<EnvironmentOutlined />}
+                          style={{ float: 'right' }}
+                        >
+                          {item.name}
+                        </Tag>
+                      </Select.Option>
+                    ));
+                    setOptions(op);
+                  });
+                }}
+                onSelect={(value, option) => {
+                  // console.log(option);
+                  switch (option.type) {
+                    case 'source': {
+                      setMultiplekey({ ...multiplekey, source: value });
+                      break;
+                    }
+                    case 'tissue': {
+                      setMultiplekey({ ...multiplekey, tissuegroup: value });
+                      break;
+                    }
+                    case 'phenotype': {
+                      setMultiplekey({ ...multiplekey, phenotype: value });
+                      break;
+                    }
+                    case 'celltype': {
+                      setMultiplekey({ ...multiplekey, celltype: value });
+                      break;
+                    }
+                    case 'drug': {
+                      setMultiplekey({ ...multiplekey, drug: value });
+                      break;
+                    }
+                  }
+                }}
+                onDeselect={(value, option) => {
+                  // console.log(value);
+                  // console.log(option);
+                  switch (option.type) {
+                    case 'source': {
+                      setMultiplekey({ ...multiplekey, source: undefined });
+                      break;
+                    }
+                    case 'tissue': {
+                      setMultiplekey({
+                        ...multiplekey,
+                        tissuegroup: undefined,
+                      });
+                      break;
+                    }
+                    case 'phenotype': {
+                      setMultiplekey({ ...multiplekey, phenotype: undefined });
+                      break;
+                    }
+                    case 'celltype': {
+                      setMultiplekey({ ...multiplekey, celltype: undefined });
+                      break;
+                    }
+                    case 'drug': {
+                      setMultiplekey({ ...multiplekey, drug: undefined });
+                      break;
+                    }
+                  }
+                }}
+              >
+                {options}
+              </Select>
+              <Button
+                type="primary"
+                icon={<SearchOutlined />}
+                onClick={() => {
+                  console.log(multiplekey);
+                  history.push(
+                    '/browse' +
+                      '/source/' +
+                      multiplekey.source +
+                      '/tissue/' +
+                      multiplekey.tissuegroup +
+                      '/phenotype/' +
+                      multiplekey.phenotype +
+                      '/cellltype/' +
+                      multiplekey.celltype +
+                      '/drug/' +
+                      multiplekey.drug,
+                  );
+                  setMultiplekey({});
+                }}
+              >
+                Search
+              </Button>
             </Col>
           </Row>
         </Col>

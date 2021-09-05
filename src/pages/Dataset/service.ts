@@ -3,6 +3,7 @@ import { API_PREFIX } from '@/common/constants';
 export const getRemoteDataset = async ({
   pageIndex,
   pageSize,
+  source,
   datasetid,
   associationid,
   celltype,
@@ -19,6 +20,7 @@ export const getRemoteDataset = async ({
 }: {
   pageIndex: number | undefined;
   pageSize: number | undefined;
+  source: string | undefined;
   datasetid: string | undefined;
   associationid: string | undefined;
   celltype: string | undefined;
@@ -38,6 +40,7 @@ export const getRemoteDataset = async ({
     params: {
       pageIndex: pageIndex,
       pageSize: pageSize,
+      source: source,
       datasetid: datasetid,
       associationid: associationid,
       celltype: celltype,

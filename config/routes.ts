@@ -59,6 +59,10 @@ export default [
         component: '@/pages/Browse/[index]',
       },
       {
+        path: '/browse/source/:name1/tissue/:name2/phenotype/:name3/cellltype/:name4/drug/:name5',
+        component: '@/pages/Browse/[index]',
+      },
+      {
         path: '/browse/:type/:name',
         component: '@/pages/Browse/[index]',
       },

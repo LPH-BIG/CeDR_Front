@@ -119,6 +119,14 @@ const Index: FC<BrowsePageProps> = ({
       },
     },
     {
+      title: 'Tissue Group',
+      dataIndex: 'tissuegroup',
+      valueType: 'text',
+      hideInForm: true,
+      width: 100,
+      ellipsis: true,
+    },
+    {
       title: 'Phenotype',
       dataIndex: 'phenotype',
       valueType: 'text',

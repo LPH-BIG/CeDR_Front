@@ -44,6 +44,7 @@ const BrowseModel: BrowseModelType = {
         payload: {
           pageIndex,
           pageSize,
+          source,
           datasetid,
           associationid,
           celltype,
@@ -53,6 +54,10 @@ const BrowseModel: BrowseModelType = {
           overlapgene,
           pcutoff,
           orcutoff,
+          pcutoff2,
+          orcutoff2,
+          spcutoff,
+          spearman,
         },
       },
       { put, call },
@@ -60,6 +65,7 @@ const BrowseModel: BrowseModelType = {
       const data = yield call(getRemoteDataset, {
         pageIndex,
         pageSize,
+        source,
         datasetid,
         associationid,
         celltype,
@@ -69,6 +75,10 @@ const BrowseModel: BrowseModelType = {
         overlapgene,
         pcutoff,
         orcutoff,
+        pcutoff2,
+        orcutoff2,
+        spcutoff,
+        spearman,
       });
       if (data) {
         yield put({
@@ -82,12 +92,15 @@ const BrowseModel: BrowseModelType = {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/browse/:type/:name').exec(
+        const match1 = pathToRegexp('/browse/:type/:name').exec(
           location.pathname,
         );
-        if (match) {
-          const type = match[1];
-          const name = match[2];
+        const match2 = pathToRegexp(
+          '/browse/source/:name1/tissue/:name2/phenotype/:name3/cellltype/:name4/drug/:name5',
+        ).exec(location.pathname);
+        if (match1) {
+          const type = match1[1];
+          const name = match1[2];
           console.log(type);
           console.log(name);
           switch (type) {
@@ -149,6 +162,28 @@ const BrowseModel: BrowseModelType = {
               break;
             }
           }
+        } else if (match2) {
+          const source = match2[1] != 'undefined' ? match2[1] : undefined;
+          const tissue = match2[2] != 'undefined' ? match2[2] : undefined;
+          const phenotype = match2[3] != 'undefined' ? match2[3] : undefined;
+          const cellltype = match2[4] != 'undefined' ? match2[4] : undefined;
+          const drug = match2[5] != 'undefined' ? match2[5] : undefined;
+          dispatch({
+            type: 'getRemote',
+            //payload一般用于传输参数，即type指定函数的参数
+            payload: {
+              pageIndex: 1,
+              pageSize: 10,
+              source: source,
+              tissuegroup: tissue,
+              phenotype: phenotype,
+              celltype: cellltype,
+              drug: drug,
+              // pcutoff: 0.01,
+              // pcutoff2: 0.01,
+              // spcutoff: 0.01,
+            },
+          });
         }
       });
     },
