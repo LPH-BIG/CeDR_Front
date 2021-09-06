@@ -233,6 +233,20 @@ const Index = ({
                 />
               </Col>
             </Row>
+            <Row justify={'center'}>
+              <Col md={12} style={{ textAlign: 'center' }}>
+                <p>
+                  GSEA prerank analysis for the signature genes corresponding to
+                  the cell type in scRNA-seq
+                </p>
+              </Col>
+              <Col md={12} style={{ textAlign: 'center' }}>
+                <p>
+                  GSEA prerank analysis for the signature genes in drug induced
+                  expression
+                </p>
+              </Col>
+            </Row>
             <Divider />
             <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -300,11 +314,7 @@ const Index = ({
                 <Image.PreviewGroup>
                   {/*<Space>*/}
                   <Title level={4}>Matrix Plot:</Title>
-                  <p style={{ textAlign: 'center', fontSize: '18px' }}>
-                    Matrix plot of signature genes in {record?.datasetid} scRNA
-                    dataset referring to {druginformation.name}-
-                    {record?.celltype} association
-                  </p>
+
                   <Image
                     style={{ marginLeft: '10%' }}
                     width={'80%'}
@@ -317,6 +327,11 @@ const Index = ({
                       // setAlert('inline');
                     }}
                   />
+                  <p style={{ textAlign: 'center', fontSize: '18px' }}>
+                    Matrix plot of signature genes in {record?.datasetid} scRNA
+                    dataset referring to {druginformation.name}-
+                    {record?.celltype} association
+                  </p>
                   {/*</Space>*/}
                 </Image.PreviewGroup>
               </Col>

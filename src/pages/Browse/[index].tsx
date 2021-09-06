@@ -70,21 +70,6 @@ const Index: FC<BrowsePageProps> = ({
       width: 100,
       ellipsis: true,
       hideInForm: true,
-      render: (text, record, index) => {
-        return (
-          <div>
-            <span>
-              <a
-                onClick={() => {
-                  history.push('/general/source/' + text);
-                }}
-              >
-                {text}
-              </a>
-            </span>
-          </div>
-        );
-      },
     },
     {
       title: 'Project',
@@ -102,21 +87,6 @@ const Index: FC<BrowsePageProps> = ({
       hideInForm: true,
       width: 100,
       ellipsis: true,
-      render: (text, record, index) => {
-        return (
-          <div>
-            <span>
-              <a
-                onClick={() => {
-                  history.push('/general/tissue/' + text);
-                }}
-              >
-                {text}
-              </a>
-            </span>
-          </div>
-        );
-      },
     },
     {
       title: 'Tissue Group',
@@ -133,21 +103,6 @@ const Index: FC<BrowsePageProps> = ({
       width: 100,
       ellipsis: true,
       hideInForm: true,
-      render: (text, record, index) => {
-        return (
-          <div>
-            <span>
-              <a
-                onClick={() => {
-                  history.push('/general/phenotype/' + text);
-                }}
-              >
-                {text}
-              </a>
-            </span>
-          </div>
-        );
-      },
     },
     {
       title: 'Cell Type',
@@ -354,6 +309,7 @@ const Index: FC<BrowsePageProps> = ({
               loading={browseListLoading}
               rowKey={(record) => record.id}
               search={false}
+              options={false}
               rowSelection={{
                 fixed: true,
                 onSelect: (record, selected, selectedRows, nativeEvent) => {

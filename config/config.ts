@@ -61,4 +61,7 @@ export default defineConfig({
   //     output: './.mfsu-prod',
   //   },
   // },
+  targets: {
+    ie: 11,
+  },
 });
